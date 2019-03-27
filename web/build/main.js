@@ -195,16 +195,12 @@ var DataProvider = /** @class */ (function () {
         score = Number(score);
         switch (style) {
             case 1:
-                if (score < 29)
+                if (score < 80)
                     return 'red';
-                else if (score > 30 && score < 49)
-                    return 'orange';
                 return 'success';
             default:
-                if (score < 29)
+                if (score < 80)
                     return '#EB0606';
-                else if (score > 30 && score < 49)
-                    return '#ffa500';
                 return '#10dc60';
         }
     };
@@ -281,9 +277,10 @@ var DataProvider = /** @class */ (function () {
     };
     DataProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["b" /* Events */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_http__["a" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["b" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["b" /* Events */]) === "function" && _b || Object])
     ], DataProvider);
     return DataProvider;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=data.js.map

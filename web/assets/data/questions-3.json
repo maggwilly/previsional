@@ -1,0 +1,382 @@
+[
+    {
+        "flashCardFront": "Why do we have a Code of Business Conduct?",
+        "flashCardFlipped": "tick the right answer (s)",
+        "rate": 0,
+        "amswered": false,
+        "answers": [
+            {
+                "answer": "To set out the minimum expectations to our suppliers",
+                "correct": false,
+                "selected": false
+            },
+            {
+                "answer": "To set out our minimum expectations to all employees, and those representing or acting on behalf of Diageo, and explain where we can go for further information and help",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "To cover every situation we as employees may face",
+                "correct": false,
+                "selected": false
+            }
+        ]
+    },
+    {
+        "flashCardFront": "In relation to the conflict of Interest, kindly choose the right answer (s):",
+        "flashCardFlipped": "tick the right answer (s)",
+        "rate": 0,
+        "amswered": false,
+        "answers": [
+            {
+                "answer": "If you or a relative is involved with a customer, supplier, or competitor this might cause a conflict",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "Using company assets inappropriately could not be seen as a conflict of interest",
+                "correct": false,
+                "selected": false
+            },
+            {
+                "answer": "Most conflicts can be resolved in an acceptable way for both you and Diageo",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "Always Keep a record of the actions agreed with your manager",
+                "correct": true,
+                "selected": false
+            }
+        ]
+    },
+    {
+        "flashCardFront": "Act responsibly by protecting Diageo’s brands from counterfeit and smuggling. All Illicit activities should be promptly reported through:",
+        "flashCardFlipped": "tick the right answer (s)",
+        "rate": 0,
+        "amswered": false,
+        "answers": [
+            {
+                "answer": "DrinkIQ website",
+                "correct": false,
+                "selected": false
+            },
+            {
+                "answer": "Spot & Stop on Mosaic page",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "Directly to Legal or your brand protection contact.",
+                "correct": true,
+                "selected": false
+            }
+        ]
+    },
+    {
+        "flashCardFront": "Where would you find the latest version of our Global policies and Standards?",
+        "flashCardFlipped": "tick the right answer (s)",
+        "rate": 0,
+        "amswered": false,
+        "answers": [
+            {
+                "answer": "Through Mosaic Page/ Our Code",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "In CC&E Yammer Group",
+                "correct": false,
+                "selected": false
+            },
+            {
+                "answer": "In Diageo Digital Code",
+                "correct": false,
+                "selected": false
+            },
+            {
+                "answer": "In all users Global policies Communication Link",
+                "correct": false,
+                "selected": false
+            }
+        ]
+    },
+    {
+        "flashCardFront": "The Mandatory Random Breathalyzer Testing (MRBT) :",
+        "flashCardFlipped": "tick the right answer (s)",
+        "rate": 0,
+        "amswered": false,
+        "answers": [
+            {
+                "answer": "Is a test that detects the Blood Alcohol Concentration (BAC) of an employee at the time of testing",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "Gives the exact consumption rate before blowing test is performed on an individual.",
+                "correct": false,
+                "selected": false
+            },
+            {
+                "answer": "Is a test to ensure every alcohol consumers having access on GCSA premises is not exposed in a potential alcohol related risk or hazard.",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "Is not applicable to Government officials visiting our brewery",
+                "correct": true,
+                "selected": false
+            }
+        ]
+    },
+    {
+        "flashCardFront": "Out of the list below, choose 2 characteristics of Information Management and Security (IMS) policy on the way it should be applied",
+        "flashCardFlipped": "tick the right answer (s)",
+        "rate": 0,
+        "amswered": false,
+        "answers": [
+            {
+                "answer": "Maintain  incomplete and inaccurate information of your business activities for archiving purposes",
+                "correct": false,
+                "selected": false
+            },
+            {
+                "answer": "Keep your information organized, identifiable and accessible",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "Regularly review company information for which you are responsible to identify any information due for disposal",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "Use only  hardware and software that has been approved by the Security team",
+                "correct": false,
+                "selected": false
+            },
+            {
+                "answer": "Be aware of “legal hold”: if any of your information is required, or is likely to be required for any litigation or investigation, keep this information safe and make sure it is not at risk of being altered, deleted, destroyed or made inaccessible",
+                "correct": true,
+                "selected": false
+            }
+        ]
+    },
+    {
+        "flashCardFront": "Who has primary responsibility for a satisfactory control environment?",
+        "flashCardFlipped": "tick the right answer (s)",
+        "rate": 0,
+        "amswered": false,
+        "answers": [
+            {
+                "answer": "The CC&E team",
+                "correct": false,
+                "selected": false
+            },
+            {
+                "answer": "Every employee",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "GAR (Global Audit and Risk)",
+                "correct": false,
+                "selected": false
+            },
+            {
+                "answer": "All of the above",
+                "correct": false,
+                "selected": false
+            }
+        ]
+    },
+    {
+        "flashCardFront": "I am a new line manager and I discovered that I have access to the P4Gs and PTR information of my team members for the periods when I was not their manager. Should I be concerned?",
+        "flashCardFlipped": "tick the right answer (s)",
+        "rate": 0,
+        "amswered": false,
+        "answers": [
+            {
+                "answer": "You should only be able to access personal information which is necessary for your role. Discuss with your HRBP whether you need the access to this data and remove all unnecessary accesses",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "You are the line manager and you know that you should keep this information to yourself. So, there’s no reason to be concerned",
+                "correct": false,
+                "selected": false
+            }
+        ]
+    },
+    {
+        "flashCardFront": "An effective control is one that operates as designed and mitigates the risks associated to a specific process",
+        "flashCardFlipped": "tick the right answer (s)",
+        "rate": 0,
+        "amswered": false,
+        "answers": [
+            {
+                "answer": "True",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "False",
+                "correct": false,
+                "selected": false
+            }
+        ]
+    },
+    {
+        "flashCardFront": "What is the theme of 2019 Pathway of Pride edition?",
+        "flashCardFlipped": "tick the right answer (s)",
+        "rate": 0,
+        "amswered": false,
+        "answers": [
+            {
+                "answer": "Win through Ownership with No excuses",
+                "correct": false,
+                "selected": false
+            },
+            {
+                "answer": "Win through Ownership, Win Together",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "Be Your Own Referee",
+                "correct": false,
+                "selected": false
+            }
+        ]
+    },
+    {
+        "flashCardFront": "You are not sure, but you believe your manager could be doing something that is wrong and is in breach of our Code. You do not feel comfortable discussing it with your manager so who else could you speak to?",
+        "flashCardFlipped": "tick the right answer (s)",
+        "rate": 0,
+        "amswered": false,
+        "answers": [
+            {
+                "answer": "Your local HR team",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "Your local Controls, Compliance & Ethics Manager, or the Global Risk and Compliance team (global.compliance.programme@diageo.com)",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "Speak Up – a confidential service (by email, telephone or internet) ",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "Your Diageo internal lawyer",
+                "correct": true,
+                "selected": false
+            }
+        ]
+    },
+    {
+        "flashCardFront": "We expect our business partners to apply the same core principles in their operations as are in our Code. Which of the following principles would we expect them to apply?",
+        "flashCardFlipped": "tick the right answer (s)",
+        "rate": 0,
+        "amswered": false,
+        "answers": [
+            {
+                "answer": "To comply with all relevant and applicable laws, regulations and industry standards",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "Protect human rights and core labour standards",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "Have a zero tolerance approach to bribery and corruption in any form",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "To offer all of their employees an annual bonus",
+                "correct": false,
+                "selected": false
+            }
+        ]
+    },
+    {
+        "flashCardFront": "Which of the following are government officials?",
+        "flashCardFlipped": "tick the right answer (s)",
+        "rate": 0,
+        "amswered": false,
+        "answers": [
+            {
+                "answer": "The queen",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "A marine officer",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "A policeman",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "Political party officials",
+                "correct": true,
+                "selected": false
+            }
+        ]
+    },
+    {
+        "flashCardFront": "What is your role in preventing slips, trips and falls in Diageo?",
+        "flashCardFlipped": "tick the right answer (s)",
+        "rate": 0,
+        "amswered": false,
+        "answers": [
+            {
+                "answer": "Keep within the designated walk routes where in place",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "Be vigilant for wet/uneven floors and other trip hazards",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "Don’t walk by – if you see or cause a trip (e.g. loose floor covering) or slip hazard (e.g. you spill your coffee on the floor), make it safe and report it without delay",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "None of te above",
+                "correct": false,
+                "selected": false
+            }
+        ]
+    },
+    {
+        "flashCardFront": "Should the employee keep a record of the gifts and entertainment he gives to or receives from external parties as well as offers we have made which have been declined?",
+        "flashCardFlipped": "tick the right answer (s)",
+        "rate": 0,
+        "amswered": false,
+        "answers": [
+            {
+                "answer": "Yes, we should always get in mind that all G&E must be recorded via Diageo platform including those that have been declined",
+                "correct": true,
+                "selected": false
+            },
+            {
+                "answer": "No, no need to record nobody will know about it.",
+                "correct": false,
+                "selected": false
+            }
+        ]
+    }
+]
