@@ -29,6 +29,15 @@ class Commende
      */
     private $date;
 
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="month", type="integer", nullable=true)
+     */
+    private $month;
+
+
     /**
      * @var int
      *
@@ -36,6 +45,13 @@ class Commende
      */
     private $week;
 
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="day", type="integer", nullable=true)
+     */
+    private $day;
         /**
      * @var int
      *
@@ -58,12 +74,6 @@ class Commende
      * @ORM\Column(name="num_facture", type="string", length=255, nullable=true)
      */
     private $numFacture;
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="month", type="string", length=255, nullable=true)
-     */
-    private $month;
 
         /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
@@ -130,18 +140,9 @@ class Commende
 * @ORM\PrePersist
 */
  public function doStuffOnPersist(){
-    $this->week =$this->date->format("W");
-    $this->month =$this->date->format("M");
-     $year=$this->date->format("Y");
-    $date = new \DateTime();
-    $date->setISODate($year, $this->week);
-    $startDate=$date->format('d/m');
-    $date->modify('+6 days');
-    $endDate=$date->format('d/m');
-    $this->weekText=$startDate.' - '.$endDate;
-    foreach ($this->lignes as $key => $ligne) {
-        $ligne->setCommende($this);
-    }
+    $this->week =date("W");
+    $this->month =date("m");
+    $this->day =date("j");
   }
 
 
@@ -347,5 +348,29 @@ class Commende
     public function getNumFacture()
     {
         return $this->numFacture;
+    }
+
+    /**
+     * Set day
+     *
+     * @param integer $day
+     *
+     * @return Commende
+     */
+    public function setDay($day)
+    {
+        $this->day = $day;
+
+        return $this;
+    }
+
+    /**
+     * Get day
+     *
+     * @return integer
+     */
+    public function getDay()
+    {
+        return $this->day;
     }
 }
