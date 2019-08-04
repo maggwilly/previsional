@@ -1,14 +1,14 @@
 webpackJsonp([10],{
 
-/***/ 805:
+/***/ 858:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WelcomePageModule", function() { return WelcomePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UnavailablePageModule", function() { return UnavailablePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(81);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__welcome__ = __webpack_require__(817);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__unavailable__ = __webpack_require__(913);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,33 +18,33 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var WelcomePageModule = /** @class */ (function () {
-    function WelcomePageModule() {
+var UnavailablePageModule = /** @class */ (function () {
+    function UnavailablePageModule() {
     }
-    WelcomePageModule = __decorate([
+    UnavailablePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__welcome__["a" /* WelcomePage */],
+                __WEBPACK_IMPORTED_MODULE_2__unavailable__["a" /* UnavailablePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__welcome__["a" /* WelcomePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__unavailable__["a" /* UnavailablePage */]),
             ],
         })
-    ], WelcomePageModule);
-    return WelcomePageModule;
+    ], UnavailablePageModule);
+    return UnavailablePageModule;
 }());
 
-//# sourceMappingURL=welcome.module.js.map
+//# sourceMappingURL=unavailable.module.js.map
 
 /***/ }),
 
-/***/ 817:
+/***/ 913:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WelcomePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UnavailablePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -57,33 +57,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
- * Generated class for the WelcomePage page.
+ * Generated class for the UnavailablePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var WelcomePage = /** @class */ (function () {
-    function WelcomePage(navCtrl, navParams) {
+var UnavailablePage = /** @class */ (function () {
+    function UnavailablePage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.employer = this.navParams.get('employer');
     }
-    WelcomePage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad WelcomePage');
+    UnavailablePage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad UnavailablePage');
     };
-    WelcomePage.prototype.start = function (lang) {
-        this.navCtrl.push('QuizPage', { lang: lang, employer: this.employer });
+    UnavailablePage.prototype.retry = function () {
+        this.navCtrl.setRoot('TabsPage', { skippecheck: false }, { animate: true, direction: 'forward' });
     };
-    WelcomePage = __decorate([
+    UnavailablePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-welcome',template:/*ion-inline-start:"C:\Users\HP\workspace\pop-v1\src\pages\welcome\welcome.html"*/'<!--\n  Generated template for the WelcomePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>welcome</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding>\n  <div text-center *ngIf="employer" style="height: 25%">\n    <br><br>\n    <h2 >Hi  !</h2>\n    <p>{{employer.name}}</p>\n  </div>\n  <div class="start-slide" padding>\n      <button ion-button block color="primary" (click)="start(\'fr\')">Commencez en français !</button>\n      <br><br>\n      <button ion-button block color="primary" (click)="start(\'en\')">Start it in english!</button>\n  </div>       \n</ion-content>\n'/*ion-inline-end:"C:\Users\HP\workspace\pop-v1\src\pages\welcome\welcome.html"*/,
+            selector: 'page-unavailable',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\unavailable\unavailable.html"*/'\n<ion-header no-border no-shadow>\n  <ion-navbar>\n    <ion-title>Systeme indisponible</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding>\n<div text-center vertical-center layout horizontal-center style="margin-top: 30%">\n  <p style="color: red; font-size: 1.2em; font-weight: bold;">\n  Le service est momentanement indisponible, peut-etre a cause d\'une operation de maintenenance en cours. Reessayez plus tard.\n</p>\n<button  ion-button outline round (click)="retry()"> Ressayer a nouveau</button>\n</div>\n</ion-content>\n'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\unavailable\unavailable.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
-    ], WelcomePage);
-    return WelcomePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]])
+    ], UnavailablePage);
+    return UnavailablePage;
 }());
 
-//# sourceMappingURL=welcome.js.map
+//# sourceMappingURL=unavailable.js.map
 
 /***/ })
 

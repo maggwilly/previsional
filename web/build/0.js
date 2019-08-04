@@ -1,16 +1,15 @@
 webpackJsonp([0],{
 
-/***/ 801:
+/***/ 856:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QuizPageModule", function() { return QuizPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StatsPageModule", function() { return StatsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(81);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__quiz__ = __webpack_require__(812);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular_svg_round_progressbar__ = __webpack_require__(813);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular_svg_round_progressbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular_svg_round_progressbar__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stats__ = __webpack_require__(908);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng2_google_charts__ = __webpack_require__(909);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -21,677 +20,546 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var QuizPageModule = /** @class */ (function () {
-    function QuizPageModule() {
+var StatsPageModule = /** @class */ (function () {
+    function StatsPageModule() {
     }
-    QuizPageModule = __decorate([
+    StatsPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__quiz__["a" /* QuizPage */],
+                __WEBPACK_IMPORTED_MODULE_2__stats__["a" /* StatsPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__quiz__["a" /* QuizPage */]),
-                __WEBPACK_IMPORTED_MODULE_3_angular_svg_round_progressbar__["RoundProgressModule"]
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__stats__["a" /* StatsPage */]),
+                __WEBPACK_IMPORTED_MODULE_3_ng2_google_charts__["a" /* Ng2GoogleChartsModule */]
             ],
         })
-    ], QuizPageModule);
-    return QuizPageModule;
+    ], StatsPageModule);
+    return StatsPageModule;
 }());
 
-//# sourceMappingURL=quiz.module.js.map
+//# sourceMappingURL=stats.module.js.map
 
 /***/ }),
 
-/***/ 806:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__(1);
-var platform_browser_1 = __webpack_require__(43);
-var DEGREE_IN_RADIANS = Math.PI / 180;
-var RoundProgressService = /** @class */ (function () {
-    function RoundProgressService(document) {
-        this.supportsSvg = !!(document &&
-            document.createElementNS &&
-            document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect);
-        this._base = document && document.head.querySelector('base');
-        this._hasPerf = typeof window !== 'undefined' &&
-            window.performance &&
-            window.performance.now &&
-            typeof window.performance.now() === 'number';
-    }
-    /**
-     * Resolves a SVG color against the page's `base` tag.
-     */
-    /**
-       * Resolves a SVG color against the page's `base` tag.
-       */
-    RoundProgressService.prototype.resolveColor = /**
-       * Resolves a SVG color against the page's `base` tag.
-       */
-    function (color) {
-        if (this._base && this._base.href) {
-            var hashIndex = color.indexOf('#');
-            if (hashIndex > -1 && color.indexOf('url') > -1) {
-                return color.slice(0, hashIndex) + location.href + color.slice(hashIndex);
-            }
-        }
-        return color;
-    };
-    /**
-     * Generates a timestamp.
-     */
-    /**
-       * Generates a timestamp.
-       */
-    RoundProgressService.prototype.getTimestamp = /**
-       * Generates a timestamp.
-       */
-    function () {
-        return this._hasPerf ? window.performance.now() : Date.now();
-    };
-    /**
-     * Generates the value for an SVG arc.
-     * @param current       Current value.
-     * @param total         Maximum value.
-     * @param pathRadius    Radius of the SVG path.
-     * @param elementRadius Radius of the SVG container.
-     * @param isSemicircle  Whether the element should be a semicircle.
-     */
-    /**
-       * Generates the value for an SVG arc.
-       * @param current       Current value.
-       * @param total         Maximum value.
-       * @param pathRadius    Radius of the SVG path.
-       * @param elementRadius Radius of the SVG container.
-       * @param isSemicircle  Whether the element should be a semicircle.
-       */
-    RoundProgressService.prototype.getArc = /**
-       * Generates the value for an SVG arc.
-       * @param current       Current value.
-       * @param total         Maximum value.
-       * @param pathRadius    Radius of the SVG path.
-       * @param elementRadius Radius of the SVG container.
-       * @param isSemicircle  Whether the element should be a semicircle.
-       */
-    function (current, total, pathRadius, elementRadius, isSemicircle) {
-        if (isSemicircle === void 0) { isSemicircle = false; }
-        var value = Math.max(0, Math.min(current || 0, total));
-        var maxAngle = isSemicircle ? 180 : 359.9999;
-        var percentage = total === 0 ? maxAngle : (value / total) * maxAngle;
-        var start = this._polarToCartesian(elementRadius, pathRadius, percentage);
-        var end = this._polarToCartesian(elementRadius, pathRadius, 0);
-        var arcSweep = (percentage <= 180 ? 0 : 1);
-        return "M " + start + " A " + pathRadius + " " + pathRadius + " 0 " + arcSweep + " 0 " + end;
-    };
-    ;
-    /**
-     * Converts polar cooradinates to Cartesian.
-     * @param elementRadius  Radius of the wrapper element.
-     * @param pathRadius     Radius of the path being described.
-     * @param angleInDegrees Degree to be converted.
-     */
-    /**
-       * Converts polar cooradinates to Cartesian.
-       * @param elementRadius  Radius of the wrapper element.
-       * @param pathRadius     Radius of the path being described.
-       * @param angleInDegrees Degree to be converted.
-       */
-    RoundProgressService.prototype._polarToCartesian = /**
-       * Converts polar cooradinates to Cartesian.
-       * @param elementRadius  Radius of the wrapper element.
-       * @param pathRadius     Radius of the path being described.
-       * @param angleInDegrees Degree to be converted.
-       */
-    function (elementRadius, pathRadius, angleInDegrees) {
-        var angleInRadians = (angleInDegrees - 90) * DEGREE_IN_RADIANS;
-        var x = elementRadius + (pathRadius * Math.cos(angleInRadians));
-        var y = elementRadius + (pathRadius * Math.sin(angleInRadians));
-        return x + ' ' + y;
-    };
-    RoundProgressService.decorators = [
-        { type: core_1.Injectable },
-    ];
-    /** @nocollapse */
-    RoundProgressService.ctorParameters = function () { return [
-        { type: undefined, decorators: [{ type: core_1.Optional }, { type: core_1.Inject, args: [platform_browser_1.DOCUMENT,] },] },
-    ]; };
-    return RoundProgressService;
-}());
-exports.RoundProgressService = RoundProgressService;
-;
-//# sourceMappingURL=round-progress.service.js.map
-
-/***/ }),
-
-/***/ 807:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__(1);
-exports.ROUND_PROGRESS_DEFAULTS = new core_1.InjectionToken('ROUND_PROGRESS_DEFAULTS');
-exports.ROUND_PROGRESS_DEFAULTS_PROVIDER = {
-    provide: exports.ROUND_PROGRESS_DEFAULTS,
-    useValue: {
-        radius: 125,
-        animation: 'easeOutCubic',
-        animationDelay: null,
-        duration: 500,
-        stroke: 15,
-        color: '#45CCCE',
-        background: '#EAEAEA',
-        responsive: false,
-        clockwise: true,
-        semicircle: false,
-        rounded: false
-    }
-};
-//# sourceMappingURL=round-progress.config.js.map
-
-/***/ }),
-
-/***/ 808:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__(1);
-var RoundProgressEase = /** @class */ (function () {
-    function RoundProgressEase() {
-    }
-    // t: current time (or position) of the neonate. This can be seconds or frames, steps,
-    // seconds, ms, whatever – as long as the unit is the same as is used for the total time.
-    // b: beginning value of the property.
-    // c: change between the beginning and destination value of the property.
-    // d: total time of the neonate.
-    // t: current time (or position) of the neonate. This can be seconds or frames, steps,
-    // seconds, ms, whatever – as long as the unit is the same as is used for the total time.
-    // b: beginning value of the property.
-    // c: change between the beginning and destination value of the property.
-    // d: total time of the neonate.
-    RoundProgressEase.prototype.linearEase = 
-    // t: current time (or position) of the neonate. This can be seconds or frames, steps,
-    // seconds, ms, whatever – as long as the unit is the same as is used for the total time.
-    // b: beginning value of the property.
-    // c: change between the beginning and destination value of the property.
-    // d: total time of the neonate.
-    function (t, b, c, d) {
-        return c * t / d + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeInQuad = function (t, b, c, d) {
-        return c * (t /= d) * t + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeOutQuad = function (t, b, c, d) {
-        return -c * (t /= d) * (t - 2) + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeInOutQuad = function (t, b, c, d) {
-        if ((t /= d / 2) < 1) {
-            return c / 2 * t * t + b;
-        }
-        return -c / 2 * ((--t) * (t - 2) - 1) + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeInCubic = function (t, b, c, d) {
-        return c * (t /= d) * t * t + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeOutCubic = function (t, b, c, d) {
-        return c * ((t = t / d - 1) * t * t + 1) + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeInOutCubic = function (t, b, c, d) {
-        if ((t /= d / 2) < 1) {
-            return c / 2 * t * t * t + b;
-        }
-        return c / 2 * ((t -= 2) * t * t + 2) + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeInQuart = function (t, b, c, d) {
-        return c * (t /= d) * t * t * t + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeOutQuart = function (t, b, c, d) {
-        return -c * ((t = t / d - 1) * t * t * t - 1) + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeInOutQuart = function (t, b, c, d) {
-        if ((t /= d / 2) < 1) {
-            return c / 2 * t * t * t * t + b;
-        }
-        return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeInQuint = function (t, b, c, d) {
-        return c * (t /= d) * t * t * t * t + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeOutQuint = function (t, b, c, d) {
-        return c * ((t = t / d - 1) * t * t * t * t + 1) + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeInOutQuint = function (t, b, c, d) {
-        if ((t /= d / 2) < 1) {
-            return c / 2 * t * t * t * t * t + b;
-        }
-        return c / 2 * ((t -= 2) * t * t * t * t + 2) + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeInSine = function (t, b, c, d) {
-        return -c * Math.cos(t / d * (Math.PI / 2)) + c + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeOutSine = function (t, b, c, d) {
-        return c * Math.sin(t / d * (Math.PI / 2)) + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeInOutSine = function (t, b, c, d) {
-        return -c / 2 * (Math.cos(Math.PI * t / d) - 1) + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeInExpo = function (t, b, c, d) {
-        return (t == 0) ? b : c * Math.pow(2, 10 * (t / d - 1)) + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeOutExpo = function (t, b, c, d) {
-        return (t == d) ? b + c : c * (-Math.pow(2, -10 * t / d) + 1) + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeInOutExpo = function (t, b, c, d) {
-        if (t == 0) {
-            return b;
-        }
-        ;
-        if (t == d) {
-            return b + c;
-        }
-        if ((t /= d / 2) < 1) {
-            return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
-        }
-        return c / 2 * (-Math.pow(2, -10 * --t) + 2) + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeInCirc = function (t, b, c, d) {
-        return -c * (Math.sqrt(1 - (t /= d) * t) - 1) + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeOutCirc = function (t, b, c, d) {
-        return c * Math.sqrt(1 - (t = t / d - 1) * t) + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeInOutCirc = function (t, b, c, d) {
-        if ((t /= d / 2) < 1) {
-            return -c / 2 * (Math.sqrt(1 - t * t) - 1) + b;
-        }
-        return c / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1) + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeInElastic = function (t, b, c, d) {
-        var s = 1.70158;
-        var p = d * 0.3;
-        var a = c;
-        if (t == 0) {
-            return b;
-        }
-        if ((t /= d) == 1) {
-            return b + c;
-        }
-        if (a < Math.abs(c)) {
-            a = c;
-            s = p / 4;
-        }
-        else {
-            s = p / (2 * Math.PI) * Math.asin(c / a);
-        }
-        return -(a * Math.pow(2, 10 * (t--)) * Math.sin((t * d - s) * (2 * Math.PI) / p)) + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeOutElastic = function (t, b, c, d) {
-        var s = 1.70158;
-        var p = d * 0.3;
-        var a = c;
-        if (t == 0) {
-            return b;
-        }
-        if ((t /= d) == 1) {
-            return b + c;
-        }
-        if (a < Math.abs(c)) {
-            a = c;
-            s = p / 4;
-        }
-        else {
-            s = p / (2 * Math.PI) * Math.asin(c / a);
-        }
-        return a * Math.pow(2, -10 * t) * Math.sin((t * d - s) * (2 * Math.PI) / p) + c + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeInOutElastic = function (t, b, c, d) {
-        var s = 1.70158;
-        var p = d * (0.3 * 1.5);
-        var a = c;
-        if (t == 0) {
-            return b;
-        }
-        if ((t /= d / 2) == 2) {
-            return b + c;
-        }
-        if (a < Math.abs(c)) {
-            a = c;
-            s = p / 4;
-        }
-        else {
-            s = p / (2 * Math.PI) * Math.asin(c / a);
-        }
-        if (t < 1) {
-            return -0.5 * (a * Math.pow(2, 10 * (t -= 1)) *
-                Math.sin((t * d - s) * (2 * Math.PI) / p)) + b;
-        }
-        return a * Math.pow(2, -10 * (t -= 1)) *
-            Math.sin((t * d - s) * (2 * Math.PI) / p) * 0.5 + c + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeInBack = function (t, b, c, d, s) {
-        if (s === void 0) { s = 1.70158; }
-        return c * (t /= d) * t * ((s + 1) * t - s) + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeOutBack = function (t, b, c, d, s) {
-        if (s === void 0) { s = 1.70158; }
-        return c * ((t = t / d - 1) * t * ((s + 1) * t + s) + 1) + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeInOutBack = function (t, b, c, d, s) {
-        if (s === void 0) { s = 1.70158; }
-        if ((t /= d / 2) < 1) {
-            return c / 2 * (t * t * (((s *= 1.525) + 1) * t - s)) + b;
-        }
-        return c / 2 * ((t -= 2) * t * (((s *= 1.525) + 1) * t + s) + 2) + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeInBounce = function (t, b, c, d) {
-        return c - this.easeOutBounce(d - t, 0, c, d) + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeOutBounce = function (t, b, c, d) {
-        if ((t /= d) < (1 / 2.75)) {
-            return c * (7.5625 * t * t) + b;
-        }
-        else if (t < (2 / 2.75)) {
-            return c * (7.5625 * (t -= (1.5 / 2.75)) * t + 0.75) + b;
-        }
-        else if (t < (2.5 / 2.75)) {
-            return c * (7.5625 * (t -= (2.25 / 2.75)) * t + 0.9375) + b;
-        }
-        return c * (7.5625 * (t -= (2.625 / 2.75)) * t + 0.984375) + b;
-    };
-    ;
-    RoundProgressEase.prototype.easeInOutBounce = function (t, b, c, d) {
-        if (t < d / 2) {
-            return this.easeInBounce(t * 2, 0, c, d) * 0.5 + b;
-        }
-        return this.easeOutBounce(t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b;
-    };
-    ;
-    RoundProgressEase.decorators = [
-        { type: core_1.Injectable },
-    ];
-    return RoundProgressEase;
-}());
-exports.RoundProgressEase = RoundProgressEase;
-/**
- * TERMS OF USE - EASING EQUATIONS
- * Open source under the BSD License.
-
- * Copyright © 2001 Robert Penner
- * All rights reserved.
- * Redistribution and use in source and binary forms, with or without modification, are permitted
- * provided that the following conditions are met:
-
- * Redistributions of source code must retain the above copyright notice, this list of conditions
- * and the following disclaimer.
- *
- * Redistributions in binary form must reproduce the above copyright notice, this list of conditions
- * and the following disclaimer in the documentation and/or other materials provided with the
- * distribution.
- *
- * Neither the name of the author nor the names of contributors may be used to endorse or promote
- * products derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
- * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
- * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-//# sourceMappingURL=round-progress.ease.js.map
-
-/***/ }),
-
-/***/ 809:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__(1);
-var round_progress_service_1 = __webpack_require__(806);
-var round_progress_config_1 = __webpack_require__(807);
-var round_progress_ease_1 = __webpack_require__(808);
-var RoundProgressComponent = /** @class */ (function () {
-    function RoundProgressComponent(_service, _easing, _defaults, _ngZone, _renderer) {
-        this._service = _service;
-        this._easing = _easing;
-        this._defaults = _defaults;
-        this._ngZone = _ngZone;
-        this._renderer = _renderer;
-        this._lastAnimationId = 0;
-        this.radius = this._defaults.radius;
-        this.animation = this._defaults.animation;
-        this.animationDelay = this._defaults.animationDelay;
-        this.duration = this._defaults.duration;
-        this.stroke = this._defaults.stroke;
-        this.color = this._defaults.color;
-        this.background = this._defaults.background;
-        this.responsive = this._defaults.responsive;
-        this.clockwise = this._defaults.clockwise;
-        this.semicircle = this._defaults.semicircle;
-        this.rounded = this._defaults.rounded;
-        this.onRender = new core_1.EventEmitter();
-    }
-    /** Animates a change in the current value. */
-    /** Animates a change in the current value. */
-    RoundProgressComponent.prototype._animateChange = /** Animates a change in the current value. */
-    function (from, to) {
-        var _this = this;
-        if (typeof from !== 'number') {
-            from = 0;
-        }
-        to = this._clamp(to);
-        from = this._clamp(from);
-        var self = this;
-        var changeInValue = to - from;
-        var duration = self.duration;
-        // Avoid firing change detection for each of the animation frames.
-        self._ngZone.runOutsideAngular(function () {
-            var start = function () {
-                var startTime = self._service.getTimestamp();
-                var id = ++self._lastAnimationId;
-                requestAnimationFrame(function animation() {
-                    var currentTime = Math.min(self._service.getTimestamp() - startTime, duration);
-                    var value = self._easing[self.animation](currentTime, from, changeInValue, duration);
-                    self._setPath(value);
-                    self.onRender.emit(value);
-                    if (id === self._lastAnimationId && currentTime < duration) {
-                        requestAnimationFrame(animation);
-                    }
-                });
-            };
-            if (_this.animationDelay > 0) {
-                setTimeout(start, _this.animationDelay);
-            }
-            else {
-                start();
-            }
-        });
-    };
-    /** Sets the path dimensions. */
-    /** Sets the path dimensions. */
-    RoundProgressComponent.prototype._setPath = /** Sets the path dimensions. */
-    function (value) {
-        if (this._path) {
-            this._renderer.setElementAttribute(this._path.nativeElement, 'd', this._service.getArc(value, this.max, this.radius - this.stroke / 2, this.radius, this.semicircle));
-        }
-    };
-    /** Clamps a value between the maximum and 0. */
-    /** Clamps a value between the maximum and 0. */
-    RoundProgressComponent.prototype._clamp = /** Clamps a value between the maximum and 0. */
-    function (value) {
-        return Math.max(0, Math.min(value || 0, this.max));
-    };
-    /** Determines the SVG transforms for the <path> node. */
-    /** Determines the SVG transforms for the <path> node. */
-    RoundProgressComponent.prototype.getPathTransform = /** Determines the SVG transforms for the <path> node. */
-    function () {
-        var diameter = this._diameter;
-        if (this.semicircle) {
-            return this.clockwise ?
-                "translate(0, " + diameter + ") rotate(-90)" :
-                "translate(" + (diameter + ',' + diameter) + ") rotate(90) scale(-1, 1)";
-        }
-        else if (!this.clockwise) {
-            return "scale(-1, 1) translate(-" + diameter + " 0)";
-        }
-    };
-    /** Resolves a color through the service. */
-    /** Resolves a color through the service. */
-    RoundProgressComponent.prototype.resolveColor = /** Resolves a color through the service. */
-    function (color) {
-        return this._service.resolveColor(color);
-    };
-    /** Change detection callback. */
-    /** Change detection callback. */
-    RoundProgressComponent.prototype.ngOnChanges = /** Change detection callback. */
-    function (changes) {
-        if (changes.current) {
-            this._animateChange(changes.current.previousValue, changes.current.currentValue);
-        }
-        else {
-            this._setPath(this.current);
-        }
-    };
-    Object.defineProperty(RoundProgressComponent.prototype, "_diameter", {
-        /** Diameter of the circle. */
-        get: /** Diameter of the circle. */
-        function () {
-            return this.radius * 2;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(RoundProgressComponent.prototype, "_elementHeight", {
-        /** The CSS height of the wrapper element. */
-        get: /** The CSS height of the wrapper element. */
-        function () {
-            if (!this.responsive) {
-                return (this.semicircle ? this.radius : this._diameter) + 'px';
-            }
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(RoundProgressComponent.prototype, "_viewBox", {
-        /** Viewbox for the SVG element. */
-        get: /** Viewbox for the SVG element. */
-        function () {
-            var diameter = this._diameter;
-            return "0 0 " + diameter + " " + (this.semicircle ? this.radius : diameter);
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(RoundProgressComponent.prototype, "_paddingBottom", {
-        /** Bottom padding for the wrapper element. */
-        get: /** Bottom padding for the wrapper element. */
-        function () {
-            if (this.responsive) {
-                return this.semicircle ? '50%' : '100%';
-            }
-        },
-        enumerable: true,
-        configurable: true
-    });
-    RoundProgressComponent.decorators = [
-        { type: core_1.Component, args: [{
-                    selector: 'round-progress',
-                    template: "\n    <svg xmlns=\"http://www.w3.org/2000/svg\" [attr.viewBox]=\"_viewBox\">\n      <circle\n        fill=\"none\"\n        [attr.cx]=\"radius\"\n        [attr.cy]=\"radius\"\n        [attr.r]=\"radius - stroke / 2\"\n        [style.stroke]=\"resolveColor(background)\"\n        [style.stroke-width]=\"stroke\"/>\n\n      <path\n        #path\n        fill=\"none\"\n        [style.stroke-width]=\"stroke\"\n        [style.stroke]=\"resolveColor(color)\"\n        [style.stroke-linecap]=\"rounded ? 'round' : ''\"\n        [attr.transform]=\"getPathTransform()\"/>\n    </svg>\n  ",
-                    host: {
-                        'role': 'progressbar',
-                        '[attr.aria-valuemin]': 'current',
-                        '[attr.aria-valuemax]': 'max',
-                        '[style.width]': "responsive ? '' : _diameter + 'px'",
-                        '[style.height]': '_elementHeight',
-                        '[style.padding-bottom]': '_paddingBottom',
-                        '[class.responsive]': 'responsive'
-                    },
-                    styles: [
-                        ":host {\n      display: block;\n      position: relative;\n      overflow: hidden;\n    }",
-                        ":host.responsive {\n      width: 100%;\n      padding-bottom: 100%;\n    }",
-                        ":host.responsive > svg {\n      position: absolute;\n      width: 100%;\n      height: 100%;\n      top: 0;\n      left: 0;\n    }"
-                    ]
-                },] },
-    ];
-    /** @nocollapse */
-    RoundProgressComponent.ctorParameters = function () { return [
-        { type: round_progress_service_1.RoundProgressService, },
-        { type: round_progress_ease_1.RoundProgressEase, },
-        { type: undefined, decorators: [{ type: core_1.Inject, args: [round_progress_config_1.ROUND_PROGRESS_DEFAULTS,] },] },
-        { type: core_1.NgZone, },
-        { type: core_1.Renderer, },
-    ]; };
-    RoundProgressComponent.propDecorators = {
-        "_path": [{ type: core_1.ViewChild, args: ['path',] },],
-        "current": [{ type: core_1.Input },],
-        "max": [{ type: core_1.Input },],
-        "radius": [{ type: core_1.Input },],
-        "animation": [{ type: core_1.Input },],
-        "animationDelay": [{ type: core_1.Input },],
-        "duration": [{ type: core_1.Input },],
-        "stroke": [{ type: core_1.Input },],
-        "color": [{ type: core_1.Input },],
-        "background": [{ type: core_1.Input },],
-        "responsive": [{ type: core_1.Input },],
-        "clockwise": [{ type: core_1.Input },],
-        "semicircle": [{ type: core_1.Input },],
-        "rounded": [{ type: core_1.Input },],
-        "onRender": [{ type: core_1.Output },],
-    };
-    return RoundProgressComponent;
-}());
-exports.RoundProgressComponent = RoundProgressComponent;
-//# sourceMappingURL=round-progress.component.js.map
-
-/***/ }),
-
-/***/ 812:
+/***/ 867:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QuizPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GoogleChartComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(81);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(406);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_notify__ = __webpack_require__(407);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__google_charts_loader_service__ = __webpack_require__(868);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chart_html_tooltip__ = __webpack_require__(869);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var GoogleChartComponent = /** @class */ (function () {
+    function GoogleChartComponent(el, loaderService) {
+        var _this = this;
+        this.mouseOverListener = function (item) {
+            var event = _this.parseMouseEvent(item);
+            event.tooltip = _this.getHTMLTooltip();
+            return event;
+        };
+        this.mouseOutListener = function (item) {
+            var event = _this.parseMouseEvent(item);
+            return event;
+        };
+        this.selectListener = function () {
+            var event = {
+                message: 'select',
+                row: null,
+                column: null,
+                selectedRowValues: [],
+                selectedRowFormattedValues: [],
+                columnLabel: ''
+            };
+            var s = _this.wrapper.visualization.getSelection();
+            var gs = s[s.length - 1];
+            if (!gs) {
+                event.message = 'deselect';
+                return event;
+            }
+            var selection = gs;
+            if (gs.row != null) {
+                event.row = selection.row;
+                var selectedRowValues = [];
+                var selectedRowFormattedValues = [];
+                var dataTable = _this.wrapper.getDataTable();
+                var numberOfColumns = dataTable.getNumberOfColumns();
+                for (var i = 0; i < numberOfColumns; i++) {
+                    selectedRowValues.push(dataTable.getValue(selection.row, i));
+                    selectedRowFormattedValues.push(dataTable.getFormattedValue(selection.row, i));
+                }
+                event.selectedRowValues = selectedRowValues;
+                event.selectedRowFormattedValues = selectedRowFormattedValues;
+            }
+            if (selection.column != null) {
+                event.column = selection.column;
+                event.columnLabel = _this.getColumnLabelAtPosition(selection);
+            }
+            if (gs.name) {
+                event.columnLabel = gs.name;
+            }
+            return event;
+        };
+        this.el = el;
+        this.loaderService = loaderService;
+        this.chartSelect = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.chartSelectOneTime = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.chartReady = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.chartReadyOneTime = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.chartError = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.chartErrorOneTime = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.mouseOver = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.mouseOverOneTime = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.mouseOut = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.mouseOutOneTime = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+    }
+    GoogleChartComponent.prototype.ngOnChanges = function (changes) {
+        var _this = this;
+        var key = 'data';
+        if (changes[key]) {
+            if (!this.data) {
+                return;
+            }
+            this.options = this.data.options;
+            if (!this.options) {
+                this.options = {};
+            }
+            this.data.component = this;
+            this.loaderService.load().then(function () {
+                if (_this.wrapper === undefined || _this.wrapper.getChartType() !== _this.data.chartType) {
+                    _this.convertOptions();
+                    if (_this.data.opt_firstRowIsData && Array.isArray(_this.data.dataTable)) {
+                        _this.data.dataTable = google.visualization.arrayToDataTable(_this.data.dataTable, true);
+                    }
+                    _this.wrapper = new google.visualization.ChartWrapper(_this.data);
+                    _this.registerChartWrapperEvents();
+                }
+                else {
+                    // this.unregisterEvents();
+                }
+                _this.draw();
+            });
+        }
+    };
+    GoogleChartComponent.prototype.draw = function () {
+        this.wrapper.setDataTable(this.data.dataTable);
+        this.convertOptions();
+        this.wrapper.setOptions(this.options);
+        this.reformat();
+        this.wrapper.draw(this.el.nativeElement.querySelector('div'));
+    };
+    /**
+     * Applies formatters to data columns, if defined
+     */
+    GoogleChartComponent.prototype.reformat = function () {
+        if (!this.data) {
+            return;
+        }
+        if (this.data.formatters !== undefined) {
+            for (var _i = 0, _a = this.data.formatters; _i < _a.length; _i++) {
+                var formatterConfig = _a[_i];
+                var formatterConstructor = google.visualization[formatterConfig.type];
+                var formatterOptions = formatterConfig.options;
+                var formatter = new formatterConstructor(formatterOptions);
+                if (formatterConfig.type === 'ColorFormat' && formatterOptions) {
+                    for (var _b = 0, _c = formatterOptions.ranges; _b < _c.length; _b++) {
+                        var range = _c[_b];
+                        if (typeof (range.fromBgColor) !== 'undefined' && typeof (range.toBgColor) !== 'undefined') {
+                            formatter.addGradientRange(range.from, range.to, range.color, range.fromBgColor, range.toBgColor);
+                        }
+                        else {
+                            formatter.addRange(range.from, range.to, range.color, range.bgcolor);
+                        }
+                    }
+                }
+                var dt = this.wrapper.getDataTable();
+                for (var _d = 0, _e = formatterConfig.columns; _d < _e.length; _d++) {
+                    var col = _e[_d];
+                    formatter.format(dt, col);
+                }
+            }
+        }
+    };
+    GoogleChartComponent.prototype.getSelectorBySeriesType = function (seriesType) {
+        var selectors = {
+            bars: 'bar#%s#%r',
+            haxis: 'hAxis#0#label',
+            line: 'point#%s#%r',
+            legend: 'legendentry#%s',
+            area: 'point#%s#%r'
+        };
+        var selector = selectors[seriesType];
+        return selector;
+    };
+    /**
+     * Given a column number, counts how many
+     * columns have rol=="data". Those are mapped
+     * one-to-one to the series array. When rol is not defined
+     * a column of type number means a series column.
+     * @param column to inspect
+     */
+    GoogleChartComponent.prototype.getSeriesByColumn = function (column) {
+        var series = 0;
+        var dataTable = this.wrapper.getDataTable();
+        for (var i = column - 1; i >= 0; i--) {
+            var role = dataTable.getColumnRole(i);
+            var type = dataTable.getColumnType(i);
+            if (role === 'data' || type === 'number') {
+                series++;
+            }
+        }
+        return series;
+    };
+    GoogleChartComponent.prototype.getBoundingBoxForItem = function (item) {
+        var boundingBox = { top: 0, left: 0, width: 0, height: 0 };
+        if (this.cli) {
+            var column = item.column;
+            var series = this.getSeriesByColumn(column);
+            var row = item.row;
+            var seriesType = this.options.seriesType;
+            if (this.options.series && this.options.series[series] && this.options.series[series].type) {
+                seriesType = this.options.series[series].type;
+            }
+            if (seriesType) {
+                var selector = this.getSelectorBySeriesType(seriesType);
+                if (selector) {
+                    selector = selector.replace('%s', series + '').replace('%c', column + '').replace('%r', row + '');
+                    var box = this.cli.getBoundingBox(selector);
+                    if (box) {
+                        boundingBox = box;
+                    }
+                }
+            }
+        }
+        return boundingBox;
+    };
+    GoogleChartComponent.prototype.getValueAtPosition = function (position) {
+        if (position.row == null) {
+            return null;
+        }
+        var dataTable = this.wrapper.getDataTable();
+        var value = dataTable.getValue(position.row, position.column);
+        return value;
+    };
+    GoogleChartComponent.prototype.getColumnTypeAtPosition = function (position) {
+        var dataTable = this.wrapper.getDataTable();
+        var type = dataTable.getColumnType(position.column) || '';
+        return type;
+    };
+    GoogleChartComponent.prototype.getColumnLabelAtPosition = function (position) {
+        var dataTable = this.wrapper.getDataTable();
+        var type = dataTable.getColumnLabel(position.column) || '';
+        return type;
+    };
+    GoogleChartComponent.prototype.getHTMLTooltip = function () {
+        var tooltipER = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"](this.el.nativeElement.querySelector('.google-visualization-tooltip'));
+        return new __WEBPACK_IMPORTED_MODULE_2__chart_html_tooltip__["a" /* ChartHTMLTooltip */](tooltipER);
+    };
+    GoogleChartComponent.prototype.parseMouseEvent = function (item) {
+        var chartType = this.wrapper.getChartType();
+        var eventColumn = item.column;
+        if (eventColumn == null) {
+            switch (chartType) {
+                case 'Timeline':
+                    eventColumn = this.wrapper.getDataTable().getNumberOfColumns() === 3 ? 0 : 1;
+                    break;
+                default:
+                    eventColumn = 0;
+            }
+        }
+        var eventRow = item.row;
+        var myItem = {
+            row: eventRow,
+            column: eventColumn
+        };
+        var event = {
+            position: item,
+            boundingBox: this.getBoundingBoxForItem(myItem),
+            value: this.getValueAtPosition(myItem),
+            columnType: this.getColumnTypeAtPosition(myItem),
+            columnLabel: this.getColumnLabelAtPosition(myItem)
+        };
+        return event;
+    };
+    GoogleChartComponent.prototype.unregisterEvents = function () {
+        google.visualization.events.removeAllListeners(this.wrapper.getChart());
+        google.visualization.events.removeAllListeners(this.wrapper);
+    };
+    GoogleChartComponent.prototype.registerChartEvents = function () {
+        var _this = this;
+        var chart = this.wrapper.getChart();
+        this.cli = chart.getChartLayoutInterface ? chart.getChartLayoutInterface() : null;
+        if (this.mouseOver.observers.length > 0) {
+            google.visualization.events.addListener(chart, 'onmouseover', function (item) {
+                var event = _this.parseMouseEvent(item);
+                event.tooltip = _this.getHTMLTooltip();
+                _this.mouseOver.emit(event);
+            });
+        }
+        if (this.mouseOverOneTime.observers.length > 0) {
+            google.visualization.events.addOneTimeListener(chart, 'onmouseover', function (item) {
+                var event = _this.parseMouseEvent(item);
+                event.tooltip = _this.getHTMLTooltip();
+                _this.mouseOverOneTime.emit(event);
+            });
+        }
+        if (this.mouseOut.observers.length > 0) {
+            google.visualization.events.addListener(chart, 'onmouseout', function (item) {
+                var event = _this.parseMouseEvent(item);
+                _this.mouseOut.emit(event);
+            });
+        }
+        if (this.mouseOutOneTime.observers.length > 0) {
+            google.visualization.events.addOneTimeListener(chart, 'onmouseout', function (item) {
+                var event = _this.parseMouseEvent(item);
+                _this.mouseOutOneTime.emit(event);
+            });
+        }
+    };
+    GoogleChartComponent.prototype.registerChartWrapperEvents = function () {
+        var _this = this;
+        google.visualization.events.addListener(this.wrapper, 'ready', function () {
+            _this.chartReady.emit({ message: 'Chart ready' });
+        });
+        google.visualization.events.addOneTimeListener(this.wrapper, 'ready', function () {
+            _this.chartReadyOneTime.emit({ message: 'Chart ready (one time)' });
+            _this.registerChartEvents();
+        });
+        google.visualization.events.addListener(this.wrapper, 'error', function (error) {
+            _this.chartError.emit(error);
+        });
+        google.visualization.events.addOneTimeListener(this.wrapper, 'error', function (error) {
+            _this.chartErrorOneTime.emit(error);
+        });
+        this.addListener(this.wrapper, 'select', this.selectListener, this.chartSelect);
+        this.addOneTimeListener(this.wrapper, 'select', this.selectListener, this.chartSelectOneTime);
+    };
+    GoogleChartComponent.prototype.addListener = function (source, eventType, listenerFn, evEmitter) {
+        google.visualization.events.addListener(source, eventType, function () {
+            evEmitter.emit(listenerFn());
+        });
+    };
+    GoogleChartComponent.prototype.addOneTimeListener = function (source, eventType, listenerFn, evEmitter) {
+        google.visualization.events.addOneTimeListener(source, eventType, function () {
+            evEmitter.emit(listenerFn());
+        });
+    };
+    GoogleChartComponent.prototype.convertOptions = function () {
+        try {
+            this.options = google.charts[this.data.chartType].convertOptions(this.options);
+        }
+        catch (error) {
+            return;
+        }
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", Object)
+    ], GoogleChartComponent.prototype, "data", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
+    ], GoogleChartComponent.prototype, "chartReady", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
+    ], GoogleChartComponent.prototype, "chartReadyOneTime", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
+    ], GoogleChartComponent.prototype, "chartError", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
+    ], GoogleChartComponent.prototype, "chartErrorOneTime", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
+    ], GoogleChartComponent.prototype, "chartSelect", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
+    ], GoogleChartComponent.prototype, "chartSelectOneTime", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
+    ], GoogleChartComponent.prototype, "mouseOver", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
+    ], GoogleChartComponent.prototype, "mouseOverOneTime", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
+    ], GoogleChartComponent.prototype, "mouseOut", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
+    ], GoogleChartComponent.prototype, "mouseOutOneTime", void 0);
+    GoogleChartComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'google-chart',
+            template: '<div></div>',
+            changeDetection: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectionStrategy"].OnPush
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"],
+            __WEBPACK_IMPORTED_MODULE_1__google_charts_loader_service__["a" /* GoogleChartsLoaderService */]])
+    ], GoogleChartComponent);
+    return GoogleChartComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ 868:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GoogleChartsLoaderService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+var GoogleChartsLoaderService = /** @class */ (function () {
+    function GoogleChartsLoaderService(localeId, googleChartsVersion, mapsApiKey) {
+        this.googleChartsVersion = googleChartsVersion;
+        this.mapsApiKey = mapsApiKey;
+        this.googleScriptLoadingNotifier = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.googleScriptIsLoading = false;
+        this.localeId = localeId;
+        if (this.googleChartsVersion === null) {
+            this.googleChartsVersion = '46';
+        }
+    }
+    GoogleChartsLoaderService.prototype.load = function (packages) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            if (resolve === void 0) { resolve = Function.prototype; }
+            if (reject === void 0) { reject = Function.prototype; }
+            _this.loadGoogleChartsScript().then(function () {
+                var initializer = {
+                    language: _this.localeId,
+                    callback: resolve,
+                    packages: packages
+                };
+                if (_this.mapsApiKey) {
+                    initializer.mapsApiKey = _this.mapsApiKey;
+                }
+                google.charts.load(_this.googleChartsVersion, initializer);
+            }).catch(function (err) { return reject(); });
+        });
+    };
+    GoogleChartsLoaderService.prototype.loadGoogleChartsScript = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            if (resolve === void 0) { resolve = Function.prototype; }
+            if (reject === void 0) { reject = Function.prototype; }
+            if (typeof google !== 'undefined' && google.charts) {
+                resolve();
+            }
+            else if (!_this.googleScriptIsLoading) {
+                _this.googleScriptIsLoading = true;
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = 'https://www.gstatic.com/charts/loader.js';
+                script.async = true;
+                script.defer = true;
+                script.onload = function () {
+                    _this.googleScriptIsLoading = false;
+                    _this.googleScriptLoadingNotifier.emit(true);
+                    resolve();
+                };
+                script.onerror = function () {
+                    _this.googleScriptIsLoading = false;
+                    _this.googleScriptLoadingNotifier.emit(false);
+                    reject();
+                };
+                document.getElementsByTagName('head')[0].appendChild(script);
+            }
+            else {
+                _this.googleScriptLoadingNotifier.subscribe(function (loaded) {
+                    if (loaded) {
+                        resolve();
+                    }
+                    else {
+                        reject();
+                    }
+                });
+            }
+        });
+    };
+    GoogleChartsLoaderService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __param(0, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])(__WEBPACK_IMPORTED_MODULE_0__angular_core__["LOCALE_ID"])),
+        __param(1, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])('googleChartsVersion')), __param(1, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Optional"])()),
+        __param(2, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])('mapsApiKey')), __param(2, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Optional"])()),
+        __metadata("design:paramtypes", [String, String, String])
+    ], GoogleChartsLoaderService);
+    return GoogleChartsLoaderService;
+}());
+
+
+
+/***/ }),
+
+/***/ 869:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChartHTMLTooltip; });
+var ChartHTMLTooltip = /** @class */ (function () {
+    function ChartHTMLTooltip(el) {
+        this.tooltipDOMElement = el;
+    }
+    ChartHTMLTooltip.prototype.setPosition = function (x, y) {
+        this.tooltipDOMElement.nativeElement.style.left = x + ChartHTMLTooltip.PIXELS;
+        this.tooltipDOMElement.nativeElement.style.top = y + ChartHTMLTooltip.PIXELS;
+    };
+    ChartHTMLTooltip.prototype.getDOMElement = function () {
+        return this.tooltipDOMElement;
+    };
+    ChartHTMLTooltip.PIXELS = 'px';
+    return ChartHTMLTooltip;
+}());
+
+
+
+/***/ }),
+
+/***/ 908:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StatsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_manager_manager__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_notify__ = __webpack_require__(482);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__ = __webpack_require__(483);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -705,200 +573,252 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 /**
- * Generated class for the QuizPage page.
+ * Generated class for the StatsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var QuizPage = /** @class */ (function () {
-    function QuizPage(navCtrl, navParams, notify, dataService) {
+var StatsPage = /** @class */ (function () {
+    function StatsPage(navCtrl, navParams, modalCtrl, localisation, manager, loadingCtrl, notify) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.modalCtrl = modalCtrl;
+        this.localisation = localisation;
+        this.manager = manager;
+        this.loadingCtrl = loadingCtrl;
         this.notify = notify;
-        this.dataService = dataService;
-        this.time = 0;
-        this.maxTime = 0;
-        this.displayTime = 100;
-        this.hasAnswered = false;
-        // score: number = 0;
-        this.max = 100;
-        this.questions = [];
-        this.activeIndex = 0;
-        this.lang = this.navParams.get('lang');
-        this.employer = this.navParams.get('employer');
-        this.questions = this.employer.answers;
-        this.hasAnswered = (this.employer.answers && this.employer.answers.length);
-        //this.score=this.employer.score?this.employer.score:0
     }
-    QuizPage.prototype.ionViewDidLoad = function () {
+    StatsPage.prototype.ionViewDidLoad = function () {
+        this.refresh();
+    };
+    StatsPage.prototype.loadData = function () {
         var _this = this;
-        if (this.questions && this.questions.length)
-            return;
-        //this.score=0;
-        this.slides.lockSwipes(true);
-        this.dataService.load(this.lang).then(function (data) {
-            _this.questions = data;
-            setTimeout(function () {
-                _this.ionSlideDidChange();
-            }, 1000);
+        this.manager.show('stat', 'sale-satat').then(function (data) {
+            _this.stats = data;
+            _this.makeUpData().then(function (datatable) {
+                _this.useAngularLibrary(datatable);
+            }, function (err) { });
+        }, function (error) {
+            _this.notify.onSuccess({ message: "PROBLEME ! Verifiez votre connexion internet" });
         });
     };
-    QuizPage.prototype.formatTime = function () {
-        return this.time / 1000;
+    ;
+    StatsPage.prototype.refresh = function () {
+        this.filtre = { type: '',
+            user: '', secteur: '',
+            ville: '',
+            afterdate: __WEBPACK_IMPORTED_MODULE_4_moment__().startOf('month').format("YYYY-MM-DD"),
+            beforedate: __WEBPACK_IMPORTED_MODULE_4_moment__().endOf('month').format("YYYY-MM-DD") };
+        if (this.localisation.isOnline())
+            return this.loadRemoteData();
+        return this.loadData();
     };
-    QuizPage.prototype.end = function () {
-        this.navCtrl.setRoot('HomePage');
+    StatsPage.prototype.openMap = function () {
+        this.navCtrl.push('CartographPage', { filtre: this.filtre });
     };
-    QuizPage.prototype.nextSlide = function () {
-        if (this.timer)
-            clearInterval(this.timer);
-        if (this.hasAnswered) {
-            this.slides.slideNext();
-            return;
-        }
-        var question = this.questions[this.activeIndex];
-        if (question) {
-            this.rating(question);
-            question.amswered = true;
-            //this.score += question.rate;
-            if (question.answers.length)
-                this.dataService.setRating(question.id, this.lang, (question.rate * 100 / question.answers.length).toFixed(0));
-        }
-        this.slides.lockSwipes(false);
-        this.slides.slideNext();
-        this.slides.lockSwipes(true);
-    };
-    QuizPage.prototype.rating = function (question) {
-        var base = question.answers ? question.answers.length : -1;
-        var score = base, amswared = false;
-        question.answers.forEach(function (amswer) {
-            if (amswer.selected)
-                amswared = true;
-            if ((amswer.correct && !amswer.selected) || (!amswer.correct && amswer.selected))
-                score--;
-        });
-        if (!amswared)
-            score = 0;
-        question.rate = base > 0 ? score * 100 / base : 0;
-    };
-    QuizPage.prototype.ionSlideDidChange = function () {
+    StatsPage.prototype.makeUpData = function () {
         var _this = this;
-        if (this.slides.isEnd()) {
-            if (this.hasAnswered)
-                return;
-            var loading_1 = this.notify.loading({ content: 'Scoring...' });
-            this.dataService.setScore(this.employer.id, { lang: this.lang, score: this.humaniseScore(), answers: this.questions }).then(function () {
-                _this.hasAnswered = true;
-                loading_1.dismiss();
+        return new Promise(function (resolve, reject) {
+            _this.datatable = [['Semaine', 'Prospectés', 'Engagés', 'Rendez-vous programmés', 'Livraisons ou visites']];
+            Object.keys(_this.stats.weeks).forEach(function (key) {
+                var entry = _this.stats.weeks[key];
+                var week = [];
+                week.push(key);
+                week.push(Number(entry.created));
+                week.push(Number(entry.engaged));
+                week.push(Number(entry.visitedtarget));
+                week.push(Number(entry.visited));
+                _this.datatable.push(week);
             });
-            loading_1.present();
-            return;
-        }
-        if (this.hasAnswered)
-            return;
-        console.log("start");
-        this.activeIndex = this.slides.getActiveIndex() ? this.slides.getActiveIndex() : 0;
-        var question = this.questions[this.activeIndex];
-        this.time = question.answers ? question.answers.length * 15000 + 10000 : 5000 + 10000;
-        this.maxTime = this.time;
-        this.counter();
-    };
-    QuizPage.prototype.counter = function () {
-        var _this = this;
-        if (this.hasAnswered)
-            return;
-        setTimeout(function () {
-            _this.timer = setInterval(function () {
-                if (_this.time != 0) {
-                    _this.time -= 1000;
-                    _this.displayTime = (_this.time * 100 / _this.maxTime).toFixed(0);
-                }
-                else {
-                    _this.nextSlide();
-                }
-            }, 1000);
-        }, 1000);
-    };
-    QuizPage.prototype.humaniseScore = function () {
-        var score = 0;
-        if (!this.questions || !this.questions.length)
-            return '0';
-        this.questions.forEach(function (question) {
-            score += Number(question.rate);
+            resolve(_this.datatable);
         });
-        var lenth = this.questions.length ? this.questions.length : -1;
-        return Number(score / lenth).toFixed(0);
     };
-    QuizPage.prototype.randomizeAnswers = function (rawAnswers) {
-        for (var i = rawAnswers.length - 1; i > 0; i--) {
-            var j = Math.floor(Math.random() * (i + 1));
-            var temp = rawAnswers[i];
-            rawAnswers[i] = rawAnswers[j];
-            rawAnswers[j] = temp;
-        }
-        return rawAnswers;
+    StatsPage.prototype.loadRemoteData = function () {
+        var _this = this;
+        var loader = this.loadingCtrl.create({
+            content: "chargement...",
+        });
+        this.manager.show('stat', 0, true, this.filtre).then(function (data) {
+            _this.stats = data;
+            _this.makeUpData().then(function (datatable) {
+                _this.useAngularLibrary(datatable);
+            }, function (err) { });
+            loader.dismiss();
+        }, function (error) {
+            loader.dismiss();
+            console.log(error);
+            _this.notify.onSuccess({ message: "PROBLEME ! Verifiez votre connexion internet" });
+        });
+        loader.present();
     };
-    QuizPage.prototype.restartQuiz = function () {
-        this.hasAnswered = true;
-        this.slides.lockSwipes(false);
-        this.slides.slideTo(1, 1000);
+    StatsPage.prototype.useAngularLibrary = function (datatable) {
+        this.pieChartData = {
+            chartType: 'ColumnChart',
+            dataTable: datatable,
+            options: {
+                height: 400,
+                legend: { position: 'top', maxLines: 1 },
+                hAxis: {
+                    viewWindow: {
+                        min: [7, 30, 0],
+                        max: [17, 30, 0]
+                    }
+                }
+            }
+        };
+        //  let ccComponent = this.pieChartData.component
+        //ccComponent.draw();
+        //console.log(this.pieChartData);
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('slides'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Slides */])
-    ], QuizPage.prototype, "slides", void 0);
-    QuizPage = __decorate([
+    StatsPage.prototype.openFilter = function () {
+        var _this = this;
+        var modal = this.modalCtrl.create('FiltreStatsPage', { filtre: this.filtre });
+        modal.onDidDismiss(function (data) {
+            if (!data)
+                return;
+            return _this.loadRemoteData();
+        });
+        modal.present();
+    };
+    StatsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-quiz',template:/*ion-inline-start:"C:\Users\HP\workspace\pop-v1\src\pages\quiz\quiz.html"*/'<ion-header no-border no-shadow>\n        <ion-navbar [hideBackButton]="!hasAnswered" >\n          <ion-title>\n              <span *ngIf="!slides.isEnd()">Question {{activeIndex+1}}</span>\n            <span *ngIf="slides.isEnd()">Votre Score</span>\n        </ion-title>\n        </ion-navbar>\n   <div class="progess-bar" *ngIf="!slides.isEnd()" [hidden]="hasAnswered">\n       <div class="progression" [style.width.%]="displayTime">\n\n       </div>\n    </div>\n </ion-header>\n <ion-content >\n    <ion-slides #slides (ionSlideDidChange)="ionSlideDidChange()">\n        <ion-slide *ngFor="let question of questions; let i = index;">\n            <ion-card class="question-text">\n              <ion-card-content >\n                 {{question.flashCardFront}}\n              </ion-card-content>\n            </ion-card>\n\n            <h3 class="hint">{{question.flashCardFlipped}}</h3>\n            <ion-list no-lines radio-group inset>\n                <ion-item *ngFor="let answer of question.answers; let i = index;" text-wrap>\n                    <ion-label *ngIf="hasAnswered" [ngClass]="{\'wrong\':  !answer.correct, \'correct\': answer.correct}">\n                            {{i+1}}. {{answer.answer}}\n                    </ion-label>\n                    <ion-label *ngIf="!hasAnswered">\n                        {{i+1}}. {{answer.answer}}\n                    </ion-label>\n                    <ion-icon name="checkmark-circle" item-left *ngIf="answer.selected&&question.amswered"></ion-icon>\n                    <ion-icon name="radio-button-off" item-left *ngIf="!answer.selected&&question.amswered"></ion-icon>\n                    <ion-checkbox  [hidden]="question.amswered||hasAnswered" [(ngModel)]="answer.selected" color="dark" (ionChange)="rating(question)" ></ion-checkbox>\n                </ion-item>\n            </ion-list>\n      \n        </ion-slide>\n        <ion-slide>\n                <div class="progress-wrapper" [hidden]="!hasAnswered" padding>\n                        <div class="progress">\n                                {{humaniseScore()}} %\n                        </div>  \n                        <ion-grid style="height: 100%">\n                                <ion-row justify-content-center align-items-center style="height: 100%">\n                                        <round-progress [current]="humaniseScore()" [max]="max" [color]="dataService.colorScore(humaniseScore(),2)" [background]="\'#eaeaea\'" [animation]="\'easeInOutQuart\'"></round-progress>\n                                </ion-row>\n                              </ion-grid>                          \n                   </div>\n            <div padding [hidden]="!hasAnswered">\n            <button  (click)="restartQuiz()" ion-button block color="primary">Revoir mon parcours</button>\n                <br>\n            <button  (click)="end()" ion-button block color="danger">Terminer</button>\n        </div>\n        </ion-slide>\n    </ion-slides>\n    <ion-fab center bottom *ngIf="!slides.isEnd()">\n            <button ion-fab color="primary" (click)="nextSlide()">\n                <ion-icon *ngIf="(time>15000)" name="ios-arrow-dropright"></ion-icon>\n                <span *ngIf="(time<=15000)">{{formatTime()}}s</span>\n            </button> \n    </ion-fab>  \n</ion-content>\n'/*ion-inline-end:"C:\Users\HP\workspace\pop-v1\src\pages\quiz\quiz.html"*/,
+            selector: 'page-stats',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\stats\stats.html"*/'<ion-header no-border no-shadow>\n  <ion-navbar>\n    <ion-title>Tableau de bord <strong *ngIf="filtre">\n      <span *ngIf="filtre.afterdate">, Entre le {{filtre.afterdate|date:\'dd/MM/yyyy\'}}</span>\n      <span *ngIf="filtre.beforedate"> <span *ngIf="filtre.afterdate">et</span><span *ngIf="!filtre.afterdate">, Avant</span> le {{filtre.beforedate|date:\'dd/MM/yyyy\'}}</span></strong></ion-title>\n    <ion-buttons end>\n      <button ion-button icon-left (click)="refresh()"> \n        <ion-icon name="refresh"></ion-icon> Actualiser\n      </button> \n      <button ion-button icon-only (click)="openMap()">\n          <ion-icon name="ios-map"></ion-icon>\n        </button>      \n    </ion-buttons>   \n  </ion-navbar>\n</ion-header> \n<ion-content>\n  <div *ngIf="stats">\n<ion-grid>\n  <ion-row>\n<ion-card>\n  <ion-card-header>\n    <ion-item text-wrap>\n        Tableau de bord  <strong *ngIf="filtre"><span *ngIf="filtre.afterdate">, Entre le {{filtre.afterdate|date:\'dd/MM/yyyy\'}}</span>\n          <span *ngIf="filtre.beforedate"> <span *ngIf="filtre.afterdate">et</span><span *ngIf="!filtre.afterdate">, Avant</span> le {{filtre.beforedate|date:\'dd/MM/yyyy\'}}</span></strong>\n        <p *ngIf="filtre">\n            <span *ngIf="filtre.type">, {{filtre.type}}</span><span *ngIf="!filtre.type">Toutes catégories</span>\n            <span *ngIf="filtre.ville">{{filtre.ville}}</span><span *ngIf="!filtre.ville">, toutes les villes</span>\n           <span *ngIf="filtre.quartier">, {{filtre.quartier}}</span><span *ngIf="!filtre.quartier">, tous les quartiers</span>\n        </p>\n            <button ion-button icon-left item-right    (click)="openFilter()"><ion-icon name="funnel"  ></ion-icon> Seletionnez</button>    \n    </ion-item>\n  </ion-card-header>\n</ion-card>  \n</ion-row>\n  <ion-row>\n      <ion-col>\n          <ion-card class="kpi"> \n              <ion-card-content>\n                <ion-row class="box-info">\n                  <ion-col><span class="circle-text primary"><ion-icon name="md-people"></ion-icon> </span></ion-col>\n                  <ion-col text-center> <span class="label">{{stats.total_count}}</span></ion-col>\n                </ion-row>\n                <p><ion-icon name="ios-information-circle-outline"></ion-icon> Nombre total des clients</p>\n              </ion-card-content>\n            </ion-card>\n      </ion-col>\n      <ion-col>\n          <ion-card class="kpi">\n              <ion-card-content>\n                  <ion-row class="box-info">\n                      <ion-col><span class="circle-text orange"><ion-icon name="md-person-add"></ion-icon></span></ion-col>\n                      <ion-col text-center> <span class="label">{{stats.created_count}}</span></ion-col>\n                    </ion-row>                  \n                <p><ion-icon name="ios-information-circle-outline"></ion-icon> Clients prospectés</p>\n              </ion-card-content>\n            </ion-card>\n      </ion-col>\n      <ion-col>\n          <ion-card class="kpi">\n              <ion-card-content>\n                <ion-row class="box-info">\n                    <ion-col><span class="circle-text danger"><ion-icon name="md-checkbox-outline"></ion-icon></span></ion-col>\n                    <ion-col text-center> <span class="label">{{stats.engaged_count}}</span></ion-col>\n                  </ion-row>                \n                <p><ion-icon name="ios-information-circle-outline"></ion-icon> Clients engagés </p>\n              </ion-card-content>\n            </ion-card>\n      </ion-col>\n      <ion-col>\n          <ion-card class="kpi">\n            <ion-card-content>\n              <ion-row class="box-info">\n                  <ion-col><span class="circle-text secondary"><ion-icon name="md-clipboard"></ion-icon></span></ion-col>\n                  <ion-col text-center>  <span class="label">{{stats.target_vs_visited}}%</span></ion-col>\n                </ion-row>              \n              <p><ion-icon name="ios-information-circle-outline"></ion-icon> Objectif des livraisons</p>\n            </ion-card-content>\n          </ion-card>\n        </ion-col>\n    </ion-row>\n\n  <ion-row>\n  <ion-card id="chart-sale">\n    <ion-card-header>\n        Evolutions hebdomadaires des indicateurs\n    </ion-card-header>\n           <google-chart style = "width: 550px; height: 400px; margin: 0 auto" [data]="pieChartData"></google-chart>\n  </ion-card>\n  </ion-row>\n</ion-grid>\n   </div>\n    <ion-grid style="height: 80%;justify-content: center;position:absolute;top:15vh" *ngIf="!pieChartData">\n      <ion-row style="height: 100%;justify-content: center;" justify-content-center align-items-center>\n          <ion-spinner name="ios"></ion-spinner>\n      </ion-row>\n    </ion-grid> \n</ion-content>'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\stats\stats.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3__app_app_notify__["a" /* AppNotify */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
-    ], QuizPage);
-    return QuizPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__["a" /* LocalisationProvider */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_manager_manager__["a" /* ManagerProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_3__app_app_notify__["a" /* AppNotify */]])
+    ], StatsPage);
+    return StatsPage;
 }());
 
-//# sourceMappingURL=quiz.js.map
+//# sourceMappingURL=stats.js.map
 
 /***/ }),
 
-/***/ 813:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 909:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__google_chart_google_chart_component__ = __webpack_require__(867);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__google_chart_chart_html_tooltip__ = __webpack_require__(869);
+/* unused harmony reexport ChartHTMLTooltip */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__google_chart_chart_mouse_event__ = __webpack_require__(910);
+/* unused harmony reexport ChartMouseOverEvent */
+/* unused harmony reexport ChartMouseOutEvent */
+/* unused harmony reexport MouseOverEvent */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__google_charts_module__ = __webpack_require__(911);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_3__google_charts_module__["a"]; });
 
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__(1);
-var common_1 = __webpack_require__(56);
-var round_progress_component_1 = __webpack_require__(809);
-var round_progress_service_1 = __webpack_require__(806);
-var round_progress_ease_1 = __webpack_require__(808);
-var round_progress_config_1 = __webpack_require__(807);
-var RoundProgressModule = /** @class */ (function () {
-    function RoundProgressModule() {
+
+
+
+
+
+/***/ }),
+
+/***/ 910:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export ChartMouseEvent */
+/* unused harmony export MouseOverEvent */
+/* unused harmony export ChartMouseOverEvent */
+/* unused harmony export ChartMouseOutEvent */
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var ChartMouseEvent = /** @class */ (function () {
+    function ChartMouseEvent() {
     }
-    RoundProgressModule.decorators = [
-        { type: core_1.NgModule, args: [{
-                    imports: [common_1.CommonModule],
-                    declarations: [round_progress_component_1.RoundProgressComponent],
-                    exports: [round_progress_component_1.RoundProgressComponent],
-                    providers: [round_progress_service_1.RoundProgressService, round_progress_ease_1.RoundProgressEase, round_progress_config_1.ROUND_PROGRESS_DEFAULTS_PROVIDER]
-                },] },
-    ];
-    return RoundProgressModule;
+    return ChartMouseEvent;
 }());
-exports.RoundProgressModule = RoundProgressModule;
-;
-__export(__webpack_require__(809));
-__export(__webpack_require__(806));
-__export(__webpack_require__(808));
-__export(__webpack_require__(807));
-//# sourceMappingURL=index.js.map
+
+/**
+ * @deprecated Use ChartMouseOverEvent instead
+ */
+var MouseOverEvent = /** @class */ (function (_super) {
+    __extends(MouseOverEvent, _super);
+    function MouseOverEvent() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return MouseOverEvent;
+}(ChartMouseEvent));
+
+var ChartMouseOverEvent = /** @class */ (function (_super) {
+    __extends(ChartMouseOverEvent, _super);
+    function ChartMouseOverEvent() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return ChartMouseOverEvent;
+}(ChartMouseEvent));
+
+var ChartMouseOutEvent = /** @class */ (function (_super) {
+    __extends(ChartMouseOutEvent, _super);
+    function ChartMouseOutEvent() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return ChartMouseOutEvent;
+}(ChartMouseEvent));
+
+
+
+/***/ }),
+
+/***/ 911:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Ng2GoogleChartsModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__google_chart_google_chart_component__ = __webpack_require__(867);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__google_charts_loader_service__ = __webpack_require__(868);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var Ng2GoogleChartsModule = /** @class */ (function () {
+    function Ng2GoogleChartsModule() {
+    }
+    Ng2GoogleChartsModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_1__google_chart_google_chart_component__["a" /* GoogleChartComponent */]
+            ],
+            providers: [
+                __WEBPACK_IMPORTED_MODULE_2__google_charts_loader_service__["a" /* GoogleChartsLoaderService */]
+            ],
+            exports: [
+                __WEBPACK_IMPORTED_MODULE_1__google_chart_google_chart_component__["a" /* GoogleChartComponent */]
+            ]
+        })
+    ], Ng2GoogleChartsModule);
+    return Ng2GoogleChartsModule;
+}());
+
+
 
 /***/ })
 

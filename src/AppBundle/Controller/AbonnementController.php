@@ -19,7 +19,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class AbonnementController extends Controller
 {
 
-  
   /**
    * @Security("is_granted('ROLE_DELEGUE')")
   */
@@ -29,7 +28,6 @@ class AbonnementController extends Controller
         $abonnements = $em->getRepository('AdminBundle:Abonnement')->findList();
          $extrats = $em->getRepository('AdminBundle:Abonnement')->findSinceDate();
         $concours = $em->getRepository('AppBundle:Session')->findList();
-
         return $this->render('AdminBundle:abonnement:index.html.twig', array(
             'abonnements' => $abonnements, 'concours' => $concours,
         ));
@@ -45,8 +43,7 @@ class AbonnementController extends Controller
     public function tokenAction()
     {
     $res=$this->get('payment_service')->getToken();
-
-  return  $res;
+     return  $res;
 }
 
 
@@ -56,7 +53,7 @@ class AbonnementController extends Controller
      */
     public function initAction(Request $request)
     {
-             $user=$this->getMobileUser($request);
+              $user=$this->getUser();
               $em = $this->getDoctrine()->getManager();
                $commande= new Commande($user);
               $form = $this->createForm('AppBundle\Form\CommandeType', $commande);
@@ -69,8 +66,7 @@ class AbonnementController extends Controller
                     $res['cmd']=$commande->getId();
                  return $res; // $this->redirect($res['payment_url']);
               }
-         return   array(
-                'status' => 'error'); 
+         return array('error' => true );
     }
 
 
@@ -161,7 +157,6 @@ class AbonnementController extends Controller
     {
         $form = $this->createDeleteForm($abonnement);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($abonnement);

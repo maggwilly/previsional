@@ -1,38 +1,9 @@
-app_commende:
-    resource: "@AppBundle/Resources/config/routing/commende.yml"
-    prefix:   /commende
-
-app_produit:
-    resource: "@AppBundle/Resources/config/routing/produit.yml"
-    prefix:   /produit
-
-app_price:
-    resource: "@AppBundle/Resources/config/routing/price.yml"
-    prefix:   /price
-
-app_point_vente:
-    resource: "@AppBundle/Resources/config/routing/pointvente.yml"
-    prefix:   /pointvente
-
-
-app_secteur:
-    resource: "@AppBundle/Resources/config/routing/secteur.yml"
-    prefix:   /secteur
-
-
-app_rapport:
-    resource: "@AppBundle/Resources/config/routing/rapport.yml"
-
-
-app_account:
-    resource: "@AppBundle/Resources/config/routing/account.yml"
-  
 app_payement:
     resource: "@AppBundle/Resources/config/routing/commande.yml"
     prefix:   /payement  
 
 homepage:
-    path:     /
+    path:     /home
     defaults: { _controller: "AppBundle:App:index" }
     methods:  GET
 
@@ -42,9 +13,5 @@ helppage:
     methods:  GET
 
 
-set_periode:
-    path:     /set/periode
-    defaults: { _controller: "AppBundle:App:setPeriode" }
-    methods:  POST
 
 

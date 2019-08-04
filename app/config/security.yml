@@ -1,4 +1,3 @@
-# To get started with security, check out the documentation:
 # http://symfony.com/doc/current/book/security.html
 security:
     role_hierarchy:
@@ -10,32 +9,37 @@ security:
          ROLE_DELEGUE:   [ROLE_ADMIN, ROLE_PRICER]
         
     access_control:
-        - { path: ^/admin, roles: ROLE_ADMIN }    
+        - { path: ^/v1/admin, roles: ROLE_ADMIN }   
+        - { path: ^/v1/ambassador, roles: IS_AUTHENTICATED_ANONYMOUSLY }   
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
 
     encoders:
-        AppBundle\Entity\User: bcrypt
+        AppBundle\Entity\User: sha512
     providers:
          main:
             id: fos_user.user_provider.username_email
+         our_db_provider:
+            entity:
+                class: AppBundle:User
+                property: apiKey        
            
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        
-        public:
+
+        public_web:
+      # since anonymous is allowed users will not be forced to login
            pattern:   ^/(login|register)$
            anonymous:      true
- 
-        help:
-           pattern:   .html$
-           anonymous:   true
-       
-        mobile:
-           pattern:   /json$
-           anonymous:      true
+
+        home:
+      # since anonymous is allowed users will not be forced to login
+           pattern:   ^/$
+           anonymous:    true 
+
+
         main:
             pattern:        ^/
             anonymous:      false
@@ -43,10 +47,10 @@ security:
             form_login:
                  login_path: fos_user_security_login
                  check_path: fos_user_security_check
-                 always_use_default_target_path: false
+                 always_use_default_target_path: true
                  default_target_path:  homepage          
             logout:  
                 path:      fos_user_security_logout
                 target:    /login
             remember_me:
-                key:        %secret% # %secret% est un paramètre de parameters.yml
+                key:        %secret% 

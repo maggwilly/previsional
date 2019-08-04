@@ -1,14 +1,14 @@
 webpackJsonp([11],{
 
-/***/ 804:
+/***/ 857:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabsPageModule", function() { return TabsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(81);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs__ = __webpack_require__(816);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs__ = __webpack_require__(912);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -27,8 +27,8 @@ var TabsPageModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2__tabs__["a" /* TabsPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tabs__["a" /* TabsPage */]),
-            ]
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tabs__["a" /* TabsPage */]),
+            ],
         })
     ], TabsPageModule);
     return TabsPageModule;
@@ -38,13 +38,14 @@ var TabsPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 816:
+/***/ 912:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_user_user__ = __webpack_require__(152);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,23 +57,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 /**
- * Generated class for the TabsPage tabs.
+ * Generated class for the TabsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
 var TabsPage = /** @class */ (function () {
-    function TabsPage(navCtrl) {
+    function TabsPage(navCtrl, userService, navParams) {
         this.navCtrl = navCtrl;
-        this.scoresRoot = 'ClassementPage';
-        this.statsRoot = 'StatsPage';
+        this.userService = userService;
+        this.navParams = navParams;
+        this.tab2Root = 'HomePage';
+        this.tab1Root = 'CommendesPage';
+        this.tab3Root = 'DonneesPage';
+        var skippecheck = this.navParams.get('skippecheck');
+        userService.resetObserver();
+        userService.complete.then(function (user) {
+            if (!user || !user.id || !user.parent)
+                return userService.go(user);
+            else if (user.receiveRequests && user.receiveRequests.length && !skippecheck)
+                return userService.request(user.receiveRequests);
+            else if ((userService.amIMyParent() && (!user.entreprise || !user.ville || !user.pays) && !skippecheck)
+                || (!userService.amIMyParent() && (!user.nom) && !skippecheck))
+                return userService.profile(user);
+            else if ((!user.parent.abonnement || user.parent.abonnement.expired) && !skippecheck)
+                return userService.shoulpay(user.parent.abonnement);
+        }, function (ERROR) {
+            console.log(ERROR);
+            return userService.unavailable();
+        });
     }
     TabsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-tabs',template:/*ion-inline-start:"C:\Users\HP\workspace\pop-v1\src\pages\tabs\tabs.html"*/'<ion-tabs>\n    <ion-tab [root]="scoresRoot" tabTitle="Classement" tabIcon="information-circle"></ion-tab>\n    <ion-tab [root]="statsRoot" tabTitle="Statistiques" tabIcon="information-circle"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"C:\Users\HP\workspace\pop-v1\src\pages\tabs\tabs.html"*/
+            selector: 'page-tabs',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\tabs\tabs.html"*/'<ion-tabs #myTabs>\n  <ion-tab [root]="tab2Root" tabTitle="Accueil" tabIcon="home"></ion-tab>\n  <ion-tab [root]="tab1Root" tabTitle="Ventes" tabIcon="ios-stats-outline"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Donnees" tabIcon="ios-folder-open"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\tabs\tabs.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_user_user__["a" /* UserProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]])
     ], TabsPage);
     return TabsPage;
 }());

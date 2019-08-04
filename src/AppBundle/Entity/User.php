@@ -55,7 +55,7 @@ class User extends BaseUser
     private $registration;
 
 
-           /**
+    /**
      * @var string
      * @ORM\Column(name="pays", type="string", length=255,nullable=true)
      */
@@ -185,11 +185,7 @@ class User extends BaseUser
     protected $expiresAt;
 
 
-   /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Secteur")
-     * @var User
-     */
-    protected $secteur;
+  
      /**
      * @var array
      *
@@ -211,21 +207,6 @@ class User extends BaseUser
      */
     protected $credentialsExpireAt;
 
-    /**
-   * @ORM\OneToMany(targetEntity="AppBundle\Entity\Request", mappedBy="user", cascade={"persist","remove"})
-   */
-    private $receiveRequests;
-
-    /**
-   * @ORM\OneToMany(targetEntity="AppBundle\Entity\Request", mappedBy="parent", cascade={"persist","remove"})
-   */
-    private $sendRequests;
-
-
-   /**
-   * @ORM\OneToMany(targetEntity="AppBundle\Entity\PointVente", mappedBy="user", cascade={"persist","remove"})
-   */
-    private $pointVentes;
 
 
      /**
@@ -235,24 +216,22 @@ class User extends BaseUser
 
    private $invited;
 
-   /**
-   * @ORM\OneToMany(targetEntity="AppBundle\Entity\Produit", mappedBy="user", cascade={"persist","remove"})
+
+ /**
+   * @ORM\OneToMany(targetEntity="AppBundle\Entity\User", mappedBy="parent", cascade={"persist","remove"})
    */
-    private $produits;
+    private $vendeurs;
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\PointVente", mappedBy="agents")
-     * @var User
-     */
-    protected $pointsPassages;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User",inversedBy="vendeurs")
      * @var User
      */
     protected $parent;
-
+    /**
+     * @ORM\Column(type="string", unique=true)
+     */
+    protected $apiKey;
     /**
      * Constructor
      */
@@ -260,11 +239,7 @@ class User extends BaseUser
  public function __construct()
     {
         parent::__construct();
-        $this->pointsPassages = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->pointVentes = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->secteurs = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->produits = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->sendRequests= new \Doctrine\Common\Collections\ArrayCollection();
+
         $this->pays='Cameroun';
     }
 
@@ -279,6 +254,7 @@ class User extends BaseUser
         if (!$this->entreprise) {
            $this->entreprise=$this->nom;
        }
+       $this->apiKey=md5(uniqid());
  } 
   
     /**
@@ -556,73 +532,7 @@ class User extends BaseUser
         return $this->termsAccepted;
     }
 
-    /**
-     * Add receiveRequest
-     *
-     * @param \AppBundle\Entity\Request $receiveRequest
-     *
-     * @return User
-     */
-    public function addReceiveRequest(\AppBundle\Entity\Request $receiveRequest)
-    {
-        $this->receiveRequests[] = $receiveRequest;
 
-        return $this;
-    }
-
-    /**
-     * Remove receiveRequest
-     *
-     * @param \AppBundle\Entity\Request $receiveRequest
-     */
-    public function removeReceiveRequest(\AppBundle\Entity\Request $receiveRequest)
-    {
-        $this->receiveRequests->removeElement($receiveRequest);
-    }
-
-    /**
-     * Get receiveRequests
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getReceiveRequests()
-    {
-        return $this->receiveRequests;
-    }
-
-    /**
-     * Add sendRequest
-     *
-     * @param \AppBundle\Entity\Request $sendRequest
-     *
-     * @return User
-     */
-    public function addSendRequest(\AppBundle\Entity\Request $sendRequest)
-    {
-        $this->sendRequests[] = $sendRequest;
-
-        return $this;
-    }
-
-    /**
-     * Remove sendRequest
-     *
-     * @param \AppBundle\Entity\Request $sendRequest
-     */
-    public function removeSendRequest(\AppBundle\Entity\Request $sendRequest)
-    {
-        $this->sendRequests->removeElement($sendRequest);
-    }
-
-    /**
-     * Get sendRequests
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSendRequests()
-    {
-        return $this->sendRequests;
-    }
 
     /**
      * Set parent
@@ -645,81 +555,20 @@ class User extends BaseUser
      */
     public function getParent()
     {
-        return $this->parent;
+        if($this->isMe())
+            return $this;  
+        return $this->getParent();
     }
 
 
    public function isMe(){
-
+     if (is_null($this->parent)) {
+        return true;
+     }
     return ($this->parent->getId()== $this->id);
    }
-    /**
-     * Add pointVente
-     *
-     * @param \AppBundle\Entity\PointVente $pointVente
-     *
-     * @return User
-     */
-    public function addPointVente(\AppBundle\Entity\PointVente $pointVente)
-    {
-        $this->pointVentes[] = $pointVente;
 
-        return $this;
-    }
 
-    /**
-     * Remove pointVente
-     *
-     * @param \AppBundle\Entity\PointVente $pointVente
-     */
-    public function removePointVente(\AppBundle\Entity\PointVente $pointVente)
-    {
-        $this->pointVentes->removeElement($pointVente);
-    }
-
-    /**
-     * Get pointVentes
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPointVentes()
-    {
-        return $this->pointVentes;
-    }
-
-    /**
-     * Add pointsPassage
-     *
-     * @param \AppBundle\Entity\PointVente $pointsPassage
-     *
-     * @return User
-     */
-    public function addPointsPassage(\AppBundle\Entity\PointVente $pointsPassage)
-    {
-        $this->pointsPassages[] = $pointsPassage;
-
-        return $this;
-    }
-
-    /**
-     * Remove pointsPassage
-     *
-     * @param \AppBundle\Entity\PointVente $pointsPassage
-     */
-    public function removePointsPassage(\AppBundle\Entity\PointVente $pointsPassage)
-    {
-        $this->pointsPassages->removeElement($pointsPassage);
-    }
-
-    /**
-     * Get pointsPassages
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPointsPassages()
-    {
-        return $this->pointsPassages;
-    }
 
     /**
      * Set entreprise
@@ -819,98 +668,6 @@ class User extends BaseUser
         return $this->adresse;
     }
 
-    /**
-     * Add produit
-     *
-     * @param \AppBundle\Entity\Produit $produit
-     *
-     * @return User
-     */
-    public function addProduit(\AppBundle\Entity\Produit $produit)
-    {
-        $this->produits[] = $produit;
-
-        return $this;
-    }
-
-    /**
-     * Remove produit
-     *
-     * @param \AppBundle\Entity\Produit $produit
-     */
-    public function removeProduit(\AppBundle\Entity\Produit $produit)
-    {
-        $this->produits->removeElement($produit);
-    }
-
-    /**
-     * Get produits
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getProduits()
-    {
-        return $this->produits;
-    }
-
-    /**
-     * Set secteur
-     *
-     * @param \AppBundle\Entity\Secteur $secteur
-     *
-     * @return User
-     */
-    public function setSecteur(\AppBundle\Entity\Secteur $secteur = null)
-    {
-        $this->secteur = $secteur;
-
-        return $this;
-    }
-
-    /**
-     * Get secteur
-     *
-     * @return \AppBundle\Entity\Secteur
-     */
-    public function getSecteur()
-    {
-        return $this->secteur;
-    }
-
-    /**
-     * Add secteur
-     *
-     * @param \AppBundle\Entity\Secteur $secteur
-     *
-     * @return User
-     */
-    public function addSecteur(\AppBundle\Entity\Secteur $secteur)
-    {
-        $this->secteurs[] = $secteur;
-
-        return $this;
-    }
-
-    /**
-     * Remove secteur
-     *
-     * @param \AppBundle\Entity\Secteur $secteur
-     */
-    public function removeSecteur(\AppBundle\Entity\Secteur $secteur)
-    {
-        $this->secteurs->removeElement($secteur);
-    }
-
-    /**
-     * Get secteurs
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSecteurs()
-    {       if ($this->isMe()) 
-                    return $this->secteurs;
-        return $this->parent->getSecteurs();
-    }
 
     /**
      * Set registration
@@ -958,5 +715,29 @@ class User extends BaseUser
     public function getAbonnement()
     {
         return $this->abonnement;
+    }
+
+    /**
+     * Set apiKey
+     *
+     * @param string $apiKey
+     *
+     * @return User
+     */
+    public function setApiKey($apiKey)
+    {
+        $this->apiKey = $apiKey;
+
+        return $this;
+    }
+
+    /**
+     * Get apiKey
+     *
+     * @return string
+     */
+    public function getApiKey()
+    {
+        return $this->apiKey;
     }
 }

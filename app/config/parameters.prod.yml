@@ -1,12 +1,12 @@
 parameters:
     database_driver: pdo_pgsql 
-    database_host: ec2-23-23-195-205.compute-1.amazonaws.com
+    database_host: ec2-107-22-222-161.compute-1.amazonaws.com
     database_port: 5432
-    database_name: dcse965hnlciah
-    database_user: jmdzikonmzpmjq
-    database_password: 235c0841e25cc674f1980422eeea901ce99b76ea52626354b718fe9d9ed1e330
+    database_name: dc8irji6c09j5n
+    database_user: lkcjobjfvkqsco
+    database_password: b1977d9478ba81fb730391e34ab33430f07023f3d8b1a36e0c9d4ca577ce22f9
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null
     mailer_password: null
-    secret: ThisTokenIsNotSoSecretChangeIt
+    secret: b1977d9478ba81fb730391e34ab33430f07023f3d8b1a36e0c9d4ca577ce22f9
