@@ -87,10 +87,10 @@ class Abonnement
 
 
     /**
-     *@ORM\Prepersist()
+     *@ORM\PrePersist()
     * @ORM\PreUpdate()
     */
-    public function PrePersist(){
+    public function prePersist(){
 
           $this->endDate=new \DateTime();
           $this->endDate->modify('+'.$this->duree.' month');
