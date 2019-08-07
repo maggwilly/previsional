@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 853:
+/***/ 856:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,8 +8,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StatsPageModule", function() { return StatsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stats__ = __webpack_require__(904);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng2_google_charts__ = __webpack_require__(905);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stats__ = __webpack_require__(908);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng2_google_charts__ = __webpack_require__(909);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,14 +41,14 @@ var StatsPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 866:
+/***/ 867:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GoogleChartComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__google_charts_loader_service__ = __webpack_require__(867);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chart_html_tooltip__ = __webpack_require__(868);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__google_charts_loader_service__ = __webpack_require__(868);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chart_html_tooltip__ = __webpack_require__(869);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -423,7 +423,7 @@ var GoogleChartComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 867:
+/***/ 868:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -524,7 +524,7 @@ var GoogleChartsLoaderService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 868:
+/***/ 869:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -548,7 +548,7 @@ var ChartHTMLTooltip = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 904:
+/***/ 908:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -685,7 +685,7 @@ var StatsPage = /** @class */ (function () {
     };
     StatsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-stats',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\stats\stats.html"*/'<ion-header no-border no-shadow>\n  <ion-navbar>\n    <ion-title>Tableau de bord <strong *ngIf="filtre">\n      <span *ngIf="filtre.afterdate">, Entre le {{filtre.afterdate|date:\'dd/MM/yyyy\'}}</span>\n      <span *ngIf="filtre.beforedate"> <span *ngIf="filtre.afterdate">et</span><span *ngIf="!filtre.afterdate">, Avant</span> le {{filtre.beforedate|date:\'dd/MM/yyyy\'}}</span></strong></ion-title>\n    <ion-buttons end>\n      <button ion-button icon-left (click)="refresh()"> \n        <ion-icon name="refresh"></ion-icon> Actualiser\n      </button> \n      <button ion-button icon-only (click)="openMap()">\n          <ion-icon name="ios-map"></ion-icon>\n        </button>      \n    </ion-buttons>   \n  </ion-navbar>\n</ion-header> \n<ion-content>\n  <div *ngIf="stats">\n<ion-grid>\n  <ion-row>\n<ion-card>\n  <ion-card-header>\n    <ion-item text-wrap>\n        Tableau de bord  <strong *ngIf="filtre"><span *ngIf="filtre.afterdate">, Entre le {{filtre.afterdate|date:\'dd/MM/yyyy\'}}</span>\n          <span *ngIf="filtre.beforedate"> <span *ngIf="filtre.afterdate">et</span><span *ngIf="!filtre.afterdate">, Avant</span> le {{filtre.beforedate|date:\'dd/MM/yyyy\'}}</span></strong>\n        <p *ngIf="filtre">\n            <span *ngIf="filtre.type">, {{filtre.type}}</span><span *ngIf="!filtre.type">Toutes catégories</span>\n            <span *ngIf="filtre.ville">{{filtre.ville}}</span><span *ngIf="!filtre.ville">, toutes les villes</span>\n           <span *ngIf="filtre.quartier">, {{filtre.quartier}}</span><span *ngIf="!filtre.quartier">, tous les quartiers</span>\n        </p>\n            <button ion-button icon-left item-right    (click)="openFilter()"><ion-icon name="funnel"  ></ion-icon> Seletionnez</button>    \n    </ion-item>\n  </ion-card-header>\n</ion-card>  \n</ion-row>\n  <ion-row>\n      <ion-col>\n          <ion-card class="kpi"> \n              <ion-card-content>\n                <ion-row class="box-info">\n                  <ion-col><span class="circle-text primary"><ion-icon name="md-people"></ion-icon> </span></ion-col>\n                  <ion-col text-center> <span class="label">{{stats.total_count}}</span></ion-col>\n                </ion-row>\n                <p><ion-icon name="ios-information-circle-outline"></ion-icon> Nombre total des clients</p>\n              </ion-card-content>\n            </ion-card>\n      </ion-col>\n      <ion-col>\n          <ion-card class="kpi">\n              <ion-card-content>\n                  <ion-row class="box-info">\n                      <ion-col><span class="circle-text orange"><ion-icon name="md-person-add"></ion-icon></span></ion-col>\n                      <ion-col text-center> <span class="label">{{stats.created_count}}</span></ion-col>\n                    </ion-row>                  \n                <p><ion-icon name="ios-information-circle-outline"></ion-icon> Clients prospectés</p>\n              </ion-card-content>\n            </ion-card>\n      </ion-col>\n      <ion-col>\n          <ion-card class="kpi">\n              <ion-card-content>\n                <ion-row class="box-info">\n                    <ion-col><span class="circle-text danger"><ion-icon name="md-checkbox-outline"></ion-icon></span></ion-col>\n                    <ion-col text-center> <span class="label">{{stats.engaged_count}}</span></ion-col>\n                  </ion-row>                \n                <p><ion-icon name="ios-information-circle-outline"></ion-icon> Clients engagés </p>\n              </ion-card-content>\n            </ion-card>\n      </ion-col>\n      <ion-col>\n          <ion-card class="kpi">\n            <ion-card-content>\n              <ion-row class="box-info">\n                  <ion-col><span class="circle-text secondary"><ion-icon name="md-clipboard"></ion-icon></span></ion-col>\n                  <ion-col text-center>  <span class="label">{{stats.target_vs_visited}}%</span></ion-col>\n                </ion-row>              \n              <p><ion-icon name="ios-information-circle-outline"></ion-icon> Objectif des livraisons</p>\n            </ion-card-content>\n          </ion-card>\n        </ion-col>\n    </ion-row>\n\n  <ion-row>\n  <ion-card id="chart-sale">\n    <ion-card-header>\n        Evolutions hebdomadaires des indicateurs\n    </ion-card-header>\n           <google-chart style = "width: 550px; height: 400px; margin: 0 auto" [data]="pieChartData"></google-chart>\n  </ion-card>\n  </ion-row>\n</ion-grid>\n   </div>\n    <ion-grid style="height: 80%;justify-content: center;position:absolute;top:15vh" *ngIf="!pieChartData">\n      <ion-row style="height: 100%;justify-content: center;" justify-content-center align-items-center>\n          <ion-spinner name="ios"></ion-spinner>\n      </ion-row>\n    </ion-grid> \n</ion-content>'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\stats\stats.html"*/,
+            selector: 'page-stats',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\stats\stats.html"*/'<ion-header no-border no-shadow>\n  <ion-navbar>\n      <button menuToggle  ion-button icon-only showwhen="mobile">\n          <ion-icon name="menu"></ion-icon>\n        </button>  \n    <ion-title>Tableau de bord <strong *ngIf="filtre">\n      <span *ngIf="filtre.afterdate">, Entre le {{filtre.afterdate|date:\'dd/MM/yyyy\'}}</span>\n      <span *ngIf="filtre.beforedate"> <span *ngIf="filtre.afterdate">et</span><span *ngIf="!filtre.afterdate">, Avant</span> le {{filtre.beforedate|date:\'dd/MM/yyyy\'}}</span></strong></ion-title>\n    <ion-buttons end>\n      <button ion-button icon-left (click)="refresh()"> \n        <ion-icon name="refresh"></ion-icon> Actualiser\n      </button> \n      <button ion-button icon-only (click)="openMap()">\n          <ion-icon name="ios-map"></ion-icon>\n        </button>      \n    </ion-buttons>   \n  </ion-navbar>\n</ion-header> \n<ion-content>\n  <div *ngIf="stats">\n<ion-grid>\n  <ion-row>\n<ion-card>\n  <ion-card-header>\n    <ion-item text-wrap>\n        Tableau de bord  <strong *ngIf="filtre"><span *ngIf="filtre.afterdate">, Entre le {{filtre.afterdate|date:\'dd/MM/yyyy\'}}</span>\n          <span *ngIf="filtre.beforedate"> <span *ngIf="filtre.afterdate">et</span><span *ngIf="!filtre.afterdate">, Avant</span> le {{filtre.beforedate|date:\'dd/MM/yyyy\'}}</span></strong>\n        <p *ngIf="filtre">\n            <span *ngIf="filtre.type">, {{filtre.type}}</span><span *ngIf="!filtre.type">Toutes catégories</span>\n            <span *ngIf="filtre.ville">{{filtre.ville}}</span><span *ngIf="!filtre.ville">, toutes les villes</span>\n           <span *ngIf="filtre.quartier">, {{filtre.quartier}}</span><span *ngIf="!filtre.quartier">, tous les quartiers</span>\n        </p>\n            <button ion-button icon-left item-right    (click)="openFilter()"><ion-icon name="funnel"  ></ion-icon> Seletionnez</button>    \n    </ion-item>\n  </ion-card-header>\n</ion-card>  \n</ion-row>\n  <ion-row>\n      <ion-col>\n          <ion-card class="kpi"> \n              <ion-card-content>\n                <ion-row class="box-info">\n                  <ion-col><span class="circle-text primary"><ion-icon name="md-people"></ion-icon> </span></ion-col>\n                  <ion-col text-center> <span class="label">{{stats.total_count}}</span></ion-col>\n                </ion-row>\n                <p><ion-icon name="ios-information-circle-outline"></ion-icon> Nombre total des clients</p>\n              </ion-card-content>\n            </ion-card>\n      </ion-col>\n      <ion-col>\n          <ion-card class="kpi">\n              <ion-card-content>\n                  <ion-row class="box-info">\n                      <ion-col><span class="circle-text orange"><ion-icon name="md-person-add"></ion-icon></span></ion-col>\n                      <ion-col text-center> <span class="label">{{stats.created_count}}</span></ion-col>\n                    </ion-row>                  \n                <p><ion-icon name="ios-information-circle-outline"></ion-icon> Clients prospectés</p>\n              </ion-card-content>\n            </ion-card>\n      </ion-col>\n      <ion-col>\n          <ion-card class="kpi">\n              <ion-card-content>\n                <ion-row class="box-info">\n                    <ion-col><span class="circle-text danger"><ion-icon name="md-checkbox-outline"></ion-icon></span></ion-col>\n                    <ion-col text-center> <span class="label">{{stats.engaged_count}}</span></ion-col>\n                  </ion-row>                \n                <p><ion-icon name="ios-information-circle-outline"></ion-icon> Clients engagés </p>\n              </ion-card-content>\n            </ion-card>\n      </ion-col>\n      <ion-col>\n          <ion-card class="kpi">\n            <ion-card-content>\n              <ion-row class="box-info">\n                  <ion-col><span class="circle-text secondary"><ion-icon name="md-clipboard"></ion-icon></span></ion-col>\n                  <ion-col text-center>  <span class="label">{{stats.target_vs_visited}}%</span></ion-col>\n                </ion-row>              \n              <p><ion-icon name="ios-information-circle-outline"></ion-icon> Objectif des livraisons</p>\n            </ion-card-content>\n          </ion-card>\n        </ion-col>\n    </ion-row>\n\n  <ion-row>\n  <ion-card id="chart-sale">\n    <ion-card-header>\n        Evolutions hebdomadaires des indicateurs\n    </ion-card-header>\n           <google-chart style = "width: 550px; height: 400px; margin: 0 auto" [data]="pieChartData"></google-chart>\n  </ion-card>\n  </ion-row>\n</ion-grid>\n   </div>\n    <ion-grid style="height: 80%;justify-content: center;position:absolute;top:15vh" *ngIf="!pieChartData">\n      <ion-row style="height: 100%;justify-content: center;" justify-content-center align-items-center>\n          <ion-spinner name="ios"></ion-spinner>\n      </ion-row>\n    </ion-grid> \n</ion-content>'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\stats\stats.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */],
@@ -702,19 +702,19 @@ var StatsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 905:
+/***/ 909:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__google_chart_google_chart_component__ = __webpack_require__(866);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__google_chart_google_chart_component__ = __webpack_require__(867);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__google_chart_chart_html_tooltip__ = __webpack_require__(868);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__google_chart_chart_html_tooltip__ = __webpack_require__(869);
 /* unused harmony reexport ChartHTMLTooltip */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__google_chart_chart_mouse_event__ = __webpack_require__(906);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__google_chart_chart_mouse_event__ = __webpack_require__(910);
 /* unused harmony reexport ChartMouseOverEvent */
 /* unused harmony reexport ChartMouseOutEvent */
 /* unused harmony reexport MouseOverEvent */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__google_charts_module__ = __webpack_require__(907);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__google_charts_module__ = __webpack_require__(911);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_3__google_charts_module__["a"]; });
 
 
@@ -724,7 +724,7 @@ var StatsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 906:
+/***/ 910:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -782,14 +782,14 @@ var ChartMouseOutEvent = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ 907:
+/***/ 911:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Ng2GoogleChartsModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__google_chart_google_chart_component__ = __webpack_require__(866);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__google_charts_loader_service__ = __webpack_require__(867);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__google_chart_google_chart_component__ = __webpack_require__(867);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__google_charts_loader_service__ = __webpack_require__(868);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);

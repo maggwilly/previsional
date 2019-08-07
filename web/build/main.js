@@ -214,11 +214,11 @@ var map = {
 		7
 	],
 	"../pages/commendes-view/commendes-view.module": [
-		826,
+		825,
 		37
 	],
 	"../pages/commendes/commendes.module": [
-		825,
+		826,
 		36
 	],
 	"../pages/createligne/createligne.module": [
@@ -234,31 +234,31 @@ var map = {
 		33
 	],
 	"../pages/filtre-stats/filtre-stats.module": [
-		833,
+		830,
 		32
 	],
 	"../pages/filtre-vente/filtre-vente.module": [
-		830,
+		831,
 		31
 	],
 	"../pages/help/help.module": [
-		831,
+		832,
 		30
 	],
 	"../pages/home/home.module": [
-		832,
+		833,
 		5
 	],
 	"../pages/map/map.module": [
-		836,
+		834,
 		2
 	],
 	"../pages/menu/menu.module": [
-		834,
+		835,
 		29
 	],
 	"../pages/point-vente-detail/point-vente-detail.module": [
-		835,
+		836,
 		6
 	],
 	"../pages/point-vente/point-vente.module": [
@@ -274,79 +274,79 @@ var map = {
 		26
 	],
 	"../pages/previsions/previsions.module": [
-		845,
+		840,
 		25
 	],
 	"../pages/price-detail/price-detail.module": [
-		840,
+		841,
 		24
 	],
 	"../pages/produit-detail/produit-detail.module": [
-		841,
+		842,
 		23
 	],
 	"../pages/produit/produit.module": [
-		842,
+		843,
 		22
 	],
 	"../pages/produits/produits.module": [
-		843,
+		844,
 		21
 	],
 	"../pages/profile/profile.module": [
-		846,
+		845,
 		20
 	],
 	"../pages/quartiers/quartiers.module": [
-		844,
+		846,
 		1
 	],
 	"../pages/rapports/rapports.module": [
-		848,
+		847,
 		19
 	],
 	"../pages/rendezvous/rendezvous.module": [
-		851,
+		848,
 		18
 	],
 	"../pages/requests/requests.module": [
-		847,
+		849,
 		17
 	],
 	"../pages/secteur/secteur.module": [
-		852,
+		850,
 		16
 	],
 	"../pages/secteurs/secteurs.module": [
-		849,
+		851,
 		15
 	],
 	"../pages/selectclient/selectclient.module": [
-		854,
+		852,
 		14
 	],
 	"../pages/selectproduit/selectproduit.module": [
-		850,
+		853,
 		13
 	],
 	"../pages/shoul-pay/shoul-pay.module": [
-		855,
+		854,
 		12
 	],
 	"../pages/signup/signup.module": [
-		856,
+		855,
 		4
 	],
 	"../pages/stats/stats.module": [
-		853,
+		856,
 		0
 	],
 	"../pages/tabs/tabs.module": [
-		858,
+		857,
 		11
 	],
 	"../pages/unavailable/unavailable.module": [
-		857,
+		858,
 		10
 	],
 	"../pages/vendeur/vendeur.module": [
@@ -426,7 +426,7 @@ var ManagerProvider = /** @class */ (function () {
         if (this.readCookie('_user_token'))
             this.storeUser({ id: this.readCookie('_user_id_'), apiKey: this.readCookie('_user_token') }).then(function () {
             });
-        // this.headers.set('X-Auth-Token', this.readCookie('_user_token'))
+        this.headers.set('X-Auth-Token', this.readCookie('_user_token'));
         this.storage.keys().then(function (keys) {
             _this.keys = keys;
         });
@@ -934,10 +934,13 @@ var LocalisationProvider = /** @class */ (function () {
     };
     LocalisationProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["p" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["p" /* Platform */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_network__["a" /* Network */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_network__["a" /* Network */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_diagnostic__["a" /* Diagnostic */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_diagnostic__["a" /* Diagnostic */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__["a" /* LocationAccuracy */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__["a" /* LocationAccuracy */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5_ionic_angular__["p" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_4__ionic_native_network__["a" /* Network */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_native_diagnostic__["a" /* Diagnostic */],
+            __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__["a" /* LocationAccuracy */]])
     ], LocalisationProvider);
     return LocalisationProvider;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=localisation.js.map
@@ -989,6 +992,7 @@ var Config = /** @class */ (function () {
     Config.server = 'https://api-provisional.herokuapp.com';
     Config.entityNames = ['secteur', 'pointvente', 'produit', 'rendezvous', 'commende'];
     Config.googleApiKey = "AIzaSyBNIN0oMzHoNgEZz1utnM_8ut6KFjwieoo";
+    Config.HomePage = 'HomePage'; //'TabsPage'//
     return Config;
 }());
 
@@ -1117,40 +1121,40 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/about/about.module#AboutPageModule', name: 'AboutPage', segment: 'about', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/cartograph/cartograph.module#CartographPageModule', name: 'CartographPage', segment: 'cartograph', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/commende-create/commende-create.module#CommendeCreatePageModule', name: 'CommendeCreatePage', segment: 'commende-create', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/commendes/commendes.module#CommendesPageModule', name: 'CommendesPage', segment: 'commendes', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/commendes-view/commendes-view.module#CommendesViewPageModule', name: 'CommendesViewPage', segment: 'commendes-view', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/commendes/commendes.module#CommendesPageModule', name: 'CommendesPage', segment: 'commendes', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/createligne/createligne.module#CreatelignePageModule', name: 'CreatelignePage', segment: 'createligne', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/donnees/donnees.module#DonneesPageModule', name: 'DonneesPage', segment: 'donnees', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/filtre-pointvente/filtre-pointvente.module#FiltrePointventePageModule', name: 'FiltrePointventePage', segment: 'filtre-pointvente', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/filtre-stats/filtre-stats.module#FiltreStatsPageModule', name: 'FiltreStatsPage', segment: 'filtre-stats', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/filtre-vente/filtre-vente.module#FiltreVentePageModule', name: 'FiltreVentePage', segment: 'filtre-vente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/help/help.module#HelpPageModule', name: 'HelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/filtre-stats/filtre-stats.module#FiltreStatsPageModule', name: 'FiltreStatsPage', segment: 'filtre-stats', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/map/map.module#MapPageModule', name: 'MapPage', segment: 'map', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/point-vente-detail/point-vente-detail.module#PointVenteDetailPageModule', name: 'PointVenteDetailPage', segment: 'point-vente-detail', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/map/map.module#MapPageModule', name: 'MapPage', segment: 'map', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/point-vente/point-vente.module#PointVentePageModule', name: 'PointVentePage', segment: 'point-vente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pointventes/pointventes.module#PointventesPageModule', name: 'PointventesPage', segment: 'pointventes', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pop-over-menu/pop-over-menu.module#PopOverMenuPageModule', name: 'PopOverMenuPage', segment: 'pop-over-menu', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/previsions/previsions.module#PrevisionsPageModule', name: 'PrevisionsPage', segment: 'previsions', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/price-detail/price-detail.module#PriceDetailPageModule', name: 'PriceDetailPage', segment: 'price-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/produit-detail/produit-detail.module#ProduitDetailPageModule', name: 'ProduitDetailPage', segment: 'produit-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/produit/produit.module#ProduitPageModule', name: 'ProduitPage', segment: 'produit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/produits/produits.module#ProduitsPageModule', name: 'ProduitsPage', segment: 'produits', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/quartiers/quartiers.module#QuartiersPageModule', name: 'QuartiersPage', segment: 'quartiers', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/previsions/previsions.module#PrevisionsPageModule', name: 'PrevisionsPage', segment: 'previsions', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/requests/requests.module#RequestsPageModule', name: 'RequestsPage', segment: 'requests', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/quartiers/quartiers.module#QuartiersPageModule', name: 'QuartiersPage', segment: 'quartiers', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/rapports/rapports.module#RapportsPageModule', name: 'RapportsPage', segment: 'rapports', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/secteurs/secteurs.module#SecteursPageModule', name: 'SecteursPage', segment: 'secteurs', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/selectproduit/selectproduit.module#SelectproduitPageModule', name: 'SelectproduitPage', segment: 'selectproduit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/rendezvous/rendezvous.module#RendezvousPageModule', name: 'RendezvousPage', segment: 'rendezvous', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/requests/requests.module#RequestsPageModule', name: 'RequestsPage', segment: 'requests', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/secteur/secteur.module#SecteurPageModule', name: 'SecteurPage', segment: 'secteur', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/stats/stats.module#StatsPageModule', name: 'StatsPage', segment: 'stats', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/secteurs/secteurs.module#SecteursPageModule', name: 'SecteursPage', segment: 'secteurs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/selectclient/selectclient.module#SelectclientPageModule', name: 'SelectclientPage', segment: 'selectclient', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/selectproduit/selectproduit.module#SelectproduitPageModule', name: 'SelectproduitPage', segment: 'selectproduit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/shoul-pay/shoul-pay.module#ShoulPayPageModule', name: 'ShoulPayPage', segment: 'shoul-pay', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/unavailable/unavailable.module#UnavailablePageModule', name: 'UnavailablePage', segment: 'unavailable', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/stats/stats.module#StatsPageModule', name: 'StatsPage', segment: 'stats', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/unavailable/unavailable.module#UnavailablePageModule', name: 'UnavailablePage', segment: 'unavailable', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/vendeur/vendeur.module#VendeurPageModule', name: 'VendeurPage', segment: 'vendeur', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/vendeurs/vendeurs.module#VendeursPageModule', name: 'VendeursPage', segment: 'vendeurs', priority: 'low', defaultHistory: [] }
                     ]
