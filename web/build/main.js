@@ -214,11 +214,11 @@ var map = {
 		7
 	],
 	"../pages/commendes-view/commendes-view.module": [
-		825,
+		826,
 		37
 	],
 	"../pages/commendes/commendes.module": [
-		826,
+		825,
 		36
 	],
 	"../pages/createligne/createligne.module": [
@@ -234,31 +234,31 @@ var map = {
 		33
 	],
 	"../pages/filtre-stats/filtre-stats.module": [
-		830,
+		833,
 		32
 	],
 	"../pages/filtre-vente/filtre-vente.module": [
-		831,
+		830,
 		31
 	],
 	"../pages/help/help.module": [
-		832,
+		831,
 		30
 	],
 	"../pages/home/home.module": [
-		833,
+		832,
 		5
 	],
 	"../pages/map/map.module": [
-		834,
+		836,
 		2
 	],
 	"../pages/menu/menu.module": [
-		835,
+		834,
 		29
 	],
 	"../pages/point-vente-detail/point-vente-detail.module": [
-		836,
+		835,
 		6
 	],
 	"../pages/point-vente/point-vente.module": [
@@ -274,79 +274,79 @@ var map = {
 		26
 	],
 	"../pages/previsions/previsions.module": [
-		840,
+		845,
 		25
 	],
 	"../pages/price-detail/price-detail.module": [
-		841,
+		840,
 		24
 	],
 	"../pages/produit-detail/produit-detail.module": [
-		842,
+		841,
 		23
 	],
 	"../pages/produit/produit.module": [
-		843,
+		842,
 		22
 	],
 	"../pages/produits/produits.module": [
-		844,
+		843,
 		21
 	],
 	"../pages/profile/profile.module": [
-		845,
+		846,
 		20
 	],
 	"../pages/quartiers/quartiers.module": [
-		846,
+		844,
 		1
 	],
 	"../pages/rapports/rapports.module": [
-		847,
+		848,
 		19
 	],
 	"../pages/rendezvous/rendezvous.module": [
-		848,
+		851,
 		18
 	],
 	"../pages/requests/requests.module": [
-		849,
+		847,
 		17
 	],
 	"../pages/secteur/secteur.module": [
-		850,
+		852,
 		16
 	],
 	"../pages/secteurs/secteurs.module": [
-		851,
+		849,
 		15
 	],
 	"../pages/selectclient/selectclient.module": [
-		852,
+		854,
 		14
 	],
 	"../pages/selectproduit/selectproduit.module": [
-		853,
+		850,
 		13
 	],
 	"../pages/shoul-pay/shoul-pay.module": [
-		854,
+		855,
 		12
 	],
 	"../pages/signup/signup.module": [
-		855,
+		856,
 		4
 	],
 	"../pages/stats/stats.module": [
-		856,
+		853,
 		0
 	],
 	"../pages/tabs/tabs.module": [
-		857,
+		858,
 		11
 	],
 	"../pages/unavailable/unavailable.module": [
-		858,
+		857,
 		10
 	],
 	"../pages/vendeur/vendeur.module": [
@@ -422,12 +422,12 @@ var ManagerProvider = /** @class */ (function () {
         this.isAscing = false;
         this.connected = true;
         // console.log(window.localStorage.getItem('_user_token'));
-        //this.headers.set('X-Auth-Token', window.localStorage.getItem('_user_token'))
-        if (this.readCookie('_user_token'))
-            this.storeUser({ id: this.readCookie('_user_id_'), apiKey: this.readCookie('_user_token') }).then(function () {
-                console.log(_this.readCookie('_user_token'));
-                console.log(_this.readCookie('_user_id_'));
-            });
+        this.headers.set('X-Auth-Token', window.localStorage.getItem('_user_token'));
+        /*if(this.readCookie('_user_token'))
+           this.storeUser({id:this.readCookie('_user_id_'),apiKey:this.readCookie('_user_token')}).then(()=>{
+            console.log(this.readCookie('_user_token'));
+            console.log(this.readCookie('_user_id_'));
+           })*/
         // this.headers.set('X-Auth-Token', this.readCookie('_user_token'))
         this.storage.keys().then(function (keys) {
             _this.keys = keys;
@@ -507,8 +507,8 @@ var ManagerProvider = /** @class */ (function () {
         });
     };
     ManagerProvider.prototype.getUserId = function () {
-        // let _user_id =  window.localStorage.getItem('_user_id_');
-        return this.readCookie('_user_id_'); //_user_id;
+        var _user_id = window.localStorage.getItem('_user_id_');
+        return _user_id; //this.readCookie('_user_id_'); //
     };
     ManagerProvider.prototype.get = function (entityName, online, id, keyIndex, filter, nbrecritere) {
         var _this = this;
@@ -526,7 +526,6 @@ var ManagerProvider = /** @class */ (function () {
                 return _this.http.get(__WEBPACK_IMPORTED_MODULE_6__app_config__["a" /* Config */].server + "/" + entityName + "/json?" + criteria, { headers: _this.headers })
                     .toPromise()
                     .then(function (response) {
-                    var res = [];
                     return _this.storeEntityLocally(entityName, response.json()).then(function () {
                         if (nbrecritere)
                             return resolve(response.json());
@@ -710,9 +709,10 @@ var ManagerProvider = /** @class */ (function () {
     };
     ManagerProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["d" /* Events */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["d" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["d" /* Events */]) === "function" && _c || Object])
     ], ManagerProvider);
     return ManagerProvider;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=manager.js.map
@@ -830,61 +830,80 @@ var LocalisationProvider = /** @class */ (function () {
         var _this = this;
         return new Promise(function (resolve, reject) {
             var HIGH_ACCURACY = 'high_accuracy';
-            if (_this.platform.is('cordova')) {
-                _this.platform.ready().then(function () {
-                    _this.diagnostic.isLocationEnabled().then(function (enabled) {
-                        if (enabled) {
-                            if (_this.platform.is('android')) {
-                                _this.diagnostic.getLocationMode().then(function (locationMode) {
-                                    if (locationMode === HIGH_ACCURACY) {
-                                        _this.geo.getCurrentPosition({ timeout: 30000, maximumAge: 0, enableHighAccuracy: true }).then(function (pos) {
-                                            resolve(pos);
-                                        }).catch(function (error) { return reject(error); });
-                                    }
-                                    else {
-                                        _this.askForHighAccuracy().then(function (available) {
-                                            if (available) {
-                                                _this.getCurrentPosition().then(function (a) { return resolve(a); }, function (e) { return resolve(e); });
-                                            }
-                                        }, function (error) { return reject(error); });
-                                    }
-                                });
-                            }
-                            else {
-                                _this.geo.getCurrentPosition({ timeout: 30000, maximumAge: 0, enableHighAccuracy: true }).then(function (pos) {
-                                    resolve(pos);
-                                }).catch(function (error) { return reject(error); });
-                            }
-                        }
-                        else {
-                            _this.locationAccuracy.canRequest().then(function (canRequest) {
-                                if (canRequest) {
-                                    _this.locationAccuracy.request(1).then(function (result) {
-                                        if (result) {
-                                            _this.getCurrentPosition().then(function (result) { return resolve(result); }, function (error) { return reject(error); });
-                                        }
+            console.log(_this.platform.platforms());
+            if (_this.platform.is('mobile') && !_this.platform.is('core')) {
+                _this.diagnostic.isLocationEnabled().then(function (enabled) {
+                    if (enabled) {
+                        if (_this.platform.is('android')) {
+                            _this.diagnostic.getLocationMode().then(function (locationMode) {
+                                if (locationMode === HIGH_ACCURACY) {
+                                    _this.geo.getCurrentPosition({ timeout: 30000, maximumAge: 0, enableHighAccuracy: true }).then(function (pos) {
+                                        resolve(pos);
                                     }, function (error) {
+                                        console.log(JSON.stringify(error));
                                         reject(error);
                                     });
                                 }
                                 else {
-                                    reject('Un Pb empèche de rechercher la position du device');
+                                    _this.askForHighAccuracy().then(function (available) {
+                                        if (available) {
+                                            _this.getCurrentPosition().then(function (a) { return resolve(a); }, function (e) { return resolve(e); });
+                                        }
+                                    }, function (error) {
+                                        console.log(JSON.stringify(error));
+                                        reject(error);
+                                    });
                                 }
                             });
                         }
-                    }, function (error) {
-                        reject(error);
-                    });
+                        else {
+                            _this.geo.getCurrentPosition({ timeout: 30000, maximumAge: 0, enableHighAccuracy: true }).then(function (pos) {
+                                resolve(pos);
+                            }, function (error) {
+                                console.log(JSON.stringify(error));
+                                reject(error);
+                            });
+                        }
+                    }
+                    else {
+                        _this.locationAccuracy.canRequest().then(function (canRequest) {
+                            if (canRequest) {
+                                _this.locationAccuracy.request(1).then(function (result) {
+                                    if (result) {
+                                        _this.getCurrentPosition().then(function (result) { return resolve(result); }, function (error) { return reject(error); });
+                                    }
+                                }, function (error) {
+                                    console.log(JSON.stringify(error));
+                                    reject(error);
+                                });
+                            }
+                            else {
+                                reject('Un Pb empèche de rechercher la position du device');
+                            }
+                        });
+                    }
+                }, function (error) {
+                    console.log(JSON.stringify(error));
+                    reject(error);
                 });
             }
             else {
                 if ("geolocation" in navigator) {
                     navigator.geolocation.getCurrentPosition(function (position) {
+                        console.log('Navigator', position);
                         resolve(position);
+                    }, function (error) {
+                        console.log(JSON.stringify(error));
+                        reject(error);
                     });
                 }
                 else
-                    _this.geo.getCurrentPosition({ timeout: 30000, maximumAge: 0, enableHighAccuracy: true }).then(function (resp) { return resolve(resp); });
+                    _this.geo.getCurrentPosition({ timeout: 30000, maximumAge: 0, enableHighAccuracy: true }).then(function (resp) {
+                        return resolve(resp);
+                    }, function (error) {
+                        console.log(JSON.stringify(error));
+                        reject(error);
+                    });
             }
         });
     };
@@ -917,13 +936,10 @@ var LocalisationProvider = /** @class */ (function () {
     };
     LocalisationProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5_ionic_angular__["p" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_4__ionic_native_network__["a" /* Network */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_native_diagnostic__["a" /* Diagnostic */],
-            __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__["a" /* LocationAccuracy */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["p" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["p" /* Platform */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_network__["a" /* Network */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_network__["a" /* Network */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_diagnostic__["a" /* Diagnostic */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_diagnostic__["a" /* Diagnostic */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__["a" /* LocationAccuracy */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__["a" /* LocationAccuracy */]) === "function" && _e || Object])
     ], LocalisationProvider);
     return LocalisationProvider;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=localisation.js.map
@@ -1103,40 +1119,40 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/about/about.module#AboutPageModule', name: 'AboutPage', segment: 'about', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/cartograph/cartograph.module#CartographPageModule', name: 'CartographPage', segment: 'cartograph', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/commende-create/commende-create.module#CommendeCreatePageModule', name: 'CommendeCreatePage', segment: 'commende-create', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/commendes-view/commendes-view.module#CommendesViewPageModule', name: 'CommendesViewPage', segment: 'commendes-view', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/commendes/commendes.module#CommendesPageModule', name: 'CommendesPage', segment: 'commendes', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/commendes-view/commendes-view.module#CommendesViewPageModule', name: 'CommendesViewPage', segment: 'commendes-view', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/createligne/createligne.module#CreatelignePageModule', name: 'CreatelignePage', segment: 'createligne', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/donnees/donnees.module#DonneesPageModule', name: 'DonneesPage', segment: 'donnees', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/filtre-pointvente/filtre-pointvente.module#FiltrePointventePageModule', name: 'FiltrePointventePage', segment: 'filtre-pointvente', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/filtre-stats/filtre-stats.module#FiltreStatsPageModule', name: 'FiltreStatsPage', segment: 'filtre-stats', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/filtre-vente/filtre-vente.module#FiltreVentePageModule', name: 'FiltreVentePage', segment: 'filtre-vente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/help/help.module#HelpPageModule', name: 'HelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/map/map.module#MapPageModule', name: 'MapPage', segment: 'map', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/filtre-stats/filtre-stats.module#FiltreStatsPageModule', name: 'FiltreStatsPage', segment: 'filtre-stats', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/point-vente-detail/point-vente-detail.module#PointVenteDetailPageModule', name: 'PointVenteDetailPage', segment: 'point-vente-detail', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/map/map.module#MapPageModule', name: 'MapPage', segment: 'map', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/point-vente/point-vente.module#PointVentePageModule', name: 'PointVentePage', segment: 'point-vente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pointventes/pointventes.module#PointventesPageModule', name: 'PointventesPage', segment: 'pointventes', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pop-over-menu/pop-over-menu.module#PopOverMenuPageModule', name: 'PopOverMenuPage', segment: 'pop-over-menu', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/previsions/previsions.module#PrevisionsPageModule', name: 'PrevisionsPage', segment: 'previsions', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/price-detail/price-detail.module#PriceDetailPageModule', name: 'PriceDetailPage', segment: 'price-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/produit-detail/produit-detail.module#ProduitDetailPageModule', name: 'ProduitDetailPage', segment: 'produit-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/produit/produit.module#ProduitPageModule', name: 'ProduitPage', segment: 'produit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/produits/produits.module#ProduitsPageModule', name: 'ProduitsPage', segment: 'produits', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/quartiers/quartiers.module#QuartiersPageModule', name: 'QuartiersPage', segment: 'quartiers', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/rapports/rapports.module#RapportsPageModule', name: 'RapportsPage', segment: 'rapports', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/rendezvous/rendezvous.module#RendezvousPageModule', name: 'RendezvousPage', segment: 'rendezvous', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/previsions/previsions.module#PrevisionsPageModule', name: 'PrevisionsPage', segment: 'previsions', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/requests/requests.module#RequestsPageModule', name: 'RequestsPage', segment: 'requests', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/secteur/secteur.module#SecteurPageModule', name: 'SecteurPage', segment: 'secteur', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/rapports/rapports.module#RapportsPageModule', name: 'RapportsPage', segment: 'rapports', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/secteurs/secteurs.module#SecteursPageModule', name: 'SecteursPage', segment: 'secteurs', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/selectclient/selectclient.module#SelectclientPageModule', name: 'SelectclientPage', segment: 'selectclient', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/selectproduit/selectproduit.module#SelectproduitPageModule', name: 'SelectproduitPage', segment: 'selectproduit', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/rendezvous/rendezvous.module#RendezvousPageModule', name: 'RendezvousPage', segment: 'rendezvous', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/secteur/secteur.module#SecteurPageModule', name: 'SecteurPage', segment: 'secteur', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/stats/stats.module#StatsPageModule', name: 'StatsPage', segment: 'stats', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/selectclient/selectclient.module#SelectclientPageModule', name: 'SelectclientPage', segment: 'selectclient', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/shoul-pay/shoul-pay.module#ShoulPayPageModule', name: 'ShoulPayPage', segment: 'shoul-pay', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/stats/stats.module#StatsPageModule', name: 'StatsPage', segment: 'stats', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/unavailable/unavailable.module#UnavailablePageModule', name: 'UnavailablePage', segment: 'unavailable', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/vendeur/vendeur.module#VendeurPageModule', name: 'VendeurPage', segment: 'vendeur', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/vendeurs/vendeurs.module#VendeursPageModule', name: 'VendeursPage', segment: 'vendeurs', priority: 'low', defaultHistory: [] }
                     ]
