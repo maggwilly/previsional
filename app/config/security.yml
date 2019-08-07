@@ -34,12 +34,6 @@ security:
            pattern:   ^/(login|register)$
            anonymous:      true
 
-        home:
-      # since anonymous is allowed users will not be forced to login
-           pattern:   ^/$
-           anonymous:    true 
-
-
         main:
             pattern:        ^/
             anonymous:      false
