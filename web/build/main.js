@@ -422,12 +422,10 @@ var ManagerProvider = /** @class */ (function () {
         this.isAscing = false;
         this.connected = true;
         // console.log(window.localStorage.getItem('_user_token'));
-        this.headers.set('X-Auth-Token', window.localStorage.getItem('_user_token'));
-        /*if(this.readCookie('_user_token'))
-           this.storeUser({id:this.readCookie('_user_id_'),apiKey:this.readCookie('_user_token')}).then(()=>{
-            console.log(this.readCookie('_user_token'));
-            console.log(this.readCookie('_user_id_'));
-           })*/
+        //this.headers.set('X-Auth-Token', window.localStorage.getItem('_user_token'))
+        if (this.readCookie('_user_token'))
+            this.storeUser({ id: this.readCookie('_user_id_'), apiKey: this.readCookie('_user_token') }).then(function () {
+            });
         // this.headers.set('X-Auth-Token', this.readCookie('_user_token'))
         this.storage.keys().then(function (keys) {
             _this.keys = keys;
@@ -507,8 +505,8 @@ var ManagerProvider = /** @class */ (function () {
         });
     };
     ManagerProvider.prototype.getUserId = function () {
-        var _user_id = window.localStorage.getItem('_user_id_');
-        return _user_id; //this.readCookie('_user_id_'); //
+        //let _user_id =  window.localStorage.getItem('_user_id_');
+        return this.readCookie('_user_id_'); //
     };
     ManagerProvider.prototype.get = function (entityName, online, id, keyIndex, filter, nbrecritere) {
         var _this = this;

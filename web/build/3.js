@@ -32886,7 +32886,7 @@ var CartographPage = /** @class */ (function () {
                 return;
             _this.markerGroup = __WEBPACK_IMPORTED_MODULE_4_leaflet___default.a.featureGroup();
             var marker = __WEBPACK_IMPORTED_MODULE_4_leaflet___default.a.marker([point.lat, point.long], { icon: _this.icon(point) })
-                .bindPopup("<h2 style=\"font-weight: bold; font-size:1.9em\">" + point.nom + "</h2>\n    <p style=\"color:dimgray;font-size: 1.0em\">" + point.telephone + ", " + point.type + "," + point.ville + ", " + point.quartier + "</p>\n    <p style=\"\"> " + point.addresse + "</p>")
+                .bindPopup("<h2 style=\"font-weight: bold; font-size:1.9em\">" + point.nom + "</h2>\n    <p style=\"color:dimgray;font-size: 1.0em\">" + point.telephone + ", " + point.type + "," + point.ville + ", " + point.quartier + "</p>\n    <p style=\"\"> " + point.adresse + "</p>")
                 .openPopup()
                 .on('click', function () {
             });
@@ -32961,22 +32961,16 @@ var CartographPage = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('map'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _a || Object)
     ], CartographPage.prototype, "mapElement", void 0);
     CartographPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-cartograph',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\cartograph\cartograph.html"*/'\n<ion-header>\n\n    <ion-navbar>\n      <ion-title>Cartographie des livraisons</ion-title>\n      <ion-buttons end>\n          <button ion-button icon-left (click)="refresh()"> \n            <ion-icon name="refresh"></ion-icon> Actualiser\n          </button>      \n        </ion-buttons>      \n    </ion-navbar>\n  </ion-header>\n  <ion-content >\n    <div class="map-title-box">\n      <ion-card  class="map-title" item-center>\n          <ion-card-header>\n            <ion-item text-wrap>\n                Cartographie  <strong *ngIf="filtre"><span *ngIf="filtre.afterdate">, Entre le {{filtre.afterdate|date:\'dd/MM/yyyy\'}}</span>\n                  <span *ngIf="filtre.beforedate"> <span *ngIf="filtre.afterdate">et</span><span *ngIf="!filtre.afterdate">, Avant</span> le {{filtre.beforedate|date:\'dd/MM/yyyy\'}}</span></strong>\n                <p *ngIf="filtre">\n                    <span *ngIf="filtre.type">, {{filtre.type}}</span><span *ngIf="!filtre.type">Toutes catégories</span>\n                    <span *ngIf="filtre.ville">{{filtre.ville}}</span><span *ngIf="!filtre.ville">, toutes les villes</span>\n                   <span *ngIf="filtre.quartier">, {{filtre.quartier}}</span><span *ngIf="!filtre.quartier">, tous les quartiers</span>\n                </p>\n                <button ion-button icon-left item-right    (click)="openFilter()"><ion-icon name="funnel"  ></ion-icon> Seletionnez</button>\n            </ion-item>\n          </ion-card-header> \n        </ion-card> \n      </div>  \n  <div #map id="map" >\n  </div>\n  </ion-content>\n  <ion-footer>\n\n  </ion-footer>\n'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\cartograph\cartograph.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_7__providers_manager_manager__["a" /* ManagerProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_6__app_app_notify__["a" /* AppNotify */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__["a" /* LocalisationProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Platform */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_7__providers_manager_manager__["a" /* ManagerProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__providers_manager_manager__["a" /* ManagerProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_6__app_app_notify__["a" /* AppNotify */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__app_app_notify__["a" /* AppNotify */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__["a" /* LocalisationProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__["a" /* LocalisationProvider */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]) === "function" && _j || Object])
     ], CartographPage);
     return CartographPage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 }());
 
 //# sourceMappingURL=cartograph.js.map
