@@ -1,6 +1,6 @@
 webpackJsonp([8],{
 
-/***/ 860:
+/***/ 859:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VendeursPageModule", function() { return VendeursPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vendeurs__ = __webpack_require__(915);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vendeurs__ = __webpack_require__(914);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var VendeursPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 915:
+/***/ 914:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -265,10 +265,16 @@ var VendeursPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-vendeurs',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\vendeurs\vendeurs.html"*/'<ion-header no-border no-shadow>\n    <ion-navbar>\n        <button menuToggle  ion-button icon-only showwhen="mobile">\n            <ion-icon name="menu"></ion-icon>\n          </button>  \n      <ion-title>Les vendeurs</ion-title>\n      <ion-buttons end>\n      <button ion-button="ion-button" icon-only (click)="loadRemoteData()" >\n          <ion-icon name="refresh"></ion-icon>\n      </button>\n      <button ion-button small outline (click)="add()" icon-left>\n            <ion-icon name="add" ></ion-icon>\n            Créer\n        </button>           \n  </ion-buttons>    \n    </ion-navbar>\n  </ion-header>\n  <ion-content>\n    <!--  <ion-searchbar [hidden]="!vendeurs.length" [(ngModel)]="queryText" (ionInput)="search()" placeholder="Recherchez un nom">\n        </ion-searchbar>  -->   \n      <ion-list *ngIf="(vendeurs.length)">\n          <div *ngIf="vendeurs.length">\n         <ion-item-divider  color="light">Mon equipe de vente ({{vendeurs.length}} membres)</ion-item-divider> \n          <ion-item  *ngFor="let vendeur of vendeurs"  [hidden]="vendeur.hide||vendeur.id==userService.user">\n                <span *ngIf="vendeur.id!=userService.user">{{vendeur.nom}}</span> \n              <p *ngIf="vendeur.id!=userService.user">{{vendeur.phone}}</p>          \n               <button  ion-button outline color="danger" (click)="deleteUser(vendeur)" only-icon small item-right color="danger">\n                    <span>\n                        <ion-icon  name="close"></ion-icon>\n                    </span>\n               </button>  \n          </ion-item>\n          </div>\n          <div *ngIf="requesteds.length">\n          <ion-item-divider  color="light">Demandes envoyees ({{requesteds.length}})</ion-item-divider> \n          <ion-item  *ngFor="let requested of requesteds"  [hidden]="requested.hide">\n                 {{requested.user.nom}}\n              <p>{{requested.user.phone}}</p>\n              <button  ion-button clear color="danger" small item-right (click)="deleteRequest(requested)" color="danger">\n                    <span>Annuler\n                        <ion-icon  name="close"></ion-icon>\n                    </span>\n               </button>              \n          </ion-item> \n          </div>       \n      </ion-list>\n      <ion-grid style="justify-content: center;height: 100%;" *ngIf="(!vendeurs.length&&!requesteds.length)||loading">\n          <ion-row style="justify-content: center;height: 100%;" justify-content-center align-items-center>\n              <ion-spinner name="ios"></ion-spinner>\n          </ion-row>\n        </ion-grid>       \n  </ion-content>'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\vendeurs\vendeurs.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__["a" /* ManagerProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__["a" /* ManagerProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_6__providers_localisation_localisation__["a" /* LocalisationProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_localisation_localisation__["a" /* LocalisationProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__providers_user_user__["a" /* UserProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_user_user__["a" /* UserProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__app_app_notify__["a" /* AppNotify */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__app_app_notify__["a" /* AppNotify */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]) === "function" && _h || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__["a" /* ManagerProvider */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_localisation_localisation__["a" /* LocalisationProvider */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_user_user__["a" /* UserProvider */],
+            __WEBPACK_IMPORTED_MODULE_5__app_app_notify__["a" /* AppNotify */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]])
     ], VendeursPage);
     return VendeursPage;
-    var _a, _b, _c, _d, _e, _f, _g, _h;
 }());
 
 //# sourceMappingURL=vendeurs.js.map

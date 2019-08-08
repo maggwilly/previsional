@@ -1,6 +1,6 @@
 webpackJsonp([14],{
 
-/***/ 852:
+/***/ 851:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SelectclientPageModule", function() { return SelectclientPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__selectclient__ = __webpack_require__(903);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__selectclient__ = __webpack_require__(902);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var SelectclientPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 903:
+/***/ 902:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -163,10 +163,17 @@ var SelectclientPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-selectclient',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\selectclient\selectclient.html"*/'<ion-header no-border no-shadow>\n    <ion-navbar>\n        <ion-buttons start>\n            <button ion-button icon-only  (click)="dismiss()" icon-left>\n                <ion-icon name="ios-close" color="danger"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-row no-padding>\n                <ion-col><ion-title>Mes clients</ion-title></ion-col>\n                <ion-col>\n                <ion-searchbar *ngIf="pointventes" [hidden]="!pointventes.length" [(ngModel)]="queryText" (ionInput)="search()"\n                        placeholder="Recherchez un nom">\n                </ion-searchbar>       \n                </ion-col>\n              </ion-row>        \n        <ion-buttons end>\n            <button ion-button outline (click)="add()" icon-left>\n                <ion-icon name="md-add"></ion-icon>\n                Créer\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n        <ion-card>\n                <ion-card-header text-wrap>Selectionnez un point de vente pour enrégistrer une vente</ion-card-header>\n        </ion-card>    \n    <ion-list *ngIf="pointventes&&pointventes.length">\n        <ion-item #item *ngFor="let pointvente of pointventes" [hidden]="pointvente.hide" (click)="dismiss(pointvente)">\n            {{pointvente.nom}}\n            <p><span>{{pointvente.telephone}}</span><span *ngIf="pointvente.ville">, {{pointvente.ville}}</span><span\n                    *ngIf="pointvente.quartier">, {{pointvente.quartier}}</span></p>\n        </ion-item>\n        <div padding>\n            <button ion-button block small clear (click)="doScroll()" style="text-transform: none;">Afficher\n                plus</button>\n        </div> \n    </ion-list>\n    <ion-grid style="justify-content: center; height: 100%;" *ngIf="loading">\n            <ion-row style="justify-content: center;height: 100%;" justify-content-center align-items-center>\n                <ion-spinner name="ios"></ion-spinner>\n            </ion-row>\n          </ion-grid>  \n            <ion-grid style="height: 80%;justify-content: center;position:absolute;top:20%" *ngIf="!pointventes.length&&!loading">\n                <ion-row style="height: 100%;justify-content: center;" justify-content-center align-items-center>\n                    <div text-center text-wrap  class="empty" padding>\n                      Aucun element a afficher.\n                    </div>\n                </ion-row>\n              </ion-grid> \n</ion-content>\n<ion-footer >\n        <ion-row><ion-col>{{pointventes.length}} lignes</ion-col><ion-col></ion-col><ion-col></ion-col></ion-row>\n</ion-footer>'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\selectclient\selectclient.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__["a" /* ManagerProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__["a" /* ManagerProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ViewController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__["a" /* LocalisationProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__["a" /* LocalisationProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_4__app_app_notify__["a" /* AppNotify */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__app_app_notify__["a" /* AppNotify */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]) === "function" && _j || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__["a" /* ManagerProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__["a" /* LocalisationProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_4__app_app_notify__["a" /* AppNotify */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]])
     ], SelectclientPage);
     return SelectclientPage;
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 }());
 
 //# sourceMappingURL=selectclient.js.map

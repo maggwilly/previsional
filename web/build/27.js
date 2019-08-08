@@ -1,6 +1,6 @@
 webpackJsonp([27],{
 
-/***/ 838:
+/***/ 837:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PointventesPageModule", function() { return PointventesPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pointventes__ = __webpack_require__(887);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pointventes__ = __webpack_require__(886);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pipes_pipes_module__ = __webpack_require__(484);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -41,7 +41,7 @@ var PointventesPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 887:
+/***/ 886:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -283,10 +283,17 @@ var PointventesPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-pointventes',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\pointventes\pointventes.html"*/'\n<ion-header  no-border no-shadow>\n  <ion-navbar>\n      <button menuToggle  ion-button icon-only showWhen="mobile">\n          <ion-icon name="menu"></ion-icon>\n        </button>\n    <ion-row no-padding>\n      <ion-col><ion-title>Mes clients</ion-title></ion-col>\n      <ion-col>\n        <ion-searchbar *ngIf="pointventes" [hidden]="!pointventes.length" [(ngModel)]="queryText" (ionInput)="search()" placeholder="Recherchez un nom">\n        </ion-searchbar>         \n      </ion-col>\n    </ion-row>\n    <ion-buttons end>\n        <button ion-button="ion-button" icon-only (click)="refresh()" >\n            <ion-icon name="refresh"></ion-icon>\n        </button>\n        <button ion-button small outline (click)="add()" icon-left>\n            <ion-icon name="add" ></ion-icon>\n            Créer\n        </button>           \n    </ion-buttons>       \n  </ion-navbar>\n</ion-header>\n<ion-content padding-top>\n      <ion-row justify-content-around>\n        <ion-col col-6 >\n         <button ion-button icon-left outline small (click)="openFilter()" [disabled]="!isOnline"><ion-icon name="funnel"  ></ion-icon> Critères  \n          <span *ngIf="nbrecriteres&&isOnline">  -  ({{nbrecriteres}})</span></button>\n        </ion-col>\n        <ion-col col-6 class="item-right">\n         <button float-right ion-button icon-left outline small (click)="openMap()" [disabled]="!pointventes.length"> <ion-icon name="map"></ion-icon>Carte</button>\n       </ion-col>   \n      </ion-row>\n    <ion-list *ngIf="pointventes&&pointventes.length">\n        <ion-item-sliding *ngFor="let pointvente of pointventes"  [hidden]="pointvente.hide||!pointvente.nom" #slidingItem>\n        <ion-item #item (click)="show(pointvente,slidingItem)" text-wrap>\n            {{pointvente.nom}}  <strong *ngIf="pointvente.quartier">- {{pointvente.quartier}}</strong>\n            <span float-right><small *ngIf="pointvente.firstCommende">Engagé {{pointvente.firstCommende.date|moment}}\n              </small>\n                <small *ngIf="!pointvente.firstCommende">Créé {{pointvente.date|moment}} </small>\n                <small *ngIf="!pointvente.firstCommende&&pointvente.user&&pointvente.user.nom"> par {{pointvente.user.nom}}</small>    \n              </span>\n            <p><a href="tel: {{pointvente.telephone}}">{{pointvente.telephone}}</a>\n              <span *ngIf="pointvente.ville">, {{pointvente.ville}}</span>\n              <span *ngIf="pointvente.type">{{pointvente.type}}</span>\n              <span *ngIf="pointvente.adresse">, {{pointvente.adresse}}</span>\n            </p>  \n\n        </ion-item>\n        <ion-item-options side="left">\n          <button ion-button color="danger" style="text-transform: none;" (click)="delete(pointvente,slidingItem)">\n            <ion-icon name="trash"></ion-icon> \n          </button>\n          <button ion-button color="primary" style="text-transform: none;" (click)="add(pointvente,slidingItem)">\n              <ion-icon name="create"></ion-icon> \n            </button>            \n      </ion-item-options>        \n     </ion-item-sliding> \n     <div padding>\n       <button ion-button block small clear (click)="refresh()" style="text-transform: none;">Afficher plus</button>   \n      </div>    \n    </ion-list>\n    <ion-grid style="justify-content: center; height: 100%;" *ngIf="loading">\n        <ion-row style="justify-content: center;height: 100%;" justify-content-center align-items-center>\n            <ion-spinner name="ios"></ion-spinner>\n        </ion-row>\n      </ion-grid>  \n        <ion-grid style="height: 80%;justify-content: center;position:absolute;top:20%" *ngIf="!pointventes.length&&!loading">\n            <ion-row style="height: 100%;justify-content: center;" justify-content-center align-items-center>\n                <div text-center text-wrap  class="empty" padding>\n                  Aucun element a afficher.\n                </div>\n            </ion-row>\n          </ion-grid>    \n</ion-content>\n<ion-footer showWhen="core">\n    <ion-row><ion-col>{{pointventes.length}} lignes</ion-col><ion-col></ion-col><ion-col></ion-col></ion-row>\n</ion-footer>'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\pointventes\pointventes.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__["a" /* ManagerProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__["a" /* ManagerProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_6__providers_localisation_localisation__["a" /* LocalisationProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_localisation_localisation__["a" /* LocalisationProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_4__app_app_notify__["a" /* AppNotify */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__app_app_notify__["a" /* AppNotify */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]) === "function" && _j || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__["a" /* ManagerProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_localisation_localisation__["a" /* LocalisationProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */],
+            __WEBPACK_IMPORTED_MODULE_4__app_app_notify__["a" /* AppNotify */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]])
     ], PointventesPage);
     return PointventesPage;
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 }());
 
 //# sourceMappingURL=pointventes.js.map

@@ -177,10 +177,14 @@ var UserProvider = /** @class */ (function () {
     };
     UserProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__manager_manager__["a" /* ManagerProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__manager_manager__["a" /* ManagerProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_6__localisation_localisation__["a" /* LocalisationProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__localisation_localisation__["a" /* LocalisationProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* App */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* App */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_firebase_ngx__["a" /* Firebase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_firebase_ngx__["a" /* Firebase */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["d" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["d" /* Events */]) === "function" && _f || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__manager_manager__["a" /* ManagerProvider */],
+            __WEBPACK_IMPORTED_MODULE_6__localisation_localisation__["a" /* LocalisationProvider */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* App */],
+            __WEBPACK_IMPORTED_MODULE_4__ionic_native_firebase_ngx__["a" /* Firebase */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["d" /* Events */]])
     ], UserProvider);
     return UserProvider;
-    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=user.js.map
@@ -257,111 +261,111 @@ var map = {
 		5
 	],
 	"../pages/map/map.module": [
-		834,
+		835,
 		2
 	],
 	"../pages/menu/menu.module": [
-		835,
+		860,
 		29
 	],
 	"../pages/point-vente-detail/point-vente-detail.module": [
-		836,
+		834,
 		6
 	],
 	"../pages/point-vente/point-vente.module": [
-		837,
+		836,
 		28
 	],
 	"../pages/pointventes/pointventes.module": [
-		838,
+		837,
 		27
 	],
 	"../pages/pop-over-menu/pop-over-menu.module": [
-		839,
+		838,
 		26
 	],
 	"../pages/previsions/previsions.module": [
-		840,
+		839,
 		25
 	],
 	"../pages/price-detail/price-detail.module": [
-		841,
+		840,
 		24
 	],
 	"../pages/produit-detail/produit-detail.module": [
-		842,
+		841,
 		23
 	],
 	"../pages/produit/produit.module": [
-		843,
+		842,
 		22
 	],
 	"../pages/produits/produits.module": [
-		844,
+		843,
 		21
 	],
 	"../pages/profile/profile.module": [
-		845,
+		844,
 		20
 	],
 	"../pages/quartiers/quartiers.module": [
-		846,
+		845,
 		1
 	],
 	"../pages/rapports/rapports.module": [
-		847,
+		846,
 		19
 	],
 	"../pages/rendezvous/rendezvous.module": [
-		848,
+		847,
 		18
 	],
 	"../pages/requests/requests.module": [
-		849,
+		848,
 		17
 	],
 	"../pages/secteur/secteur.module": [
-		850,
+		849,
 		16
 	],
 	"../pages/secteurs/secteurs.module": [
-		851,
+		850,
 		15
 	],
 	"../pages/selectclient/selectclient.module": [
-		852,
+		851,
 		14
 	],
 	"../pages/selectproduit/selectproduit.module": [
-		853,
+		852,
 		13
 	],
 	"../pages/shoul-pay/shoul-pay.module": [
-		854,
+		853,
 		12
 	],
 	"../pages/signup/signup.module": [
-		855,
+		854,
 		4
 	],
 	"../pages/stats/stats.module": [
-		856,
+		855,
 		0
 	],
 	"../pages/tabs/tabs.module": [
-		857,
+		856,
 		11
 	],
 	"../pages/unavailable/unavailable.module": [
-		858,
+		857,
 		10
 	],
 	"../pages/vendeur/vendeur.module": [
-		859,
+		858,
 		9
 	],
 	"../pages/vendeurs/vendeurs.module": [
-		860,
+		859,
 		8
 	]
 };
@@ -507,12 +511,12 @@ var ManagerProvider = /** @class */ (function () {
         });
     };
     ManagerProvider.prototype.getUserToken = function () {
-        if (this.platform.is('cordova') || this.platform.is('mobileweb'))
+        if (this.platform.is('android') || this.platform.is('mobileweb'))
             return window.localStorage.getItem('_user_token');
         return this.readCookie('_user_token'); //
     };
     ManagerProvider.prototype.getUserId = function () {
-        if (this.platform.is('cordova') || this.platform.is('mobileweb'))
+        if (this.platform.is('android') || this.platform.is('mobileweb'))
             return window.localStorage.getItem('_user_id_');
         return this.readCookie('_user_id_'); //
     };
@@ -975,9 +979,8 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/filtre-vente/filtre-vente.module#FiltreVentePageModule', name: 'FiltreVentePage', segment: 'filtre-vente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/help/help.module#HelpPageModule', name: 'HelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/map/map.module#MapPageModule', name: 'MapPage', segment: 'map', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/point-vente-detail/point-vente-detail.module#PointVenteDetailPageModule', name: 'PointVenteDetailPage', segment: 'point-vente-detail', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/map/map.module#MapPageModule', name: 'MapPage', segment: 'map', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/point-vente/point-vente.module#PointVentePageModule', name: 'PointVentePage', segment: 'point-vente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pointventes/pointventes.module#PointventesPageModule', name: 'PointventesPage', segment: 'pointventes', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pop-over-menu/pop-over-menu.module#PopOverMenuPageModule', name: 'PopOverMenuPage', segment: 'pop-over-menu', priority: 'low', defaultHistory: [] },
@@ -1001,7 +1004,8 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/unavailable/unavailable.module#UnavailablePageModule', name: 'UnavailablePage', segment: 'unavailable', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/vendeur/vendeur.module#VendeurPageModule', name: 'VendeurPage', segment: 'vendeur', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/vendeurs/vendeurs.module#VendeursPageModule', name: 'VendeursPage', segment: 'vendeurs', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/vendeurs/vendeurs.module#VendeursPageModule', name: 'VendeursPage', segment: 'vendeurs', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_8__angular_http__["c" /* HttpModule */],
@@ -1779,10 +1783,14 @@ var LocalisationProvider = /** @class */ (function () {
     };
     LocalisationProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["p" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["p" /* Platform */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_network__["a" /* Network */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_network__["a" /* Network */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["d" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["d" /* Events */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_diagnostic__["a" /* Diagnostic */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_diagnostic__["a" /* Diagnostic */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__["a" /* LocationAccuracy */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__["a" /* LocationAccuracy */]) === "function" && _f || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5_ionic_angular__["p" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_4__ionic_native_network__["a" /* Network */],
+            __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["d" /* Events */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_native_diagnostic__["a" /* Diagnostic */],
+            __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__["a" /* LocationAccuracy */]])
     ], LocalisationProvider);
     return LocalisationProvider;
-    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=localisation.js.map
