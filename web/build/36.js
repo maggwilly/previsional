@@ -50,8 +50,8 @@ var CommendesPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_manager_manager__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_notify__ = __webpack_require__(482);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__ = __webpack_require__(483);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_notify__ = __webpack_require__(483);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_moment__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -85,6 +85,7 @@ var CommendesPage = /** @class */ (function () {
         this.storage = storage;
         this.commendes = [];
         this.queryText = '';
+        this.isOnline = this.localisation.isOnline();
         this.today = __WEBPACK_IMPORTED_MODULE_6_moment__().format("YYYY-MM-DD");
         this.openAddPage = this.navParams.get('openAddPage');
         this.events.subscribe('commende.added', function (data) {
@@ -113,7 +114,9 @@ var CommendesPage = /** @class */ (function () {
             _this.loading = false;
             _this.commendes = data ? data : [];
             _this.search();
+            _this.localisation.onConnect(_this.localisation.isOnline());
         }, function (error) {
+            _this.localisation.onConnect(false);
             _this.notify.onSuccess({ message: "Verifiez votre connexion internet" });
         });
     };
@@ -143,12 +146,14 @@ var CommendesPage = /** @class */ (function () {
             content: "chargement...",
         });
         this.loading = true;
-        this.manager.get('commende', this.localisation.isOnline(), null, null, this.filtre, this.nbrecriteres).then(function (data) {
+        this.manager.get('commende', true, null, null, this.filtre, this.nbrecriteres).then(function (data) {
             _this.commendes = data ? data : [];
             _this.loading = false;
             _this.search();
             loader.dismiss();
+            _this.localisation.onConnect(_this.localisation.isOnline());
         }, function (error) {
+            _this.localisation.onConnect(false);
             _this.notify.onSuccess({ message: " Verifiez votre connexion internet" });
             loader.dismiss();
         });
@@ -272,20 +277,12 @@ var CommendesPage = /** @class */ (function () {
     };
     CommendesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-commendes',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\commendes\commendes.html"*/'<ion-header no-border >\n  <ion-navbar>\n      <button menuToggle  ion-button icon-only showwhen="mobile">\n          <ion-icon name="menu"></ion-icon>\n        </button>    \n      <ion-row no-padding>\n          <ion-col> <ion-title >Historique des visites et livraisons</ion-title></ion-col>\n          <ion-col>\n            <ion-searchbar [hidden]="!commendes.length"  [(ngModel)]="queryText" (ionInput)="search()" placeholder="Recherchez un nom">\n            </ion-searchbar>         \n          </ion-col>\n        </ion-row>    \n    <ion-buttons end>\n      <button ion-button icon-only (click)="refresh()">\n        <ion-icon name="refresh"></ion-icon>\n      </button>\n      <button ion-button icon-left outline (click)="add()">\n        <ion-icon name="add"></ion-icon>\n        Nouveau\n      </button>\n    </ion-buttons>    \n  </ion-navbar>\n</ion-header>\n<ion-content >\n <ion-row justify-content-around>\n   <ion-col col-6 >\n    <button ion-button icon-left outline small (click)="openFilter()"><ion-icon name="funnel"></ion-icon> \n      Critères <span *ngIf="nbrecriteres">  -  ({{nbrecriteres}})</span>\n    </button>\n   </ion-col>\n   <ion-col col-6 class="item-right">\n    <button float-right ion-button icon-left outline small (click)="openMap()" [disabled]="!commendes.length"> <ion-icon name="map" ></ion-icon>Carte</button>\n  </ion-col>   \n </ion-row>\n<ion-list *ngIf="commendes.length">\n  <ion-item-sliding  *ngFor="let commende of commendes"  #slidingItem [hidden]="commende.deleted||commende.hide">\n  <ion-item (click)="openCart(commende)" text-wrap>\n    <div *ngIf="commende.pointVente&&commende.id">\n    <strong>{{commende.pointVente.nom |uppercase}}</strong> -  {{commende.date|date:\'dd/MM/yyyy\' }}\n    <p><span>{{commende.pointVente.type}}</span><span *ngIf="commende.pointVente.ville">,{{commende.pointVente.ville}}</span><span *ngIf="commende.pointVente.quartier">,{{commende.pointVente.quartier}}</span><span>{{commende.pointVente.adresse}}</span></p>\n    <p>Effectué  {{commende.date|moment:\'fromnow\'}} <span *ngIf="commende.user&&commende.user.nom"> par {{commende.user.nom}}</span></p>\n  </div>\n  </ion-item>\n  <ion-item-options side="right" [hidden]="commende.terminated">    \n      <button ion-button color="danger" (click)="confirm(commende,slidingItem)">\n        <ion-icon name="trash"></ion-icon> supprimer\n      </button>          \n  </ion-item-options>        \n </ion-item-sliding> \n <div padding>\n  <button ion-button block small clear (click)="refresh()" style="text-transform: none;">Afficher plus</button>   \n </div>  \n</ion-list> \n<ion-grid style="height: 80%;justify-content: center;position:absolute;top:20%" *ngIf="!commendes.length&&!loading">\n    <ion-row style="height: 100%;justify-content: center;" justify-content-center align-items-center>\n        <div text-center text-wrap  class="empty" padding>\n          Aucun element correspondant aux critères.\n        </div>\n    </ion-row>\n  </ion-grid>  \n<ion-fab right bottom>\n  <button ion-fab color="primary" (click)="add()"><ion-icon name="add" ></ion-icon></button>\n</ion-fab>\n</ion-content>\n<!--<ion-footer >\n    <ion-row><ion-col>{{commendes.length}} lignes</ion-col><ion-col></ion-col><ion-col></ion-col></ion-row>\n  </ion-footer>-->'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\commendes\commendes.html"*/,
+            selector: 'page-commendes',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\commendes\commendes.html"*/'<ion-header no-border >\n  <ion-navbar>\n      <button menuToggle  ion-button icon-only showWhen="mobile">\n          <ion-icon name="menu"></ion-icon>\n        </button>    \n      <ion-row no-padding>\n          <ion-col> <ion-title >Historique des visites et livraisons</ion-title></ion-col>\n          <ion-col>\n            <ion-searchbar [hidden]="!commendes.length"  [(ngModel)]="queryText" (ionInput)="search()" placeholder="Recherchez un nom">\n            </ion-searchbar>         \n          </ion-col>\n        </ion-row>    \n    <ion-buttons end>\n      <button ion-button icon-only (click)="refresh()">\n        <ion-icon name="refresh"></ion-icon>\n      </button>\n      <button ion-button icon-left outline (click)="add()">\n        <ion-icon name="add"></ion-icon>\n        Créer\n      </button>\n    </ion-buttons>    \n  </ion-navbar>\n</ion-header>\n<ion-content padding-top>\n <ion-row justify-content-around>\n   <ion-col col-6 >\n    <button ion-button icon-left outline small (click)="openFilter()" [disabled]="!isOnline"><ion-icon name="funnel"></ion-icon> \n      Critères <span *ngIf="nbrecriteres&&isOnline">  -  ({{nbrecriteres}})</span>\n    </button>\n   </ion-col>\n   <ion-col col-6 class="item-right">\n    <button float-right ion-button icon-left outline small (click)="openMap()" [disabled]="!commendes.length"> <ion-icon name="map" ></ion-icon>Carte</button>\n  </ion-col>   \n </ion-row>\n<ion-list *ngIf="commendes.length">\n  <ion-item-sliding  *ngFor="let commende of commendes"  #slidingItem [hidden]="commende.deleted||commende.hide">\n  <ion-item (click)="openCart(commende)" text-wrap>\n    <div *ngIf="commende.pointVente&&commende.id">\n    <strong>{{commende.pointVente.nom |uppercase}}</strong> -  {{commende.date|date:\'dd/MM/yyyy\' }}\n    <p><span>{{commende.pointVente.type}}</span><span *ngIf="commende.pointVente.ville">,{{commende.pointVente.ville}}</span><span *ngIf="commende.pointVente.quartier">,{{commende.pointVente.quartier}}</span><span>{{commende.pointVente.adresse}}</span></p>\n    <p>Effectué  {{commende.date|moment:\'fromnow\'}} <span *ngIf="commende.user&&commende.user.nom"> par {{commende.user.nom}}</span></p>\n  </div>\n  </ion-item>\n  <ion-item-options side="right" [hidden]="commende.terminated">    \n      <button ion-button color="danger" (click)="confirm(commende,slidingItem)">\n        <ion-icon name="trash"></ion-icon> supprimer\n      </button>          \n  </ion-item-options>        \n </ion-item-sliding> \n <div padding>\n  <button ion-button block small clear (click)="refresh()" style="text-transform: none;">Afficher plus</button>   \n </div>  \n</ion-list> \n<ion-grid style="height: 80%;justify-content: center;position:absolute;top:20%" *ngIf="!commendes.length&&!loading">\n    <ion-row style="height: 100%;justify-content: center;" justify-content-center align-items-center>\n        <div text-center text-wrap  class="empty" padding>\n          Aucun element correspondant aux critères.\n        </div>\n    </ion-row>\n  </ion-grid>  \n<ion-fab right bottom>\n  <button ion-fab color="primary" (click)="add()"><ion-icon name="add" ></ion-icon></button>\n</ion-fab>\n</ion-content>\n<!--<ion-footer >\n    <ion-row><ion-col>{{commendes.length}} lignes</ion-col><ion-col></ion-col><ion-col></ion-col></ion-row>\n  </ion-footer>-->'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\commendes\commendes.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_manager_manager__["a" /* ManagerProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__["a" /* LocalisationProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_4__app_app_notify__["a" /* AppNotify */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_manager_manager__["a" /* ManagerProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_manager_manager__["a" /* ManagerProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__["a" /* LocalisationProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__["a" /* LocalisationProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_4__app_app_notify__["a" /* AppNotify */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__app_app_notify__["a" /* AppNotify */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]) === "function" && _k || Object])
     ], CommendesPage);
     return CommendesPage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
 }());
 
 //# sourceMappingURL=commendes.js.map

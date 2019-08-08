@@ -1,6 +1,6 @@
 webpackJsonp([39],{
 
-/***/ 152:
+/***/ 153:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9,9 +9,10 @@ webpackJsonp([39],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__manager_manager__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_firebase_ngx__ = __webpack_require__(348);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_firebase_ngx__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__localisation_localisation__ = __webpack_require__(89);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -27,6 +28,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /*
   Generated class for the UserProvider provider.
 
@@ -34,8 +36,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
   and Angular DI.
 */
 var UserProvider = /** @class */ (function () {
-    function UserProvider(manager, storage, app, firebase, events) {
+    function UserProvider(manager, connectivityService, storage, app, firebase, events) {
+        var _this = this;
         this.manager = manager;
+        this.connectivityService = connectivityService;
         this.storage = storage;
         this.app = app;
         this.firebase = firebase;
@@ -43,6 +47,9 @@ var UserProvider = /** @class */ (function () {
         this.registrationid = window.localStorage.getItem('token_registration');
         this.authenticatedUser = new __WEBPACK_IMPORTED_MODULE_5_rxjs__["BehaviorSubject"](null);
         this.complete = null;
+        this.events.subscribe('last:status', function (isConnected) {
+            _this.unavailable();
+        });
         this.resetObserver();
     }
     UserProvider.prototype.resetObserver = function () {
@@ -50,14 +57,15 @@ var UserProvider = /** @class */ (function () {
         this.complete = this.makeComplete();
         //this.user = null;
         console.log(this.manager.getUserId());
-        if (!this.manager.getUserId())
+        if (!this.manager.getUserId() || "null" == this.manager.getUserId())
             return this.events.publish('auth', null);
-        this.manager.show('token', this.manager.getUserId(), true).then(function (data) {
+        console.log(this.manager.getUserId());
+        this.manager.show('token', this.manager.getUserId(), this.connectivityService.isOnline()).then(function (data) {
             if (!data)
                 return _this.events.publish('auth', null);
             _this.user = data;
             _this.authenticatedUser.next(_this.user);
-            _this.manager.show('user', _this.manager.getUserId(), true).then(function (user) {
+            _this.manager.show('user', _this.manager.getUserId(), _this.connectivityService.isOnline()).then(function (user) {
                 if (!_this.user)
                     return _this.go(user);
                 _this.user.parent = user.parent;
@@ -70,6 +78,8 @@ var UserProvider = /** @class */ (function () {
             }, function (error) {
                 _this.events.publish('error', error);
             });
+        }, function (error) {
+            _this.events.publish('error', error);
         });
     };
     UserProvider.prototype.getAuthenticatedUser = function () {
@@ -110,7 +120,7 @@ var UserProvider = /** @class */ (function () {
                 resolve(pb);
             });
             self.events.subscribe('error', function (error) {
-                resolve(error);
+                reject(error);
             });
         });
     };
@@ -167,20 +177,17 @@ var UserProvider = /** @class */ (function () {
     };
     UserProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__manager_manager__["a" /* ManagerProvider */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* App */],
-            __WEBPACK_IMPORTED_MODULE_4__ionic_native_firebase_ngx__["a" /* Firebase */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["d" /* Events */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__manager_manager__["a" /* ManagerProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__manager_manager__["a" /* ManagerProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_6__localisation_localisation__["a" /* LocalisationProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__localisation_localisation__["a" /* LocalisationProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* App */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* App */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_firebase_ngx__["a" /* Firebase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_firebase_ngx__["a" /* Firebase */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["d" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["d" /* Events */]) === "function" && _f || Object])
     ], UserProvider);
     return UserProvider;
+    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=user.js.map
 
 /***/ }),
 
-/***/ 165:
+/***/ 166:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -193,11 +200,11 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 165;
+webpackEmptyAsyncContext.id = 166;
 
 /***/ }),
 
-/***/ 210:
+/***/ 211:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -369,7 +376,7 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 210;
+webpackAsyncContext.id = 211;
 module.exports = webpackAsyncContext;
 
 /***/ }),
@@ -380,15 +387,15 @@ module.exports = webpackAsyncContext;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ManagerProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(154);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise__ = __webpack_require__(213);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(155);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ionic_angular__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_config__ = __webpack_require__(485);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_observable_IntervalObservable__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_observable_IntervalObservable__ = __webpack_require__(214);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_observable_IntervalObservable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_observable_IntervalObservable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_guid_typescript__ = __webpack_require__(515);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_guid_typescript___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_guid_typescript__);
@@ -411,27 +418,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var ManagerProvider = /** @class */ (function () {
-    //baseUrl: string = 'http://localhost:8000';
-    function ManagerProvider(http, storage, events) {
+    function ManagerProvider(http, storage, events, platform) {
         var _this = this;
         this.http = http;
         this.storage = storage;
         this.events = events;
+        this.platform = platform;
         this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
         this.keys = [];
         this.isAscing = false;
         this.connected = true;
-        // console.log(window.localStorage.getItem('_user_token'));
-        //this.headers.set('X-Auth-Token', window.localStorage.getItem('_user_token'))
-        if (this.readCookie('_user_token'))
-            this.storeUser({ id: this.readCookie('_user_id_'), apiKey: this.readCookie('_user_token') }).then(function () {
-            });
-        this.headers.set('X-Auth-Token', this.readCookie('_user_token'));
+        this.headers.set('X-Auth-Token', this.getUserToken());
+        this.storeUser({ id: this.getUserId(), apiKey: this.getUserToken() });
         this.storage.keys().then(function (keys) {
             _this.keys = keys;
         });
         this.listenEvents();
-        //this.clearStorage()
     }
     ManagerProvider.prototype.clearStorage = function () {
         this.storage.clear();
@@ -504,8 +506,14 @@ var ManagerProvider = /** @class */ (function () {
             _this.headers.delete('X-Auth-Token');
         });
     };
+    ManagerProvider.prototype.getUserToken = function () {
+        if (this.platform.is('cordova') || this.platform.is('mobileweb'))
+            return window.localStorage.getItem('_user_token');
+        return this.readCookie('_user_token'); //
+    };
     ManagerProvider.prototype.getUserId = function () {
-        //let _user_id =  window.localStorage.getItem('_user_id_');
+        if (this.platform.is('cordova') || this.platform.is('mobileweb'))
+            return window.localStorage.getItem('_user_id_');
         return this.readCookie('_user_id_'); //
     };
     ManagerProvider.prototype.get = function (entityName, online, id, keyIndex, filter, nbrecritere) {
@@ -520,7 +528,6 @@ var ManagerProvider = /** @class */ (function () {
                         criteria = criteria + "&" + key + "=" + filter[key];
                 });
                 criteria = (id && keyIndex) ? criteria + "&" + keyIndex + "=" + id : criteria;
-                console.log(__WEBPACK_IMPORTED_MODULE_6__app_config__["a" /* Config */].server + "/" + entityName + "/json?" + criteria);
                 return _this.http.get(__WEBPACK_IMPORTED_MODULE_6__app_config__["a" /* Config */].server + "/" + entityName + "/json?" + criteria, { headers: _this.headers })
                     .toPromise()
                     .then(function (response) {
@@ -563,7 +570,6 @@ var ManagerProvider = /** @class */ (function () {
                     if (filter[key])
                         criteria = criteria + "&" + key + "=" + filter[key];
                 });
-                console.log(__WEBPACK_IMPORTED_MODULE_6__app_config__["a" /* Config */].server + "/" + entityName + "/" + entityid + "/show/json?id=" + entityid + criteria);
                 return _this.http.get(__WEBPACK_IMPORTED_MODULE_6__app_config__["a" /* Config */].server + "/" + entityName + "/" + entityid + "/show/json?id=" + entityid + criteria, { headers: _this.headers })
                     .toPromise()
                     .then(function (response) {
@@ -623,8 +629,6 @@ var ManagerProvider = /** @class */ (function () {
                 _this.http.post(__WEBPACK_IMPORTED_MODULE_6__app_config__["a" /* Config */].server + '/' + entityName + '/' + action + '/json', JSON.stringify(entity), { headers: _this.headers })
                     .toPromise()
                     .then(function (response) {
-                    /* if(!response.json().id)
-                       return reject({});*/
                     _this.keys.push(entityName + "_id_" + entity.id);
                     return _this.storeEntityLocally(entityName, response.json()).then(function () { resolve(response.json()); });
                 }, function (error) {
@@ -707,17 +711,16 @@ var ManagerProvider = /** @class */ (function () {
     };
     ManagerProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["d" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["d" /* Events */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["d" /* Events */], __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["p" /* Platform */]])
     ], ManagerProvider);
     return ManagerProvider;
-    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=manager.js.map
 
 /***/ }),
 
-/***/ 482:
+/***/ 483:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -789,164 +792,6 @@ var AppNotify = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 483:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LocalisationProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__ = __webpack_require__(214);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_diagnostic__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_network__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ionic_angular__ = __webpack_require__(44);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-var LocalisationProvider = /** @class */ (function () {
-    function LocalisationProvider(platform, network, diagnostic, geo, locationAccuracy) {
-        this.platform = platform;
-        this.network = network;
-        this.diagnostic = diagnostic;
-        this.geo = geo;
-        this.locationAccuracy = locationAccuracy;
-        console.log('Hello LocalisationProvider Provider');
-    }
-    LocalisationProvider.prototype.getCurrentPosition = function () {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            var HIGH_ACCURACY = 'high_accuracy';
-            console.log(_this.platform.platforms());
-            if (_this.platform.is('mobile') && !_this.platform.is('core')) {
-                _this.diagnostic.isLocationEnabled().then(function (enabled) {
-                    if (enabled) {
-                        if (_this.platform.is('android')) {
-                            _this.diagnostic.getLocationMode().then(function (locationMode) {
-                                if (locationMode === HIGH_ACCURACY) {
-                                    _this.geo.getCurrentPosition({ timeout: 30000, maximumAge: 0, enableHighAccuracy: true }).then(function (pos) {
-                                        resolve(pos);
-                                    }, function (error) {
-                                        console.log(JSON.stringify(error));
-                                        reject(error);
-                                    });
-                                }
-                                else {
-                                    _this.askForHighAccuracy().then(function (available) {
-                                        if (available) {
-                                            _this.getCurrentPosition().then(function (a) { return resolve(a); }, function (e) { return resolve(e); });
-                                        }
-                                    }, function (error) {
-                                        console.log(JSON.stringify(error));
-                                        reject(error);
-                                    });
-                                }
-                            });
-                        }
-                        else {
-                            _this.geo.getCurrentPosition({ timeout: 30000, maximumAge: 0, enableHighAccuracy: true }).then(function (pos) {
-                                resolve(pos);
-                            }, function (error) {
-                                console.log(JSON.stringify(error));
-                                reject(error);
-                            });
-                        }
-                    }
-                    else {
-                        _this.locationAccuracy.canRequest().then(function (canRequest) {
-                            if (canRequest) {
-                                _this.locationAccuracy.request(1).then(function (result) {
-                                    if (result) {
-                                        _this.getCurrentPosition().then(function (result) { return resolve(result); }, function (error) { return reject(error); });
-                                    }
-                                }, function (error) {
-                                    console.log(JSON.stringify(error));
-                                    reject(error);
-                                });
-                            }
-                            else {
-                                reject('Un Pb empèche de rechercher la position du device');
-                            }
-                        });
-                    }
-                }, function (error) {
-                    console.log(JSON.stringify(error));
-                    reject(error);
-                });
-            }
-            else {
-                if ("geolocation" in navigator) {
-                    navigator.geolocation.getCurrentPosition(function (position) {
-                        console.log('Navigator', position);
-                        resolve(position);
-                    }, function (error) {
-                        console.log(JSON.stringify(error));
-                        reject(error);
-                    });
-                }
-                else
-                    _this.geo.getCurrentPosition({ timeout: 30000, maximumAge: 0, enableHighAccuracy: true }).then(function (resp) {
-                        return resolve(resp);
-                    }, function (error) {
-                        console.log(JSON.stringify(error));
-                        reject(error);
-                    });
-            }
-        });
-    };
-    LocalisationProvider.prototype.askForHighAccuracy = function () {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.locationAccuracy
-                .request(_this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(function () {
-                _this.geo.getCurrentPosition({ timeout: 30000, maximumAge: 0, enableHighAccuracy: true }).then(function (position) {
-                    resolve(position);
-                }, function (error) { return reject(error); });
-            }, function (error) { return reject(error); });
-        });
-    };
-    LocalisationProvider.prototype.isOnline = function () {
-        if (this.onDevice && this.network.Connection) {
-            return this.network.Connection !== Connection.NONE;
-        }
-        else {
-            return navigator.onLine;
-        }
-    };
-    LocalisationProvider.prototype.isOffline = function () {
-        if (this.onDevice && this.network.Connection) {
-            return this.network.Connection === Connection.NONE;
-        }
-        else {
-            return !navigator.onLine;
-        }
-    };
-    LocalisationProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5_ionic_angular__["p" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_4__ionic_native_network__["a" /* Network */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_native_diagnostic__["a" /* Diagnostic */],
-            __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__["a" /* LocationAccuracy */]])
-    ], LocalisationProvider);
-    return LocalisationProvider;
-}());
-
-//# sourceMappingURL=localisation.js.map
-
-/***/ }),
-
 /***/ 484:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -992,7 +837,7 @@ var Config = /** @class */ (function () {
     Config.server = 'https://api-provisional.herokuapp.com';
     Config.entityNames = ['secteur', 'pointvente', 'produit', 'rendezvous', 'commende'];
     Config.googleApiKey = "AIzaSyBNIN0oMzHoNgEZz1utnM_8ut6KFjwieoo";
-    Config.HomePage = 'HomePage'; //'TabsPage'//
+    Config.HomePage = 'HomePage'; //
     return Config;
 }());
 
@@ -1058,21 +903,21 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(479);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(480);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_notify__ = __webpack_require__(482);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(480);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(481);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_notify__ = __webpack_require__(483);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(820);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_manager_manager__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_http__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_http__ = __webpack_require__(154);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_storage__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_user_user__ = __webpack_require__(152);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_firebase_ngx__ = __webpack_require__(348);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_geofence__ = __webpack_require__(481);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_native_geolocation__ = __webpack_require__(214);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ionic_native_diagnostic__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_native_location_accuracy__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__providers_localisation_localisation__ = __webpack_require__(483);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_network__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_user_user__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_firebase_ngx__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_geofence__ = __webpack_require__(482);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_native_geolocation__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ionic_native_diagnostic__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_native_location_accuracy__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__providers_localisation_localisation__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_network__ = __webpack_require__(221);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pipes_pipes_module__ = __webpack_require__(484);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__directives_directives_module__ = __webpack_require__(486);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__ionic_native_google_maps__ = __webpack_require__(821);
@@ -1196,260 +1041,260 @@ var AppModule = /** @class */ (function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./af": 221,
-	"./af.js": 221,
-	"./ar": 222,
-	"./ar-dz": 223,
-	"./ar-dz.js": 223,
-	"./ar-kw": 224,
-	"./ar-kw.js": 224,
-	"./ar-ly": 225,
-	"./ar-ly.js": 225,
-	"./ar-ma": 226,
-	"./ar-ma.js": 226,
-	"./ar-sa": 227,
-	"./ar-sa.js": 227,
-	"./ar-tn": 228,
-	"./ar-tn.js": 228,
-	"./ar.js": 222,
-	"./az": 229,
-	"./az.js": 229,
-	"./be": 230,
-	"./be.js": 230,
-	"./bg": 231,
-	"./bg.js": 231,
-	"./bm": 232,
-	"./bm.js": 232,
-	"./bn": 233,
-	"./bn.js": 233,
-	"./bo": 234,
-	"./bo.js": 234,
-	"./br": 235,
-	"./br.js": 235,
-	"./bs": 236,
-	"./bs.js": 236,
-	"./ca": 237,
-	"./ca.js": 237,
-	"./cs": 238,
-	"./cs.js": 238,
-	"./cv": 239,
-	"./cv.js": 239,
-	"./cy": 240,
-	"./cy.js": 240,
-	"./da": 241,
-	"./da.js": 241,
-	"./de": 242,
-	"./de-at": 243,
-	"./de-at.js": 243,
-	"./de-ch": 244,
-	"./de-ch.js": 244,
-	"./de.js": 242,
-	"./dv": 245,
-	"./dv.js": 245,
-	"./el": 246,
-	"./el.js": 246,
-	"./en-SG": 247,
-	"./en-SG.js": 247,
-	"./en-au": 248,
-	"./en-au.js": 248,
-	"./en-ca": 249,
-	"./en-ca.js": 249,
-	"./en-gb": 250,
-	"./en-gb.js": 250,
-	"./en-ie": 251,
-	"./en-ie.js": 251,
-	"./en-il": 252,
-	"./en-il.js": 252,
-	"./en-nz": 253,
-	"./en-nz.js": 253,
-	"./eo": 254,
-	"./eo.js": 254,
-	"./es": 255,
-	"./es-do": 256,
-	"./es-do.js": 256,
-	"./es-us": 257,
-	"./es-us.js": 257,
-	"./es.js": 255,
-	"./et": 258,
-	"./et.js": 258,
-	"./eu": 259,
-	"./eu.js": 259,
-	"./fa": 260,
-	"./fa.js": 260,
-	"./fi": 261,
-	"./fi.js": 261,
-	"./fo": 262,
-	"./fo.js": 262,
-	"./fr": 263,
-	"./fr-ca": 264,
-	"./fr-ca.js": 264,
-	"./fr-ch": 265,
-	"./fr-ch.js": 265,
-	"./fr.js": 263,
-	"./fy": 266,
-	"./fy.js": 266,
-	"./ga": 267,
-	"./ga.js": 267,
-	"./gd": 268,
-	"./gd.js": 268,
-	"./gl": 269,
-	"./gl.js": 269,
-	"./gom-latn": 270,
-	"./gom-latn.js": 270,
-	"./gu": 271,
-	"./gu.js": 271,
-	"./he": 272,
-	"./he.js": 272,
-	"./hi": 273,
-	"./hi.js": 273,
-	"./hr": 274,
-	"./hr.js": 274,
-	"./hu": 275,
-	"./hu.js": 275,
-	"./hy-am": 276,
-	"./hy-am.js": 276,
-	"./id": 277,
-	"./id.js": 277,
-	"./is": 278,
-	"./is.js": 278,
-	"./it": 279,
-	"./it-ch": 280,
-	"./it-ch.js": 280,
-	"./it.js": 279,
-	"./ja": 281,
-	"./ja.js": 281,
-	"./jv": 282,
-	"./jv.js": 282,
-	"./ka": 283,
-	"./ka.js": 283,
-	"./kk": 284,
-	"./kk.js": 284,
-	"./km": 285,
-	"./km.js": 285,
-	"./kn": 286,
-	"./kn.js": 286,
-	"./ko": 287,
-	"./ko.js": 287,
-	"./ku": 288,
-	"./ku.js": 288,
-	"./ky": 289,
-	"./ky.js": 289,
-	"./lb": 290,
-	"./lb.js": 290,
-	"./lo": 291,
-	"./lo.js": 291,
-	"./lt": 292,
-	"./lt.js": 292,
-	"./lv": 293,
-	"./lv.js": 293,
-	"./me": 294,
-	"./me.js": 294,
-	"./mi": 295,
-	"./mi.js": 295,
-	"./mk": 296,
-	"./mk.js": 296,
-	"./ml": 297,
-	"./ml.js": 297,
-	"./mn": 298,
-	"./mn.js": 298,
-	"./mr": 299,
-	"./mr.js": 299,
-	"./ms": 300,
-	"./ms-my": 301,
-	"./ms-my.js": 301,
-	"./ms.js": 300,
-	"./mt": 302,
-	"./mt.js": 302,
-	"./my": 303,
-	"./my.js": 303,
-	"./nb": 304,
-	"./nb.js": 304,
-	"./ne": 305,
-	"./ne.js": 305,
-	"./nl": 306,
-	"./nl-be": 307,
-	"./nl-be.js": 307,
-	"./nl.js": 306,
-	"./nn": 308,
-	"./nn.js": 308,
-	"./pa-in": 309,
-	"./pa-in.js": 309,
-	"./pl": 310,
-	"./pl.js": 310,
-	"./pt": 311,
-	"./pt-br": 312,
-	"./pt-br.js": 312,
-	"./pt.js": 311,
-	"./ro": 313,
-	"./ro.js": 313,
-	"./ru": 314,
-	"./ru.js": 314,
-	"./sd": 315,
-	"./sd.js": 315,
-	"./se": 316,
-	"./se.js": 316,
-	"./si": 317,
-	"./si.js": 317,
-	"./sk": 318,
-	"./sk.js": 318,
-	"./sl": 319,
-	"./sl.js": 319,
-	"./sq": 320,
-	"./sq.js": 320,
-	"./sr": 321,
-	"./sr-cyrl": 322,
-	"./sr-cyrl.js": 322,
-	"./sr.js": 321,
-	"./ss": 323,
-	"./ss.js": 323,
-	"./sv": 324,
-	"./sv.js": 324,
-	"./sw": 325,
-	"./sw.js": 325,
-	"./ta": 326,
-	"./ta.js": 326,
-	"./te": 327,
-	"./te.js": 327,
-	"./tet": 328,
-	"./tet.js": 328,
-	"./tg": 329,
-	"./tg.js": 329,
-	"./th": 330,
-	"./th.js": 330,
-	"./tl-ph": 331,
-	"./tl-ph.js": 331,
-	"./tlh": 332,
-	"./tlh.js": 332,
-	"./tr": 333,
-	"./tr.js": 333,
-	"./tzl": 334,
-	"./tzl.js": 334,
-	"./tzm": 335,
-	"./tzm-latn": 336,
-	"./tzm-latn.js": 336,
-	"./tzm.js": 335,
-	"./ug-cn": 337,
-	"./ug-cn.js": 337,
-	"./uk": 338,
-	"./uk.js": 338,
-	"./ur": 339,
-	"./ur.js": 339,
-	"./uz": 340,
-	"./uz-latn": 341,
-	"./uz-latn.js": 341,
-	"./uz.js": 340,
-	"./vi": 342,
-	"./vi.js": 342,
-	"./x-pseudo": 343,
-	"./x-pseudo.js": 343,
-	"./yo": 344,
-	"./yo.js": 344,
-	"./zh-cn": 345,
-	"./zh-cn.js": 345,
-	"./zh-hk": 346,
-	"./zh-hk.js": 346,
-	"./zh-tw": 347,
-	"./zh-tw.js": 347
+	"./af": 222,
+	"./af.js": 222,
+	"./ar": 223,
+	"./ar-dz": 224,
+	"./ar-dz.js": 224,
+	"./ar-kw": 225,
+	"./ar-kw.js": 225,
+	"./ar-ly": 226,
+	"./ar-ly.js": 226,
+	"./ar-ma": 227,
+	"./ar-ma.js": 227,
+	"./ar-sa": 228,
+	"./ar-sa.js": 228,
+	"./ar-tn": 229,
+	"./ar-tn.js": 229,
+	"./ar.js": 223,
+	"./az": 230,
+	"./az.js": 230,
+	"./be": 231,
+	"./be.js": 231,
+	"./bg": 232,
+	"./bg.js": 232,
+	"./bm": 233,
+	"./bm.js": 233,
+	"./bn": 234,
+	"./bn.js": 234,
+	"./bo": 235,
+	"./bo.js": 235,
+	"./br": 236,
+	"./br.js": 236,
+	"./bs": 237,
+	"./bs.js": 237,
+	"./ca": 238,
+	"./ca.js": 238,
+	"./cs": 239,
+	"./cs.js": 239,
+	"./cv": 240,
+	"./cv.js": 240,
+	"./cy": 241,
+	"./cy.js": 241,
+	"./da": 242,
+	"./da.js": 242,
+	"./de": 243,
+	"./de-at": 244,
+	"./de-at.js": 244,
+	"./de-ch": 245,
+	"./de-ch.js": 245,
+	"./de.js": 243,
+	"./dv": 246,
+	"./dv.js": 246,
+	"./el": 247,
+	"./el.js": 247,
+	"./en-SG": 248,
+	"./en-SG.js": 248,
+	"./en-au": 249,
+	"./en-au.js": 249,
+	"./en-ca": 250,
+	"./en-ca.js": 250,
+	"./en-gb": 251,
+	"./en-gb.js": 251,
+	"./en-ie": 252,
+	"./en-ie.js": 252,
+	"./en-il": 253,
+	"./en-il.js": 253,
+	"./en-nz": 254,
+	"./en-nz.js": 254,
+	"./eo": 255,
+	"./eo.js": 255,
+	"./es": 256,
+	"./es-do": 257,
+	"./es-do.js": 257,
+	"./es-us": 258,
+	"./es-us.js": 258,
+	"./es.js": 256,
+	"./et": 259,
+	"./et.js": 259,
+	"./eu": 260,
+	"./eu.js": 260,
+	"./fa": 261,
+	"./fa.js": 261,
+	"./fi": 262,
+	"./fi.js": 262,
+	"./fo": 263,
+	"./fo.js": 263,
+	"./fr": 264,
+	"./fr-ca": 265,
+	"./fr-ca.js": 265,
+	"./fr-ch": 266,
+	"./fr-ch.js": 266,
+	"./fr.js": 264,
+	"./fy": 267,
+	"./fy.js": 267,
+	"./ga": 268,
+	"./ga.js": 268,
+	"./gd": 269,
+	"./gd.js": 269,
+	"./gl": 270,
+	"./gl.js": 270,
+	"./gom-latn": 271,
+	"./gom-latn.js": 271,
+	"./gu": 272,
+	"./gu.js": 272,
+	"./he": 273,
+	"./he.js": 273,
+	"./hi": 274,
+	"./hi.js": 274,
+	"./hr": 275,
+	"./hr.js": 275,
+	"./hu": 276,
+	"./hu.js": 276,
+	"./hy-am": 277,
+	"./hy-am.js": 277,
+	"./id": 278,
+	"./id.js": 278,
+	"./is": 279,
+	"./is.js": 279,
+	"./it": 280,
+	"./it-ch": 281,
+	"./it-ch.js": 281,
+	"./it.js": 280,
+	"./ja": 282,
+	"./ja.js": 282,
+	"./jv": 283,
+	"./jv.js": 283,
+	"./ka": 284,
+	"./ka.js": 284,
+	"./kk": 285,
+	"./kk.js": 285,
+	"./km": 286,
+	"./km.js": 286,
+	"./kn": 287,
+	"./kn.js": 287,
+	"./ko": 288,
+	"./ko.js": 288,
+	"./ku": 289,
+	"./ku.js": 289,
+	"./ky": 290,
+	"./ky.js": 290,
+	"./lb": 291,
+	"./lb.js": 291,
+	"./lo": 292,
+	"./lo.js": 292,
+	"./lt": 293,
+	"./lt.js": 293,
+	"./lv": 294,
+	"./lv.js": 294,
+	"./me": 295,
+	"./me.js": 295,
+	"./mi": 296,
+	"./mi.js": 296,
+	"./mk": 297,
+	"./mk.js": 297,
+	"./ml": 298,
+	"./ml.js": 298,
+	"./mn": 299,
+	"./mn.js": 299,
+	"./mr": 300,
+	"./mr.js": 300,
+	"./ms": 301,
+	"./ms-my": 302,
+	"./ms-my.js": 302,
+	"./ms.js": 301,
+	"./mt": 303,
+	"./mt.js": 303,
+	"./my": 304,
+	"./my.js": 304,
+	"./nb": 305,
+	"./nb.js": 305,
+	"./ne": 306,
+	"./ne.js": 306,
+	"./nl": 307,
+	"./nl-be": 308,
+	"./nl-be.js": 308,
+	"./nl.js": 307,
+	"./nn": 309,
+	"./nn.js": 309,
+	"./pa-in": 310,
+	"./pa-in.js": 310,
+	"./pl": 311,
+	"./pl.js": 311,
+	"./pt": 312,
+	"./pt-br": 313,
+	"./pt-br.js": 313,
+	"./pt.js": 312,
+	"./ro": 314,
+	"./ro.js": 314,
+	"./ru": 315,
+	"./ru.js": 315,
+	"./sd": 316,
+	"./sd.js": 316,
+	"./se": 317,
+	"./se.js": 317,
+	"./si": 318,
+	"./si.js": 318,
+	"./sk": 319,
+	"./sk.js": 319,
+	"./sl": 320,
+	"./sl.js": 320,
+	"./sq": 321,
+	"./sq.js": 321,
+	"./sr": 322,
+	"./sr-cyrl": 323,
+	"./sr-cyrl.js": 323,
+	"./sr.js": 322,
+	"./ss": 324,
+	"./ss.js": 324,
+	"./sv": 325,
+	"./sv.js": 325,
+	"./sw": 326,
+	"./sw.js": 326,
+	"./ta": 327,
+	"./ta.js": 327,
+	"./te": 328,
+	"./te.js": 328,
+	"./tet": 329,
+	"./tet.js": 329,
+	"./tg": 330,
+	"./tg.js": 330,
+	"./th": 331,
+	"./th.js": 331,
+	"./tl-ph": 332,
+	"./tl-ph.js": 332,
+	"./tlh": 333,
+	"./tlh.js": 333,
+	"./tr": 334,
+	"./tr.js": 334,
+	"./tzl": 335,
+	"./tzl.js": 335,
+	"./tzm": 336,
+	"./tzm-latn": 337,
+	"./tzm-latn.js": 337,
+	"./tzm.js": 336,
+	"./ug-cn": 338,
+	"./ug-cn.js": 338,
+	"./uk": 339,
+	"./uk.js": 339,
+	"./ur": 340,
+	"./ur.js": 340,
+	"./uz": 341,
+	"./uz-latn": 342,
+	"./uz-latn.js": 342,
+	"./uz.js": 341,
+	"./vi": 343,
+	"./vi.js": 343,
+	"./x-pseudo": 344,
+	"./x-pseudo.js": 344,
+	"./yo": 345,
+	"./yo.js": 345,
+	"./zh-cn": 346,
+	"./zh-cn.js": 346,
+	"./zh-hk": 347,
+	"./zh-hk.js": 347,
+	"./zh-tw": 348,
+	"./zh-tw.js": 348
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -1583,6 +1428,7 @@ var LastcommendeDirective = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LastrendevousDirective; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_manager_manager__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__ = __webpack_require__(89);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1594,6 +1440,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 /**
  * Generated class for the LastrendevousDirective directive.
  *
@@ -1601,18 +1448,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Directives.
  */
 var LastrendevousDirective = /** @class */ (function () {
-    function LastrendevousDirective(manager) {
+    function LastrendevousDirective(manager, connectivityService) {
         this.manager = manager;
+        this.connectivityService = connectivityService;
     }
     LastrendevousDirective.prototype.ngOnInit = function () {
         var _this = this;
         if (!this.pointvente || !this.pointvente.rendezvous)
             return;
         this.pointvente.rendezvous.loading = true;
-        this.manager.show('rendezvous', this.pointvente.id, true).then(function (data) {
+        this.manager.show('rendezvous', this.pointvente.id, this.connectivityService.isOnline()).then(function (data) {
             if (data)
                 _this.pointvente.rendezvous = data;
-            console.log(data);
+        }, function (error) {
+            _this.pointvente.rendezvous.loading = true;
         });
     };
     LastrendevousDirective.prototype.ngOnChanges = function () {
@@ -1626,7 +1475,7 @@ var LastrendevousDirective = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
             selector: '[lastrendevous]' // Attribute selector
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_manager_manager__["a" /* ManagerProvider */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_manager_manager__["a" /* ManagerProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__["a" /* LocalisationProvider */]])
     ], LastrendevousDirective);
     return LastrendevousDirective;
 }());
@@ -1642,13 +1491,13 @@ var LastrendevousDirective = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(480);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(479);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_user__ = __webpack_require__(152);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(481);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(480);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_user__ = __webpack_require__(153);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_manager_manager__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_geofence__ = __webpack_require__(481);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_geofence__ = __webpack_require__(482);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1676,16 +1525,14 @@ var MyApp = /** @class */ (function () {
         this.rootPage = 'MenuPage';
         this.setMomentConfig();
         platform.ready().then(function () {
-            if (platform.is('cordova')) {
-                /* this.userService.getToken();
-                 this.userService.onNotification();
-                 this.geofence.initialize().then(
-                   () => this.addGeofence(),
-                   (err) => console.log(err)
-                 )
-                 this.geofence.onTransitionReceived().subscribe(data => {
-                      console.log(data) /// sent t the server
-                 })*/
+            console.log(platform.platforms());
+            if (platform.is('cordova') && platform.is('android')) {
+                _this.userService.getToken();
+                _this.userService.onNotification();
+                _this.geofence.initialize().then(function () { return _this.addGeofence(); }, function (err) { return console.log(err); });
+                _this.geofence.onTransitionReceived().subscribe(function (data) {
+                    console.log(data); /// sent t the server
+                });
             }
             _this.events.subscribe('app:connection:change', function (status) {
                 if (status == 'connected') {
@@ -1787,6 +1634,158 @@ var MyApp = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=app.component.js.map
+
+/***/ }),
+
+/***/ 89:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LocalisationProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_diagnostic__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_network__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ionic_angular__ = __webpack_require__(44);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var LocalisationProvider = /** @class */ (function () {
+    function LocalisationProvider(platform, network, events, diagnostic, geo, locationAccuracy) {
+        this.platform = platform;
+        this.network = network;
+        this.events = events;
+        this.diagnostic = diagnostic;
+        this.geo = geo;
+        this.locationAccuracy = locationAccuracy;
+        this.lastConnect = true;
+        this.nbError = 0;
+    }
+    LocalisationProvider.prototype.getCurrentPosition = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            console.log(_this.platform.platforms());
+            if (_this.platform.is('core') || _this.platform.is('mobileweb')) {
+                if ("geolocation" in navigator) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        resolve(position);
+                    }, function (error) {
+                        reject({ message: "Un problème est survenu durant la géolocalisation par le navigateur. Celà est peut-être lié à votre connexion internet.", source: error });
+                    });
+                }
+                else
+                    reject({ message: "Mettez à jour le navigateur pour accéder à la géolocalisation." });
+            }
+            else {
+                _this.diagnostic.isLocationEnabled().then(function (enabled) {
+                    var HIGH_ACCURACY = 'high_accuracy';
+                    if (enabled) {
+                        _this.diagnostic.getLocationMode().then(function (locationMode) {
+                            if (locationMode === HIGH_ACCURACY) {
+                                _this.geo.getCurrentPosition({ timeout: 30000, maximumAge: 0, enableHighAccuracy: true }).then(function (pos) {
+                                    resolve(pos);
+                                }, function (error) {
+                                    reject({ message: "Un problème est survenu durant la géolocalisation. Verifier que l'application a accès à votre localisation. Celà est peut aussi être lié à votre connexion internet.", source: error });
+                                });
+                            }
+                            else {
+                                _this.askForHighAccuracy().then(function (available) {
+                                    resolve(available);
+                                }, function (error) {
+                                    ;
+                                    reject(error);
+                                });
+                            }
+                        });
+                    }
+                    else {
+                        _this.locationAccuracy.canRequest().then(function (canRequest) {
+                            if (canRequest) {
+                                _this.locationAccuracy.request(1).then(function (result) {
+                                    if (result) {
+                                        _this.getCurrentPosition().then(function (result) { return resolve(result); }, function (error) { return reject(error); });
+                                    }
+                                }, function (error) {
+                                    console.log(JSON.stringify(error));
+                                    reject({ message: "Erreur lors de la requête de permission.", source: error });
+                                });
+                            }
+                            else {
+                                reject({ message: "Impossible de rechercher la position." });
+                            }
+                        });
+                    }
+                }, function (error) {
+                    console.log(JSON.stringify(error));
+                    reject({ message: "Erreur de plugin ou de droits." });
+                });
+            }
+        });
+    };
+    LocalisationProvider.prototype.askForHighAccuracy = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.locationAccuracy
+                .request(_this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(function () {
+                _this.geo.getCurrentPosition({ timeout: 30000, maximumAge: 0, enableHighAccuracy: true }).then(function (position) {
+                    resolve(position);
+                }, function (error) { return reject({ message: "Un problème est survenu durant la géolocalisation. Verifier que l'application a accès à votre localisation. Celà est peut aussi être lié à votre connexion internet.", source: error }); });
+            }, function (error) { return reject({ message: "Erreur lors de la requête de permission.", source: error }); });
+        });
+    };
+    LocalisationProvider.prototype.isOnline = function () {
+        if (this.onDevice && this.network.Connection) {
+            return this.network.Connection !== Connection.NONE;
+        }
+        else {
+            return navigator.onLine && this.lastConnect;
+        }
+    };
+    LocalisationProvider.prototype.isOffline = function () {
+        if (this.onDevice && this.network.Connection) {
+            return this.network.Connection === Connection.NONE;
+        }
+        else {
+            return !navigator.onLine;
+        }
+    };
+    LocalisationProvider.prototype.onConnect = function (isOnLine) {
+        if (!isOnLine && this.lastConnect) {
+            this.nbError++;
+        }
+        else {
+            if (isOnLine) {
+                this.nbError = 0;
+                this.lastConnect = isOnLine;
+            }
+        }
+        if (this.nbError > 5 && this.lastConnect) {
+            this.lastConnect = false;
+            this.events.publish('last:status', isOnLine);
+        }
+    };
+    LocalisationProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["p" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["p" /* Platform */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_network__["a" /* Network */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_network__["a" /* Network */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["d" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["d" /* Events */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_diagnostic__["a" /* Diagnostic */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_diagnostic__["a" /* Diagnostic */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ionic_native_geolocation__["a" /* Geolocation */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__["a" /* LocationAccuracy */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_location_accuracy__["a" /* LocationAccuracy */]) === "function" && _f || Object])
+    ], LocalisationProvider);
+    return LocalisationProvider;
+    var _a, _b, _c, _d, _e, _f;
+}());
+
+//# sourceMappingURL=localisation.js.map
 
 /***/ })
 

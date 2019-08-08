@@ -47,8 +47,8 @@ var SecteursPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_notify__ = __webpack_require__(482);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__ = __webpack_require__(483);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_notify__ = __webpack_require__(483);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__ = __webpack_require__(89);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -103,7 +103,9 @@ var SecteursPage = /** @class */ (function () {
         this.manager.get('secteur', this.localisation.isOnline()).then(function (data) {
             _this.secteurs = data ? data : [];
             _this.loading = false;
+            _this.localisation.onConnect(_this.localisation.isOnline());
         }, function (error) {
+            _this.localisation.onConnect(false);
             console.log(error);
             _this.loading = false;
             _this.notify.onError({ message: " Verifiez votre connexion internet" });
@@ -115,11 +117,13 @@ var SecteursPage = /** @class */ (function () {
             content: "chargement...",
         });
         this.loading = true;
-        this.manager.get('secteur', this.localisation.isOnline()).then(function (data) {
+        this.manager.get('secteur', true).then(function (data) {
             _this.secteurs = data ? data : [];
             _this.loading = false;
             loader.dismiss();
+            _this.localisation.onConnect(_this.localisation.isOnline());
         }, function (error) {
+            _this.localisation.onConnect(false);
             loader.dismiss();
             _this.notify.onError({ message: "Verifiez votre connexion internet" });
         });
@@ -170,20 +174,12 @@ var SecteursPage = /** @class */ (function () {
     };
     SecteursPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-secteurs',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\secteurs\secteurs.html"*/'<ion-header  no-border no-shadow>\n    <ion-navbar>\n        <button menuToggle  ion-button icon-only showwhen="mobile">\n            <ion-icon name="menu"></ion-icon>\n          </button>\n      <ion-row no-padding>\n          <ion-col>  <ion-title>Liste des zones</ion-title></ion-col>\n          <ion-col>\n            <ion-searchbar [hidden]="!secteurs.length"  [(ngModel)]="queryText" (ionInput)="search()" placeholder="Recherchez un produit">\n            </ion-searchbar>         \n          </ion-col>\n        </ion-row>       \n      <ion-buttons end>\n      <button ion-button="ion-button" icon-only (click)="loadRemoteData()" >\n          <ion-icon name="refresh"></ion-icon>\n      </button>\n      <button ion-button small outline (click)="add()" icon-left>\n          <ion-icon name="add" ></ion-icon>\n          Nouveau\n      </button>          \n  </ion-buttons>    \n    </ion-navbar>\n  </ion-header>\n  <ion-content >     \n      <ion-list>\n          <ion-item  *ngFor="let secteur of secteurs" (click)="add(secteur)" [hidden]="secteur.hide" text-wrap>\n                <span *ngIf="secteur.ville">{{secteur.ville}} - </span> <strong>{{secteur.nom}}</strong>\n              <p>{{secteur.description}}</p>\n          </ion-item>\n      </ion-list>\n      <ion-grid style="justify-content: center;height: 100%;" *ngIf="loading"> \n          <ion-row style="justify-content: center;height: 100%;" justify-content-center align-items-center>\n              <ion-spinner name="ios"></ion-spinner>\n          </ion-row>\n          \n        </ion-grid> \n        <ion-grid style="height: 80%;justify-content: center;position:absolute;top:20%" *ngIf="!secteurs.length&&!loading">\n            <ion-row style="height: 100%;justify-content: center;" justify-content-center align-items-center>\n                <div text-center text-wrap  class="empty" padding>\n                  Aucune zone crée.\n                </div>\n            </ion-row>\n          </ion-grid>\n  </ion-content> \n           '/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\secteurs\secteurs.html"*/,
+            selector: 'page-secteurs',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\secteurs\secteurs.html"*/'<ion-header  no-border no-shadow>\n    <ion-navbar>\n        <button menuToggle  ion-button icon-only showwhen="mobile">\n            <ion-icon name="menu"></ion-icon>\n          </button>\n      <ion-row no-padding>\n          <ion-col>  <ion-title>Liste des zones</ion-title></ion-col>\n          <ion-col>\n            <ion-searchbar [hidden]="!secteurs.length"  [(ngModel)]="queryText" (ionInput)="search()" placeholder="Recherchez un produit">\n            </ion-searchbar>         \n          </ion-col>\n        </ion-row>       \n      <ion-buttons end>\n      <button ion-button="ion-button" icon-only (click)="loadRemoteData()" >\n          <ion-icon name="refresh"></ion-icon>\n      </button>\n      <button ion-button small outline (click)="add()" icon-left>\n          <ion-icon name="add" ></ion-icon>\n          Créer\n      </button>          \n  </ion-buttons>    \n    </ion-navbar>\n  </ion-header>\n  <ion-content padding-top>     \n      <ion-list>\n          <ion-item  *ngFor="let secteur of secteurs" (click)="add(secteur)" [hidden]="secteur.hide" text-wrap>\n                <span *ngIf="secteur.ville">{{secteur.ville}} - </span> <strong>{{secteur.nom}}</strong>\n              <p>{{secteur.description}}</p>\n          </ion-item>\n      </ion-list>\n      <ion-grid style="justify-content: center;height: 100%;" *ngIf="loading"> \n          <ion-row style="justify-content: center;height: 100%;" justify-content-center align-items-center>\n              <ion-spinner name="ios"></ion-spinner>\n          </ion-row>\n          \n        </ion-grid> \n        <ion-grid style="height: 80%;justify-content: center;position:absolute;top:20%" *ngIf="!secteurs.length&&!loading">\n            <ion-row style="height: 100%;justify-content: center;" justify-content-center align-items-center>\n                <div text-center text-wrap  class="empty" padding>\n                  Aucune zone crée.\n                </div>\n            </ion-row>\n          </ion-grid>\n  </ion-content> \n           '/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\secteurs\secteurs.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__["a" /* ManagerProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__["a" /* LocalisationProvider */],
-            __WEBPACK_IMPORTED_MODULE_4__app_app_notify__["a" /* AppNotify */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__["a" /* ManagerProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__["a" /* ManagerProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__["a" /* LocalisationProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__["a" /* LocalisationProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__app_app_notify__["a" /* AppNotify */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__app_app_notify__["a" /* AppNotify */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ViewController */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]) === "function" && _k || Object])
     ], SecteursPage);
     return SecteursPage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
 }());
 
 //# sourceMappingURL=secteurs.js.map

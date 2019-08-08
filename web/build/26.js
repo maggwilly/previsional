@@ -45,7 +45,7 @@ var PopOverMenuPageModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PopOverMenuPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_user_user__ = __webpack_require__(152);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_user_user__ = __webpack_require__(153);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -74,12 +74,14 @@ var PopOverMenuPage = /** @class */ (function () {
             { name: 'Mon profil', component: 'ProfilePage' }
         ];
         this.navCtrl = this.navParams.get('navCtrl');
+        this.menu = this.navParams.get('menu');
     }
     PopOverMenuPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad PopOverMenuPage');
     };
     PopOverMenuPage.prototype.openPage = function (p) {
         this.viewCtrl.dismiss();
+        this.menu.close();
         this.navCtrl.push(p.component, { user: this.userService.user });
     };
     PopOverMenuPage.prototype.logout = function () {

@@ -49,10 +49,10 @@ var PrevisionsPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_manager_manager__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_notify__ = __webpack_require__(482);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_notify__ = __webpack_require__(483);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__ = __webpack_require__(483);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__ = __webpack_require__(89);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -79,6 +79,7 @@ var PrevisionsPage = /** @class */ (function () {
         this.navParams = navParams;
         this.previsions = [];
         this.queryText = '';
+        this.isOnline = this.localisation.isOnline();
     }
     PrevisionsPage.prototype.ionViewDidLoad = function () {
         this.refresh();
@@ -99,7 +100,9 @@ var PrevisionsPage = /** @class */ (function () {
         this.manager.get('prevision').then(function (data) {
             _this.previsions = data ? data : [];
             _this.loading = false;
+            _this.localisation.onConnect(_this.localisation.isOnline());
         }, function (error) {
+            _this.localisation.onConnect(false);
             _this.notify.onSuccess({ message: "PROBLEME ! Verifiez votre connexion internet" });
         });
     };
@@ -115,7 +118,9 @@ var PrevisionsPage = /** @class */ (function () {
             console.log(_this.previsions);
             _this.loading = false;
             loader.dismiss();
+            _this.localisation.onConnect(_this.localisation.isOnline());
         }, function (error) {
+            _this.localisation.onConnect(false);
             loader.dismiss();
             console.log(error);
             _this.notify.onSuccess({ message: "PROBLEME ! Verifiez votre connexion internet" });
@@ -159,17 +164,12 @@ var PrevisionsPage = /** @class */ (function () {
     };
     PrevisionsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-previsions',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\previsions\previsions.html"*/'\n<ion-header>\n  <ion-navbar>\n      <button menuToggle  ion-button icon-only showwhen="mobile">\n          <ion-icon name="menu"></ion-icon>\n        </button>\n      <ion-row no-padding>\n          <ion-col> <ion-title >Prévisions sur les livraisons</ion-title></ion-col>\n          <ion-col>\n            <ion-searchbar [hidden]="!previsions.length"  [(ngModel)]="queryText" (ionInput)="search()" placeholder="Recherchez un produit">\n            </ion-searchbar>         \n          </ion-col>\n        </ion-row>\n        <ion-buttons end>\n            <button ion-button icon-only (click)="refresh()"> \n              <ion-icon name="refresh"></ion-icon> \n            </button>       \n          </ion-buttons>        \n  </ion-navbar>\n</ion-header>\n<ion-content >\n    <ion-card>\n        <ion-card-header>\n          <ion-item text-wrap>\n              Prévisions sur les livraisons  <strong *ngIf="filtre"><span *ngIf="filtre.afterdate">, Entre le {{filtre.afterdate|date:\'dd/MM/yyyy\'}}</span>\n                <span *ngIf="filtre.beforedate"> <span *ngIf="filtre.afterdate">et</span><span *ngIf="!filtre.afterdate">, Avant</span> le {{filtre.beforedate|date:\'dd/MM/yyyy\'}}</span></strong>\n              <p *ngIf="filtre">\n                  <span *ngIf="filtre.type">, {{filtre.type}}</span><span *ngIf="!filtre.type">Toutes catégories</span>\n                  <span *ngIf="filtre.ville">{{filtre.ville}}</span><span *ngIf="!filtre.ville">, toutes les villes</span>\n                 <span *ngIf="filtre.quartier">, {{filtre.quartier}}</span><span *ngIf="!filtre.quartier">, tous les quartiers</span>\n              </p>\n                  <button ion-button icon-left item-right    (click)="openFilter()"><ion-icon name="funnel"  ></ion-icon> Seletionnez</button>    \n          </ion-item>\n        </ion-card-header>\n      </ion-card>  \n    <ion-list *ngIf="previsions.length">\n        <ion-item  *ngFor="let produit of previsions"  [hidden]="produit.hide">\n            {{produit.nom}}\n            <p>{{produit.description}}</p>\n            <p *ngIf="produit.next_cmd_date">{{produit.next_cmd_quantity}} à partir de  {{produit.next_cmd_date|moment}} </p> \n              <ion-badge *ngIf="produit.next_cmd_quantity" item-right> {{produit.next_cmd_quantity}} colis</ion-badge>\n        </ion-item>  \n    </ion-list>\n    <ion-grid style="justify-content: center;height: 100%;" *ngIf="loading"> \n        <ion-row style="justify-content: center;height: 100%;" justify-content-center align-items-center>\n            <ion-spinner name="ios"></ion-spinner>\n        </ion-row>\n      </ion-grid> \n      <ion-grid style="height: 80%;justify-content: center;position:absolute;top:20%" *ngIf="!previsions.length&&!loading">\n          <ion-row style="height: 100%;justify-content: center;" justify-content-center align-items-center>\n              <div text-center text-wrap  class="empty" padding>\n                Aucune prévision possible à partir des données connues.\n              </div>\n          </ion-row>\n        </ion-grid>        \n</ion-content>\n'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\previsions\previsions.html"*/,
+            selector: 'page-previsions',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\previsions\previsions.html"*/'\n<ion-header>\n  <ion-navbar>\n      <button menuToggle  ion-button icon-only showWhen="mobile">\n          <ion-icon name="menu"></ion-icon>\n        </button>\n      <ion-row no-padding>\n          <ion-col> <ion-title >Prévisions de livraisons</ion-title></ion-col>\n          <ion-col>\n            <ion-searchbar [hidden]="!previsions.length"  [(ngModel)]="queryText" (ionInput)="search()" placeholder="Recherchez un produit">\n            </ion-searchbar>         \n          </ion-col>\n        </ion-row>\n        <ion-buttons end>\n            <button ion-button icon-left (click)="refresh()"> \n              <ion-icon name="refresh"></ion-icon><span showWhen="core">Actualiser</span> \n            </button> \n            <button ion-button icon-only (click)="openFilter()" [disabled]="!isOnline">\n                <ion-icon name="funnel"></ion-icon><span showWhen="core">Seletionnez</span> \n              </button>                \n          </ion-buttons>       \n  </ion-navbar>\n</ion-header>\n<ion-content padding-top>\n    <ion-card>\n        <ion-card-header>\n          <ion-item text-wrap>\n              <strong *ngIf="filtre"><span *ngIf="filtre.afterdate"> Entre le {{filtre.afterdate|date:\'dd/MM/yyyy\'}}</span>\n                <span *ngIf="filtre.beforedate"> <span *ngIf="filtre.afterdate">et</span><span *ngIf="!filtre.afterdate">, Avant</span> le {{filtre.beforedate|date:\'dd/MM/yyyy\'}}</span></strong>\n              <p *ngIf="filtre">\n                  <span *ngIf="filtre.type">, {{filtre.type}}</span><span *ngIf="!filtre.type">Toutes catégories</span>\n                  <span *ngIf="filtre.ville">{{filtre.ville}}</span><span *ngIf="!filtre.ville">, toutes les villes</span>\n                 <span *ngIf="filtre.quartier">, {{filtre.quartier}}</span><span *ngIf="!filtre.quartier">, tous les quartiers</span>\n              </p>\n          </ion-item>\n        </ion-card-header>\n      </ion-card>  \n    <ion-list *ngIf="previsions.length">\n        <ion-item  *ngFor="let produit of previsions"  [hidden]="produit.hide">\n            {{produit.nom}}\n            <p>{{produit.description}}</p>\n            <p *ngIf="produit.next_cmd_date">{{produit.next_cmd_quantity}} à partir de  {{produit.next_cmd_date|moment}} </p> \n              <ion-badge *ngIf="produit.next_cmd_quantity" item-right> {{produit.next_cmd_quantity}} colis</ion-badge>\n        </ion-item>  \n    </ion-list>\n    <ion-grid style="justify-content: center;height: 100%;" *ngIf="loading"> \n        <ion-row style="justify-content: center;height: 100%;" justify-content-center align-items-center>\n            <ion-spinner name="ios"></ion-spinner>\n        </ion-row>\n      </ion-grid> \n      <ion-grid style="height: 80%;justify-content: center;position:absolute;top:20%" *ngIf="!previsions.length&&!loading">\n          <ion-row style="height: 100%;justify-content: center;" justify-content-center align-items-center>\n              <div text-center text-wrap  class="empty" padding>\n                Aucune prévision possible à partir des données connues.\n              </div>\n          </ion-row>\n        </ion-grid>        \n</ion-content>\n'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\previsions\previsions.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__["a" /* LocalisationProvider */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_manager_manager__["a" /* ManagerProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_3__app_app_notify__["a" /* AppNotify */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__["a" /* LocalisationProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__["a" /* LocalisationProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_manager_manager__["a" /* ManagerProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_manager_manager__["a" /* ManagerProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__app_app_notify__["a" /* AppNotify */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__app_app_notify__["a" /* AppNotify */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]) === "function" && _g || Object])
     ], PrevisionsPage);
     return PrevisionsPage;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=previsions.js.map

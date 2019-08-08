@@ -7642,9 +7642,9 @@ ion-card-content {
 }
 
 .card-md {
-  margin: 10px;
+  margin: 4px 2px;
   border-radius: 2px;
-  width: calc(100% - 20px);
+  width: calc(100% - 4px);
   font-size: 1.4rem;
   background: #fff;
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
@@ -7666,7 +7666,7 @@ ion-card-content {
 }
 
 .card-content-md {
-  padding: 13px 16px;
+  padding: 8px;
   font-size: 1.4rem;
   line-height: 1.5;
 }
@@ -30780,20 +30780,21 @@ ion-footer button {
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 15%;
+  padding-right: 15%;
 }
 
 .map-title {
   position: fixed;
-  top: 78px;
-  width: 80%;
+  margin-top: 10px;
+  width: 70%;
   padding: 0px;
   z-index: 9999;
 }
 
 page-cartograph .scroll-content {
   height: 100%;
+  margin-top: 75px;
 }
 
 page-cartograph #map {
@@ -30806,6 +30807,10 @@ page-commendes .item-right {
   -webkit-align-items: right;
   -ms-flex-align: right;
   align-items: right;
+}
+
+page-commendes md .scroll-content {
+  margin-top: 113px;
 }
 
 page-commendes-view .line {
@@ -30832,8 +30837,33 @@ page-commendes-view .spiner {
   width: 100%;
 }
 
+page-home span.passed {
+  color: #f53d3d;
+}
+
+page-home span.today {
+  color: #32db64;
+}
+
+page-home span.future {
+  color: #488aff;
+}
+
+page-home ion-badge.passed {
+  background-color: #f53d3d;
+}
+
+page-home ion-badge.today {
+  background-color: #32db64;
+}
+
+page-home ion-badge.future {
+  background-color: #488aff;
+}
+
 page-map .scroll-content {
   height: 100%;
+  margin-top: 75px;
 }
 
 page-map #map {
@@ -30841,9 +30871,13 @@ page-map #map {
   height: 96%;
 }
 
+page-point-vente-detail .scroll-content {
+  margin-top: 75px;
+}
+
 page-point-vente-detail #mapdetail, page-point-vente-detail #mapempty {
-  min-height: 100vh;
-  width: 34%;
+  min-height: 50vh;
+  width: 100%;
   position: fixed;
   top: 0%;
   right: 0%;
@@ -30867,6 +30901,14 @@ page-point-vente-detail .rendez-vous .card-header-md, page-point-vente-detail .r
   color: white;
 }
 
+page-pointventes md .scroll-content {
+  margin-top: 113px;
+}
+
+page-previsions md .scroll-content {
+  margin-top: 113px;
+}
+
 page-price-detail .amount {
   font-size: 1.3em;
   text-align: right;
@@ -30884,6 +30926,10 @@ page-produit ion-footer button {
   margin: 0 !important;
 }
 
+page-produits md .scroll-content {
+  margin-top: 113px;
+}
+
 page-profile ion-item {
   border-radius: 12px !important;
   padding-left: 10px !important;
@@ -30899,8 +30945,20 @@ page-profile .item-inner {
   box-shadow: 1  !important;
 }
 
+page-quartiers md .scroll-content {
+  margin-top: 113px;
+}
+
 page-secteur ion-footer button {
   margin: 0 !important;
+}
+
+page-selectclient md .scroll-content {
+  margin-top: 113px;
+}
+
+page-selectproduit md .scroll-content {
+  margin-top: 113px;
 }
 
 page-shoul-pay .empty div {
@@ -31055,6 +31113,10 @@ page-signup div {
 page-signup p {
   color: #e0e0e0;
   text-align: center;
+}
+
+page-stats .scroll-content {
+  margin-top: 75px;
 }
 
 page-stats .kpi .label {

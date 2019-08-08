@@ -32805,13 +32805,13 @@ module.exports = L.Routing = {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MapPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__ = __webpack_require__(483);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_icons_marker__ = __webpack_require__(862);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_leaflet__ = __webpack_require__(861);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_leaflet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_leaflet_routing_machine__ = __webpack_require__(863);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_leaflet_routing_machine___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_leaflet_routing_machine__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_app_notify__ = __webpack_require__(482);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_app_notify__ = __webpack_require__(483);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -32853,19 +32853,11 @@ var MapPage = /** @class */ (function () {
         var _this = this;
         this.connectivityService.getCurrentPosition().then(function (position) {
             console.log(position);
-            /* this.waypoints.push(leaflet.latLng(position.coords.latitude, position.coords.longitude))
-             this.points.forEach(point => {
-               this.waypoints.push(leaflet.latLng(point.pos.lat, point.pos.long))
-             });*/
-            if (_this.connectivityService.isOnline()) {
-                if (!position.coords.latitude || !position.coords.longitude)
-                    return _this.notify.onError({ message: "Problème de centralisation de la carte. Verifiez votre connexion internet", duration: 500000 });
-                _this.loadmap(position.coords);
-            }
-            else
-                _this.notify.showAlert({ message: "Activez votre connexion internet" });
+            if (!position.coords.latitude || !position.coords.longitude)
+                return _this.notify.onError({ message: "Problème de centralisation de la carte. Verifiez votre connexion internet" });
+            _this.loadmap(position.coords);
         }, function (error) {
-            _this.notify.onError({ message: "Problème de centralisation de la carte. Verifiez votre connexion internet", duration: 500000 });
+            _this.notify.onError({ message: error.message });
             console.log(error);
         });
     };
@@ -32905,7 +32897,7 @@ var MapPage = /** @class */ (function () {
     ], MapPage.prototype, "mapElement", void 0);
     MapPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-map',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\map\map.html"*/'\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{title}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n<ion-content >\n    <div class="map-title-box">\n        <ion-card  class="map-title" item-center>\n            <ion-card-header> \n              <ion-item text-wrap>\n                  {{title}}  <strong *ngIf="filtre"><span *ngIf="filtre.afterdate">, Entre le {{filtre.afterdate|date:\'dd/MM/yyyy\'}}</span>\n                    <span *ngIf="filtre.beforedate"> <span *ngIf="filtre.afterdate">et</span><span *ngIf="!filtre.afterdate">, Avant</span> le {{filtre.beforedate|date:\'dd/MM/yyyy\'}}</span></strong>\n                  <p *ngIf="filtre">\n                      <span *ngIf="filtre.type">, {{filtre.type}}</span><span *ngIf="!filtre.type">Toutes catégories</span>\n                      <span *ngIf="filtre.ville">{{filtre.ville}}</span><span *ngIf="!filtre.ville">, toutes les villes</span>\n                     <span *ngIf="filtre.quartier">, {{filtre.quartier}}</span><span *ngIf="!filtre.quartier">, tous les quartiers</span>\n                  </p>\n      \n              </ion-item>\n            </ion-card-header> \n          </ion-card> \n        </div> \n<div #map id="map">\n\n</div>\n</ion-content>\n<ion-footer></ion-footer>'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\map\map.html"*/,
+            selector: 'page-map',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\map\map.html"*/'\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{title}}</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content >\n    <div class="map-title-box">\n        <ion-card  class="map-title" item-center>\n              <ion-item text-wrap>\n                  {{title}}  <strong *ngIf="filtre"><span *ngIf="filtre.afterdate">, Entre le {{filtre.afterdate|date:\'dd/MM/yyyy\'}}</span>\n                    <span *ngIf="filtre.beforedate"> <span *ngIf="filtre.afterdate">et</span><span *ngIf="!filtre.afterdate">, Avant</span> le {{filtre.beforedate|date:\'dd/MM/yyyy\'}}</span></strong>\n                  <p *ngIf="filtre">\n                      <span *ngIf="filtre.type">, {{filtre.type}}</span><span *ngIf="!filtre.type">Toutes catégories</span>\n                      <span *ngIf="filtre.ville">{{filtre.ville}}</span><span *ngIf="!filtre.ville">, toutes les villes</span>\n                     <span *ngIf="filtre.quartier">, {{filtre.quartier}}</span><span *ngIf="!filtre.quartier">, tous les quartiers</span>\n                  </p>\n              </ion-item>\n          </ion-card> \n        </div> \n<div #map id="map">\n\n</div>\n</ion-content>\n<ion-footer></ion-footer>'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\map\map.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Platform */],

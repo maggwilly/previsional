@@ -47,8 +47,8 @@ var QuartiersPageModule = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GooglePlacesAutocompleteComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(153);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(155);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 
 
@@ -212,7 +212,7 @@ var QuartiersPage = /** @class */ (function () {
     };
     QuartiersPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'quartier',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\quartiers\quartiers.html"*/'\n\n<ion-header>\n\n    <ion-navbar>\n\n    <ion-row no-padding>\n\n        <ion-col>  <ion-title>Les quartiers</ion-title></ion-col>\n\n        <ion-col>\n\n          <ion-searchbar [hidden]="!newQuartiers.length"  [(ngModel)]="queryText" (ionInput)="search()" placeholder="Rechercher">\n\n          </ion-searchbar>         \n\n        </ion-col>\n\n      </ion-row>    \n\n    <ion-buttons end>\n\n        <button ion-button (click)="dismiss()" icon-left>\n\n            <ion-icon name="md-close" showWhen="android,windows,core"></ion-icon>\n\n            <span color="primary" showWhen="android,ios,core">Fermer</span>\n\n          </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content >\n\n  <ion-list *ngIf="newQuartiers.length" inset>\n\n      <ion-item *ngFor="let quartier of newQuartiers" (click)="dismiss(quartier.nom)" [hidden]="quartier.hide">\n\n        {{quartier.nom}}\n\n      </ion-item>\n\n      <div  [hidden]="!queryText">\n\n          <button ion-button   (click)="newQuartier()" block > Créer un quartier \n\n              <ion-icon name="add"></ion-icon>\n\n            </button>\n\n        </div>      \n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\quartiers\quartiers.html"*/
+            selector: 'quartier',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\quartiers\quartiers.html"*/'\n\n<ion-header>\n\n    <ion-navbar>\n\n    <ion-row no-padding>\n\n        <ion-col>  <ion-title>Selectionnez un quartier</ion-title></ion-col>\n\n        <ion-col>\n\n          <ion-searchbar [hidden]="!newQuartiers.length"  [(ngModel)]="queryText" (ionInput)="search()" placeholder="Rechercher">\n\n          </ion-searchbar>         \n\n        </ion-col>\n\n      </ion-row>    \n\n    <ion-buttons end>\n\n        <button ion-button (click)="dismiss()" icon-left>\n\n            <ion-icon name="md-close" showWhen="android,windows,core"></ion-icon>\n\n            <span color="primary" showWhen="android,ios,core">Fermer</span>\n\n          </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding-top>\n\n  <ion-list *ngIf="newQuartiers.length" inset>\n\n      <ion-item *ngFor="let quartier of newQuartiers" (click)="dismiss(quartier.nom)" [hidden]="quartier.hide">\n\n        {{quartier.nom}}\n\n      </ion-item>\n\n      <div  [hidden]="!queryText">\n\n          <button ion-button   (click)="newQuartier()" block > Créer un quartier \n\n              <ion-icon name="add"></ion-icon>\n\n            </button>\n\n        </div>      \n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\quartiers\quartiers.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */],
@@ -247,7 +247,7 @@ var QuartiersPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GooglePlacesAutocompleteComponentModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(154);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_google_places_autocomplete__ = __webpack_require__(865);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common__ = __webpack_require__(65);

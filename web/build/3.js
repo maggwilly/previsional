@@ -32805,13 +32805,13 @@ module.exports = L.Routing = {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CartographPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__ = __webpack_require__(483);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_icons_marker__ = __webpack_require__(862);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_leaflet__ = __webpack_require__(861);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_leaflet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_leaflet_routing_machine__ = __webpack_require__(863);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_leaflet_routing_machine___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_leaflet_routing_machine__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_app_notify__ = __webpack_require__(482);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_app_notify__ = __webpack_require__(483);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_manager_manager__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_moment__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_moment__);
@@ -32834,17 +32834,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var CartographPage = /** @class */ (function () {
-    function CartographPage(navCtrl, platform, manager, loadingCtrl, modalCtrl, notify, connectivityService, navParams) {
+    function CartographPage(navCtrl, platform, manager, loadingCtrl, modalCtrl, localisation, notify, connectivityService, navParams) {
         this.navCtrl = navCtrl;
         this.platform = platform;
         this.manager = manager;
         this.loadingCtrl = loadingCtrl;
         this.modalCtrl = modalCtrl;
+        this.localisation = localisation;
         this.notify = notify;
         this.connectivityService = connectivityService;
         this.navParams = navParams;
         this.mapInitialised = false;
         this.points = [];
+        this.isOnline = this.connectivityService.isOnline();
         this.filtre = this.navParams.get('filtre');
     }
     CartographPage.prototype.ionViewDidLoad = function () {
@@ -32853,15 +32855,11 @@ var CartographPage = /** @class */ (function () {
     CartographPage.prototype.initMap = function () {
         var _this = this;
         this.connectivityService.getCurrentPosition().then(function (position) {
-            if (_this.connectivityService.isOnline()) {
-                if (!position.coords.latitude || !position.coords.longitude)
-                    return _this.notify.onError({ message: "Problème de centralisation de la carte. Verifiez votre connexion internet", duration: 500000 });
-                _this.loadmap(position.coords);
-            }
-            else
-                _this.notify.showAlert({ message: "Activez votre connexion internet" });
+            if (!position.coords.latitude || !position.coords.longitude)
+                return _this.notify.onError({ message: "Problème de centralisation de la carte. Verifiez votre connexion internet" });
+            _this.loadmap(position.coords);
         }, function (error) {
-            _this.notify.onError({ message: "Problème de centralisation de la carte. Verifiez votre connexion internet", duration: 500000 });
+            _this.notify.onError({ message: error.message });
             console.log(error);
         });
     };
@@ -32925,10 +32923,12 @@ var CartographPage = /** @class */ (function () {
     };
     CartographPage.prototype.loadData = function () {
         var _this = this;
-        this.manager.get('map').then(function (data) {
+        this.manager.get('map', this.localisation.isOnline()).then(function (data) {
             _this.points = data;
             _this.initMap();
+            _this.localisation.onConnect(_this.localisation.isOnline());
         }, function (error) {
+            _this.localisation.onConnect(false);
             _this.notify.onSuccess({ message: "PROBLEME ! Verifiez votre connexion internet" });
         });
     };
@@ -32942,7 +32942,9 @@ var CartographPage = /** @class */ (function () {
             _this.points = data;
             _this.initMap();
             loader.dismiss();
+            _this.localisation.onConnect(_this.localisation.isOnline());
         }, function (error) {
+            _this.localisation.onConnect(false);
             loader.dismiss();
             console.log(error);
             _this.notify.onSuccess({ message: "PROBLEME ! Verifiez votre connexion internet" });
@@ -32961,22 +32963,16 @@ var CartographPage = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('map'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _a || Object)
     ], CartographPage.prototype, "mapElement", void 0);
     CartographPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-cartograph',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\cartograph\cartograph.html"*/'\n<ion-header>\n    <ion-navbar>\n        <button menuToggle  ion-button icon-only showwhen="mobile">\n            <ion-icon name="menu"></ion-icon>\n          </button>      \n      <ion-title>Cartographie des livraisons</ion-title>\n      <ion-buttons end>\n          <button ion-button icon-left (click)="refresh()"> \n            <ion-icon name="refresh"></ion-icon> Actualiser\n          </button>      \n        </ion-buttons>      \n    </ion-navbar>\n  </ion-header>\n  <ion-content >\n    <div class="map-title-box">\n      <ion-card  class="map-title" item-center>\n          <ion-card-header>\n            <ion-item text-wrap>\n                Cartographie  <strong *ngIf="filtre"><span *ngIf="filtre.afterdate">, Entre le {{filtre.afterdate|date:\'dd/MM/yyyy\'}}</span>\n                  <span *ngIf="filtre.beforedate"> <span *ngIf="filtre.afterdate">et</span><span *ngIf="!filtre.afterdate">, Avant</span> le {{filtre.beforedate|date:\'dd/MM/yyyy\'}}</span></strong>\n                <p *ngIf="filtre">\n                    <span *ngIf="filtre.type">, {{filtre.type}}</span><span *ngIf="!filtre.type">Toutes catégories</span>\n                    <span *ngIf="filtre.ville">{{filtre.ville}}</span><span *ngIf="!filtre.ville">, toutes les villes</span>\n                   <span *ngIf="filtre.quartier">, {{filtre.quartier}}</span><span *ngIf="!filtre.quartier">, tous les quartiers</span>\n                </p>\n                <button ion-button icon-left item-right    (click)="openFilter()"><ion-icon name="funnel"  ></ion-icon> Seletionnez</button>\n            </ion-item>\n          </ion-card-header> \n        </ion-card> \n      </div>  \n  <div #map id="map" >\n  </div>\n  </ion-content>\n  <ion-footer>\n\n  </ion-footer>\n'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\cartograph\cartograph.html"*/,
+            selector: 'page-cartograph',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\cartograph\cartograph.html"*/'\n<ion-header>\n    <ion-navbar>\n        <button menuToggle  ion-button icon-only showWhen="mobile">\n            <ion-icon name="menu"></ion-icon>\n          </button>      \n      <ion-title>Cartographie</ion-title>\n      <ion-buttons end>\n          <button ion-button icon-left (click)="refresh()"> \n            <ion-icon name="refresh"></ion-icon><span showWhen="core">Actualiser</span> \n          </button> \n          <button ion-button icon-only (click)="openFilter()" [disabled]="!isOnline">\n              <ion-icon name="funnel"></ion-icon><span showWhen="core">Seletionnez</span> \n            </button>                \n        </ion-buttons>      \n    </ion-navbar>\n  </ion-header>\n  <ion-content >\n    <div class="map-title-box">\n      <ion-card  class="map-title" item-center>\n            <ion-item text-wrap>\n                <strong *ngIf="filtre"><span *ngIf="filtre.afterdate">Entre le {{filtre.afterdate|date:\'dd/MM/yyyy\'}}</span>\n                  <span *ngIf="filtre.beforedate"> <span *ngIf="filtre.afterdate">et</span><span *ngIf="!filtre.afterdate">, Avant</span> le {{filtre.beforedate|date:\'dd/MM/yyyy\'}}</span></strong>\n                <p *ngIf="filtre">\n                    <span *ngIf="filtre.type">, {{filtre.type}}</span><span *ngIf="!filtre.type">Toutes catégories</span>\n                    <span *ngIf="filtre.ville">{{filtre.ville}}</span><span *ngIf="!filtre.ville">, toutes les villes</span>\n                   <span *ngIf="filtre.quartier">, {{filtre.quartier}}</span><span *ngIf="!filtre.quartier">, tous les quartiers</span>\n                </p>\n            </ion-item>\n        </ion-card> \n      </div>  \n\n  <div #map id="map" >\n  </div>\n  <ion-fab right bottom>\n      <button ion-fab  color="danger" (click)="openFilter()"><ion-icon name="funnel" ></ion-icon></button>\n    </ion-fab> \n  </ion-content>\n  <ion-footer>\n\n  </ion-footer>\n'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\cartograph\cartograph.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_7__providers_manager_manager__["a" /* ManagerProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_6__app_app_notify__["a" /* AppNotify */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__["a" /* LocalisationProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Platform */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_7__providers_manager_manager__["a" /* ManagerProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__providers_manager_manager__["a" /* ManagerProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__["a" /* LocalisationProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__["a" /* LocalisationProvider */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_6__app_app_notify__["a" /* AppNotify */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__app_app_notify__["a" /* AppNotify */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__["a" /* LocalisationProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__["a" /* LocalisationProvider */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]) === "function" && _k || Object])
     ], CartographPage);
     return CartographPage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
 }());
 
 //# sourceMappingURL=cartograph.js.map

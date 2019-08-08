@@ -45,7 +45,7 @@ var TabsPageModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_user_user__ = __webpack_require__(152);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_user_user__ = __webpack_require__(153);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -72,33 +72,15 @@ var TabsPage = /** @class */ (function () {
         this.tab2Root = 'HomePage';
         this.tab1Root = 'CommendesPage';
         this.tab3Root = 'StatsPage';
-        /*   let skippecheck=this.navParams.get('skippecheck')
-            userService.resetObserver();
-            userService.complete.then(user => {
-          if (!user||!user.id||!user.parent)
-                  return userService.go(user);
-            else if(user.receiveRequests&&user.receiveRequests.length&&!skippecheck)
-                  return  userService.request(user.receiveRequests);
-            else if(
-                 (userService.amIMyParent()&&(!user.entreprise||!user.ville||!user.pays)&&!skippecheck)
-                 ||(!userService.amIMyParent()&&(!user.nom)&&!skippecheck))
-                   return userService.profile(user);
-             else if( (!user.parent.abonnement||user.parent.abonnement.expired)&&!skippecheck)
-                   return userService.shoulpay(user.parent.abonnement);
-          }, (ERROR) => {
-                console.log(ERROR);
-                return  userService.unavailable();
-          }) */
     }
     TabsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-tabs',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\tabs\tabs.html"*/'<ion-tabs #myTabs>\n  <ion-tab [root]="tab2Root" tabTitle="Accueil" tabIcon="home"></ion-tab>\n  <ion-tab [root]="tab1Root" tabTitle="Ventes" tabIcon="ios-stats-outline"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Statistiques" tabIcon="ios-folder-open"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\tabs\tabs.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_user_user__["a" /* UserProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__providers_user_user__["a" /* UserProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_user_user__["a" /* UserProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]) === "function" && _c || Object])
     ], TabsPage);
     return TabsPage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=tabs.js.map
