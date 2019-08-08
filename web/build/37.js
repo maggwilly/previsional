@@ -51,6 +51,7 @@ var CommendesViewPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_localisation_localisation__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage__ = __webpack_require__(88);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -67,8 +68,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var CommendesViewPage = /** @class */ (function () {
-    function CommendesViewPage(navCtrl, manager, userService, modalCtrl, localisation, events, notify, app, navParams) {
+    function CommendesViewPage(navCtrl, manager, userService, modalCtrl, localisation, events, notify, app, navParams, storage) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.manager = manager;
         this.userService = userService;
@@ -78,13 +81,26 @@ var CommendesViewPage = /** @class */ (function () {
         this.notify = notify;
         this.app = app;
         this.navParams = navParams;
+        this.storage = storage;
         this.commende = { lignes: [] };
         this.activeItemSliding = null;
         this.editing = false;
         this.edited = false;
         this.pointVente = {};
         this.submitted = true;
-        this.commende = this.navParams.get('commende');
+        if (navParams.get('commende')) {
+            this.commende = navParams.get('commende');
+            this.storage.set('displayed', this.commende);
+        }
+        else {
+            this.storage.get('displayed').then(function (displayed) {
+                _this.commende = displayed;
+                if (!_this.commende.date)
+                    _this.commende.date = __WEBPACK_IMPORTED_MODULE_5_moment__().format("YYYY-MM-DD HH:mm");
+                _this.pointVente = _this.commende.pointVente;
+            });
+            return;
+        }
         if (!this.commende.date)
             this.commende.date = __WEBPACK_IMPORTED_MODULE_5_moment__().format("YYYY-MM-DD HH:mm");
         this.pointVente = this.commende.pointVente;
@@ -262,7 +278,8 @@ var CommendesViewPage = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */],
             __WEBPACK_IMPORTED_MODULE_3__app_app_notify__["a" /* AppNotify */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]])
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_7__ionic_storage__["b" /* Storage */]])
     ], CommendesViewPage);
     return CommendesViewPage;
 }());

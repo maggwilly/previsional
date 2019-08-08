@@ -261,111 +261,111 @@ var map = {
 		5
 	],
 	"../pages/map/map.module": [
-		835,
+		834,
 		2
 	],
 	"../pages/menu/menu.module": [
-		860,
+		835,
 		29
 	],
 	"../pages/point-vente-detail/point-vente-detail.module": [
-		834,
+		836,
 		6
 	],
 	"../pages/point-vente/point-vente.module": [
-		836,
+		837,
 		28
 	],
 	"../pages/pointventes/pointventes.module": [
-		837,
+		838,
 		27
 	],
 	"../pages/pop-over-menu/pop-over-menu.module": [
-		838,
+		839,
 		26
 	],
 	"../pages/previsions/previsions.module": [
-		839,
+		840,
 		25
 	],
 	"../pages/price-detail/price-detail.module": [
-		840,
+		841,
 		24
 	],
 	"../pages/produit-detail/produit-detail.module": [
-		841,
+		842,
 		23
 	],
 	"../pages/produit/produit.module": [
-		842,
+		843,
 		22
 	],
 	"../pages/produits/produits.module": [
-		843,
+		844,
 		21
 	],
 	"../pages/profile/profile.module": [
-		844,
+		845,
 		20
 	],
 	"../pages/quartiers/quartiers.module": [
-		845,
+		846,
 		1
 	],
 	"../pages/rapports/rapports.module": [
-		846,
+		847,
 		19
 	],
 	"../pages/rendezvous/rendezvous.module": [
-		847,
+		848,
 		18
 	],
 	"../pages/requests/requests.module": [
-		848,
+		849,
 		17
 	],
 	"../pages/secteur/secteur.module": [
-		849,
+		850,
 		16
 	],
 	"../pages/secteurs/secteurs.module": [
-		850,
+		851,
 		15
 	],
 	"../pages/selectclient/selectclient.module": [
-		851,
+		852,
 		14
 	],
 	"../pages/selectproduit/selectproduit.module": [
-		852,
+		853,
 		13
 	],
 	"../pages/shoul-pay/shoul-pay.module": [
-		853,
+		854,
 		12
 	],
 	"../pages/signup/signup.module": [
-		854,
+		855,
 		4
 	],
 	"../pages/stats/stats.module": [
-		855,
+		856,
 		0
 	],
 	"../pages/tabs/tabs.module": [
-		856,
+		857,
 		11
 	],
 	"../pages/unavailable/unavailable.module": [
-		857,
+		858,
 		10
 	],
 	"../pages/vendeur/vendeur.module": [
-		858,
+		859,
 		9
 	],
 	"../pages/vendeurs/vendeurs.module": [
-		859,
+		860,
 		8
 	]
 };
@@ -979,8 +979,9 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/filtre-vente/filtre-vente.module#FiltreVentePageModule', name: 'FiltreVentePage', segment: 'filtre-vente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/help/help.module#HelpPageModule', name: 'HelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/point-vente-detail/point-vente-detail.module#PointVenteDetailPageModule', name: 'PointVenteDetailPage', segment: 'point-vente-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/map/map.module#MapPageModule', name: 'MapPage', segment: 'map', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/point-vente-detail/point-vente-detail.module#PointVenteDetailPageModule', name: 'PointVenteDetailPage', segment: 'point-vente-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/point-vente/point-vente.module#PointVentePageModule', name: 'PointVentePage', segment: 'point-vente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pointventes/pointventes.module#PointventesPageModule', name: 'PointventesPage', segment: 'pointventes', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pop-over-menu/pop-over-menu.module#PopOverMenuPageModule', name: 'PopOverMenuPage', segment: 'pop-over-menu', priority: 'low', defaultHistory: [] },
@@ -1004,8 +1005,7 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/unavailable/unavailable.module#UnavailablePageModule', name: 'UnavailablePage', segment: 'unavailable', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/vendeur/vendeur.module#VendeurPageModule', name: 'VendeurPage', segment: 'vendeur', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/vendeurs/vendeurs.module#VendeursPageModule', name: 'VendeursPage', segment: 'vendeurs', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/vendeurs/vendeurs.module#VendeursPageModule', name: 'VendeursPage', segment: 'vendeurs', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_8__angular_http__["c" /* HttpModule */],

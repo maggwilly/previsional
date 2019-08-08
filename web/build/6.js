@@ -1,6 +1,6 @@
 webpackJsonp([6],{
 
-/***/ 834:
+/***/ 836:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PointVenteDetailPageModule", function() { return PointVenteDetailPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__point_vente_detail__ = __webpack_require__(883);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__point_vente_detail__ = __webpack_require__(885);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pipes_pipes_module__ = __webpack_require__(484);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__ = __webpack_require__(486);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -14154,7 +14154,7 @@ var blackIcon = new __WEBPACK_IMPORTED_MODULE_0_leaflet__["Icon"]({
 
 /***/ }),
 
-/***/ 883:
+/***/ 885:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14185,6 +14185,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var PointVenteDetailPage = /** @class */ (function () {
     function PointVenteDetailPage(navCtrl, navParams, manager, loadingCtrl, modalCtrl, events, notify, storage) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.manager = manager;
@@ -14194,8 +14195,14 @@ var PointVenteDetailPage = /** @class */ (function () {
         this.notify = notify;
         this.storage = storage;
         this.pointVente = {};
-        this.pointVente = navParams.get('pointVente');
-        console.log(this.pointVente);
+        if (navParams.get('pointVente')) {
+            this.pointVente = navParams.get('pointVente');
+            this.storage.set('displayed', this.pointVente);
+        }
+        else
+            this.storage.get('displayed').then(function (displayed) {
+                _this.pointVente = displayed;
+            });
     }
     PointVenteDetailPage.prototype.ionViewDidLoad = function () {
         var _this = this;
