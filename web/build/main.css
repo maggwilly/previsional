@@ -31115,6 +31115,10 @@ page-signup p {
   text-align: center;
 }
 
+page-signup .login-box {
+  margin-top: 10%;
+}
+
 page-stats .scroll-content {
   margin-top: 75px;
 }

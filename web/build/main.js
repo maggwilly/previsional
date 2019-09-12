@@ -1,4 +1,4 @@
-webpackJsonp([39],{
+webpackJsonp([40],{
 
 /***/ 153:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -213,159 +213,163 @@ webpackEmptyAsyncContext.id = 166;
 
 var map = {
 	"../pages/about/about.module": [
-		822,
-		38
+		824,
+		39
 	],
 	"../pages/cartograph/cartograph.module": [
-		823,
-		3
-	],
-	"../pages/commende-create/commende-create.module": [
-		824,
-		7
-	],
-	"../pages/commendes-view/commendes-view.module": [
 		825,
-		37
-	],
-	"../pages/commendes/commendes.module": [
-		826,
-		36
-	],
-	"../pages/createligne/createligne.module": [
-		827,
-		35
-	],
-	"../pages/donnees/donnees.module": [
-		828,
-		34
-	],
-	"../pages/filtre-pointvente/filtre-pointvente.module": [
-		829,
-		33
-	],
-	"../pages/filtre-stats/filtre-stats.module": [
-		830,
-		32
-	],
-	"../pages/filtre-vente/filtre-vente.module": [
-		831,
-		31
-	],
-	"../pages/help/help.module": [
-		832,
-		30
-	],
-	"../pages/home/home.module": [
-		833,
 		5
 	],
-	"../pages/map/map.module": [
+	"../pages/commende-create/commende-create.module": [
+		826,
+		1
+	],
+	"../pages/commendes-view/commendes-view.module": [
+		827,
+		38
+	],
+	"../pages/commendes/commendes.module": [
+		828,
+		37
+	],
+	"../pages/createligne/createligne.module": [
+		829,
+		36
+	],
+	"../pages/donnees/donnees.module": [
+		830,
+		35
+	],
+	"../pages/filtre-pointvente/filtre-pointvente.module": [
+		831,
+		34
+	],
+	"../pages/filtre-stats/filtre-stats.module": [
+		832,
+		33
+	],
+	"../pages/filtre-vente/filtre-vente.module": [
+		855,
+		32
+	],
+	"../pages/help/help.module": [
+		833,
+		31
+	],
+	"../pages/home/home.module": [
 		834,
-		2
+		0
+	],
+	"../pages/map/map.module": [
+		835,
+		4
 	],
 	"../pages/menu/menu.module": [
-		835,
-		29
+		836,
+		30
 	],
 	"../pages/point-vente-detail/point-vente-detail.module": [
-		836,
-		6
+		837,
+		7
 	],
 	"../pages/point-vente/point-vente.module": [
-		837,
-		28
+		838,
+		29
 	],
 	"../pages/pointventes/pointventes.module": [
-		838,
-		27
+		839,
+		28
 	],
 	"../pages/pop-over-menu/pop-over-menu.module": [
-		839,
+		840,
+		27
+	],
+	"../pages/prevision-details/prevision-details.module": [
+		841,
 		26
 	],
 	"../pages/previsions/previsions.module": [
-		840,
+		842,
 		25
 	],
 	"../pages/price-detail/price-detail.module": [
-		841,
+		843,
 		24
 	],
 	"../pages/produit-detail/produit-detail.module": [
-		842,
+		844,
 		23
 	],
 	"../pages/produit/produit.module": [
-		843,
+		845,
 		22
 	],
 	"../pages/produits/produits.module": [
-		844,
+		846,
 		21
 	],
 	"../pages/profile/profile.module": [
-		845,
+		847,
 		20
 	],
 	"../pages/quartiers/quartiers.module": [
-		846,
-		1
+		848,
+		3
 	],
 	"../pages/rapports/rapports.module": [
-		847,
+		849,
 		19
 	],
 	"../pages/rendezvous/rendezvous.module": [
-		848,
+		850,
 		18
 	],
 	"../pages/requests/requests.module": [
-		849,
+		851,
 		17
 	],
 	"../pages/secteur/secteur.module": [
-		850,
+		853,
 		16
 	],
 	"../pages/secteurs/secteurs.module": [
-		851,
+		852,
 		15
 	],
 	"../pages/selectclient/selectclient.module": [
-		852,
+		854,
 		14
 	],
 	"../pages/selectproduit/selectproduit.module": [
-		853,
+		856,
 		13
 	],
 	"../pages/shoul-pay/shoul-pay.module": [
-		854,
+		857,
 		12
 	],
 	"../pages/signup/signup.module": [
-		855,
-		4
+		859,
+		6
 	],
 	"../pages/stats/stats.module": [
-		856,
-		0
+		858,
+		2
 	],
 	"../pages/tabs/tabs.module": [
-		857,
+		860,
 		11
 	],
 	"../pages/unavailable/unavailable.module": [
-		858,
+		861,
 		10
 	],
 	"../pages/vendeur/vendeur.module": [
-		859,
+		862,
 		9
 	],
 	"../pages/vendeurs/vendeurs.module": [
-		860,
+		863,
 		8
 	]
 };
@@ -398,7 +402,7 @@ module.exports = webpackAsyncContext;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(155);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_config__ = __webpack_require__(485);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_config__ = __webpack_require__(486);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_observable_IntervalObservable__ = __webpack_require__(214);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_observable_IntervalObservable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_observable_IntervalObservable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_guid_typescript__ = __webpack_require__(515);
@@ -501,6 +505,7 @@ var ManagerProvider = /** @class */ (function () {
             window.localStorage.setItem('_user_id_', user.id);
             window.localStorage.setItem('_user_token', user.apiKey);
             _this.headers.set('X-Auth-Token', user.apiKey);
+            return user;
         });
     };
     ManagerProvider.prototype.removeUser = function () {
@@ -511,12 +516,12 @@ var ManagerProvider = /** @class */ (function () {
         });
     };
     ManagerProvider.prototype.getUserToken = function () {
-        if (this.platform.is('android') || this.platform.is('mobileweb'))
+        if (this.platform.is('android') || this.platform.is('mobileweb') || this.platform.is('core'))
             return window.localStorage.getItem('_user_token');
         return this.readCookie('_user_token'); //
     };
     ManagerProvider.prototype.getUserId = function () {
-        if (this.platform.is('android') || this.platform.is('mobileweb'))
+        if (this.platform.is('android') || this.platform.is('mobileweb') || this.platform.is('core'))
             return window.localStorage.getItem('_user_id_');
         return this.readCookie('_user_id_'); //
     };
@@ -628,7 +633,6 @@ var ManagerProvider = /** @class */ (function () {
         if (action === void 0) { action = 'new'; }
         if (online)
             return new Promise(function (resolve, reject) {
-                console.log(JSON.stringify(entity));
                 console.log(__WEBPACK_IMPORTED_MODULE_6__app_config__["a" /* Config */].server + '/' + entityName + '/' + action + '/json');
                 _this.http.post(__WEBPACK_IMPORTED_MODULE_6__app_config__["a" /* Config */].server + '/' + entityName + '/' + action + '/json', JSON.stringify(entity), { headers: _this.headers })
                     .toPromise()
@@ -646,7 +650,6 @@ var ManagerProvider = /** @class */ (function () {
         var _this = this;
         if (online)
             return new Promise(function (resolve, reject) {
-                console.log(JSON.stringify(entity));
                 console.log(__WEBPACK_IMPORTED_MODULE_6__app_config__["a" /* Config */].server + "/" + entityName + "/" + entity.id + "/edit/json");
                 _this.http.put(__WEBPACK_IMPORTED_MODULE_6__app_config__["a" /* Config */].server + "/" + entityName + "/" + entity.id + "/edit/json", JSON.stringify(entity), { headers: _this.headers })
                     .toPromise()
@@ -663,6 +666,7 @@ var ManagerProvider = /** @class */ (function () {
             });
         if (entity.change && entity.stored && entity.id)
             return this.put(entityName, entity, online);
+        console.log(JSON.stringify(entity));
         if (!entity.id)
             entity.id = __WEBPACK_IMPORTED_MODULE_8_guid_typescript__["Guid"].create().toString();
         return this.post(entityName, entity, 'new', online);
@@ -800,9 +804,53 @@ var AppNotify = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DirectivesModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__lastcommende_lastcommende__ = __webpack_require__(800);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lastrendevous_lastrendevous__ = __webpack_require__(801);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__hide_header_hide_header__ = __webpack_require__(802);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__total_total__ = __webpack_require__(803);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+var DirectivesModule = /** @class */ (function () {
+    function DirectivesModule() {
+    }
+    DirectivesModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+            declarations: [__WEBPACK_IMPORTED_MODULE_1__lastcommende_lastcommende__["a" /* LastcommendeDirective */],
+                __WEBPACK_IMPORTED_MODULE_2__lastrendevous_lastrendevous__["a" /* LastrendevousDirective */],
+                __WEBPACK_IMPORTED_MODULE_3__hide_header_hide_header__["a" /* HideHeaderDirective */],
+                __WEBPACK_IMPORTED_MODULE_4__total_total__["a" /* TotalDirective */]],
+            imports: [],
+            exports: [__WEBPACK_IMPORTED_MODULE_1__lastcommende_lastcommende__["a" /* LastcommendeDirective */],
+                __WEBPACK_IMPORTED_MODULE_2__lastrendevous_lastrendevous__["a" /* LastrendevousDirective */],
+                __WEBPACK_IMPORTED_MODULE_3__hide_header_hide_header__["a" /* HideHeaderDirective */],
+                __WEBPACK_IMPORTED_MODULE_4__total_total__["a" /* TotalDirective */]]
+        })
+    ], DirectivesModule);
+    return DirectivesModule;
+}());
+
+//# sourceMappingURL=directives.module.js.map
+
+/***/ }),
+
+/***/ 485:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PipesModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__moment_moment__ = __webpack_require__(800);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__moment_moment__ = __webpack_require__(804);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -828,7 +876,7 @@ var PipesModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 485:
+/***/ 486:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -838,7 +886,7 @@ var Config = /** @class */ (function () {
     }
     // url of the chat server
     // for local development it will be something like http://192.168.0.214:9000/
-    Config.server = 'https://api-provisional.herokuapp.com';
+    Config.server = "http://api-provisional.herokuapp.com"; //"http://localhost:8000" //'
     Config.entityNames = ['secteur', 'pointvente', 'produit', 'rendezvous', 'commende'];
     Config.googleApiKey = "AIzaSyBNIN0oMzHoNgEZz1utnM_8ut6KFjwieoo";
     Config.HomePage = 'HomePage'; //
@@ -846,42 +894,6 @@ var Config = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=config.js.map
-
-/***/ }),
-
-/***/ 486:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DirectivesModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__lastcommende_lastcommende__ = __webpack_require__(801);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lastrendevous_lastrendevous__ = __webpack_require__(802);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-var DirectivesModule = /** @class */ (function () {
-    function DirectivesModule() {
-    }
-    DirectivesModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            declarations: [__WEBPACK_IMPORTED_MODULE_1__lastcommende_lastcommende__["a" /* LastcommendeDirective */],
-                __WEBPACK_IMPORTED_MODULE_2__lastrendevous_lastrendevous__["a" /* LastrendevousDirective */]],
-            imports: [],
-            exports: [__WEBPACK_IMPORTED_MODULE_1__lastcommende_lastcommende__["a" /* LastcommendeDirective */],
-                __WEBPACK_IMPORTED_MODULE_2__lastrendevous_lastrendevous__["a" /* LastrendevousDirective */]]
-        })
-    ], DirectivesModule);
-    return DirectivesModule;
-}());
-
-//# sourceMappingURL=directives.module.js.map
 
 /***/ }),
 
@@ -910,7 +922,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(480);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(481);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_notify__ = __webpack_require__(483);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(820);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(822);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_manager_manager__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_http__ = __webpack_require__(154);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_storage__ = __webpack_require__(88);
@@ -922,9 +934,9 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_native_location_accuracy__ = __webpack_require__(220);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__providers_localisation_localisation__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_network__ = __webpack_require__(221);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pipes_pipes_module__ = __webpack_require__(484);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__directives_directives_module__ = __webpack_require__(486);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__ionic_native_google_maps__ = __webpack_require__(821);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pipes_pipes_module__ = __webpack_require__(485);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__directives_directives_module__ = __webpack_require__(484);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__ionic_native_google_maps__ = __webpack_require__(823);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -976,7 +988,6 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/donnees/donnees.module#DonneesPageModule', name: 'DonneesPage', segment: 'donnees', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/filtre-pointvente/filtre-pointvente.module#FiltrePointventePageModule', name: 'FiltrePointventePage', segment: 'filtre-pointvente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/filtre-stats/filtre-stats.module#FiltreStatsPageModule', name: 'FiltreStatsPage', segment: 'filtre-stats', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/filtre-vente/filtre-vente.module#FiltreVentePageModule', name: 'FiltreVentePage', segment: 'filtre-vente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/help/help.module#HelpPageModule', name: 'HelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/map/map.module#MapPageModule', name: 'MapPage', segment: 'map', priority: 'low', defaultHistory: [] },
@@ -985,6 +996,7 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/point-vente/point-vente.module#PointVentePageModule', name: 'PointVentePage', segment: 'point-vente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pointventes/pointventes.module#PointventesPageModule', name: 'PointventesPage', segment: 'pointventes', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pop-over-menu/pop-over-menu.module#PopOverMenuPageModule', name: 'PopOverMenuPage', segment: 'pop-over-menu', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/prevision-details/prevision-details.module#PrevisionDetailsPageModule', name: 'PrevisionDetailsPage', segment: 'prevision-details', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/previsions/previsions.module#PrevisionsPageModule', name: 'PrevisionsPage', segment: 'previsions', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/price-detail/price-detail.module#PriceDetailPageModule', name: 'PriceDetailPage', segment: 'price-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/produit-detail/produit-detail.module#ProduitDetailPageModule', name: 'ProduitDetailPage', segment: 'produit-detail', priority: 'low', defaultHistory: [] },
@@ -995,13 +1007,14 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/rapports/rapports.module#RapportsPageModule', name: 'RapportsPage', segment: 'rapports', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/rendezvous/rendezvous.module#RendezvousPageModule', name: 'RendezvousPage', segment: 'rendezvous', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/requests/requests.module#RequestsPageModule', name: 'RequestsPage', segment: 'requests', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/secteur/secteur.module#SecteurPageModule', name: 'SecteurPage', segment: 'secteur', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/secteurs/secteurs.module#SecteursPageModule', name: 'SecteursPage', segment: 'secteurs', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/secteur/secteur.module#SecteurPageModule', name: 'SecteurPage', segment: 'secteur', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/selectclient/selectclient.module#SelectclientPageModule', name: 'SelectclientPage', segment: 'selectclient', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/filtre-vente/filtre-vente.module#FiltreVentePageModule', name: 'FiltreVentePage', segment: 'filtre-vente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/selectproduit/selectproduit.module#SelectproduitPageModule', name: 'SelectproduitPage', segment: 'selectproduit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/shoul-pay/shoul-pay.module#ShoulPayPageModule', name: 'ShoulPayPage', segment: 'shoul-pay', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/stats/stats.module#StatsPageModule', name: 'StatsPage', segment: 'stats', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/unavailable/unavailable.module#UnavailablePageModule', name: 'UnavailablePage', segment: 'unavailable', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/vendeur/vendeur.module#VendeurPageModule', name: 'VendeurPage', segment: 'vendeur', priority: 'low', defaultHistory: [] },
@@ -1322,53 +1335,6 @@ webpackContext.id = 522;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MomentPipe; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-/**
- * Generated class for the MomentPipe pipe.
- *
- * See https://angular.io/api/core/Pipe for more info on Angular Pipes.
- */
-var MomentPipe = /** @class */ (function () {
-    function MomentPipe() {
-    }
-    /**
-     * Takes a value and makes it lowercase.
-     */
-    MomentPipe.prototype.transform = function (date, method) {
-        if (!method)
-            return this.fromNow(date);
-        return __WEBPACK_IMPORTED_MODULE_1_moment__(date).fromNow();
-    };
-    MomentPipe.prototype.fromNow = function (date) {
-        return __WEBPACK_IMPORTED_MODULE_1_moment__(date).calendar();
-    };
-    MomentPipe = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
-            name: 'moment',
-        })
-    ], MomentPipe);
-    return MomentPipe;
-}());
-
-//# sourceMappingURL=moment.js.map
-
-/***/ }),
-
-/***/ 801:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LastcommendeDirective; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_manager_manager__ = __webpack_require__(47);
@@ -1425,7 +1391,7 @@ var LastcommendeDirective = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 802:
+/***/ 801:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1488,7 +1454,171 @@ var LastrendevousDirective = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 820:
+/***/ 802:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HideHeaderDirective; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+/**
+ * Generated class for the HideHeaderDirective directive.
+ *
+ * See https://angular.io/docs/ts/latest/api/core/index/DirectiveMetadata-class.html
+ * for more info on Angular Directives.
+ */
+var HideHeaderDirective = /** @class */ (function () {
+    function HideHeaderDirective(elementRef, renderer) {
+        this.elementRef = elementRef;
+        this.renderer = renderer;
+    }
+    HideHeaderDirective.prototype.ngOnInit = function () {
+        this.headerHeight = this.header.clientHeight;
+        this.renderer.setElementStyle(this.header, 'webkitTransition', 'top 700ms');
+        this.scrollContent = this.elementRef.nativeElement.getElementsByClassName('scroll-content')[0];
+        this.renderer.setElementStyle(this.scrollContent, 'webkitTransition', 'margin-top 700ms');
+    };
+    HideHeaderDirective.prototype.onContentScroll = function (event) {
+        if (event.scrollTop > this.headerHeight) {
+            this.renderer.setElementStyle(this.header, 'top', (this.headerHeight > 56) ? '-' + (this.headerHeight + 25) + 'px' : '-' + this.headerHeight + 'px');
+            this.renderer.setElementStyle(this.scrollContent, 'margin-top', '-25px');
+        }
+        else {
+            this.renderer.setElementStyle(this.header, 'top', '0px');
+            this.renderer.setElementStyle(this.scrollContent, 'margin-top', (this.headerHeight > 56) ? (this.headerHeight + 25) + 'px' : this.headerHeight + 'px');
+        }
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])("header"),
+        __metadata("design:type", HTMLElement)
+    ], HideHeaderDirective.prototype, "header", void 0);
+    HideHeaderDirective = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
+            selector: '[hide-header]',
+            host: { '(ionScroll)': 'onContentScroll($event)' }
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"], __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer"]])
+    ], HideHeaderDirective);
+    return HideHeaderDirective;
+}());
+
+//# sourceMappingURL=hide-header.js.map
+
+/***/ }),
+
+/***/ 803:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TotalDirective; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+/**
+ * Generated class for the TotalDirective directive.
+ *
+ * See https://angular.io/api/core/Directive for more info on Angular
+ * Directives.
+ */
+var TotalDirective = /** @class */ (function () {
+    function TotalDirective() {
+    }
+    TotalDirective.prototype.ngOnInit = function () {
+        var _this = this;
+        if (!this.commende || !this.commende.lignes || !this.commende.lignes.length)
+            return;
+        this.commende.total = 0;
+        this.commende.lignes.forEach(function (ligne) {
+            if (ligne.quantite && ligne.pu)
+                _this.commende.total += ligne.quantite * ligne.pu;
+            console.log(_this.commende.total);
+        });
+    };
+    TotalDirective.prototype.ngOnChanges = function () {
+        this.ngOnInit();
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", Object)
+    ], TotalDirective.prototype, "commende", void 0);
+    TotalDirective = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
+            selector: '[total]' // Attribute selector
+        }),
+        __metadata("design:paramtypes", [])
+    ], TotalDirective);
+    return TotalDirective;
+}());
+
+//# sourceMappingURL=total.js.map
+
+/***/ }),
+
+/***/ 804:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MomentPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+/**
+ * Generated class for the MomentPipe pipe.
+ *
+ * See https://angular.io/api/core/Pipe for more info on Angular Pipes.
+ */
+var MomentPipe = /** @class */ (function () {
+    function MomentPipe() {
+    }
+    /**
+     * Takes a value and makes it lowercase.
+     */
+    MomentPipe.prototype.transform = function (date, method) {
+        if (!method)
+            return this.fromNow(date);
+        return __WEBPACK_IMPORTED_MODULE_1_moment__(date).fromNow();
+    };
+    MomentPipe.prototype.fromNow = function (date) {
+        return __WEBPACK_IMPORTED_MODULE_1_moment__(date).calendar();
+    };
+    MomentPipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
+            name: 'moment',
+        })
+    ], MomentPipe);
+    return MomentPipe;
+}());
+
+//# sourceMappingURL=moment.js.map
+
+/***/ }),
+
+/***/ 822:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

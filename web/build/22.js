@@ -1,6 +1,6 @@
 webpackJsonp([22],{
 
-/***/ 843:
+/***/ 845:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProduitPageModule", function() { return ProduitPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__produit__ = __webpack_require__(892);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__produit__ = __webpack_require__(912);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var ProduitPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 892:
+/***/ 912:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76,13 +76,12 @@ var ProduitPage = /** @class */ (function () {
         this.viewCtrl = viewCtrl;
         this.notify = notify;
         this.manager = manager;
-        this.produit = {};
-        this.produit = this.navParams.get('produit') ? this.navParams.get('produit') : {};
+        this.produit = { enabled: true, unite: 'Unité' };
+        this.produit = this.navParams.get('produit') ? this.navParams.get('produit') : this.produit;
         if (!this.inset)
             this.inset = this.navParams.get('inset');
     }
     ProduitPage.prototype.ionViewDidLoad = function () {
-        console.log(this.produit);
     };
     ProduitPage.prototype.isInvalid = function () {
         return (!this.produit.nom || !this.produit.cout);
@@ -153,7 +152,7 @@ var ProduitPage = /** @class */ (function () {
     };
     ProduitPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-produit',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\produit\produit.html"*/'<ion-header no-border no-shadow >\n  <ion-navbar>\n        <ion-title><span *ngIf="!produit.nom">Créer un produit</span><span *ngIf="produit.nom">{{produit.nom}}</span></ion-title>\n        <ion-buttons end>\n                <button ion-button="ion-button" (click)="dismiss()" icon-left>\n                    <ion-icon name="md-close" color="danger" showwhen="android,windows,core"></ion-icon> \n                    Fermer\n                </button>\n            </ion-buttons>        \n  </ion-navbar>\n</ion-header>\n<ion-content >\n        <ion-card>\n                <ion-card-header text-wrap>Créer ou modifier un article</ion-card-header>\n        </ion-card>     \n    <form #form="ngForm" novalidate="novalidate">\n        <ion-list>\n            <ion-item>\n                <ion-label color="primary" floating><span>Nom du produit </span> </ion-label>\n                <ion-input [(ngModel)]="produit.nom" name="nom" type="text" placeholder="" #nom="ngModel"></ion-input>\n            </ion-item>\n            <ion-item>\n                <ion-label color="primary"><span>Prix de vente </span> </ion-label>\n                <ion-input [(ngModel)]="produit.cout" name="cout" type="number" placeholder="" #nom="ngModel"></ion-input>\n            </ion-item>  \n            <ion-item>\n                    <ion-textarea rows="1" [(ngModel)]="produit.description" placeholder="Description ddu produit"\n                        name="description" #description="ngModel"></ion-textarea>\n              </ion-item>                      \n        </ion-list>\n        <div padding="padding" >\n            <button  *ngIf="produit.id" ion-button outline block icon-right color="danger" (click)="deleteItem()">\n                    <span>Supprimer ce produit\n                        <ion-icon name="close"></ion-icon>\n                    </span>\n               </button>              \n        </div>\n    </form>\n</ion-content>\n<ion-footer >\n    <button  ion-button full icon-right [disabled]="isInvalid()" (click)="onSubmit()">\n            <span *ngIf="!produit.id">Creer un produit</span>\n            <span *ngIf="produit.id">Enregistrer les changements</span>\n            <ion-icon name="md-done-all"></ion-icon>\n       \n    </button>\n  </ion-footer>'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\produit\produit.html"*/,
+            selector: 'page-produit',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\produit\produit.html"*/'<ion-header no-border no-shadow >\n\n  <ion-navbar>\n\n        <ion-title><span *ngIf="!produit.nom">Créer un produit</span><span *ngIf="produit.nom">{{produit.nom}}</span></ion-title>\n\n        <ion-buttons end>\n\n                <button ion-button="ion-button" (click)="dismiss()" icon-left>\n\n                    <ion-icon name="md-close" color="danger" showwhen="android,windows,core"></ion-icon> \n\n                    Fermer\n\n                </button>\n\n            </ion-buttons>        \n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content >\n\n        <ion-card>\n\n                <ion-card-header text-wrap>Créer ou modifier un article</ion-card-header>\n\n        </ion-card>     \n\n    <form #form="ngForm" novalidate="novalidate">\n\n        <ion-list>\n\n            <ion-item>\n\n                <ion-label color="primary" floating><span>Nom du produit </span> </ion-label>\n\n                <ion-input [(ngModel)]="produit.nom" name="nom" type="text" placeholder="" #nom="ngModel"></ion-input>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-label color="primary"><span>Prix de vente </span> </ion-label>\n\n                <ion-input [(ngModel)]="produit.cout" name="cout" type="number" placeholder="" #nom="ngModel"></ion-input>\n\n            </ion-item> \n\n            <ion-item>\n\n                    <ion-label color="primary" >\n\n                        <span>Unité de vente</span>\n\n                    </ion-label>\n\n                    <ion-select [(ngModel)]="produit.unite" name="unite" #type="ngModel"> \n\n                        <ion-option value="Unité">Unité</ion-option>\n\n                        <ion-option value="Colis">Colis</ion-option>\n\n                        <ion-option value="Carton">Carton</ion-option>\n\n                        <ion-option value="Bouteille">Bouteille</ion-option>\n\n                        <ion-option value="Palette">Palette</ion-option>\n\n                        <ion-option value="Pack">Pack</ion-option>\n\n                        <ion-option value="Paquet">Paquet</ion-option>\n\n                        <ion-option value="Litre">Litre</ion-option>\n\n                        <ion-option value="Kilograme">Kilograme</ion-option>\n\n                        <ion-option value="Pièce">Pièce</ion-option>\n\n                        <ion-option value="Boîte">Boîte</ion-option>\n\n                    </ion-select>\n\n                </ion-item>             \n\n            <ion-item>\n\n                    <ion-textarea rows="1" [(ngModel)]="produit.description" placeholder="Description du produit"\n\n                        name="description" #description="ngModel"></ion-textarea>\n\n            </ion-item> \n\n            <ion-item>\n\n                    <ion-label>Activer les prévision</ion-label>\n\n                    <ion-toggle item-right  [(ngModel)]="produit.control" name="control" #control="ngModel" color="secondary">\n\n                    </ion-toggle>\n\n            </ion-item>                                  \n\n        </ion-list>\n\n        <div padding="padding" >\n\n            <button  *ngIf="produit.id" ion-button outline block icon-right color="danger" (click)="deleteItem()">\n\n                    <span>Supprimer ce produit\n\n                        <ion-icon name="close"></ion-icon>\n\n                    </span>\n\n               </button>              \n\n        </div>\n\n    </form>\n\n</ion-content>\n\n<ion-footer >\n\n    <button  ion-button full icon-right [disabled]="isInvalid()" (click)="onSubmit()">\n\n            <span *ngIf="!produit.id">Créer un produit</span>\n\n            <span *ngIf="produit.id">Enregistrer les changements</span>\n\n            <ion-icon name="md-done-all"></ion-icon> \n\n    </button>\n\n  </ion-footer>'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\produit\produit.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */],

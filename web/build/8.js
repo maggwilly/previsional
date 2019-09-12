@@ -1,6 +1,6 @@
 webpackJsonp([8],{
 
-/***/ 860:
+/***/ 863:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VendeursPageModule", function() { return VendeursPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vendeurs__ = __webpack_require__(915);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vendeurs__ = __webpack_require__(936);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var VendeursPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 915:
+/***/ 936:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66,12 +66,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-/**
- * Generated class for the VendeursPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 var VendeursPage = /** @class */ (function () {
     function VendeursPage(navCtrl, loadingCtrl, manager, localisation, userService, notify, storage, navParams) {
         this.navCtrl = navCtrl;
@@ -93,7 +87,7 @@ var VendeursPage = /** @class */ (function () {
     VendeursPage.prototype.loadData = function () {
         var _this = this;
         this.loading = true;
-        this.manager.get('user', this.localisation.isOnline()).then(function (data) {
+        this.manager.get('vendeur', this.localisation.isOnline()).then(function (data) {
             _this.vendeurs = data ? data : [];
             _this.loading = false;
             _this.localisation.onConnect(_this.localisation.isOnline());
@@ -108,7 +102,7 @@ var VendeursPage = /** @class */ (function () {
             content: "chargement...",
         });
         this.loading = true;
-        this.manager.get('user', true).then(function (data) {
+        this.manager.get('vendeur', true).then(function (data) {
             _this.vendeurs = data ? data : [];
             _this.loading = false;
             loader.dismiss();
@@ -155,7 +149,7 @@ var VendeursPage = /** @class */ (function () {
                         var loader = _this.notify.loading({
                             content: "Invitation...",
                         });
-                        self.manager.save('request', data, true).then(function (req) {
+                        self.manager.save('request', data, _this.localisation.isOnline()).then(function (req) {
                             loader.dismiss().then(function () {
                                 if (!req.id)
                                     return;
@@ -177,7 +171,7 @@ var VendeursPage = /** @class */ (function () {
         var loader = this.notify.loading({
             content: "Suppression...",
         });
-        this.manager.delete('request', requested, 'delete', true).then(function (data) {
+        this.manager.delete('request', requested, 'delete', this.localisation.isOnline()).then(function (data) {
             if (data.ok) {
                 loader.dismiss().then(function () {
                     var index = _this.requesteds.findIndex(function (item) { return item.id == data.deletedId; });
@@ -263,7 +257,7 @@ var VendeursPage = /** @class */ (function () {
     };
     VendeursPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-vendeurs',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\vendeurs\vendeurs.html"*/'<ion-header no-border no-shadow>\n    <ion-navbar>\n        <button menuToggle  ion-button icon-only showwhen="mobile">\n            <ion-icon name="menu"></ion-icon>\n          </button>  \n      <ion-title>Les vendeurs</ion-title>\n      <ion-buttons end>\n      <button ion-button="ion-button" icon-only (click)="loadRemoteData()" >\n          <ion-icon name="refresh"></ion-icon>\n      </button>\n      <button ion-button small outline (click)="add()" icon-left>\n            <ion-icon name="add" ></ion-icon>\n            Créer\n        </button>           \n  </ion-buttons>    \n    </ion-navbar>\n  </ion-header>\n  <ion-content>\n    <!--  <ion-searchbar [hidden]="!vendeurs.length" [(ngModel)]="queryText" (ionInput)="search()" placeholder="Recherchez un nom">\n        </ion-searchbar>  -->   \n      <ion-list *ngIf="(vendeurs.length)">\n          <div *ngIf="vendeurs.length">\n         <ion-item-divider  color="light">Mon equipe de vente ({{vendeurs.length}} membres)</ion-item-divider> \n          <ion-item  *ngFor="let vendeur of vendeurs"  [hidden]="vendeur.hide||vendeur.id==userService.user">\n                <span *ngIf="vendeur.id!=userService.user">{{vendeur.nom}}</span> \n              <p *ngIf="vendeur.id!=userService.user">{{vendeur.phone}}</p>          \n               <button  ion-button outline color="danger" (click)="deleteUser(vendeur)" only-icon small item-right color="danger">\n                    <span>\n                        <ion-icon  name="close"></ion-icon>\n                    </span>\n               </button>  \n          </ion-item>\n          </div>\n          <div *ngIf="requesteds.length">\n          <ion-item-divider  color="light">Demandes envoyees ({{requesteds.length}})</ion-item-divider> \n          <ion-item  *ngFor="let requested of requesteds"  [hidden]="requested.hide">\n                 {{requested.user.nom}}\n              <p>{{requested.user.phone}}</p>\n              <button  ion-button clear color="danger" small item-right (click)="deleteRequest(requested)" color="danger">\n                    <span>Annuler\n                        <ion-icon  name="close"></ion-icon>\n                    </span>\n               </button>              \n          </ion-item> \n          </div>       \n      </ion-list>\n      <ion-grid style="justify-content: center;height: 100%;" *ngIf="(!vendeurs.length&&!requesteds.length)||loading">\n          <ion-row style="justify-content: center;height: 100%;" justify-content-center align-items-center>\n              <ion-spinner name="ios"></ion-spinner>\n          </ion-row>\n        </ion-grid>       \n  </ion-content>'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\vendeurs\vendeurs.html"*/,
+            selector: 'page-vendeurs',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\vendeurs\vendeurs.html"*/'<ion-header no-border no-shadow>\n\n    <ion-navbar hideBackButton="true">\n\n        <button menuToggle  ion-button icon-only showWhen="mobile">\n\n            <ion-icon name="menu"></ion-icon>\n\n          </button>  \n\n      <ion-title>Les vendeurs</ion-title>\n\n      <ion-buttons end>\n\n      <button ion-button="ion-button" icon-only (click)="loadRemoteData()" >\n\n          <ion-icon name="refresh"></ion-icon>\n\n      </button>\n\n      <button ion-button small outline (click)="add()" icon-left>\n\n            <ion-icon name="add" ></ion-icon>\n\n            Créer\n\n        </button>           \n\n  </ion-buttons>    \n\n    </ion-navbar>\n\n  </ion-header>\n\n  <ion-content>\n\n    <!--  <ion-searchbar [hidden]="!vendeurs.length" [(ngModel)]="queryText" (ionInput)="search()" placeholder="Recherchez un nom">\n\n        </ion-searchbar>  -->   \n\n      <ion-list *ngIf="(vendeurs.length)">\n\n          <div *ngIf="vendeurs.length">\n\n         <ion-item-divider  color="light">Mon equipe de vente ({{vendeurs.length}} membres)</ion-item-divider> \n\n          <ion-item  *ngFor="let vendeur of vendeurs"  [hidden]="vendeur.hide||vendeur.id==userService.user">\n\n                <span *ngIf="vendeur.id!=userService.user">{{vendeur.nom}}</span> \n\n              <p *ngIf="vendeur.id!=userService.user">{{vendeur.phone}}</p>          \n\n               <button  ion-button outline color="danger" (click)="deleteUser(vendeur)" only-icon small item-right color="danger">\n\n                    <span>\n\n                        <ion-icon  name="close"></ion-icon>\n\n                    </span>\n\n               </button>  \n\n          </ion-item>\n\n          </div>\n\n          <div *ngIf="requesteds.length">\n\n          <ion-item-divider  color="light">Demandes envoyees ({{requesteds.length}})</ion-item-divider> \n\n          <ion-item  *ngFor="let requested of requesteds"  [hidden]="requested.hide">\n\n                 {{requested.user.nom}}\n\n              <p>{{requested.user.phone}}</p>\n\n              <button  ion-button clear color="danger" small item-right (click)="deleteRequest(requested)" color="danger">\n\n                    <span>Annuler\n\n                        <ion-icon  name="close"></ion-icon>\n\n                    </span>\n\n               </button>              \n\n          </ion-item> \n\n          </div>       \n\n      </ion-list>\n\n      <ion-grid style="justify-content: center;height: 100%;" *ngIf="(!vendeurs.length&&!requesteds.length)||loading">\n\n          <ion-row style="justify-content: center;height: 100%;" justify-content-center align-items-center>\n\n              <ion-spinner name="ios"></ion-spinner>\n\n          </ion-row>\n\n        </ion-grid>       \n\n  </ion-content>'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\vendeurs\vendeurs.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],

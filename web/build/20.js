@@ -1,6 +1,6 @@
 webpackJsonp([20],{
 
-/***/ 845:
+/***/ 847:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfilePageModule", function() { return ProfilePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile__ = __webpack_require__(894);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile__ = __webpack_require__(914);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var ProfilePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 894:
+/***/ 914:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48,7 +48,7 @@ var ProfilePageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_notify__ = __webpack_require__(483);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_user__ = __webpack_require__(153);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__ = __webpack_require__(89);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -71,12 +71,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var ProfilePage = /** @class */ (function () {
-    function ProfilePage(navCtrl, navParams, notify, userService, storage, manager) {
+    function ProfilePage(navCtrl, navParams, notify, userService, localisation, manager) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.notify = notify;
         this.userService = userService;
-        this.storage = storage;
+        this.localisation = localisation;
         this.manager = manager;
         this.user = {};
         this.user = this.navParams.get('user');
@@ -100,12 +100,8 @@ var ProfilePage = /** @class */ (function () {
     };
     ProfilePage.prototype.onSubmit = function () {
         var _this = this;
-        this.manager.put('user', this.user, true).then(function (data) {
-            if (data.id) {
-                _this.storage.set('user', data).then(function () {
-                    _this.dismiss(false);
-                });
-            }
+        this.manager.save('user', this.user, this.localisation.isOnline()).then(function (data) {
+            _this.dismiss(false);
         }, function (error) {
             console.log(error);
             _this.notify.onSuccess({ message: "Verifiez votre connexion internet" });
@@ -113,13 +109,13 @@ var ProfilePage = /** @class */ (function () {
     };
     ProfilePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-profile',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\profile\profile.html"*/'<!--\n  Generated template for the ProfilePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>     \n    <ion-title>Informations génerales</ion-title>\n    <ion-buttons end>\n            <button ion-button="ion-button" (click)="dismiss()" icon-left>\n                <ion-icon name="md-close" color="danger" showWhen="android,windows,core"></ion-icon> \n                Fermer\n            </button>\n        </ion-buttons>\n  </ion-navbar>\n</ion-header>\n<ion-content padding>\n        <ion-card>\n                <ion-card-header text-wrap>Modifiez ou completez vos informations </ion-card-header>\n        </ion-card>     \n  <form #form="ngForm" novalidate="novalidate">\n    <ion-list *ngIf="user">\n        <ion-item>\n            <ion-label color="primary" floating><span>Entreprise </span> </ion-label>\n            <ion-input [(ngModel)]="user.entreprise" name="entreprise" type="text" placeholder="" #entreprise="ngModel" [disabled]="!userService.amParent"></ion-input>\n        </ion-item>     \n        <ion-item>\n            <ion-label color="primary" floating><span>Votre nom </span> </ion-label>\n            <ion-input [(ngModel)]="user.nom" name="nom" type="text" placeholder="" #nom="ngModel"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label color="primary" floating>\n                <span>Télephone</span>\n            </ion-label>\n            <ion-input [(ngModel)]="user.phone" name="phone" type="tel" placeholder="" #tel="ngModel" disabled="true"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label color="primary" floating><span>Pays </span> </ion-label>\n            <ion-input [(ngModel)]="user.pays" name="pays" type="text" placeholder=""  #pays="ngModel" [disabled]="!userService.amParent"></ion-input>\n        </ion-item>\n        <ion-item >\n            <ion-label color="primary" floating> \n                <span>Ville</span>\n            </ion-label>\n            <ion-select [(ngModel)]="user.ville" name="ville" #ville="ngModel" [disabled]="!userService.amParent">\n                    <ion-option value="Yaoundé">Yaoundé</ion-option>\n                    <ion-option value="Douala">Douala</ion-option>\n                    <ion-option value="Bafoussam">Bafoussam</ion-option>\n                    <ion-option value="Bertoua">Bertoua</ion-option>\n                    <ion-option value="Bamenda">Bamenda</ion-option>\n                    <ion-option value="Dschang">Dschang</ion-option>\n                    <ion-option value="Autre">Autre</ion-option>\n                </ion-select>\n            </ion-item>    \n                <ion-item>\n                    \n            <ion-textarea rows="2" [(ngModel)]="user.adresse" placeholder="Adresse" name="adresse" #adresse="ngModel"></ion-textarea>\n        </ion-item>\n    </ion-list>\n</form>\n</ion-content>\n<ion-footer>\n        <button ion-button  full (click)="onSubmit()">Appliquer les critères\n        </button>\n        <button ion-button full icon-right [disabled]="isInvalid()" (click)="onSubmit()">\n                <span>Enrégistrer les changements\n                    <ion-icon name="md-done-all"></ion-icon>\n                </span>\n            </button>\n    </ion-footer>'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\profile\profile.html"*/,
+            selector: 'page-profile',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\profile\profile.html"*/'<!--\n\n  Generated template for the ProfilePage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar>     \n\n    <ion-title>Informations génerales</ion-title>\n\n    <ion-buttons end>\n\n            <button ion-button="ion-button" (click)="dismiss()" icon-left>\n\n                <ion-icon name="md-close" color="danger" showWhen="android,windows,core"></ion-icon> \n\n                Fermer\n\n            </button>\n\n        </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n\n        <ion-card>\n\n                <ion-card-header text-wrap>Modifiez ou completez vos informations </ion-card-header>\n\n        </ion-card>     \n\n  <form #form="ngForm" novalidate="novalidate">\n\n    <ion-list *ngIf="user">\n\n        <ion-item>\n\n            <ion-label color="primary" floating><span>Entreprise </span> </ion-label>\n\n            <ion-input [(ngModel)]="user.entreprise" name="entreprise" type="text" placeholder="" #entreprise="ngModel" [disabled]="!userService.amParent"></ion-input>\n\n        </ion-item>     \n\n        <ion-item>\n\n            <ion-label color="primary" floating><span>Votre nom </span> </ion-label>\n\n            <ion-input [(ngModel)]="user.nom" name="nom" type="text" placeholder="" #nom="ngModel"></ion-input>\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label color="primary" floating>\n\n                <span>Télephone</span>\n\n            </ion-label>\n\n            <ion-input [(ngModel)]="user.phone" name="phone" type="tel" placeholder="" #tel="ngModel" disabled="true"></ion-input>\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label color="primary" floating><span>Pays </span> </ion-label>\n\n            <ion-input [(ngModel)]="user.pays" name="pays" type="text" placeholder=""  #pays="ngModel" [disabled]="!userService.amParent"></ion-input>\n\n        </ion-item>\n\n        <ion-item >\n\n            <ion-label color="primary" floating> \n\n                <span>Ville</span>\n\n            </ion-label>\n\n            <ion-select [(ngModel)]="user.ville" name="ville" #ville="ngModel" [disabled]="!userService.amParent">\n\n                    <ion-option value="Yaoundé">Yaoundé</ion-option>\n\n                    <ion-option value="Douala">Douala</ion-option>\n\n                    <ion-option value="Bafoussam">Bafoussam</ion-option>\n\n                    <ion-option value="Bertoua">Bertoua</ion-option>\n\n                    <ion-option value="Bamenda">Bamenda</ion-option>\n\n                    <ion-option value="Dschang">Dschang</ion-option>\n\n                    <ion-option value="Autre">Autre</ion-option>\n\n                </ion-select>\n\n            </ion-item>    \n\n                <ion-item>\n\n                    \n\n            <ion-textarea rows="2" [(ngModel)]="user.adresse" placeholder="Adresse" name="adresse" #adresse="ngModel"></ion-textarea>\n\n        </ion-item>\n\n    </ion-list>\n\n</form>\n\n</ion-content>\n\n<ion-footer>\n\n        <button ion-button full icon-right [disabled]="isInvalid()" (click)="onSubmit()">\n\n                <span>Enrégistrer les changements\n\n                    <ion-icon name="md-done-all"></ion-icon>\n\n                </span>\n\n            </button>\n\n    </ion-footer>'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\profile\profile.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2__app_app_notify__["a" /* AppNotify */],
             __WEBPACK_IMPORTED_MODULE_4__providers_user_user__["a" /* UserProvider */],
-            __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__["a" /* LocalisationProvider */],
             __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__["a" /* ManagerProvider */]])
     ], ProfilePage);
     return ProfilePage;

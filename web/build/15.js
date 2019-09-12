@@ -1,6 +1,6 @@
 webpackJsonp([15],{
 
-/***/ 851:
+/***/ 852:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SecteursPageModule", function() { return SecteursPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__secteurs__ = __webpack_require__(902);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__secteurs__ = __webpack_require__(921);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var SecteursPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 902:
+/***/ 921:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -174,7 +174,7 @@ var SecteursPage = /** @class */ (function () {
     };
     SecteursPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-secteurs',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\secteurs\secteurs.html"*/'<ion-header  no-border no-shadow>\n    <ion-navbar>\n        <button menuToggle  ion-button icon-only showwhen="mobile">\n            <ion-icon name="menu"></ion-icon>\n          </button>\n      <ion-row no-padding>\n          <ion-col>  <ion-title>Liste des zones</ion-title></ion-col>\n          <ion-col>\n            <ion-searchbar [hidden]="!secteurs.length"  [(ngModel)]="queryText" (ionInput)="search()" placeholder="Recherchez un produit">\n            </ion-searchbar>         \n          </ion-col>\n        </ion-row>       \n      <ion-buttons end>\n      <button ion-button="ion-button" icon-only (click)="loadRemoteData()" >\n          <ion-icon name="refresh"></ion-icon>\n      </button>\n      <button ion-button small outline (click)="add()" icon-left>\n          <ion-icon name="add" ></ion-icon>\n          Créer\n      </button>          \n  </ion-buttons>    \n    </ion-navbar>\n  </ion-header>\n  <ion-content padding-top>     \n      <ion-list>\n          <ion-item  *ngFor="let secteur of secteurs" (click)="add(secteur)" [hidden]="secteur.hide" text-wrap>\n                <span *ngIf="secteur.ville">{{secteur.ville}} - </span> <strong>{{secteur.nom}}</strong>\n              <p>{{secteur.description}}</p>\n          </ion-item>\n      </ion-list>\n      <ion-grid style="justify-content: center;height: 100%;" *ngIf="loading"> \n          <ion-row style="justify-content: center;height: 100%;" justify-content-center align-items-center>\n              <ion-spinner name="ios"></ion-spinner>\n          </ion-row>\n          \n        </ion-grid> \n        <ion-grid style="height: 80%;justify-content: center;position:absolute;top:20%" *ngIf="!secteurs.length&&!loading">\n            <ion-row style="height: 100%;justify-content: center;" justify-content-center align-items-center>\n                <div text-center text-wrap  class="empty" padding>\n                  Aucune zone crée.\n                </div>\n            </ion-row>\n          </ion-grid>\n  </ion-content> \n           '/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\secteurs\secteurs.html"*/,
+            selector: 'page-secteurs',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\secteurs\secteurs.html"*/'<ion-header  no-border no-shadow>\n\n    <ion-navbar hideBackButton="true">\n\n        <button menuToggle  ion-button icon-only showwhen="mobile">\n\n            <ion-icon name="menu"></ion-icon>\n\n          </button>\n\n      <ion-row no-padding>\n\n          <ion-col>  <ion-title>Liste des zones</ion-title></ion-col>\n\n          <ion-col>\n\n            <ion-searchbar [hidden]="!secteurs.length"  [(ngModel)]="queryText" (ionInput)="search()" placeholder="Recherchez un produit">\n\n            </ion-searchbar>         \n\n          </ion-col>\n\n        </ion-row>       \n\n      <ion-buttons end>\n\n      <button ion-button="ion-button" icon-only (click)="loadRemoteData()" >\n\n          <ion-icon name="refresh"></ion-icon>\n\n      </button>\n\n      <button ion-button small outline (click)="add()" icon-left>\n\n          <ion-icon name="add" ></ion-icon>\n\n          Créer\n\n      </button>          \n\n  </ion-buttons>    \n\n    </ion-navbar>\n\n  </ion-header>\n\n  <ion-content padding-top>     \n\n      <ion-list *ngIf="secteurs.length">\n\n          <ion-list-header>Liste des zones ({{secteurs.length}} )</ion-list-header>\n\n          <ion-item  *ngFor="let secteur of secteurs" (click)="add(secteur)" [hidden]="secteur.hide" text-wrap>\n\n                <span *ngIf="secteur.ville">{{secteur.ville}} - </span> <strong>{{secteur.nom}}</strong>\n\n              <p>{{secteur.description}}</p>\n\n          </ion-item>\n\n      </ion-list>\n\n      <ion-grid style="justify-content: center;height: 100%;" *ngIf="!secteurs.length&&loading"> \n\n          <ion-row style="justify-content: center;height: 100%;" justify-content-center align-items-center>\n\n              <ion-spinner name="ios"></ion-spinner>\n\n          </ion-row>\n\n          \n\n        </ion-grid> \n\n        <ion-grid style="height: 80%;justify-content: center;position:absolute;top:20%" *ngIf="!secteurs.length&&!loading">\n\n            <ion-row style="height: 100%;justify-content: center;" justify-content-center align-items-center>\n\n                <div text-center text-wrap  class="empty" padding>\n\n                  Aucune zone crée.\n\n                </div>\n\n            </ion-row>\n\n          </ion-grid>\n\n  </ion-content> \n\n           '/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\secteurs\secteurs.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
