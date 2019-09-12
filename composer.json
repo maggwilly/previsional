@@ -1,0 +1,11 @@
+{
+    "name": "vendor/angular",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Williams Penka",
+            "email": "william@afreelancia.com"
+        }
+    ],
+    "require": {}
+}
