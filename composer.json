@@ -1,0 +1,26 @@
+{
+
+    "require": {
+        "php": ">=5.3.9",
+	
+    },
+    "require-dev": {
+    },
+    "scripts": {
+        "symfony-scripts": [
+
+        ],
+        "post-install-cmd": [
+            "@symfony-scripts"
+        ],
+        "post-update-cmd": [
+            "@symfony-scripts"
+        ]
+    },		
+    "config": {
+        "bin-dir": "bin",
+        "platform": {
+            "php": "5.6.25"
+        }
+    }
+}
