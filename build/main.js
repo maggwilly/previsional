@@ -214,163 +214,159 @@ webpackEmptyAsyncContext.id = 166;
 var map = {
 	"../pages/about/about.module": [
 		824,
-		39
+		80
 	],
 	"../pages/cartograph/cartograph.module": [
 		825,
-		5
+		47
 	],
 	"../pages/commende-create/commende-create.module": [
 		826,
-		1
+		43
 	],
 	"../pages/commendes-view/commendes-view.module": [
 		827,
-		38
+		79
 	],
 	"../pages/commendes/commendes.module": [
 		828,
-		37
+		78
 	],
 	"../pages/createligne/createligne.module": [
 		829,
-		36
+		77
 	],
 	"../pages/donnees/donnees.module": [
 		830,
-		35
+		76
 	],
 	"../pages/filtre-pointvente/filtre-pointvente.module": [
 		831,
-		34
+		75
 	],
 	"../pages/filtre-stats/filtre-stats.module": [
 		832,
-		33
+		74
 	],
 	"../pages/filtre-vente/filtre-vente.module": [
-		855,
-		32
+		833,
+		73
 	],
 	"../pages/help/help.module": [
-		833,
-		31
+		834,
+		72
 	],
 	"../pages/home/home.module": [
-		834,
-		0
+		835,
+		42
 	],
 	"../pages/map/map.module": [
-		835,
-		4
+		836,
+		46
 	],
 	"../pages/menu/menu.module": [
-		836,
-		30
+		837,
+		71
 	],
 	"../pages/point-vente-detail/point-vente-detail.module": [
-		837,
-		7
+		838,
+		49
 	],
 	"../pages/point-vente/point-vente.module": [
-		838,
-		29
+		839,
+		70
 	],
 	"../pages/pointventes/pointventes.module": [
-		839,
-		28
+		840,
+		69
 	],
 	"../pages/pop-over-menu/pop-over-menu.module": [
-		840,
-		27
+		841,
+		68
 	],
 	"../pages/prevision-details/prevision-details.module": [
-		841,
-		26
+		842,
+		67
 	],
 	"../pages/previsions/previsions.module": [
-		842,
-		25
+		843,
+		66
 	],
 	"../pages/price-detail/price-detail.module": [
-		843,
-		24
+		844,
+		65
 	],
 	"../pages/produit-detail/produit-detail.module": [
-		844,
-		23
+		845,
+		64
 	],
 	"../pages/produit/produit.module": [
-		845,
-		22
+		846,
+		63
 	],
 	"../pages/produits/produits.module": [
-		846,
-		21
+		847,
+		62
 	],
 	"../pages/profile/profile.module": [
-		847,
-		20
+		848,
+		61
 	],
 	"../pages/quartiers/quartiers.module": [
-		848,
-		3
+		849,
+		45
 	],
 	"../pages/rapports/rapports.module": [
-		849,
-		19
+		850,
+		60
 	],
 	"../pages/rendezvous/rendezvous.module": [
-		850,
-		18
+		851,
+		59
 	],
 	"../pages/requests/requests.module": [
-		851,
-		17
+		852,
+		58
 	],
 	"../pages/secteur/secteur.module": [
 		853,
-		16
+		57
 	],
 	"../pages/secteurs/secteurs.module": [
-		852,
-		15
+		854,
+		56
 	],
 	"../pages/selectclient/selectclient.module": [
-		854,
-		14
+		855,
+		55
 	],
 	"../pages/selectproduit/selectproduit.module": [
 		856,
-		13
+		54
 	],
 	"../pages/shoul-pay/shoul-pay.module": [
 		857,
-		12
+		53
 	],
 	"../pages/signup/signup.module": [
-		859,
-		6
+		858,
+		48
 	],
 	"../pages/stats/stats.module": [
-		858,
-		2
+		859,
+		44
 	],
 	"../pages/tabs/tabs.module": [
 		860,
-		11
+		52
 	],
 	"../pages/unavailable/unavailable.module": [
 		861,
-		10
-	],
-	"../pages/vendeur/vendeur.module": [
-		862,
-		9
+		51
 	],
 	"../pages/vendeurs/vendeurs.module": [
 		863,
-		8
+		50
 	]
 };
 function webpackAsyncContext(req) {
@@ -516,14 +512,10 @@ var ManagerProvider = /** @class */ (function () {
         });
     };
     ManagerProvider.prototype.getUserToken = function () {
-        if (this.platform.is('android') || this.platform.is('mobileweb') || this.platform.is('core'))
-            return window.localStorage.getItem('_user_token');
-        return this.readCookie('_user_token'); //
+        return window.localStorage.getItem('_user_token');
     };
     ManagerProvider.prototype.getUserId = function () {
-        if (this.platform.is('android') || this.platform.is('mobileweb') || this.platform.is('core'))
-            return window.localStorage.getItem('_user_id_');
-        return this.readCookie('_user_id_'); //
+        return window.localStorage.getItem('_user_id_');
     };
     ManagerProvider.prototype.get = function (entityName, online, id, keyIndex, filter, nbrecritere) {
         var _this = this;
@@ -735,6 +727,7 @@ var ManagerProvider = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppNotify; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__ = __webpack_require__(89);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -747,11 +740,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 //import { Component } from '@angular/core';
 
+
 var AppNotify = /** @class */ (function () {
-    function AppNotify(toastCtrl, alerttCtrl, loadingCtrl) {
+    function AppNotify(toastCtrl, alerttCtrl, loadingCtrl, localisation) {
         this.toastCtrl = toastCtrl;
         this.alerttCtrl = alerttCtrl;
         this.loadingCtrl = loadingCtrl;
+        this.localisation = localisation;
         this.toastCtrl = toastCtrl;
     }
     AppNotify.prototype.onSuccess = function (toastOpts) {
@@ -766,7 +761,7 @@ var AppNotify = /** @class */ (function () {
     };
     AppNotify.prototype.onError = function (toastOpts) {
         var errorToast = this.toastCtrl.create({
-            message: toastOpts.message,
+            message: !this.localisation.isOffline() ? toastOpts.message : "Verifiez votre connexion internet avant de poursuivre",
             duration: toastOpts.duration || 7000,
             position: toastOpts.position || 'bottom',
             showCloseButton: toastOpts.showCloseButton || true,
@@ -776,7 +771,7 @@ var AppNotify = /** @class */ (function () {
     };
     AppNotify.prototype.showAlert = function (alertOptions) {
         var errorToast = this.alerttCtrl.create({
-            message: alertOptions.message,
+            message: !this.localisation.isOffline() ? alertOptions.message : "Verifiez votre connexion internet avant de poursuivre",
             title: alertOptions.title,
             subTitle: alertOptions.subTitle,
             buttons: alertOptions.buttons || ['Ok'],
@@ -791,7 +786,8 @@ var AppNotify = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ToastController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]])
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__["a" /* LocalisationProvider */]])
     ], AppNotify);
     return AppNotify;
 }());
@@ -988,6 +984,7 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/donnees/donnees.module#DonneesPageModule', name: 'DonneesPage', segment: 'donnees', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/filtre-pointvente/filtre-pointvente.module#FiltrePointventePageModule', name: 'FiltrePointventePage', segment: 'filtre-pointvente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/filtre-stats/filtre-stats.module#FiltreStatsPageModule', name: 'FiltreStatsPage', segment: 'filtre-stats', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/filtre-vente/filtre-vente.module#FiltreVentePageModule', name: 'FiltreVentePage', segment: 'filtre-vente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/help/help.module#HelpPageModule', name: 'HelpPage', segment: 'help', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/map/map.module#MapPageModule', name: 'MapPage', segment: 'map', priority: 'low', defaultHistory: [] },
@@ -1007,17 +1004,15 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/rapports/rapports.module#RapportsPageModule', name: 'RapportsPage', segment: 'rapports', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/rendezvous/rendezvous.module#RendezvousPageModule', name: 'RendezvousPage', segment: 'rendezvous', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/requests/requests.module#RequestsPageModule', name: 'RequestsPage', segment: 'requests', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/secteurs/secteurs.module#SecteursPageModule', name: 'SecteursPage', segment: 'secteurs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/secteur/secteur.module#SecteurPageModule', name: 'SecteurPage', segment: 'secteur', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/secteurs/secteurs.module#SecteursPageModule', name: 'SecteursPage', segment: 'secteurs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/selectclient/selectclient.module#SelectclientPageModule', name: 'SelectclientPage', segment: 'selectclient', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/filtre-vente/filtre-vente.module#FiltreVentePageModule', name: 'FiltreVentePage', segment: 'filtre-vente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/selectproduit/selectproduit.module#SelectproduitPageModule', name: 'SelectproduitPage', segment: 'selectproduit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/shoul-pay/shoul-pay.module#ShoulPayPageModule', name: 'ShoulPayPage', segment: 'shoul-pay', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/stats/stats.module#StatsPageModule', name: 'StatsPage', segment: 'stats', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/stats/stats.module#StatsPageModule', name: 'StatsPage', segment: 'stats', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/unavailable/unavailable.module#UnavailablePageModule', name: 'UnavailablePage', segment: 'unavailable', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/vendeur/vendeur.module#VendeurPageModule', name: 'VendeurPage', segment: 'vendeur', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/vendeurs/vendeurs.module#VendeursPageModule', name: 'VendeursPage', segment: 'vendeurs', priority: 'low', defaultHistory: [] }
                     ]
                 }),
@@ -1521,6 +1516,7 @@ var HideHeaderDirective = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TotalDirective; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_manager_manager__ = __webpack_require__(47);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1531,6 +1527,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 /**
  * Generated class for the TotalDirective directive.
  *
@@ -1538,7 +1535,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Directives.
  */
 var TotalDirective = /** @class */ (function () {
-    function TotalDirective() {
+    function TotalDirective(manager) {
+        this.manager = manager;
     }
     TotalDirective.prototype.ngOnInit = function () {
         var _this = this;
@@ -1546,9 +1544,9 @@ var TotalDirective = /** @class */ (function () {
             return;
         this.commende.total = 0;
         this.commende.lignes.forEach(function (ligne) {
+            console.log(ligne);
             if (ligne.quantite && ligne.pu)
                 _this.commende.total += ligne.quantite * ligne.pu;
-            console.log(_this.commende.total);
         });
     };
     TotalDirective.prototype.ngOnChanges = function () {
@@ -1562,7 +1560,7 @@ var TotalDirective = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
             selector: '[total]' // Attribute selector
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_manager_manager__["a" /* ManagerProvider */]])
     ], TotalDirective);
     return TotalDirective;
 }());
