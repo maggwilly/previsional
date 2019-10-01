@@ -1,14 +1,16 @@
 webpackJsonp([24],{
 
-/***/ 844:
+/***/ 843:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PriceDetailPageModule", function() { return PriceDetailPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PrevisionsPageModule", function() { return PrevisionsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__price_detail__ = __webpack_require__(911);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__previsions__ = __webpack_require__(909);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pipes_pipes_module__ = __webpack_require__(485);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__ = __webpack_require__(484);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,35 +20,42 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var PriceDetailPageModule = /** @class */ (function () {
-    function PriceDetailPageModule() {
+
+
+var PrevisionsPageModule = /** @class */ (function () {
+    function PrevisionsPageModule() {
     }
-    PriceDetailPageModule = __decorate([
+    PrevisionsPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__price_detail__["a" /* PriceDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_2__previsions__["a" /* PrevisionsPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__price_detail__["a" /* PriceDetailPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__previsions__["a" /* PrevisionsPage */]),
+                __WEBPACK_IMPORTED_MODULE_3__pipes_pipes_module__["a" /* PipesModule */],
+                __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__["a" /* DirectivesModule */]
             ],
         })
-    ], PriceDetailPageModule);
-    return PriceDetailPageModule;
+    ], PrevisionsPageModule);
+    return PrevisionsPageModule;
 }());
 
-//# sourceMappingURL=price-detail.module.js.map
+//# sourceMappingURL=previsions.module.js.map
 
 /***/ }),
 
-/***/ 911:
+/***/ 909:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PriceDetailPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PrevisionsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_manager_manager__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_manager_manager__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_notify__ = __webpack_require__(483);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__ = __webpack_require__(65);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60,115 +69,121 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-/**
- * Generated class for the PriceDetailPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var PriceDetailPage = /** @class */ (function () {
-    function PriceDetailPage(modalCtrl, navCtrl, notify, manager, navParams) {
-        this.modalCtrl = modalCtrl;
+
+
+var PrevisionsPage = /** @class */ (function () {
+    function PrevisionsPage(navCtrl, modalCtrl, localisation, manager, loadingCtrl, notify, navParams) {
         this.navCtrl = navCtrl;
-        this.notify = notify;
+        this.modalCtrl = modalCtrl;
+        this.localisation = localisation;
         this.manager = manager;
+        this.loadingCtrl = loadingCtrl;
+        this.notify = notify;
         this.navParams = navParams;
-        this.payement = { duree: "1" };
-        this.price = this.navParams.get('price');
-        if (!this.price)
-            return;
-        this.payement.price = this.price.id;
+        this.previsions = [];
+        this.queryText = '';
+        this.isOnline = this.localisation.isOnline();
     }
-    PriceDetailPage.prototype.ionViewDidLoad = function () {
-        this.initPayement();
+    PrevisionsPage.prototype.ionViewDidLoad = function () {
+        this.refresh();
     };
-    PriceDetailPage.prototype.dismiss = function (skippecheck) {
-        if (skippecheck === void 0) { skippecheck = true; }
-        this.navCtrl.setRoot('TabsPage', { skippecheck: true }, { animate: true, direction: 'forward' });
+    PrevisionsPage.prototype.refresh = function () {
+        this.filtre = { type: '',
+            user: '', secteur: '',
+            ville: '',
+            afterdate: __WEBPACK_IMPORTED_MODULE_4_moment__().startOf('month').format("YYYY-MM-DD"),
+            beforedate: __WEBPACK_IMPORTED_MODULE_4_moment__().endOf('month').format("YYYY-MM-DD") };
+        if (this.localisation.isOnline())
+            return this.loadRemoteData();
+        return this.loadData();
     };
-    PriceDetailPage.prototype.openUrl = function () {
+    PrevisionsPage.prototype.loadData = function () {
         var _this = this;
-        var ch = this.manager.getObservable('payement', this.payement.cmd).subscribe(function (data) {
-            if (data.json() && data.json().status && data.json().status == 'SUCCESS') {
-                ch.unsubscribe();
-                _this.dismiss(false);
-            }
-            else if (data.json() && data.json().status && data.json().status == 'FAILED' || !data) {
-                ch.unsubscribe();
-                return _this.notify.onError({ message: "Le prelevement n'a pas put etre effectue" });
-            }
+        this.loading = true;
+        this.manager.get('prevision').then(function (data) {
+            _this.previsions = data ? data : [];
+            _this.loading = false;
+            _this.localisation.onConnect(_this.localisation.isOnline());
         }, function (error) {
-            _this.notify.onError({ message: 'Un problème est survenu. verifiez votre connexion internet' });
+            _this.localisation.onConnect(false);
+            _this.notify.onSuccess({ message: "PROBLEME ! Verifiez votre connexion internet" });
         });
-        // open this.payement.url
     };
-    PriceDetailPage.prototype.help = function () {
-        var modal = this.modalCtrl.create('HelpPage', { page: 'om' });
+    ;
+    PrevisionsPage.prototype.loadRemoteData = function () {
+        var _this = this;
+        /*let loader = this.loadingCtrl.create({
+          content: "chargement...",
+        });*/
+        this.loading = true;
+        this.manager.get('prevision', true, null, null, this.filtre, 1).then(function (data) {
+            _this.previsions = data ? data : [];
+            console.log(_this.previsions);
+            _this.loading = false;
+            // loader.dismiss(); 
+            _this.localisation.onConnect(_this.localisation.isOnline());
+        }, function (error) {
+            _this.localisation.onConnect(false);
+            // loader.dismiss();
+            console.log(error);
+            _this.notify.onSuccess({ message: "PROBLEME ! Verifiez votre connexion internet" });
+        });
+        //loader.present();
+    };
+    PrevisionsPage.prototype.openDetail = function (produit) {
+        this.navCtrl.push('PrevisionDetailsPage', { produit: produit });
+    };
+    PrevisionsPage.prototype.openFilter = function () {
+        var _this = this;
+        var modal = this.modalCtrl.create('FiltreStatsPage', { filtre: this.filtre });
+        modal.onDidDismiss(function (data) {
+            if (!data)
+                return;
+            return _this.loadRemoteData();
+        });
         modal.present();
-        //this.navCtrl.push('HelpPage',{page:'om'})
     };
-    PriceDetailPage.prototype.amount = function () {
-        switch (Number(this.payement.duree)) {
-            case 1:
-                this.payement.cmd = this.oneMonth.cmd;
-                this.payement.url = this.oneMonth.payment_url;
-                this.payement.amount = this.price.amount;
-                break;
-            case 6:
-                this.payement.cmd = this.sixMonth.cmd;
-                this.payement.url = this.sixMonth.payment_url;
-                this.payement.amount = this.price.amount * 5;
-                break;
-            default:
-                this.payement.cmd = this.twelveMonth.cmd;
-                this.payement.url = this.twelveMonth.payment_url;
-                this.payement.amount = this.price.amount * 10;
-                break;
-        }
-    };
-    PriceDetailPage.prototype.initPayement = function ($event) {
+    PrevisionsPage.prototype.search = function () {
         var _this = this;
-        if ($event === void 0) { $event = null; }
-        if (!this.price)
-            return;
-        this.payement.amount = undefined;
-        if (Number(this.payement.duree) == 1 && this.oneMonth ||
-            Number(this.payement.duree) == 6 && this.sixMonth ||
-            Number(this.payement.duree) == 12 && this.twelveMonth)
-            return this.amount();
-        this.manager.post('payement', this.payement, 'new', true).then(function (data) {
-            if (!data.payment_url)
-                return _this.notify.onError({ message: "Le paiement est momentanement indisponible. Reessayez plus tard" });
-            switch (data.duree) {
-                case 1:
-                    _this.oneMonth = data;
-                    break;
-                case 6:
-                    _this.sixMonth = data;
-                    break;
-                default:
-                    _this.twelveMonth = data;
-                    break;
-            }
-            return _this.amount();
-        }, function (error) {
-            _this.notify.onError({ message: "PROBLEME ! Verifiez votre connexion internet" });
+        var queryText = this.queryText.toLowerCase().replace(/,|\.|-/g, ' ');
+        var queryWords = queryText.split(' ').filter(function (w) { return !!w.trim().length; });
+        this.previsions.forEach(function (item) {
+            item.hide = true;
+            _this.filter(item, queryWords);
         });
     };
-    PriceDetailPage = __decorate([
+    PrevisionsPage.prototype.filter = function (item, queryWords) {
+        var matchesQueryText = false;
+        if (queryWords.length) {
+            // of any query word is in the session name than it passes the query test
+            queryWords.forEach(function (queryWord) {
+                if (item.nom.toLowerCase().indexOf(queryWord) > -1) {
+                    matchesQueryText = true;
+                }
+            });
+        }
+        else {
+            // if there are no query words then this session passes the query test
+            matchesQueryText = true;
+        }
+        item.hide = !(matchesQueryText);
+    };
+    PrevisionsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-price-detail',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\price-detail\price-detail.html"*/'\n<ion-header no-border no-shadow >\n  <ion-navbar>\n    <ion-title>Paiement</ion-title>\n         <ion-buttons showWhen="android,windows,core" end>\n          <button ion-button (click)="dismiss()" icon-left>\n            <ion-icon name="md-close" color="danger" showwhen="android,windows,core"></ion-icon> \n            Fermer\n          </button>\n</ion-buttons>\n  </ion-navbar>\n</ion-header>\n<ion-content >\n<div class="om-baner"></div>\n  <div padding>\n    <ion-segment [(ngModel)]="payement.duree" mode="ios" color="orange" (ionChange)="initPayement($event)" [disabled]="!payement.amount">\n      <ion-segment-button value="1" >\n        01 Mois\n      </ion-segment-button>\n      <ion-segment-button value="6" >\n        06 Mois\n      </ion-segment-button>      \n      <ion-segment-button value="12" >\n        12 Mois\n      </ion-segment-button>\n    </ion-segment>\n  </div>\n  \n  <div  padding>\n    <h2 *ngIf="price">{{price.nom}}</h2>\n    <ion-row *ngIf="price" style="height: 80px">\n    <ion-col>\n        <p>{{price.description}}</p>\n    </ion-col>\n    <ion-col text-right>\n        <ion-grid  style="height: 100%;justify-content: center;">\n            <ion-row justify-content-center align-items-center>\n               <ion-spinner [hidden]="payement.amount"  name="ios"></ion-spinner>\n               <ion-note class="amount" [hidden]="!payement.amount">{{payement.amount| number}} XAF</ion-note>\n            </ion-row>\n          </ion-grid>\n   </ion-col>  \n  </ion-row>  \n  <br>\n  <div *ngIf="payement.amount">\n   <button ion-button block color="orange"  (click)="openUrl()" >Effectuer le paiement</button> \n  </div>\n  </div>\n\n</ion-content>\n<ion-footer no-border>\n  <div padding text-wrap >\n    <p>\n      Payez votre abonnement en toute simplicité par Orange Money.\n      <button ion-button clear small (click)="help()" style="text-transform: none;">Obtenir de l\'aide.</button>\n    </p>\n  </div>\n</ion-footer>'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\price-detail\price-detail.html"*/,
+            selector: 'page-previsions',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\previsions\previsions.html"*/'\n\n<ion-header #head>\n\n  <ion-navbar hideBackButton="true">\n\n      <button menuToggle  ion-button icon-only showWhen="mobile">\n\n          <ion-icon name="menu"></ion-icon>\n\n        </button>\n\n      <ion-row no-padding>\n\n          <ion-col> <ion-title >Prévisions de livraisons</ion-title></ion-col>\n\n          <ion-col>\n\n            <ion-searchbar [hidden]="!previsions.length"  [(ngModel)]="queryText" (ionInput)="search()" placeholder="Recherchez un produit">\n\n            </ion-searchbar>         \n\n          </ion-col>\n\n        </ion-row>\n\n        <ion-buttons end>\n\n            <button ion-button icon-left (click)="refresh()"> \n\n              <ion-icon name="refresh"></ion-icon><span showWhen="core">Actualiser</span> \n\n            </button> \n\n            <button ion-button icon-only (click)="openFilter()" [disabled]="!isOnline">\n\n                <ion-icon name="funnel"></ion-icon><span showWhen="core">Seletionnez</span> \n\n              </button>                \n\n          </ion-buttons>       \n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding-top hide-header [header]="head">\n\n    <ion-card>\n\n          <ion-item text-wrap>\n\n              <strong *ngIf="filtre"><span *ngIf="filtre.afterdate"> Entre le {{filtre.afterdate|date:\'dd/MM/yyyy\'}}</span>\n\n                <span *ngIf="filtre.beforedate"> <span *ngIf="filtre.afterdate">et</span><span *ngIf="!filtre.afterdate">, Avant</span> le {{filtre.beforedate|date:\'dd/MM/yyyy\'}}</span></strong>\n\n              <p *ngIf="filtre">\n\n                  <span *ngIf="filtre.type">, {{filtre.type}}</span><span *ngIf="!filtre.type">Toutes catégories</span>\n\n                  <span *ngIf="filtre.ville">{{filtre.ville}}</span><span *ngIf="!filtre.ville">, toutes les villes</span>\n\n                 <span *ngIf="filtre.quartier">, {{filtre.quartier}}</span><span *ngIf="!filtre.quartier">, tous les quartiers</span>\n\n              </p>\n\n          </ion-item>\n\n      </ion-card>  \n\n    <ion-list *ngIf="previsions.length&&!loading">\n\n        <ion-item  *ngFor="let produit of previsions"  [hidden]="produit.hide" (click)="openDetail(produit)" text-wrap> \n\n            {{produit.nom}}<ion-badge  color="light"> {{produit.next_cmd_quantity}} {{produit.unite}}(s)</ion-badge>\n\n            <p>{{produit.description}}</p>\n\n            <p *ngIf="produit.next_cmd_date">{{produit.next_cmd_quantity}} {{produit.unite}}(s) à partir de \n\n              <ion-badge> {{produit.next_cmd_date|moment}} </ion-badge>\n\n              </p>      \n\n        </ion-item>  \n\n    </ion-list>\n\n    <ion-grid style="justify-content: center;height: 100%;" *ngIf="loading"> \n\n        <ion-row style="justify-content: center;height: 100%;" justify-content-center align-items-center>\n\n            <ion-spinner name="ios"></ion-spinner>\n\n        </ion-row>\n\n      </ion-grid> \n\n      <ion-grid style="height: 80%;justify-content: center;position:absolute;top:20%" *ngIf="!previsions.length&&!loading">\n\n          <ion-row style="height: 100%;justify-content: center;" justify-content-center align-items-center>\n\n              <div text-center text-wrap  class="empty" padding>\n\n                Aucune prévision possible à partir des données connues.\n\n              </div>\n\n          </ion-row>\n\n        </ion-grid>        \n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\previsions\previsions.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_3__app_app_notify__["a" /* AppNotify */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__["a" /* LocalisationProvider */],
             __WEBPACK_IMPORTED_MODULE_2__providers_manager_manager__["a" /* ManagerProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_3__app_app_notify__["a" /* AppNotify */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]])
-    ], PriceDetailPage);
-    return PriceDetailPage;
+    ], PrevisionsPage);
+    return PrevisionsPage;
 }());
 
-//# sourceMappingURL=price-detail.js.map
+//# sourceMappingURL=previsions.js.map
 
 /***/ })
 

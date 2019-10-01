@@ -1,14 +1,14 @@
 webpackJsonp([18],{
 
-/***/ 851:
+/***/ 850:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RendezvousPageModule", function() { return RendezvousPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RapportsPageModule", function() { return RapportsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__rendezvous__ = __webpack_require__(920);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__rapports__ = __webpack_require__(918);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,36 +18,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var RendezvousPageModule = /** @class */ (function () {
-    function RendezvousPageModule() {
+var RapportsPageModule = /** @class */ (function () {
+    function RapportsPageModule() {
     }
-    RendezvousPageModule = __decorate([
+    RapportsPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__rendezvous__["a" /* RendezvousPage */],
+                __WEBPACK_IMPORTED_MODULE_2__rapports__["a" /* RapportsPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__rendezvous__["a" /* RendezvousPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__rapports__["a" /* RapportsPage */]),
             ],
         })
-    ], RendezvousPageModule);
-    return RendezvousPageModule;
+    ], RapportsPageModule);
+    return RapportsPageModule;
 }());
 
-//# sourceMappingURL=rendezvous.module.js.map
+//# sourceMappingURL=rapports.module.js.map
 
 /***/ }),
 
-/***/ 920:
+/***/ 918:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RendezvousPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RapportsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_manager_manager__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_notify__ = __webpack_require__(483);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_notify__ = __webpack_require__(483);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -63,80 +63,95 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
- * Generated class for the RendezvousPage page.
+ * Generated class for the RapportsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var RendezvousPage = /** @class */ (function () {
-    function RendezvousPage(navCtrl, manager, viewCtrl, notify, navParams) {
+var RapportsPage = /** @class */ (function () {
+    function RapportsPage(navCtrl, loadingCtrl, manager, notify, storage, navParams) {
         this.navCtrl = navCtrl;
+        this.loadingCtrl = loadingCtrl;
         this.manager = manager;
-        this.viewCtrl = viewCtrl;
         this.notify = notify;
+        this.storage = storage;
         this.navParams = navParams;
-        this.rendezvous = {};
-        this.users = [];
-        this.pointVente = {};
-        this.rendezvous = this.navParams.get('rendezvous');
-        this.pointVente = navParams.get('pointVente');
+        this.rapports = [];
+        this.queryText = '';
     }
-    RendezvousPage.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        var datePipe = new __WEBPACK_IMPORTED_MODULE_4__angular_common__["d" /* DatePipe */]('en');
-        if (!this.rendezvous.dateat) {
-            this.rendezvous.dateat = datePipe.transform(new Date(), 'yyyy-MM-dd');
-            this.rendezvous.date = datePipe.transform(new Date(), 'yyyy-MM-dd');
-        }
-        if (this.rendezvous.user && this.rendezvous.user.id)
-            this.rendezvous.user = this.rendezvous.user.id;
-        this.manager.get('user').then(function (data) {
-            _this.users = data ? data : [];
-        }, function (error) {
-        });
+    RapportsPage.prototype.ionViewDidLoad = function () {
+        this.loadData();
     };
-    RendezvousPage.prototype.dismiss = function (data) {
-        this.viewCtrl.dismiss(data);
-    };
-    RendezvousPage.prototype.onSubmit = function () {
+    RapportsPage.prototype.loadData = function () {
         var _this = this;
-        var self = this;
-        this.rendezvous.change = true;
-        var loader = this.notify.loading({
-            content: "Enregistrement...",
-        });
-        this.rendezvous.pointVente = this.pointVente.id;
-        this.manager.save('rendezvous', this.rendezvous).then(function (data) {
-            loader.dismiss().then(function () {
-                if (!data.error) {
-                    self.dismiss(data);
-                    return _this.notify.onSuccess({ message: "Enregistrement effectué" });
-                }
-                _this.notify.onError({ message: "Une erreur s'est produite" });
+        this.storage.get('_rapports').then(function (data) {
+            _this.rapports = data ? data : [];
+            _this.manager.get('rapport').then(function (data) {
+                _this.rapports = data ? data : [];
+                _this.storage.set('_rapports', _this.rapports);
+            }, function (error) {
+                _this.notify.onError({ message: " Verifiez votre connexion internet" });
             });
+        });
+    };
+    RapportsPage.prototype.loadRemoteData = function () {
+        var _this = this;
+        var loader = this.loadingCtrl.create({
+            content: "chargement...",
+        });
+        this.manager.get('rapport').then(function (data) {
+            _this.rapports = data ? data : [];
+            _this.storage.set('_rapports', _this.rapports);
+            loader.dismiss();
         }, function (error) {
             loader.dismiss();
-            _this.notify.onError({ message: "Un probleme est survenu" });
+            _this.notify.onError({ message: "Verifiez votre connexion internet" });
         });
         loader.present();
     };
-    RendezvousPage.prototype.isInvalid = function () {
-        return !this.rendezvous.dateat;
+    RapportsPage.prototype.add = function () {
+        this.navCtrl.push('ProduitPage');
     };
-    RendezvousPage = __decorate([
+    RapportsPage.prototype.search = function () {
+        var _this = this;
+        var queryText = this.queryText.toLowerCase().replace(/,|\.|-/g, ' ');
+        var queryWords = queryText.split(' ').filter(function (w) { return !!w.trim().length; });
+        this.rapports.forEach(function (item) {
+            item.hide = true;
+            _this.filter(item, queryWords);
+        });
+    };
+    RapportsPage.prototype.filter = function (item, queryWords) {
+        var matchesQueryText = false;
+        if (queryWords.length) {
+            // of any query word is in the session name than it passes the query test
+            queryWords.forEach(function (queryWord) {
+                if (item.periode.toLowerCase().indexOf(queryWord) > -1) {
+                    matchesQueryText = true;
+                }
+            });
+        }
+        else {
+            // if there are no query words then this session passes the query test
+            matchesQueryText = true;
+        }
+        item.hide = !(matchesQueryText);
+    };
+    RapportsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-rendezvous',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\rendezvous\rendezvous.html"*/'<ion-header no-border no-shadow >\n    <ion-navbar>\n          <ion-title><span>Rendez-vous</span></ion-title>\n          <ion-buttons end>\n                  <button ion-button="ion-button" (click)="dismiss()" icon-left>\n                      <ion-icon name="md-close" color="danger" showwhen="android,windows,core"></ion-icon> \n                      Fermer\n                  </button>\n              </ion-buttons>        \n    </ion-navbar>\n  </ion-header>\n  <ion-content >\n        <ion-card>\n                <ion-card-header text-wrap>Enrégistrer ou modifier un rendez-vous</ion-card-header>\n        </ion-card>      \n      <form #form="ngForm" novalidate="novalidate">\n          <ion-list>\n              <ion-item>\n                  <ion-label color="primary" floating>Saisir la date</ion-label>\n                  <ion-datetime \n                     displayFormat="DD/MM/YYYY"\n                     pickerFormat="D MMM  YYYY" min="2019" max="2019"\n                     doneText="Terminé" cancelText="Annuler"\n                     name="dateat"\n                     [(ngModel)]="rendezvous.dateat"\n                      #date="ngModel"></ion-datetime>\n                </ion-item>\n                <ion-item *ngIf="users&&users.length">\n                    <ion-label color="primary" floating>\n                  <span>A honorer par</span>\n              </ion-label>\n                <ion-select [(ngModel)]="rendezvous.user" name="user" #user="ngModel">\n                      <ion-option *ngFor="let user of users" [value]="user.id">{{user.nom}}</ion-option>\n                  </ion-select>\n          </ion-item>            \n           <ion-item>\n                    <ion-textarea rows="2" [(ngModel)]="rendezvous.commentaire" placeholder="Commentaire"\n                          name="commentaire" #commentaire="ngModel"></ion-textarea>\n              </ion-item>                      \n          </ion-list>\n      </form>\n  </ion-content>\n  <ion-footer >\n      <button ion-button full [disabled]="isInvalid()" (click)="onSubmit()">\n        Creer un rendezvous\n      </button>\n  </ion-footer>'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\rendezvous\rendezvous.html"*/,
+            selector: 'page-rapports',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\rapports\rapports.html"*/'<ion-header no-border no-shadow>\n    <ion-navbar>\n      <ion-title>Rapports Mensuels</ion-title>\n      <ion-buttons end>\n      <button ion-button="ion-button" icon-only (click)="loadRemoteData()" >\n          <ion-icon name="refresh"></ion-icon>\n      </button>\n  </ion-buttons>   \n    </ion-navbar>\n  </ion-header>\n  <ion-content padding>\n      <ion-searchbar [hidden]="!rapports.length" [(ngModel)]="queryText" (ionInput)="search()" placeholder="Recherchez">\n        </ion-searchbar>     \n      <ion-list>\n          <ion-item  *ngFor="let rapport of rapports" [hidden]="rapport.hide">\n              {{rapport.periode}}\n              <p>{{rapport.description}}</p>\n              <p>{{rapport.date| date:\'DD/MM/YYYY\'}}</p>\n          </ion-item>\n      </ion-list>\n  </ion-content>'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\rapports\rapports.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_manager_manager__["a" /* ManagerProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_3__app_app_notify__["a" /* AppNotify */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__["a" /* ManagerProvider */],
+            __WEBPACK_IMPORTED_MODULE_4__app_app_notify__["a" /* AppNotify */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]])
-    ], RendezvousPage);
-    return RendezvousPage;
+    ], RapportsPage);
+    return RapportsPage;
 }());
 
-//# sourceMappingURL=rendezvous.js.map
+//# sourceMappingURL=rapports.js.map
 
 /***/ })
 

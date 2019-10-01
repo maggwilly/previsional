@@ -8,8 +8,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StatsPageModule", function() { return StatsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stats__ = __webpack_require__(929);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng2_google_charts__ = __webpack_require__(930);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stats__ = __webpack_require__(928);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng2_google_charts__ = __webpack_require__(929);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,14 +41,14 @@ var StatsPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 887:
+/***/ 886:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GoogleChartComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__google_charts_loader_service__ = __webpack_require__(888);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chart_html_tooltip__ = __webpack_require__(889);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__google_charts_loader_service__ = __webpack_require__(887);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chart_html_tooltip__ = __webpack_require__(888);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -423,7 +423,7 @@ var GoogleChartComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 888:
+/***/ 887:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -524,7 +524,7 @@ var GoogleChartsLoaderService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 889:
+/***/ 888:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -548,18 +548,18 @@ var ChartHTMLTooltip = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 929:
+/***/ 928:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StatsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_manager_manager__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_manager_manager__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_notify__ = __webpack_require__(483);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__ = __webpack_require__(65);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -706,19 +706,19 @@ var StatsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 930:
+/***/ 929:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__google_chart_google_chart_component__ = __webpack_require__(887);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__google_chart_google_chart_component__ = __webpack_require__(886);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__google_chart_chart_html_tooltip__ = __webpack_require__(889);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__google_chart_chart_html_tooltip__ = __webpack_require__(888);
 /* unused harmony reexport ChartHTMLTooltip */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__google_chart_chart_mouse_event__ = __webpack_require__(931);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__google_chart_chart_mouse_event__ = __webpack_require__(930);
 /* unused harmony reexport ChartMouseOverEvent */
 /* unused harmony reexport ChartMouseOutEvent */
 /* unused harmony reexport MouseOverEvent */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__google_charts_module__ = __webpack_require__(932);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__google_charts_module__ = __webpack_require__(931);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_3__google_charts_module__["a"]; });
 
 
@@ -728,7 +728,7 @@ var StatsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 931:
+/***/ 930:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -786,14 +786,14 @@ var ChartMouseOutEvent = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ 932:
+/***/ 931:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Ng2GoogleChartsModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__google_chart_google_chart_component__ = __webpack_require__(887);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__google_charts_loader_service__ = __webpack_require__(888);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__google_chart_google_chart_component__ = __webpack_require__(886);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__google_charts_loader_service__ = __webpack_require__(887);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);

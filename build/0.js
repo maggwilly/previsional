@@ -8,8 +8,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePageModule", function() { return HomePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(871);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_text_avatar__ = __webpack_require__(901);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(870);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_text_avatar__ = __webpack_require__(900);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pipes_pipes_module__ = __webpack_require__(485);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__ = __webpack_require__(484);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -47,7 +47,7 @@ var HomePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 865:
+/***/ 864:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68,7 +68,7 @@ module.exports = function isExtendable(val) {
 
 /***/ }),
 
-/***/ 867:
+/***/ 866:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -81,7 +81,7 @@ module.exports = function isExtendable(val) {
 
 
 
-var extend = __webpack_require__(868);
+var extend = __webpack_require__(867);
 
 module.exports = function(str, options, fn) {
   if (typeof str !== 'string') {
@@ -247,14 +247,14 @@ function keepEscaping(opts, str, idx) {
 
 /***/ }),
 
-/***/ 868:
+/***/ 867:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isExtendable = __webpack_require__(865);
-var assignSymbols = __webpack_require__(873);
+var isExtendable = __webpack_require__(864);
+var assignSymbols = __webpack_require__(872);
 
 module.exports = Object.assign || function(obj/*, objects*/) {
   if (obj === null || typeof obj === 'undefined') {
@@ -315,7 +315,7 @@ function isEnum(obj, key) {
 
 /***/ }),
 
-/***/ 869:
+/***/ 868:
 /***/ (function(module, exports) {
 
 /*!
@@ -372,21 +372,21 @@ function toString(val) {
 
 /***/ }),
 
-/***/ 871:
+/***/ 870:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_notify__ = __webpack_require__(483);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_user_user__ = __webpack_require__(153);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_localisation_localisation__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_localisation_localisation__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_group_array__ = __webpack_require__(872);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_group_array__ = __webpack_require__(871);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_group_array___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_group_array__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -577,18 +577,18 @@ var HomePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 872:
+/***/ 871:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-const split = __webpack_require__(867);
-const flatten = __webpack_require__(874);
-const union = __webpack_require__(875);
-const forOwn = __webpack_require__(881);
-const typeOf = __webpack_require__(883);
-const get = __webpack_require__(869);
+const split = __webpack_require__(866);
+const flatten = __webpack_require__(873);
+const union = __webpack_require__(874);
+const forOwn = __webpack_require__(880);
+const typeOf = __webpack_require__(882);
+const get = __webpack_require__(868);
 
 function groupFn(arr, props) {
   if (arr == null) {
@@ -693,7 +693,7 @@ module.exports = groupFn;
 
 /***/ }),
 
-/***/ 873:
+/***/ 872:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -741,7 +741,7 @@ module.exports = function(receiver, objects) {
 
 /***/ }),
 
-/***/ 874:
+/***/ 873:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -771,16 +771,16 @@ function flat(arr, res) {
 
 /***/ }),
 
-/***/ 875:
+/***/ 874:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isObject = __webpack_require__(865);
-var union = __webpack_require__(876);
-var get = __webpack_require__(869);
-var set = __webpack_require__(877);
+var isObject = __webpack_require__(864);
+var union = __webpack_require__(875);
+var get = __webpack_require__(868);
+var set = __webpack_require__(876);
 
 module.exports = function unionValue(obj, prop, value) {
   if (!isObject(obj)) {
@@ -809,7 +809,7 @@ function arrayify(val) {
 
 /***/ }),
 
-/***/ 876:
+/***/ 875:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -846,7 +846,7 @@ module.exports = function union(init) {
 
 /***/ }),
 
-/***/ 877:
+/***/ 876:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -859,10 +859,10 @@ module.exports = function union(init) {
 
 
 
-var split = __webpack_require__(867);
-var extend = __webpack_require__(868);
-var isPlainObject = __webpack_require__(878);
-var isObject = __webpack_require__(865);
+var split = __webpack_require__(866);
+var extend = __webpack_require__(867);
+var isPlainObject = __webpack_require__(877);
+var isObject = __webpack_require__(864);
 
 module.exports = function(obj, prop, val) {
   if (!isObject(obj)) {
@@ -905,7 +905,7 @@ module.exports = function(obj, prop, val) {
 
 /***/ }),
 
-/***/ 878:
+/***/ 877:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -918,7 +918,7 @@ module.exports = function(obj, prop, val) {
 
 
 
-var isObject = __webpack_require__(879);
+var isObject = __webpack_require__(878);
 
 function isObjectObject(o) {
   return isObject(o) === true
@@ -950,7 +950,7 @@ module.exports = function isPlainObject(o) {
 
 /***/ }),
 
-/***/ 879:
+/***/ 878:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -963,7 +963,7 @@ module.exports = function isPlainObject(o) {
 
 
 
-var isArray = __webpack_require__(880);
+var isArray = __webpack_require__(879);
 
 module.exports = function isObject(val) {
   return val != null && typeof val === 'object' && isArray(val) === false;
@@ -972,7 +972,7 @@ module.exports = function isObject(val) {
 
 /***/ }),
 
-/***/ 880:
+/***/ 879:
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -984,7 +984,7 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 
-/***/ 881:
+/***/ 880:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -997,7 +997,7 @@ module.exports = Array.isArray || function (arr) {
 
 
 
-var forIn = __webpack_require__(882);
+var forIn = __webpack_require__(881);
 var hasOwn = Object.prototype.hasOwnProperty;
 
 module.exports = function forOwn(obj, fn, thisArg) {
@@ -1011,7 +1011,7 @@ module.exports = function forOwn(obj, fn, thisArg) {
 
 /***/ }),
 
-/***/ 882:
+/***/ 881:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1035,10 +1035,10 @@ module.exports = function forIn(obj, fn, thisArg) {
 
 /***/ }),
 
-/***/ 883:
+/***/ 882:
 /***/ (function(module, exports, __webpack_require__) {
 
-var isBuffer = __webpack_require__(884);
+var isBuffer = __webpack_require__(883);
 var toString = Object.prototype.toString;
 
 /**
@@ -1158,7 +1158,7 @@ module.exports = function kindOf(val) {
 
 /***/ }),
 
-/***/ 884:
+/***/ 883:
 /***/ (function(module, exports) {
 
 /*!
@@ -1186,18 +1186,18 @@ function isSlowBuffer (obj) {
 
 /***/ }),
 
-/***/ 901:
+/***/ 900:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_ion_text_avatar_ion_text_avatar__ = __webpack_require__(902);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_ion_text_avatar_ion_text_avatar__ = __webpack_require__(901);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__src_ion_text_avatar_ion_text_avatar__["a"]; });
 
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 902:
+/***/ 901:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

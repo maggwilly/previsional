@@ -1,14 +1,14 @@
 webpackJsonp([11],{
 
-/***/ 860:
+/***/ 856:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabsPageModule", function() { return TabsPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShoulPayPageModule", function() { return ShoulPayPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs__ = __webpack_require__(933);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shoul_pay__ = __webpack_require__(924);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,34 +18,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var TabsPageModule = /** @class */ (function () {
-    function TabsPageModule() {
+var ShoulPayPageModule = /** @class */ (function () {
+    function ShoulPayPageModule() {
     }
-    TabsPageModule = __decorate([
+    ShoulPayPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__tabs__["a" /* TabsPage */],
+                __WEBPACK_IMPORTED_MODULE_2__shoul_pay__["a" /* ShoulPayPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tabs__["a" /* TabsPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__shoul_pay__["a" /* ShoulPayPage */]),
             ],
         })
-    ], TabsPageModule);
-    return TabsPageModule;
+    ], ShoulPayPageModule);
+    return ShoulPayPageModule;
 }());
 
-//# sourceMappingURL=tabs.module.js.map
+//# sourceMappingURL=shoul-pay.module.js.map
 
 /***/ }),
 
-/***/ 933:
+/***/ 924:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ShoulPayPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_user_user__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_notify__ = __webpack_require__(483);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(89);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -58,33 +60,65 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-/**
- * Generated class for the TabsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var TabsPage = /** @class */ (function () {
-    function TabsPage(navCtrl, userService, navParams) {
+
+
+var ShoulPayPage = /** @class */ (function () {
+    function ShoulPayPage(navCtrl, notify, manager, loadingCtrl, navParams, storage) {
         this.navCtrl = navCtrl;
-        this.userService = userService;
+        this.notify = notify;
+        this.manager = manager;
+        this.loadingCtrl = loadingCtrl;
         this.navParams = navParams;
-        this.tab2Root = 'HomePage';
-        this.tab1Root = 'CommendesPage';
-        this.tab3Root = 'StatsPage';
+        this.storage = storage;
     }
-    TabsPage = __decorate([
+    ShoulPayPage.prototype.ionViewDidLoad = function () {
+        this.abonnement = this.navParams.get('abonnement');
+        this.loadData();
+    };
+    ShoulPayPage.prototype.loadData = function () {
+        var _this = this;
+        this.manager.get('price', true).then(function (data) {
+            _this.prices = data ? data : [];
+            _this.storage.set('_prices', _this.prices);
+        }, function (error) {
+            _this.notify.onError({ message: "PROBLEME ! Verifiez votre connexion internet" });
+        });
+    };
+    ShoulPayPage.prototype.dismiss = function (skippecheck) {
+        if (skippecheck === void 0) { skippecheck = true; }
+        this.navCtrl.setRoot('MenuPage', { skippecheck: skippecheck }, { animate: true, direction: 'forward' });
+    };
+    ShoulPayPage.prototype.loadRemoteData = function () {
+        var _this = this;
+        var loader = this.loadingCtrl.create({
+            content: "chargement...",
+        });
+        this.manager.get('prices').then(function (data) {
+            _this.prices = data ? data : [];
+            _this.storage.set('_prices', _this.prices);
+        }, function (error) {
+            _this.notify.onError({ message: "PROBLEME ! Verifiez votre connexion internet" });
+        });
+        loader.present();
+    };
+    ShoulPayPage.prototype.openPrice = function (price) {
+        this.navCtrl.push('PriceDetailPage', { price: price });
+    };
+    ShoulPayPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-tabs',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\tabs\tabs.html"*/'<ion-tabs #myTabs>\n\n  <ion-tab [root]="tab2Root" tabTitle="Accueil" tabIcon="home"></ion-tab>\n\n  <ion-tab [root]="tab1Root" tabTitle="Ventes" tabIcon="ios-stats-outline"></ion-tab>\n\n  <ion-tab [root]="tab3Root" tabTitle="Statistiques" tabIcon="ios-folder-open"></ion-tab>\n\n</ion-tabs>\n\n'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\tabs\tabs.html"*/,
+            selector: 'page-shoul-pay',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\shoul-pay\shoul-pay.html"*/'<ion-header  no-border no-shadow>\n  <ion-navbar>\n    <ion-title>Limitations</ion-title>\n     <ion-buttons showWhen="android,windows,core" end>\n        <button ion-button="ion-button" (click)="dismiss()" icon-left>\n            <ion-icon name="md-close" color="danger" showwhen="android,windows,core"></ion-icon> \n            Fermer\n        </button>\n</ion-buttons>     \n  </ion-navbar>\n</ion-header>\n<ion-content >\n  <ion-list>\n    <ion-item text-wrap no-lines class="inform abonne">\n       <p>\n        <span  *ngIf="!abonnement||abonnement.expired">\n          Votre abonnement est maintenant arrivé à expiration. Pour continuer à utiliser le service, \n          vous devez souscrire à nouveau en choisissant parmi les options ci-dessous.\n        </span>\n        <span  *ngIf="abonnement&&!abonnement.expired">\n          Votre abonnement actuel ne vous permet pas de gérer un nombre d\'utilisqteur supérieur à {{abonnement.nombreusers}}.\n          Vous pouvez toujours augmenter ce nombre en changeant de formule. Choisir parmi les options ci-dessous.\n        </span>\n      </p>\n     </ion-item>\n     </ion-list>\n     <ion-list>\n     <ion-item   text-wrap *ngFor="let price of prices; let i = index" [ngClass]="(\'item-\'+i)" (click)="openPrice(price)" detail-push>\n      {{price.nom}}\n      <p>{{price.description}}</p>\n      <ion-note item-right>{{price.amount| number:\'3.0-5\'}} XAF</ion-note>\n  </ion-item>\n   </ion-list>\n</ion-content>'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\shoul-pay\shoul-pay.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_user_user__["a" /* UserProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]])
-    ], TabsPage);
-    return TabsPage;
+            __WEBPACK_IMPORTED_MODULE_2__app_app_notify__["a" /* AppNotify */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__["a" /* ManagerProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */]])
+    ], ShoulPayPage);
+    return ShoulPayPage;
 }());
 
-//# sourceMappingURL=tabs.js.map
+//# sourceMappingURL=shoul-pay.js.map
 
 /***/ })
 

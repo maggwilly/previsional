@@ -1,14 +1,14 @@
 webpackJsonp([10],{
 
-/***/ 861:
+/***/ 860:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UnavailablePageModule", function() { return UnavailablePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabsPageModule", function() { return TabsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__unavailable__ = __webpack_require__(934);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs__ = __webpack_require__(932);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,33 +18,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var UnavailablePageModule = /** @class */ (function () {
-    function UnavailablePageModule() {
+var TabsPageModule = /** @class */ (function () {
+    function TabsPageModule() {
     }
-    UnavailablePageModule = __decorate([
+    TabsPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__unavailable__["a" /* UnavailablePage */],
+                __WEBPACK_IMPORTED_MODULE_2__tabs__["a" /* TabsPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__unavailable__["a" /* UnavailablePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tabs__["a" /* TabsPage */]),
             ],
         })
-    ], UnavailablePageModule);
-    return UnavailablePageModule;
+    ], TabsPageModule);
+    return TabsPageModule;
 }());
 
-//# sourceMappingURL=unavailable.module.js.map
+//# sourceMappingURL=tabs.module.js.map
 
 /***/ }),
 
-/***/ 934:
+/***/ 932:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UnavailablePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_user_user__ = __webpack_require__(153);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,33 +57,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 /**
- * Generated class for the UnavailablePage page.
+ * Generated class for the TabsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var UnavailablePage = /** @class */ (function () {
-    function UnavailablePage(navCtrl, navParams) {
+var TabsPage = /** @class */ (function () {
+    function TabsPage(navCtrl, userService, navParams) {
         this.navCtrl = navCtrl;
+        this.userService = userService;
         this.navParams = navParams;
+        this.tab2Root = 'HomePage';
+        this.tab1Root = 'CommendesPage';
+        this.tab3Root = 'StatsPage';
     }
-    UnavailablePage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad UnavailablePage');
-    };
-    UnavailablePage.prototype.retry = function () {
-        this.navCtrl.setRoot('MenuPage', { skippecheck: false }, { animate: true, direction: 'forward' });
-    };
-    UnavailablePage = __decorate([
+    TabsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-unavailable',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\unavailable\unavailable.html"*/'\n\n<ion-header no-border no-shadow>\n\n  <ion-navbar>\n\n    <ion-title>Hors connexion</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n\n<div text-center vertical-center layout horizontal-center style="margin-top: 30%">\n\n  <p style="color: red; font-size: 1.2em; font-weight: bold;">\n\n Votre connexion internet n\'est pas fonctionnelle.\n\n</p>\n\n<button  ion-button outline round (click)="retry()"> Travailer hors connexion</button>\n\n</div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\unavailable\unavailable.html"*/,
+            selector: 'page-tabs',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\tabs\tabs.html"*/'<ion-tabs #myTabs>\n\n  <ion-tab [root]="tab2Root" tabTitle="Accueil" tabIcon="home"></ion-tab>\n\n  <ion-tab [root]="tab1Root" tabTitle="Ventes" tabIcon="ios-stats-outline"></ion-tab>\n\n  <ion-tab [root]="tab3Root" tabTitle="Statistiques" tabIcon="ios-folder-open"></ion-tab>\n\n</ion-tabs>\n\n'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\tabs\tabs.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]])
-    ], UnavailablePage);
-    return UnavailablePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_user_user__["a" /* UserProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]])
+    ], TabsPage);
+    return TabsPage;
 }());
 
-//# sourceMappingURL=unavailable.js.map
+//# sourceMappingURL=tabs.js.map
 
 /***/ })
 

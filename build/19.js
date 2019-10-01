@@ -1,14 +1,14 @@
 webpackJsonp([19],{
 
-/***/ 850:
+/***/ 848:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RapportsPageModule", function() { return RapportsPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfilePageModule", function() { return ProfilePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__rapports__ = __webpack_require__(919);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile__ = __webpack_require__(914);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,36 +18,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var RapportsPageModule = /** @class */ (function () {
-    function RapportsPageModule() {
+var ProfilePageModule = /** @class */ (function () {
+    function ProfilePageModule() {
     }
-    RapportsPageModule = __decorate([
+    ProfilePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__rapports__["a" /* RapportsPage */],
+                __WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__rapports__["a" /* RapportsPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */]),
             ],
         })
-    ], RapportsPageModule);
-    return RapportsPageModule;
+    ], ProfilePageModule);
+    return ProfilePageModule;
 }());
 
-//# sourceMappingURL=rapports.module.js.map
+//# sourceMappingURL=profile.module.js.map
 
 /***/ }),
 
-/***/ 919:
+/***/ 914:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RapportsPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfilePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_notify__ = __webpack_require__(483);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_notify__ = __webpack_require__(483);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_user__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__ = __webpack_require__(65);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -62,96 +63,65 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /**
- * Generated class for the RapportsPage page.
+ * Generated class for the ProfilePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var RapportsPage = /** @class */ (function () {
-    function RapportsPage(navCtrl, loadingCtrl, manager, notify, storage, navParams) {
+var ProfilePage = /** @class */ (function () {
+    function ProfilePage(navCtrl, navParams, notify, userService, localisation, manager) {
         this.navCtrl = navCtrl;
-        this.loadingCtrl = loadingCtrl;
-        this.manager = manager;
-        this.notify = notify;
-        this.storage = storage;
         this.navParams = navParams;
-        this.rapports = [];
-        this.queryText = '';
+        this.notify = notify;
+        this.userService = userService;
+        this.localisation = localisation;
+        this.manager = manager;
+        this.user = {};
+        this.user = this.navParams.get('user');
+        if (!this.userService.amIMyParent())
+            this.user.entreprise = this.user.parent.entreprise;
+        this.user.pays = this.user.parent.pays;
+        this.user.ville = this.user.parent.ville;
     }
-    RapportsPage.prototype.ionViewDidLoad = function () {
-        this.loadData();
+    ProfilePage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ProfilePage');
     };
-    RapportsPage.prototype.loadData = function () {
-        var _this = this;
-        this.storage.get('_rapports').then(function (data) {
-            _this.rapports = data ? data : [];
-            _this.manager.get('rapport').then(function (data) {
-                _this.rapports = data ? data : [];
-                _this.storage.set('_rapports', _this.rapports);
-            }, function (error) {
-                _this.notify.onError({ message: " Verifiez votre connexion internet" });
-            });
-        });
+    ProfilePage.prototype.isInvalid = function () {
+        if (this.userService.amIMyParent())
+            return (!this.user.entreprise || !this.user.ville || !this.user.pays);
+        else
+            return (!this.user.nom);
     };
-    RapportsPage.prototype.loadRemoteData = function () {
+    ProfilePage.prototype.dismiss = function (skippecheck) {
+        if (skippecheck === void 0) { skippecheck = true; }
+        this.navCtrl.setRoot('MenuPage', { skippecheck: skippecheck }, { animate: true, direction: 'forward' });
+    };
+    ProfilePage.prototype.onSubmit = function () {
         var _this = this;
-        var loader = this.loadingCtrl.create({
-            content: "chargement...",
-        });
-        this.manager.get('rapport').then(function (data) {
-            _this.rapports = data ? data : [];
-            _this.storage.set('_rapports', _this.rapports);
-            loader.dismiss();
+        this.manager.save('user', this.user, this.localisation.isOnline()).then(function (data) {
+            _this.dismiss(false);
         }, function (error) {
-            loader.dismiss();
-            _this.notify.onError({ message: "Verifiez votre connexion internet" });
-        });
-        loader.present();
-    };
-    RapportsPage.prototype.add = function () {
-        this.navCtrl.push('ProduitPage');
-    };
-    RapportsPage.prototype.search = function () {
-        var _this = this;
-        var queryText = this.queryText.toLowerCase().replace(/,|\.|-/g, ' ');
-        var queryWords = queryText.split(' ').filter(function (w) { return !!w.trim().length; });
-        this.rapports.forEach(function (item) {
-            item.hide = true;
-            _this.filter(item, queryWords);
+            console.log(error);
+            _this.notify.onSuccess({ message: "Verifiez votre connexion internet" });
         });
     };
-    RapportsPage.prototype.filter = function (item, queryWords) {
-        var matchesQueryText = false;
-        if (queryWords.length) {
-            // of any query word is in the session name than it passes the query test
-            queryWords.forEach(function (queryWord) {
-                if (item.periode.toLowerCase().indexOf(queryWord) > -1) {
-                    matchesQueryText = true;
-                }
-            });
-        }
-        else {
-            // if there are no query words then this session passes the query test
-            matchesQueryText = true;
-        }
-        item.hide = !(matchesQueryText);
-    };
-    RapportsPage = __decorate([
+    ProfilePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-rapports',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\rapports\rapports.html"*/'<ion-header no-border no-shadow>\n    <ion-navbar>\n      <ion-title>Rapports Mensuels</ion-title>\n      <ion-buttons end>\n      <button ion-button="ion-button" icon-only (click)="loadRemoteData()" >\n          <ion-icon name="refresh"></ion-icon>\n      </button>\n  </ion-buttons>   \n    </ion-navbar>\n  </ion-header>\n  <ion-content padding>\n      <ion-searchbar [hidden]="!rapports.length" [(ngModel)]="queryText" (ionInput)="search()" placeholder="Recherchez">\n        </ion-searchbar>     \n      <ion-list>\n          <ion-item  *ngFor="let rapport of rapports" [hidden]="rapport.hide">\n              {{rapport.periode}}\n              <p>{{rapport.description}}</p>\n              <p>{{rapport.date| date:\'DD/MM/YYYY\'}}</p>\n          </ion-item>\n      </ion-list>\n  </ion-content>'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\rapports\rapports.html"*/,
+            selector: 'page-profile',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\profile\profile.html"*/'<!--\n\n  Generated template for the ProfilePage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar>     \n\n    <ion-title>Informations génerales</ion-title>\n\n    <ion-buttons end>\n\n            <button ion-button="ion-button" (click)="dismiss()" icon-left>\n\n                <ion-icon name="md-close" color="danger" showWhen="android,windows,core"></ion-icon> \n\n                Fermer\n\n            </button>\n\n        </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>  \n\n  <form #form="ngForm" novalidate="novalidate">\n\n    <ion-list *ngIf="user">\n\n        <ion-item>\n\n            <ion-label color="primary" floating><span>Entreprise </span> </ion-label>\n\n            <ion-input [(ngModel)]="user.entreprise" name="entreprise" type="text" placeholder="" #entreprise="ngModel" [disabled]="!userService.amParent"></ion-input>\n\n        </ion-item>     \n\n        <ion-item>\n\n            <ion-label color="primary" floating><span>Votre nom </span> </ion-label>\n\n            <ion-input [(ngModel)]="user.nom" name="nom" type="text" placeholder="" #nom="ngModel"></ion-input>\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label color="primary" floating>\n\n                <span>Télephone</span>\n\n            </ion-label>\n\n            <ion-input [(ngModel)]="user.phone" name="phone" type="tel" placeholder="" #tel="ngModel" disabled="true"></ion-input>\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label color="primary" floating><span>Pays </span> </ion-label>\n\n            <ion-input [(ngModel)]="user.pays" name="pays" type="text" placeholder=""  #pays="ngModel" [disabled]="!userService.amParent"></ion-input>\n\n        </ion-item>\n\n        <ion-item >\n\n            <ion-label color="primary" floating> \n\n                <span>Ville</span>\n\n            </ion-label>\n\n            <ion-select [(ngModel)]="user.ville" name="ville" #ville="ngModel" [disabled]="!userService.amParent">\n\n                    <ion-option value="Yaoundé">Yaoundé</ion-option>\n\n                    <ion-option value="Douala">Douala</ion-option>\n\n                    <ion-option value="Bafoussam">Bafoussam</ion-option>\n\n                    <ion-option value="Bertoua">Bertoua</ion-option>\n\n                    <ion-option value="Bamenda">Bamenda</ion-option>\n\n                    <ion-option value="Dschang">Dschang</ion-option>\n\n                    <ion-option value="Autre">Autre</ion-option>\n\n                </ion-select>\n\n            </ion-item>    \n\n                <ion-item>\n\n                    \n\n            <ion-textarea rows="2" [(ngModel)]="user.adresse" placeholder="Adresse" name="adresse" #adresse="ngModel"></ion-textarea>\n\n        </ion-item>\n\n    </ion-list>\n\n</form>\n\n</ion-content>\n\n<ion-footer>\n\n        <button ion-button full icon-right [disabled]="isInvalid()" (click)="onSubmit()">\n\n                <span>Enrégistrer les changements\n\n                    <ion-icon name="md-done-all"></ion-icon>\n\n                </span>\n\n            </button>\n\n    </ion-footer>'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\profile\profile.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__["a" /* ManagerProvider */],
-            __WEBPACK_IMPORTED_MODULE_4__app_app_notify__["a" /* AppNotify */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]])
-    ], RapportsPage);
-    return RapportsPage;
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__app_app_notify__["a" /* AppNotify */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_user_user__["a" /* UserProvider */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_localisation_localisation__["a" /* LocalisationProvider */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__["a" /* ManagerProvider */]])
+    ], ProfilePage);
+    return ProfilePage;
 }());
 
-//# sourceMappingURL=rapports.js.map
+//# sourceMappingURL=profile.js.map
 
 /***/ })
 

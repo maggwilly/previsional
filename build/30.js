@@ -1,14 +1,14 @@
 webpackJsonp([30],{
 
-/***/ 837:
+/***/ 834:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuPageModule", function() { return MenuPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HelpPageModule", function() { return HelpPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__menu__ = __webpack_require__(904);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__help__ = __webpack_require__(899);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,35 +18,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var MenuPageModule = /** @class */ (function () {
-    function MenuPageModule() {
+var HelpPageModule = /** @class */ (function () {
+    function HelpPageModule() {
     }
-    MenuPageModule = __decorate([
+    HelpPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__menu__["a" /* MenuPage */],
+                __WEBPACK_IMPORTED_MODULE_2__help__["a" /* HelpPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__menu__["a" /* MenuPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__help__["a" /* HelpPage */]),
             ],
         })
-    ], MenuPageModule);
-    return MenuPageModule;
+    ], HelpPageModule);
+    return HelpPageModule;
 }());
 
-//# sourceMappingURL=menu.module.js.map
+//# sourceMappingURL=help.module.js.map
 
 /***/ }),
 
-/***/ 904:
+/***/ 899:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MenuPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HelpPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_user_user__ = __webpack_require__(153);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_config__ = __webpack_require__(486);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_manager_manager__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(89);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60,75 +60,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var MenuPage = /** @class */ (function () {
-    function MenuPage(navCtrl, popoverCtrl, modalCtrl, userService, menu, navParams) {
-        var _this = this;
+/**
+ * Generated class for the HelpPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var HelpPage = /** @class */ (function () {
+    function HelpPage(navCtrl, manager, storage, viewCtrl, navParams) {
         this.navCtrl = navCtrl;
-        this.popoverCtrl = popoverCtrl;
-        this.modalCtrl = modalCtrl;
-        this.userService = userService;
-        this.menu = menu;
+        this.manager = manager;
+        this.storage = storage;
+        this.viewCtrl = viewCtrl;
         this.navParams = navParams;
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_3__app_config__["a" /* Config */].HomePage;
-        this.pages = [
-            { name: 'Prévisions', component: __WEBPACK_IMPORTED_MODULE_3__app_config__["a" /* Config */].HomePage, icon: 'home' },
-            { name: 'Liste des clients', component: 'PointventesPage', addPage: 'PointVentePage', icon: 'contacts' },
-            { name: 'Liste des produits', component: 'ProduitsPage', addPage: 'ProduitPage', icon: 'md-bookmarks' },
-            { name: 'Zones de vente', component: 'SecteursPage', addPage: 'SecteurPage', icon: 'md-map' },
-            { name: 'Historique des ventes', component: 'CommendesPage', addPage: 'SelectclientPage', icon: 'ios-stats-outline' }
-        ];
-        this.suppages = [
-            { name: 'Tableau de bord', component: 'StatsPage', icon: 'md-analytics' },
-            { name: 'Cartographie', component: 'CartographPage', icon: 'ios-map-outline' },
-            { name: 'Mon equipe', component: 'VendeursPage', icon: 'ios-people' },
-        ];
-        var skippecheck = this.navParams.get('skippecheck');
-        userService.resetObserver();
-        userService.complete.then(function (user) {
-            if (!user || !user.id || !user.parent)
-                return userService.go(user);
-            else if (user.receiveRequests && user.receiveRequests.length && !skippecheck)
-                return userService.request(user.receiveRequests);
-            else if ((userService.amIMyParent() && (!user.entreprise || !user.ville || !user.pays) && !skippecheck)
-                ||
-                    (!userService.amIMyParent() && (!user.nom) && !skippecheck))
-                return _this.nav.setRoot('ProfilePage', { user: user }); //userService.profile(user);
-            /* else if( (!user.parent.abonnement||user.parent.abonnement.expired)&&!skippecheck)
-                   return userService.shoulpay(user.parent.abonnement);*/
-        }, function (ERROR) {
-            console.log(ERROR);
-            return userService.unavailable();
-        });
+        this.page = this.navParams.get('page');
     }
-    MenuPage.prototype.presentPopover = function (ev) {
-        var popover = this.popoverCtrl.create('PopOverMenuPage', { navCtrl: this.nav, menu: this.menu });
-        popover.present({
-            ev: ev
+    HelpPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
+        this.manager.getText('help.', this.page + '.html').then(function (text) {
+            _this.text = text;
         });
     };
-    MenuPage.prototype.openPage = function (p, openAddPage) {
-        this.menu.close();
-        this.nav.push(p.component, { openAddPage: openAddPage });
+    HelpPage.prototype.dismiss = function () {
+        this.viewCtrl.dismiss();
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Nav */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Nav */])
-    ], MenuPage.prototype, "nav", void 0);
-    MenuPage = __decorate([
+    HelpPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-menu',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\menu\menu.html"*/'<ion-split-pane>\n<ion-menu [content]="content"  type="reveal" side="left" persistent="true">\n    <ion-header  >\n        <ion-navbar>\n          <ion-title></ion-title>\n<ion-buttons end>\n    <button ion-button icon-only end (click)="presentPopover($event)">\n        <ion-icon name="more"></ion-icon>\n      </button> \n</ion-buttons>\n        </ion-navbar>\n      </ion-header>  \n<ion-content>\n  <ion-list>\n    <ion-item *ngFor="let p of pages; let i = index" detail-push (click)="openPage(p)">\n      <ion-icon [name]="p.icon" item-left></ion-icon>\n      <button ion-button item-right small outline (click)="openPage(p,true)" *ngIf="p.addPage">\n        <ion-icon name="add" item-left></ion-icon>\n      </button>\n      {{p.name}}\n    </ion-item>\n    <ion-item-divider color="light">Options</ion-item-divider>\n    <ion-item *ngFor="let p of suppages; let i = index" detail-push (click)="openPage(p)">\n      <ion-icon [name]="p.icon" item-left></ion-icon>\n      {{p.name}}\n    </ion-item>\n  </ion-list>\n</ion-content>\n<ion-footer text-center  no-border>\n    <p><a><small>&copy; 2019. Centor .in</small></a></p>\n    </ion-footer>\n</ion-menu>\n<ion-nav [root]="rootPage" main  #content swipeBackEnabled="false"></ion-nav>\n</ion-split-pane>'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\menu\menu.html"*/,
+            selector: 'page-help',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\help\help.html"*/'<!--\n  Generated template for the HelpPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header no-border no-shadow >\n\n  <ion-navbar>\n    <ion-title>Aide</ion-title>\n    <ion-buttons end>\n        <button ion-button="ion-button" (click)="dismiss()" icon-left>\n            <ion-icon name="md-close" color="danger" showwhen="android,windows,core"></ion-icon> \n            Fermer\n        </button>\n    </ion-buttons> \n  </ion-navbar>\n\n</ion-header>\n<ion-content >\n  <ion-grid  style="height: 100%;justify-content: center;" [hidden]="text" >\n    <ion-row justify-content-center align-items-center>\n       <ion-spinner  name="ios"></ion-spinner>\n    </ion-row>\n  </ion-grid>\n  <div [innerHtml]="text" [hidden]="!text" padding>\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\help\help.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* PopoverController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_user_user__["a" /* UserProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* MenuController */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_manager_manager__["a" /* ManagerProvider */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ViewController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]])
-    ], MenuPage);
-    return MenuPage;
+    ], HelpPage);
+    return HelpPage;
 }());
 
-//# sourceMappingURL=menu.js.map
+//# sourceMappingURL=help.js.map
 
 /***/ })
 

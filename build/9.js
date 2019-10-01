@@ -1,14 +1,14 @@
 webpackJsonp([9],{
 
-/***/ 862:
+/***/ 861:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VendeurPageModule", function() { return VendeurPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UnavailablePageModule", function() { return UnavailablePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vendeur__ = __webpack_require__(935);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__unavailable__ = __webpack_require__(933);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,31 +18,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var VendeurPageModule = /** @class */ (function () {
-    function VendeurPageModule() {
+var UnavailablePageModule = /** @class */ (function () {
+    function UnavailablePageModule() {
     }
-    VendeurPageModule = __decorate([
+    UnavailablePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__vendeur__["a" /* VendeurPage */],
+                __WEBPACK_IMPORTED_MODULE_2__unavailable__["a" /* UnavailablePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__vendeur__["a" /* VendeurPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__unavailable__["a" /* UnavailablePage */]),
             ],
         })
-    ], VendeurPageModule);
-    return VendeurPageModule;
+    ], UnavailablePageModule);
+    return UnavailablePageModule;
 }());
 
-//# sourceMappingURL=vendeur.module.js.map
+//# sourceMappingURL=unavailable.module.js.map
 
 /***/ }),
 
-/***/ 935:
+/***/ 933:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VendeurPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UnavailablePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -57,29 +57,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
- * Generated class for the VendeurPage page.
+ * Generated class for the UnavailablePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var VendeurPage = /** @class */ (function () {
-    function VendeurPage(navCtrl, navParams) {
+var UnavailablePage = /** @class */ (function () {
+    function UnavailablePage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
     }
-    VendeurPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad VendeurPage');
+    UnavailablePage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad UnavailablePage');
     };
-    VendeurPage = __decorate([
+    UnavailablePage.prototype.retry = function () {
+        this.navCtrl.setRoot('MenuPage', { skippecheck: false }, { animate: true, direction: 'forward' });
+    };
+    UnavailablePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-vendeur',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\vendeur\vendeur.html"*/'<!--\n  Generated template for the VendeurPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>vendeur</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\vendeur\vendeur.html"*/,
+            selector: 'page-unavailable',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\unavailable\unavailable.html"*/'\n\n<ion-header no-border no-shadow>\n\n  <ion-navbar>\n\n    <ion-title>Hors connexion</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n\n<div text-center vertical-center layout horizontal-center style="margin-top: 30%">\n\n  <p style="color: red; font-size: 1.2em; font-weight: bold;">\n\n Votre connexion internet n\'est pas fonctionnelle.\n\n</p>\n\n<button  ion-button outline round (click)="retry()"> Travailer hors connexion</button>\n\n</div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\unavailable\unavailable.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]])
-    ], VendeurPage);
-    return VendeurPage;
+    ], UnavailablePage);
+    return UnavailablePage;
 }());
 
-//# sourceMappingURL=vendeur.js.map
+//# sourceMappingURL=unavailable.js.map
 
 /***/ })
 

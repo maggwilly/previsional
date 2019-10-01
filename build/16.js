@@ -1,14 +1,14 @@
 webpackJsonp([16],{
 
-/***/ 853:
+/***/ 852:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SecteurPageModule", function() { return SecteurPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RequestsPageModule", function() { return RequestsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__secteur__ = __webpack_require__(922);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__requests__ = __webpack_require__(920);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,36 +18,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var SecteurPageModule = /** @class */ (function () {
-    function SecteurPageModule() {
+var RequestsPageModule = /** @class */ (function () {
+    function RequestsPageModule() {
     }
-    SecteurPageModule = __decorate([
+    RequestsPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__secteur__["a" /* SecteurPage */],
+                __WEBPACK_IMPORTED_MODULE_2__requests__["a" /* RequestsPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__secteur__["a" /* SecteurPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__requests__["a" /* RequestsPage */]),
             ],
         })
-    ], SecteurPageModule);
-    return SecteurPageModule;
+    ], RequestsPageModule);
+    return RequestsPageModule;
 }());
 
-//# sourceMappingURL=secteur.module.js.map
+//# sourceMappingURL=requests.module.js.map
 
 /***/ }),
 
-/***/ 922:
+/***/ 920:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SecteurPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RequestsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_manager_manager__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_notify__ = __webpack_require__(483);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_localisation_localisation__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_notify__ = __webpack_require__(483);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__ = __webpack_require__(45);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -61,72 +60,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 /**
- * Generated class for the SecteurPage page.
+ * Generated class for the RequestsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var SecteurPage = /** @class */ (function () {
-    function SecteurPage(navCtrl, viewCtrl, notify, manager, location, navParams) {
+var RequestsPage = /** @class */ (function () {
+    function RequestsPage(navCtrl, notify, manager, navParams) {
         this.navCtrl = navCtrl;
-        this.viewCtrl = viewCtrl;
         this.notify = notify;
         this.manager = manager;
-        this.location = location;
         this.navParams = navParams;
-        this.secteur = {};
-        this.inset = true;
-        this.openAddPage = this.navParams.get('openAddPage');
-        this.inset = this.navParams.get('inset');
-        this.secteur = this.navParams.get('secteur') ? this.navParams.get('secteur') : {};
-        console.log(this.secteur);
+        this.requests = [];
+        this.requests = this.navParams.get('requests');
+        console.log(this.requests);
     }
-    SecteurPage.prototype.ionViewDidLoad = function () {
+    RequestsPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad RequestsPage');
+    };
+    RequestsPage.prototype.dismiss = function (skippecheck) {
+        if (skippecheck === void 0) { skippecheck = true; }
+        this.navCtrl.setRoot('TabsPage', { skippecheck: skippecheck }, { animate: true, direction: 'forward' });
+    };
+    RequestsPage.prototype.accepter = function (request) {
         var _this = this;
-        if (this.secteur.id)
-            return;
-        this.location.getCurrentPosition().then(function (resp) {
-            _this.secteur.latitude = resp.coords.latitude;
-            _this.secteur.longitude = resp.coords.longitude;
-        }).catch(function (error) {
-            console.log(error);
-        });
-    };
-    SecteurPage.prototype.dismiss = function (data) {
-        this.viewCtrl.dismiss(data);
-    };
-    SecteurPage.prototype.isInvalid = function () {
-        return (!this.secteur.nom || !this.secteur.ville);
-    };
-    SecteurPage.prototype.onSubmit = function () {
-        var _this = this;
-        this.secteur.change = true;
-        var self = this;
-        var loader = this.notify.loading({
-            content: "Enregistrement...",
-        });
-        this.manager.save('secteur', this.secteur, this.location.isOnline()).then(function (data) {
-            loader.dismiss().then(function () {
-                if (!data.error) {
-                    self.dismiss(data);
-                    return _this.notify.onSuccess({ message: "Enregistrement effectué" });
-                }
-                _this.notify.onError({ message: "Une erreur s'est produite et l'opération n'a pas put se terminer correctement" });
-            });
-        }, function (error) {
-            loader.dismiss();
-            _this.notify.onError({ message: " Verifiez votre connexion internet" });
-        });
-        loader.present();
-    };
-    SecteurPage.prototype.deleteItem = function () {
-        var _this = this;
+        console.log(request);
         var self = this;
         this.notify.showAlert({
-            title: "Suppression",
-            message: "Voulez-vous supprimer cet element ?",
+            title: "Acceptation",
+            message: "Voulez-vous integrer l'equipe de vente ?",
             buttons: [
                 {
                     text: 'Annuler',
@@ -135,21 +98,21 @@ var SecteurPage = /** @class */ (function () {
                     }
                 },
                 {
-                    text: 'Supprimer',
+                    text: 'Integrer',
                     handler: function (data) {
                         var loader = _this.notify.loading({
-                            content: "Suppression...",
+                            content: "Acceptation...",
                         });
-                        _this.manager.delete('secteur', _this.secteur).then(function (data) {
+                        _this.manager.delete('request', request, 'accept').then(function (data) {
                             if (data.ok) {
                                 loader.dismiss().then(function () {
-                                    self.dismiss(data);
-                                    _this.notify.onSuccess({ message: "Element supprime" });
+                                    self.dismiss(false);
+                                    _this.notify.onSuccess({ message: "Vous etes bien integre" });
                                 });
                             }
                             else {
                                 loader.dismiss();
-                                _this.notify.onError({ message: "Cet element est lie a d'autres. Vous ne pouvez pas le supprimer" });
+                                _this.notify.onError({ message: "L'operation n' a pas pu se derouler normalement" });
                             }
                         }, function (error) {
                             loader.dismiss();
@@ -161,21 +124,45 @@ var SecteurPage = /** @class */ (function () {
             ]
         });
     };
-    SecteurPage = __decorate([
+    RequestsPage.prototype.refuser = function (request) {
+        var _this = this;
+        console.log(request);
+        var self = this;
+        var loader = this.notify.loading({
+            content: "Suppression...",
+        });
+        this.manager.delete('request', request, 'refuse').then(function (data) {
+            if (data.ok) {
+                loader.dismiss().then(function () {
+                    if (_this.requests.length <= 1)
+                        return self.dismiss(false);
+                    var index = _this.requests.findIndex(function (item) { return item.id == data.deletedId; });
+                    if (index > -1)
+                        _this.requests.splice(index, 1);
+                });
+            }
+            else {
+                loader.dismiss();
+            }
+        }, function (error) {
+            loader.dismiss();
+            _this.notify.onError({ message: "Un probleme est survenu" });
+        });
+        loader.present();
+    };
+    RequestsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-secteur',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\secteur\secteur.html"*/'\n\n<ion-header no-border no-shadow >\n\n    <ion-navbar>\n\n        <ion-title><span *ngIf="!secteur.nom">Créer une zone</span><span *ngIf="secteur.nom">{{secteur.nom}}</span></ion-title>     \n\n        <ion-buttons end>\n\n                <button ion-button="ion-button" (click)="dismiss()" icon-left>\n\n                    <ion-icon name="md-close" color="danger" showwhen="android,windows,core"></ion-icon> \n\n                    Fermer\n\n                </button>\n\n            </ion-buttons> \n\n    </ion-navbar>\n\n</ion-header>\n\n<ion-content >\n\n        <ion-card>\n\n                <ion-card-header text-wrap>Créer ou modifier une zone</ion-card-header>\n\n        </ion-card>    \n\n    <form #form="ngForm" novalidate="novalidate">\n\n        <ion-list>\n\n            <ion-item>\n\n                <ion-label color="primary" floating><span>Nom de la zone</span> </ion-label>\n\n                <ion-input [(ngModel)]="secteur.nom" name="nom" type="text" placeholder="" #nom="ngModel"></ion-input>\n\n            </ion-item>\n\n            <ion-item >\n\n                <ion-label color="primary" floating>\n\n                    <span>Ville</span>\n\n                </ion-label>\n\n                <ion-select  [(ngModel)]="secteur.ville" name="ville" #ville="ngModel">\n\n                        <ion-option value="Yaoundé">Yaoundé</ion-option>\n\n                        <ion-option value="Douala">Douala</ion-option>\n\n                        <ion-option value="Bafoussam">Bafoussam</ion-option>\n\n                        <ion-option value="Bertoua">Bertoua</ion-option>\n\n                        <ion-option value="Bamenda">Bamenda</ion-option>\n\n                        <ion-option value="Dschang">Dschang</ion-option>\n\n                        <ion-option value="Autre">Autre</ion-option>\n\n                    </ion-select>\n\n            </ion-item>\n\n            <ion-item>\n\n                <ion-textarea rows="1" [(ngModel)]="secteur.description" placeholder="Description du secteur"\n\n                    name="description" #description="ngModel"></ion-textarea>\n\n            </ion-item>\n\n        </ion-list>\n\n        <div padding="padding">\n\n            <button *ngIf="secteur.id" ion-button outline block icon-right color="danger" (click)="deleteItem()">\n\n                    <span>Supprimer ce secteur\n\n                        <ion-icon name="close"></ion-icon>\n\n                    </span>\n\n               </button>             \n\n        </div>\n\n    </form>\n\n</ion-content>\n\n<ion-footer >\n\n    <button ion-button full [disabled]="isInvalid()" (click)="onSubmit()">\n\n        <span *ngIf="!secteur.id">Créer une zone</span>\n\n        <span *ngIf="secteur.id">Enregistrer les changements</span>\n\n    </button>\n\n  </ion-footer>'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\secteur\secteur.html"*/,
+            selector: 'page-requests',template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\pages\requests\requests.html"*/'<!--\n  Generated template for the RequestsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header no-border no-shadow>\n  <ion-navbar>\n    <ion-title>Invitations</ion-title>\n       <ion-buttons showWhen="android,windows,core" end>\n          <button ion-button="ion-button" (click)="dismiss()" icon-left>\n              <ion-icon name="md-close" color="danger" showwhen="android,windows,core"></ion-icon> \n              Fermer\n          </button>\n</ion-buttons>  \n  </ion-navbar>\n\n</ion-header>\n<ion-content padding>\n<ion-list *ngIf="requests">\n  <ion-card *ngFor="let request of requests">\n    <ion-card-header>{{request.user.nom}}</ion-card-header>\n    <ion-card-content>Acceptez de rejoindre l\'equipe de vente {{request.user.entreprise}}.</ion-card-content>\n    <ion-row>\n      <ion-col><button button ion-button outline small color="danger" (click)="refuser(request)">Refuser</button></ion-col>\n      <ion-col><button button ion-button  small color="primary" (click)="accepter(request)">Accepter</button></ion-col>\n    </ion-row>\n  </ion-card>\n</ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\pages\requests\requests.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["s" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_3__app_app_notify__["a" /* AppNotify */],
-            __WEBPACK_IMPORTED_MODULE_1__providers_manager_manager__["a" /* ManagerProvider */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_localisation_localisation__["a" /* LocalisationProvider */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["o" /* NavParams */]])
-    ], SecteurPage);
-    return SecteurPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2__app_app_notify__["a" /* AppNotify */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_manager_manager__["a" /* ManagerProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* NavParams */]])
+    ], RequestsPage);
+    return RequestsPage;
 }());
 
-//# sourceMappingURL=secteur.js.map
+//# sourceMappingURL=requests.js.map
 
 /***/ })
 

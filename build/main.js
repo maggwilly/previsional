@@ -1,4 +1,4 @@
-webpackJsonp([40],{
+webpackJsonp([39],{
 
 /***/ 153:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -6,13 +6,13 @@ webpackJsonp([40],{
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__manager_manager__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__manager_manager__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_firebase_ngx__ = __webpack_require__(349);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__localisation_localisation__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__localisation_localisation__ = __webpack_require__(65);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -214,159 +214,159 @@ webpackEmptyAsyncContext.id = 166;
 var map = {
 	"../pages/about/about.module": [
 		824,
-		80
+		38
 	],
 	"../pages/cartograph/cartograph.module": [
 		825,
-		47
+		5
 	],
 	"../pages/commende-create/commende-create.module": [
 		826,
-		43
+		1
 	],
 	"../pages/commendes-view/commendes-view.module": [
 		827,
-		79
+		37
 	],
 	"../pages/commendes/commendes.module": [
 		828,
-		78
+		36
 	],
 	"../pages/createligne/createligne.module": [
 		829,
-		77
+		35
 	],
 	"../pages/donnees/donnees.module": [
 		830,
-		76
+		34
 	],
 	"../pages/filtre-pointvente/filtre-pointvente.module": [
 		831,
-		75
+		33
 	],
 	"../pages/filtre-stats/filtre-stats.module": [
 		832,
-		74
+		32
 	],
 	"../pages/filtre-vente/filtre-vente.module": [
 		833,
-		73
+		31
 	],
 	"../pages/help/help.module": [
 		834,
-		72
+		30
 	],
 	"../pages/home/home.module": [
 		835,
-		42
+		0
 	],
 	"../pages/map/map.module": [
 		836,
-		46
+		4
 	],
 	"../pages/menu/menu.module": [
 		837,
-		71
+		29
 	],
 	"../pages/point-vente-detail/point-vente-detail.module": [
 		838,
-		49
+		7
 	],
 	"../pages/point-vente/point-vente.module": [
 		839,
-		70
+		28
 	],
 	"../pages/pointventes/pointventes.module": [
 		840,
-		69
+		27
 	],
 	"../pages/pop-over-menu/pop-over-menu.module": [
 		841,
-		68
+		26
 	],
 	"../pages/prevision-details/prevision-details.module": [
 		842,
-		67
+		25
 	],
 	"../pages/previsions/previsions.module": [
 		843,
-		66
+		24
 	],
 	"../pages/price-detail/price-detail.module": [
 		844,
-		65
+		23
 	],
 	"../pages/produit-detail/produit-detail.module": [
 		845,
-		64
+		22
 	],
 	"../pages/produit/produit.module": [
 		846,
-		63
+		21
 	],
 	"../pages/produits/produits.module": [
 		847,
-		62
+		20
 	],
 	"../pages/profile/profile.module": [
 		848,
-		61
+		19
 	],
 	"../pages/quartiers/quartiers.module": [
 		849,
-		45
+		3
 	],
 	"../pages/rapports/rapports.module": [
 		850,
-		60
+		18
 	],
 	"../pages/rendezvous/rendezvous.module": [
 		851,
-		59
+		17
 	],
 	"../pages/requests/requests.module": [
 		852,
-		58
+		16
 	],
 	"../pages/secteur/secteur.module": [
 		853,
-		57
+		15
 	],
 	"../pages/secteurs/secteurs.module": [
 		854,
-		56
+		14
 	],
 	"../pages/selectclient/selectclient.module": [
-		855,
-		55
+		857,
+		13
 	],
 	"../pages/selectproduit/selectproduit.module": [
-		856,
-		54
+		855,
+		12
 	],
 	"../pages/shoul-pay/shoul-pay.module": [
-		857,
-		53
+		856,
+		11
 	],
 	"../pages/signup/signup.module": [
 		858,
-		48
+		6
 	],
 	"../pages/stats/stats.module": [
 		859,
-		44
+		2
 	],
 	"../pages/tabs/tabs.module": [
 		860,
-		52
+		10
 	],
 	"../pages/unavailable/unavailable.module": [
 		861,
-		51
+		9
 	],
 	"../pages/vendeurs/vendeurs.module": [
-		863,
-		50
+		862,
+		8
 	]
 };
 function webpackAsyncContext(req) {
@@ -385,14 +385,14 @@ module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 47:
+/***/ 45:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ManagerProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(154);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise__ = __webpack_require__(213);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(155);
@@ -727,7 +727,7 @@ var ManagerProvider = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppNotify; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__ = __webpack_require__(65);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -882,7 +882,7 @@ var Config = /** @class */ (function () {
     }
     // url of the chat server
     // for local development it will be something like http://192.168.0.214:9000/
-    Config.server = "http://api-provisional.herokuapp.com"; //"http://localhost:8000" //'
+    Config.server = "https://api-provisional.herokuapp.com"; //"http://localhost:8000" //'
     Config.entityNames = ['secteur', 'pointvente', 'produit', 'rendezvous', 'commende'];
     Config.googleApiKey = "AIzaSyBNIN0oMzHoNgEZz1utnM_8ut6KFjwieoo";
     Config.HomePage = 'HomePage'; //
@@ -919,16 +919,16 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(481);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_notify__ = __webpack_require__(483);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(822);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_manager_manager__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_manager_manager__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_http__ = __webpack_require__(154);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_storage__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_storage__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_user_user__ = __webpack_require__(153);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_firebase_ngx__ = __webpack_require__(349);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_geofence__ = __webpack_require__(482);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_native_geolocation__ = __webpack_require__(215);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ionic_native_diagnostic__ = __webpack_require__(219);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_native_location_accuracy__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__providers_localisation_localisation__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__providers_localisation_localisation__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_network__ = __webpack_require__(221);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pipes_pipes_module__ = __webpack_require__(485);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__directives_directives_module__ = __webpack_require__(484);
@@ -1006,9 +1006,9 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/requests/requests.module#RequestsPageModule', name: 'RequestsPage', segment: 'requests', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/secteur/secteur.module#SecteurPageModule', name: 'SecteurPage', segment: 'secteur', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/secteurs/secteurs.module#SecteursPageModule', name: 'SecteursPage', segment: 'secteurs', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/selectclient/selectclient.module#SelectclientPageModule', name: 'SelectclientPage', segment: 'selectclient', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/selectproduit/selectproduit.module#SelectproduitPageModule', name: 'SelectproduitPage', segment: 'selectproduit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/shoul-pay/shoul-pay.module#ShoulPayPageModule', name: 'ShoulPayPage', segment: 'shoul-pay', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/selectclient/selectclient.module#SelectclientPageModule', name: 'SelectclientPage', segment: 'selectclient', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/stats/stats.module#StatsPageModule', name: 'StatsPage', segment: 'stats', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
@@ -1326,450 +1326,7 @@ webpackContext.id = 522;
 
 /***/ }),
 
-/***/ 800:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LastcommendeDirective; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_manager_manager__ = __webpack_require__(47);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-/**
- * Generated class for the LastcommendeDirective directive.
- *
- * See https://angular.io/api/core/Directive for more info on Angular
- * Directives.
- */
-var LastcommendeDirective = /** @class */ (function () {
-    function LastcommendeDirective(manager) {
-        this.manager = manager;
-    }
-    LastcommendeDirective.prototype.ngOnInit = function () {
-        var _this = this;
-        if (!this.pointvente || !this.pointvente.lastCommende)
-            return;
-        console.log('Hello LastcommendeDirective Directive');
-        this.pointvente.lastCommende.loading = true;
-        this.manager.show('commende', this.pointvente.lastCommende.id).then(function (data) {
-            if (data)
-                _this.pointvente.lastCommende = data;
-            console.log(data);
-        });
-    };
-    LastcommendeDirective.prototype.ngOnChanges = function () {
-        this.ngOnInit();
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
-        __metadata("design:type", Object)
-    ], LastcommendeDirective.prototype, "pointvente", void 0);
-    LastcommendeDirective = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
-            selector: '[lastcommende]' // Attribute selector
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_manager_manager__["a" /* ManagerProvider */]])
-    ], LastcommendeDirective);
-    return LastcommendeDirective;
-}());
-
-//# sourceMappingURL=lastcommende.js.map
-
-/***/ }),
-
-/***/ 801:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LastrendevousDirective; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_manager_manager__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__ = __webpack_require__(89);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-/**
- * Generated class for the LastrendevousDirective directive.
- *
- * See https://angular.io/api/core/Directive for more info on Angular
- * Directives.
- */
-var LastrendevousDirective = /** @class */ (function () {
-    function LastrendevousDirective(manager, connectivityService) {
-        this.manager = manager;
-        this.connectivityService = connectivityService;
-    }
-    LastrendevousDirective.prototype.ngOnInit = function () {
-        var _this = this;
-        if (!this.pointvente || !this.pointvente.rendezvous)
-            return;
-        this.pointvente.rendezvous.loading = true;
-        this.manager.show('rendezvous', this.pointvente.id, this.connectivityService.isOnline()).then(function (data) {
-            if (data)
-                _this.pointvente.rendezvous = data;
-        }, function (error) {
-            _this.pointvente.rendezvous.loading = true;
-        });
-    };
-    LastrendevousDirective.prototype.ngOnChanges = function () {
-        this.ngOnInit();
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
-        __metadata("design:type", Object)
-    ], LastrendevousDirective.prototype, "pointvente", void 0);
-    LastrendevousDirective = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
-            selector: '[lastrendevous]' // Attribute selector
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_manager_manager__["a" /* ManagerProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__["a" /* LocalisationProvider */]])
-    ], LastrendevousDirective);
-    return LastrendevousDirective;
-}());
-
-//# sourceMappingURL=lastrendevous.js.map
-
-/***/ }),
-
-/***/ 802:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HideHeaderDirective; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-/**
- * Generated class for the HideHeaderDirective directive.
- *
- * See https://angular.io/docs/ts/latest/api/core/index/DirectiveMetadata-class.html
- * for more info on Angular Directives.
- */
-var HideHeaderDirective = /** @class */ (function () {
-    function HideHeaderDirective(elementRef, renderer) {
-        this.elementRef = elementRef;
-        this.renderer = renderer;
-    }
-    HideHeaderDirective.prototype.ngOnInit = function () {
-        this.headerHeight = this.header.clientHeight;
-        this.renderer.setElementStyle(this.header, 'webkitTransition', 'top 700ms');
-        this.scrollContent = this.elementRef.nativeElement.getElementsByClassName('scroll-content')[0];
-        this.renderer.setElementStyle(this.scrollContent, 'webkitTransition', 'margin-top 700ms');
-    };
-    HideHeaderDirective.prototype.onContentScroll = function (event) {
-        if (event.scrollTop > this.headerHeight) {
-            this.renderer.setElementStyle(this.header, 'top', (this.headerHeight > 56) ? '-' + (this.headerHeight + 25) + 'px' : '-' + this.headerHeight + 'px');
-            this.renderer.setElementStyle(this.scrollContent, 'margin-top', '-25px');
-        }
-        else {
-            this.renderer.setElementStyle(this.header, 'top', '0px');
-            this.renderer.setElementStyle(this.scrollContent, 'margin-top', (this.headerHeight > 56) ? (this.headerHeight + 25) + 'px' : this.headerHeight + 'px');
-        }
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])("header"),
-        __metadata("design:type", HTMLElement)
-    ], HideHeaderDirective.prototype, "header", void 0);
-    HideHeaderDirective = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
-            selector: '[hide-header]',
-            host: { '(ionScroll)': 'onContentScroll($event)' }
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"], __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer"]])
-    ], HideHeaderDirective);
-    return HideHeaderDirective;
-}());
-
-//# sourceMappingURL=hide-header.js.map
-
-/***/ }),
-
-/***/ 803:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TotalDirective; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_manager_manager__ = __webpack_require__(47);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-/**
- * Generated class for the TotalDirective directive.
- *
- * See https://angular.io/api/core/Directive for more info on Angular
- * Directives.
- */
-var TotalDirective = /** @class */ (function () {
-    function TotalDirective(manager) {
-        this.manager = manager;
-    }
-    TotalDirective.prototype.ngOnInit = function () {
-        var _this = this;
-        if (!this.commende || !this.commende.lignes || !this.commende.lignes.length)
-            return;
-        this.commende.total = 0;
-        this.commende.lignes.forEach(function (ligne) {
-            console.log(ligne);
-            if (ligne.quantite && ligne.pu)
-                _this.commende.total += ligne.quantite * ligne.pu;
-        });
-    };
-    TotalDirective.prototype.ngOnChanges = function () {
-        this.ngOnInit();
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
-        __metadata("design:type", Object)
-    ], TotalDirective.prototype, "commende", void 0);
-    TotalDirective = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
-            selector: '[total]' // Attribute selector
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_manager_manager__["a" /* ManagerProvider */]])
-    ], TotalDirective);
-    return TotalDirective;
-}());
-
-//# sourceMappingURL=total.js.map
-
-/***/ }),
-
-/***/ 804:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MomentPipe; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-/**
- * Generated class for the MomentPipe pipe.
- *
- * See https://angular.io/api/core/Pipe for more info on Angular Pipes.
- */
-var MomentPipe = /** @class */ (function () {
-    function MomentPipe() {
-    }
-    /**
-     * Takes a value and makes it lowercase.
-     */
-    MomentPipe.prototype.transform = function (date, method) {
-        if (!method)
-            return this.fromNow(date);
-        return __WEBPACK_IMPORTED_MODULE_1_moment__(date).fromNow();
-    };
-    MomentPipe.prototype.fromNow = function (date) {
-        return __WEBPACK_IMPORTED_MODULE_1_moment__(date).calendar();
-    };
-    MomentPipe = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
-            name: 'moment',
-        })
-    ], MomentPipe);
-    return MomentPipe;
-}());
-
-//# sourceMappingURL=moment.js.map
-
-/***/ }),
-
-/***/ 822:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(481);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(480);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_user__ = __webpack_require__(153);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_manager_manager__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_geofence__ = __webpack_require__(482);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-
-var MyApp = /** @class */ (function () {
-    function MyApp(platform, statusBar, splashScreen, geofence, events, manager, userService) {
-        var _this = this;
-        this.geofence = geofence;
-        this.events = events;
-        this.manager = manager;
-        this.userService = userService;
-        this.rootPage = 'MenuPage';
-        this.setMomentConfig();
-        platform.ready().then(function () {
-            console.log(platform.platforms());
-            if (platform.is('cordova') && platform.is('android')) {
-                _this.userService.getToken();
-                _this.userService.onNotification();
-                _this.geofence.initialize().then(function () { return _this.addGeofence(); }, function (err) { return console.log(err); });
-                _this.geofence.onTransitionReceived().subscribe(function (data) {
-                    console.log(data); /// sent t the server
-                });
-            }
-            _this.events.subscribe('app:connection:change', function (status) {
-                if (status == 'connected') {
-                    _this.manager.connected = true;
-                    _this.manager.isAscing = true;
-                    _this.manager.ascync().then(function () {
-                        _this.manager.isAscing = false;
-                    });
-                }
-            });
-            /* this.userService.getAuthenticatedUser().subscribe(user => {
-               if (user)
-                 this.events.publish('app:connection:change', 'connected');
-             })
-             */
-            statusBar.styleDefault();
-            splashScreen.hide();
-        });
-    }
-    MyApp.prototype.addGeofence = function () {
-        var _this = this;
-        this.userService.getAuthenticatedUser().subscribe(function (user) {
-            if (user && user.secteur) {
-                var fence = {
-                    id: user.secteur.id,
-                    latitude: user.secteur.lat,
-                    longitude: user.secteur.long,
-                    radius: user.secteur.radius,
-                    transitionType: 3,
-                    notification: {
-                        id: 1,
-                        title: 'Changement de zone',
-                        text: 'Vous venez de changer de zone.',
-                        openAppOnClick: true //open app when notification is tapped
-                    }
-                };
-                _this.geofence.addOrUpdate(fence).then(function () { return console.log('Geofence added'); }, function (err) { return console.log('Geofence failed to add'); });
-            }
-        });
-    };
-    MyApp.prototype.setMomentConfig = function () {
-        __WEBPACK_IMPORTED_MODULE_5_moment__["locale"]('fr', {
-            months: 'janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre'.split('_'),
-            monthsShort: 'janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.'.split('_'),
-            monthsParseExact: true,
-            weekdays: 'dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi'.split('_'),
-            weekdaysShort: 'dim._lun._mar._mer._jeu._ven._sam.'.split('_'),
-            weekdaysMin: 'Di_Lu_Ma_Me_Je_Ve_Sa'.split('_'),
-            weekdaysParseExact: true,
-            longDateFormat: {
-                LT: 'HH:mm',
-                LTS: 'HH:mm:ss',
-                L: 'DD/MM/YYYY',
-                LL: 'D MMMM YYYY',
-                LLL: 'D MMMM YYYY HH:mm',
-                LLLL: 'dddd D MMMM YYYY HH:mm'
-            },
-            calendar: {
-                sameDay: '[Aujourd’hui]',
-                nextDay: '[Demain]',
-                nextWeek: 'dddd [prochain]',
-                lastDay: '[Hier]',
-                lastWeek: 'dddd [dernier]',
-                sameElse: '[le] LL'
-            },
-            relativeTime: {
-                future: 'dans %s',
-                past: 'il y a %s',
-                s: 'quelques secondes',
-                m: 'une minute',
-                mm: '%d minutes',
-                h: 'une heure',
-                hh: '%d heures',
-                d: 'un jour',
-                dd: '%d jours',
-                M: 'un mois',
-                MM: '%d mois',
-                y: 'un an',
-                yy: '%d ans'
-            }
-        });
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Nav */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Nav */])
-    ], MyApp.prototype, "nav", void 0);
-    MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\app\app.html"*/
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */],
-            __WEBPACK_IMPORTED_MODULE_7__ionic_native_geofence__["a" /* Geofence */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */],
-            __WEBPACK_IMPORTED_MODULE_6__providers_manager_manager__["a" /* ManagerProvider */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_user_user__["a" /* UserProvider */]])
-    ], MyApp);
-    return MyApp;
-}());
-
-//# sourceMappingURL=app.component.js.map
-
-/***/ }),
-
-/***/ 89:
+/***/ 65:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1922,6 +1479,449 @@ var LocalisationProvider = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=localisation.js.map
+
+/***/ }),
+
+/***/ 800:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LastcommendeDirective; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_manager_manager__ = __webpack_require__(45);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the LastcommendeDirective directive.
+ *
+ * See https://angular.io/api/core/Directive for more info on Angular
+ * Directives.
+ */
+var LastcommendeDirective = /** @class */ (function () {
+    function LastcommendeDirective(manager) {
+        this.manager = manager;
+    }
+    LastcommendeDirective.prototype.ngOnInit = function () {
+        var _this = this;
+        if (!this.pointvente || !this.pointvente.lastCommende)
+            return;
+        console.log('Hello LastcommendeDirective Directive');
+        this.pointvente.lastCommende.loading = true;
+        this.manager.show('commende', this.pointvente.lastCommende.id).then(function (data) {
+            if (data)
+                _this.pointvente.lastCommende = data;
+            console.log(data);
+        });
+    };
+    LastcommendeDirective.prototype.ngOnChanges = function () {
+        this.ngOnInit();
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", Object)
+    ], LastcommendeDirective.prototype, "pointvente", void 0);
+    LastcommendeDirective = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
+            selector: '[lastcommende]' // Attribute selector
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_manager_manager__["a" /* ManagerProvider */]])
+    ], LastcommendeDirective);
+    return LastcommendeDirective;
+}());
+
+//# sourceMappingURL=lastcommende.js.map
+
+/***/ }),
+
+/***/ 801:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LastrendevousDirective; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_manager_manager__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__ = __webpack_require__(65);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * Generated class for the LastrendevousDirective directive.
+ *
+ * See https://angular.io/api/core/Directive for more info on Angular
+ * Directives.
+ */
+var LastrendevousDirective = /** @class */ (function () {
+    function LastrendevousDirective(manager, connectivityService) {
+        this.manager = manager;
+        this.connectivityService = connectivityService;
+    }
+    LastrendevousDirective.prototype.ngOnInit = function () {
+        var _this = this;
+        if (!this.pointvente || !this.pointvente.rendezvous)
+            return;
+        this.pointvente.rendezvous.loading = true;
+        this.manager.show('rendezvous', this.pointvente.id, this.connectivityService.isOnline()).then(function (data) {
+            if (data)
+                _this.pointvente.rendezvous = data;
+        }, function (error) {
+            _this.pointvente.rendezvous.loading = true;
+        });
+    };
+    LastrendevousDirective.prototype.ngOnChanges = function () {
+        this.ngOnInit();
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", Object)
+    ], LastrendevousDirective.prototype, "pointvente", void 0);
+    LastrendevousDirective = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
+            selector: '[lastrendevous]' // Attribute selector
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_manager_manager__["a" /* ManagerProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__["a" /* LocalisationProvider */]])
+    ], LastrendevousDirective);
+    return LastrendevousDirective;
+}());
+
+//# sourceMappingURL=lastrendevous.js.map
+
+/***/ }),
+
+/***/ 802:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HideHeaderDirective; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+/**
+ * Generated class for the HideHeaderDirective directive.
+ *
+ * See https://angular.io/docs/ts/latest/api/core/index/DirectiveMetadata-class.html
+ * for more info on Angular Directives.
+ */
+var HideHeaderDirective = /** @class */ (function () {
+    function HideHeaderDirective(elementRef, renderer) {
+        this.elementRef = elementRef;
+        this.renderer = renderer;
+    }
+    HideHeaderDirective.prototype.ngOnInit = function () {
+        this.headerHeight = this.header.clientHeight;
+        this.renderer.setElementStyle(this.header, 'webkitTransition', 'top 700ms');
+        this.scrollContent = this.elementRef.nativeElement.getElementsByClassName('scroll-content')[0];
+        this.renderer.setElementStyle(this.scrollContent, 'webkitTransition', 'margin-top 700ms');
+    };
+    HideHeaderDirective.prototype.onContentScroll = function (event) {
+        if (event.scrollTop > this.headerHeight) {
+            this.renderer.setElementStyle(this.header, 'top', (this.headerHeight > 56) ? '-' + (this.headerHeight + 25) + 'px' : '-' + this.headerHeight + 'px');
+            this.renderer.setElementStyle(this.scrollContent, 'margin-top', '-25px');
+        }
+        else {
+            this.renderer.setElementStyle(this.header, 'top', '0px');
+            this.renderer.setElementStyle(this.scrollContent, 'margin-top', (this.headerHeight > 56) ? (this.headerHeight + 25) + 'px' : this.headerHeight + 'px');
+        }
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])("header"),
+        __metadata("design:type", HTMLElement)
+    ], HideHeaderDirective.prototype, "header", void 0);
+    HideHeaderDirective = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
+            selector: '[hide-header]',
+            host: { '(ionScroll)': 'onContentScroll($event)' }
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"], __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer"]])
+    ], HideHeaderDirective);
+    return HideHeaderDirective;
+}());
+
+//# sourceMappingURL=hide-header.js.map
+
+/***/ }),
+
+/***/ 803:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TotalDirective; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_manager_manager__ = __webpack_require__(45);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the TotalDirective directive.
+ *
+ * See https://angular.io/api/core/Directive for more info on Angular
+ * Directives.
+ */
+var TotalDirective = /** @class */ (function () {
+    function TotalDirective(manager) {
+        this.manager = manager;
+    }
+    TotalDirective.prototype.ngOnInit = function () {
+        var _this = this;
+        if (!this.commende || !this.commende.lignes || !this.commende.lignes.length)
+            return;
+        this.commende.total = 0;
+        this.commende.lignes.forEach(function (ligne) {
+            console.log(ligne);
+            if (ligne.quantite && ligne.pu)
+                _this.commende.total += ligne.quantite * ligne.pu;
+        });
+    };
+    TotalDirective.prototype.ngOnChanges = function () {
+        this.ngOnInit();
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", Object)
+    ], TotalDirective.prototype, "commende", void 0);
+    TotalDirective = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
+            selector: '[total]' // Attribute selector
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_manager_manager__["a" /* ManagerProvider */]])
+    ], TotalDirective);
+    return TotalDirective;
+}());
+
+//# sourceMappingURL=total.js.map
+
+/***/ }),
+
+/***/ 804:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MomentPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+/**
+ * Generated class for the MomentPipe pipe.
+ *
+ * See https://angular.io/api/core/Pipe for more info on Angular Pipes.
+ */
+var MomentPipe = /** @class */ (function () {
+    function MomentPipe() {
+    }
+    /**
+     * Takes a value and makes it lowercase.
+     */
+    MomentPipe.prototype.transform = function (date, method) {
+        if (!method)
+            return this.fromNow(date);
+        return __WEBPACK_IMPORTED_MODULE_1_moment__(date).fromNow();
+    };
+    MomentPipe.prototype.fromNow = function (date) {
+        return __WEBPACK_IMPORTED_MODULE_1_moment__(date).calendar();
+    };
+    MomentPipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
+            name: 'moment',
+        })
+    ], MomentPipe);
+    return MomentPipe;
+}());
+
+//# sourceMappingURL=moment.js.map
+
+/***/ }),
+
+/***/ 822:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(481);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(480);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_user__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_manager_manager__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_geofence__ = __webpack_require__(482);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+var MyApp = /** @class */ (function () {
+    function MyApp(platform, statusBar, splashScreen, geofence, events, manager, userService) {
+        var _this = this;
+        this.geofence = geofence;
+        this.events = events;
+        this.manager = manager;
+        this.userService = userService;
+        this.rootPage = 'MenuPage';
+        this.setMomentConfig();
+        platform.ready().then(function () {
+            console.log(platform.platforms());
+            if (platform.is('cordova') && platform.is('android')) {
+                _this.userService.getToken();
+                _this.userService.onNotification();
+                _this.geofence.initialize().then(function () { return _this.addGeofence(); }, function (err) { return console.log(err); });
+                _this.geofence.onTransitionReceived().subscribe(function (data) {
+                    console.log(data); /// sent t the server
+                });
+            }
+            _this.events.subscribe('app:connection:change', function (status) {
+                if (status == 'connected') {
+                    _this.manager.connected = true;
+                    _this.manager.isAscing = true;
+                    _this.manager.ascync().then(function () {
+                        _this.manager.isAscing = false;
+                    });
+                }
+            });
+            /* this.userService.getAuthenticatedUser().subscribe(user => {
+               if (user)
+                 this.events.publish('app:connection:change', 'connected');
+             })
+             */
+            statusBar.styleDefault();
+            splashScreen.hide();
+        });
+    }
+    MyApp.prototype.addGeofence = function () {
+        var _this = this;
+        this.userService.getAuthenticatedUser().subscribe(function (user) {
+            if (user && user.secteur) {
+                var fence = {
+                    id: user.secteur.id,
+                    latitude: user.secteur.lat,
+                    longitude: user.secteur.long,
+                    radius: user.secteur.radius,
+                    transitionType: 3,
+                    notification: {
+                        id: 1,
+                        title: 'Changement de zone',
+                        text: 'Vous venez de changer de zone.',
+                        openAppOnClick: true //open app when notification is tapped
+                    }
+                };
+                _this.geofence.addOrUpdate(fence).then(function () { return console.log('Geofence added'); }, function (err) { return console.log('Geofence failed to add'); });
+            }
+        });
+    };
+    MyApp.prototype.setMomentConfig = function () {
+        __WEBPACK_IMPORTED_MODULE_5_moment__["locale"]('fr', {
+            months: 'janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre'.split('_'),
+            monthsShort: 'janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.'.split('_'),
+            monthsParseExact: true,
+            weekdays: 'dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi'.split('_'),
+            weekdaysShort: 'dim._lun._mar._mer._jeu._ven._sam.'.split('_'),
+            weekdaysMin: 'Di_Lu_Ma_Me_Je_Ve_Sa'.split('_'),
+            weekdaysParseExact: true,
+            longDateFormat: {
+                LT: 'HH:mm',
+                LTS: 'HH:mm:ss',
+                L: 'DD/MM/YYYY',
+                LL: 'D MMMM YYYY',
+                LLL: 'D MMMM YYYY HH:mm',
+                LLLL: 'dddd D MMMM YYYY HH:mm'
+            },
+            calendar: {
+                sameDay: '[Aujourd’hui]',
+                nextDay: '[Demain]',
+                nextWeek: 'dddd [prochain]',
+                lastDay: '[Hier]',
+                lastWeek: 'dddd [dernier]',
+                sameElse: '[le] LL'
+            },
+            relativeTime: {
+                future: 'dans %s',
+                past: 'il y a %s',
+                s: 'quelques secondes',
+                m: 'une minute',
+                mm: '%d minutes',
+                h: 'une heure',
+                hh: '%d heures',
+                d: 'un jour',
+                dd: '%d jours',
+                M: 'un mois',
+                MM: '%d mois',
+                y: 'un an',
+                yy: '%d ans'
+            }
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Nav */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Nav */])
+    ], MyApp.prototype, "nav", void 0);
+    MyApp = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"C:\Users\HP\workspace\provisional-mobile\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"C:\Users\HP\workspace\provisional-mobile\src\app\app.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */],
+            __WEBPACK_IMPORTED_MODULE_7__ionic_native_geofence__["a" /* Geofence */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Events */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_manager_manager__["a" /* ManagerProvider */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_user_user__["a" /* UserProvider */]])
+    ], MyApp);
+    return MyApp;
+}());
+
+//# sourceMappingURL=app.component.js.map
 
 /***/ })
 

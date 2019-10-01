@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MapPageModule", function() { return MapPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__map__ = __webpack_require__(903);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__map__ = __webpack_require__(902);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var MapPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 864:
+/***/ 863:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* @preserve
@@ -14065,7 +14065,7 @@ window.L = exports;
 
 /***/ }),
 
-/***/ 866:
+/***/ 865:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14077,7 +14077,7 @@ window.L = exports;
 /* unused harmony export violet */
 /* unused harmony export greyIcon */
 /* unused harmony export blackIcon */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet__ = __webpack_require__(864);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet__ = __webpack_require__(863);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_leaflet__);
 
 var blueIcon = new __WEBPACK_IMPORTED_MODULE_0_leaflet__["Icon"]({
@@ -14148,7 +14148,7 @@ var blackIcon = new __WEBPACK_IMPORTED_MODULE_0_leaflet__["Icon"]({
 
 /***/ }),
 
-/***/ 870:
+/***/ 869:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var require;var require;(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return require(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(_dereq_,module,exports){
@@ -32798,18 +32798,18 @@ module.exports = L.Routing = {
 
 /***/ }),
 
-/***/ 903:
+/***/ 902:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MapPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_icons_marker__ = __webpack_require__(866);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_leaflet__ = __webpack_require__(864);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_localisation_localisation__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_icons_marker__ = __webpack_require__(865);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_leaflet__ = __webpack_require__(863);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_leaflet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_leaflet__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_leaflet_routing_machine__ = __webpack_require__(870);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_leaflet_routing_machine__ = __webpack_require__(869);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_leaflet_routing_machine___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_leaflet_routing_machine__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_app_notify__ = __webpack_require__(483);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
